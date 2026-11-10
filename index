@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sister Pin Guide</title>
+<meta name="description" content="Tournament strategy, PinTips and venue notes for every pinball machine at Sister in Albuquerque.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
+:root {
+  color-scheme: dark;
+  --bg: #08090c;
+  --bg-2: #0c0e13;
+  --panel: #101218;
+  --line: #242833;
+  --line-2: #363b49;
+  --fg: #c6cad8;
+  --fg-hi: #eceef5;
+  --fg-dim: #7d8296;
+  --dmd: #ff6b1f;
+  --dmd-soft: rgba(255, 107, 31, 0.14);
+  --dmd-off: #24150e;
+  --warn: #f2b13d;
+  --warn-soft: rgba(242, 177, 61, 0.10);
+  --cat-multiball: #6fd3c4;
+  --cat-skillshot: #e9cf6a;
+  --cat-secret: #e57fb0;
+  --cat-general: #9aa3bf;
+  --cat-wizard: #a993f0;
+  --f-display: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --max: 1120px;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--bg);
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--dmd); outline-offset: 3px; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; }
+.dim { color: var(--fg-dim); }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg-hi); }
+.brand-dot { width: 10px; height: 10px; background: var(--dmd); box-shadow: 0 0 10px var(--dmd); }
+.bar-right { display: flex; gap: 16px; align-items: center; }
+
+/* ---------- hero ---------- */
+.hero { padding-block: 44px 28px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+.eyebrow { color: var(--dmd); }
+h1 {
+  font-family: var(--f-display); font-weight: 400; color: var(--fg-hi);
+  font-size: clamp(44px, 7vw, 80px); line-height: 0.95; letter-spacing: -0.02em;
+  margin: 14px 0 16px; text-wrap: balance;
+}
+h1 em { font-style: italic; color: var(--fg); }
+.lede { max-width: 52ch; color: var(--fg); margin: 0 0 20px; }
+.tally { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.tally span b { color: var(--fg-hi); font-weight: 500; }
+
+.dmd-frame { border: 1px solid var(--line-2); background: #050506; }
+.dmd-title { display: flex; justify-content: space-between; gap: 8px; padding: 7px 10px; border-bottom: 1px solid var(--line-2); color: var(--fg-dim); }
+.dmd-screen { padding: 12px; }
+#dmd { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; max-width: 100%; }
+
+/* ---------- venue strip ---------- */
+.venue { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); margin-block: 8px 18px; }
+.venue > div { padding: 14px 16px; border-right: 1px solid var(--line); min-width: 0; }
+.venue > div:last-child { border-right: 0; }
+.venue .k { color: var(--fg-dim); margin-bottom: 6px; }
+.venue p { margin: 0; font-size: 14px; line-height: 1.45; }
+
+details.basics { border: 1px solid var(--line); background: var(--bg-2); margin-bottom: 26px; }
+details.basics summary { cursor: pointer; padding: 12px 16px; list-style: none; display: flex; justify-content: space-between; gap: 12px; color: var(--fg-hi); }
+details.basics summary::-webkit-details-marker { display: none; }
+details.basics summary .tog::before { content: "[+]"; color: var(--dmd); }
+details.basics[open] summary .tog::before { content: "[–]"; }
+details.basics ul { margin: 0; padding: 0 16px 16px 34px; display: grid; gap: 8px; max-width: 80ch; }
+
+/* ---------- controls ---------- */
+.controls { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.search { position: relative; flex: 1 1 240px; max-width: 360px; }
+.search input {
+  width: 100%; background: var(--panel); border: 1px solid var(--line-2); color: var(--fg-hi);
+  font-family: var(--f-mono); font-size: 13px; padding: 10px 12px 10px 34px; border-radius: 0;
+}
+.search input::placeholder { color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; }
+.search::before { content: ">"; position: absolute; left: 13px; top: 50%; transform: translateY(-52%); color: var(--dmd); font-family: var(--f-mono); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px;
+  background: transparent; color: var(--fg); border: 1px solid var(--line-2); padding: 7px 10px; cursor: pointer;
+  display: inline-flex; gap: 6px; align-items: center;
+}
+.chip:hover { border-color: var(--fg-dim); color: var(--fg-hi); }
+.chip[aria-pressed="true"] { background: var(--dmd); border-color: var(--dmd); color: #140904; }
+.chip .n { opacity: 0.7; }
+
+/* ---------- grid ---------- */
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+  margin-bottom: 30px;
+}
+.card {
+  position: relative; display: flex; flex-direction: column; gap: 8px;
+  padding: 18px 18px 16px; text-decoration: none; min-width: 0;
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  transition: background 0.15s ease;
+}
+.card::before, .card::after {
+  content: ""; position: absolute; width: 9px; height: 9px; pointer-events: none;
+  border-color: var(--line-2); border-style: solid; border-width: 0;
+}
+.card::before { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px; }
+.card::after { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+.card:hover { background: var(--panel); }
+.card:hover::before, .card:hover::after { border-color: var(--dmd); }
+.card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.code {
+  font-family: var(--f-mono); font-weight: 600; font-size: 30px; line-height: 1; letter-spacing: 0.04em;
+  background: radial-gradient(circle at center, var(--dmd) 42%, transparent 48%) 0 0 / 3px 3px;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 6px rgba(255, 107, 31, 0.35));
+}
+.card h3 { font-family: var(--f-display); font-weight: 400; font-size: 27px; line-height: 1.02; color: var(--fg-hi); margin: 4px 0 0; text-wrap: balance; }
+.card .meta { color: var(--fg-dim); }
+.card .line { margin: 2px 0 0; font-size: 14px; color: var(--fg); }
+.flags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+.flag { font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.05em; font-size: 10.5px; padding: 3px 6px; border: 1px solid var(--line-2); color: var(--fg-dim); display: inline-flex; gap: 6px; align-items: center; }
+.flag.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent); background: var(--warn-soft); }
+.sq { width: 7px; height: 7px; display: inline-block; flex: none; background: currentColor; }
+.empty { padding: 30px 18px; color: var(--fg-dim); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); grid-column: 1 / -1; }
+
+footer { border-top: 1px solid var(--line); padding-block: 22px 40px; color: var(--fg-dim); font-size: 13px; }
+footer p { margin: 0 0 8px; max-width: 90ch; }
+footer a { color: var(--fg); }
+
+/* ---------- detail ---------- */
+.detail { padding-block: 22px 10px; }
+.crumbs { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+.crumbs a { text-decoration: none; color: var(--fg); }
+.crumbs a:hover { color: var(--dmd); }
+.d-head { border: 1px solid var(--line-2); background: var(--bg-2); margin-bottom: 22px; }
+.d-title-bar { display: flex; justify-content: space-between; gap: 10px; padding: 8px 14px; border-bottom: 1px solid var(--line-2); color: var(--fg-dim); flex-wrap: wrap; }
+.d-head-body { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; padding: 22px 18px; align-items: center; }
+.d-head .code { font-size: clamp(44px, 9vw, 72px); background-size: 4px 4px; }
+.d-head h2 { font-family: var(--f-display); font-weight: 400; color: var(--fg-hi); font-size: clamp(36px, 5.6vw, 58px); line-height: 0.98; margin: 0 0 8px; text-wrap: balance; }
+.thesis {
+  font-family: var(--f-display); font-style: italic; color: var(--fg-hi);
+  font-size: clamp(22px, 3vw, 30px); line-height: 1.2; margin: 0 0 24px; max-width: 34ch; text-wrap: balance;
+}
+.thesis .tag { font-family: var(--f-mono); font-style: normal; font-size: 11px; letter-spacing: 0.08em; color: var(--dmd); display: block; margin-bottom: 8px; text-transform: uppercase; }
+.d-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.col { display: grid; gap: 22px; min-width: 0; }
+.sec { border: 1px solid var(--line); min-width: 0; }
+.sec-h { display: flex; justify-content: space-between; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); color: var(--fg-hi); }
+.sec-h .dim { color: var(--fg-dim); }
+.sec-b { padding: 14px 16px 16px; }
+.sec.primary { border-color: color-mix(in srgb, var(--dmd) 55%, var(--line)); }
+.sec.primary .sec-h { color: var(--dmd); border-bottom-color: color-mix(in srgb, var(--dmd) 35%, var(--line)); }
+ol.plan { list-style: none; margin: 0; padding: 0; counter-reset: p; display: grid; gap: 12px; }
+ol.plan li { counter-increment: p; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 8px; }
+ol.plan li::before { content: counter(p, decimal-leading-zero); font-family: var(--f-mono); font-size: 12px; color: var(--dmd); padding-top: 3px; }
+ul.plain { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+ul.plain li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 6px; }
+ul.plain li::before { content: "×"; font-family: var(--f-mono); color: var(--fg-dim); }
+ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: var(--fg-dim); }
+.note { border-left: 2px solid var(--warn); background: var(--warn-soft); padding: 10px 12px; margin-bottom: 10px; }
+.note q { color: var(--fg-hi); quotes: "“" "”"; }
+.note .by { display: block; margin-top: 4px; color: var(--fg-dim); }
+.scores { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-top: 4px; }
+.scores td { padding: 6px 0; border-top: 1px solid var(--line); font-size: 13.5px; }
+.scores td:first-child { font-family: var(--f-mono); color: var(--fg-dim); width: 34px; }
+.scores td.s { font-family: var(--f-mono); color: var(--fg-hi); }
+.scores td.w { text-align: right; color: var(--fg-dim); font-size: 12.5px; }
+.sub { margin: 14px 0 8px; color: var(--fg-dim); }
+.sub:first-child { margin-top: 0; }
+.tips { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.tips li { display: grid; gap: 4px; }
+.tip-meta { display: flex; gap: 10px; align-items: center; }
+.tip-meta .cat { display: inline-flex; gap: 6px; align-items: center; }
+.votes { color: var(--fg-dim); }
+.rules { margin: 0; }
+.srcs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.srcs a { color: var(--fg); text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+.srcs a:hover { color: var(--dmd); }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); margin-block: 26px 30px; }
+.pager a { padding: 14px 16px; text-decoration: none; display: grid; gap: 4px; min-width: 0; }
+.pager a + a { border-left: 1px solid var(--line); text-align: right; }
+.pager a:hover { background: var(--panel); }
+.pager .nm { font-family: var(--f-display); font-size: 22px; color: var(--fg-hi); line-height: 1.1; }
+
+@media (max-width: 860px) {
+  .hero-grid, .d-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-block: 28px 20px; }
+  .venue { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .venue > div:nth-child(2) { border-right: 0; }
+  .venue > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .venue { grid-template-columns: minmax(0, 1fr); }
+  .venue > div { border-right: 0; border-bottom: 1px solid var(--line); }
+  .venue > div:last-child { border-bottom: 0; }
+  .d-head-body { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .bar-right .hide-sm { display: none; }
+  .pager { grid-template-columns: minmax(0, 1fr); }
+  .pager a + a { border-left: 0; border-top: 1px solid var(--line); text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* Base reset for standalone hosting */
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="brand mono" href="#"><span class="brand-dot" aria-hidden="true"></span>Sister / Pin Guide</a>
+    <div class="bar-right mono dim"><span class="hide-sm">407 Central Ave NW</span><span id="bar-count">16 machines</span></div>
+  </div>
+</header>
+
+<main id="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="mono eyebrow">[ Tournament guide · Albuquerque, NM ]</div>
+        <h1>Walk up to every game <em>with a plan.</em></h1>
+        <p class="lede">Tournament strategy for all 16 machines on the floor at Sister, with community tips from PinTips and notes on how each copy is playing right now.</p>
+        <div class="tally mono dim" id="tally"></div>
+      </div>
+      <div class="dmd-frame" aria-hidden="true">
+        <div class="dmd-title mono"><span>■ DMD 128×32</span><span>Sister · ABQ</span></div>
+        <div class="dmd-screen"><canvas id="dmd" width="512" height="128"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="venue" aria-label="Venue details">
+      <div><div class="k mono">Hours</div><p>Tue–Thu 4pm–midnight<br>Fri–Sun 2pm–midnight<br>Closed Mondays</p></div>
+      <div><div class="k mono">Paying</div><p>Quarters only. The bill changer takes $1, $5, $10 and $20.</p></div>
+      <div><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC.</p></div>
+      <div><div class="k mono">Lineup checked</div><p>Nov 4, 2026 on Pinball Map. Games rotate, so confirm before an event.</p></div>
+    </div>
+
+    <details class="basics" id="basics">
+      <summary class="mono"><span>Match play basics</span><span class="tog" aria-hidden="true"></span></summary>
+      <ul>
+        <li>You only need to beat the other players in your group on this game. On your last ball, know the number you need and take the lowest-risk route to it.</li>
+        <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed under <b>At Sister</b>.</li>
+        <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
+        <li>Bring quarters or small bills. The machines here are coin-op, and most events add a coin drop to the entry fee.</li>
+      </ul>
+    </details>
+
+    <div class="controls">
+      <label class="search" for="q"><span class="mono" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search machines</span>
+        <input id="q" type="search" placeholder="Search by name or code" autocomplete="off">
+      </label>
+      <div class="chips" id="chips" role="group" aria-label="Filter machines"></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<main id="detail" class="detail" hidden>
+  <div class="wrap" id="detail-body"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com/map/?by_location_id=6422" target="_blank" rel="noopener">Pinball Map</a> (last updated Nov 4, 2026). Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Tournament strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
+    <p>Machine conditions change between visits. Comments are as posted by players and may already be fixed. Not affiliated with Sister or Geekon LLC.</p>
+  </div>
+</footer>
+
+<script>
+const PM = "https://pinballmap.com/map/?by_location_id=6422";
+const PT = g => "https://app.matchplay.events/opdb/entries/" + g + "/pintips";
+
+const MACHINES = [
+{
+  id: "attack-from-mars", code: "AFM", name: "Attack From Mars", sort: "Attack From Mars",
+  mfr: "Chicago Gaming", year: 2017, variant: "Remake LE", group: "chicago", opdb: "G4do5",
+  thesis: "Test the saucer on ball one. If it’s safe, play saucers. If it isn’t, play ramps and orbits for Total Annihilation.",
+  plan: [
+    "Find out early how safely the saucer and its forcefield shoot on this copy. When they’re safe, saucers are the main points source: the first is worth 200M and each one after adds another 200M.",
+    "Use the super skill shot (hold the left flipper as you launch) to knock out the center bank, so you never have to shoot the forcefield.",
+    "Start an Attack Wave before you start multiball. The extra balls can keep hitting the saucer while you collect jackpots.",
+    "If the saucer looks dangerous, treat the four ramps and orbits as one set. Three of each starts Total Annihilation, the safer path, and a good run is worth around 2B.",
+    "Martian Attack stacks with other multiballs. Save Martian Bombs for the last Martian, so the button starts a multiball when you need a save.",
+    "The center ramp is the best single shot on the game: it lights locks and feeds the left flipper."
+  ],
+  avoid: [
+    "Shooting the forcefield when the super skill shot or Stroke of Luck can open it for you.",
+    "Spending Martian Bombs early, when each one only kills a single Martian.",
+    "Completing in/outlanes when Stroke of Luck is already lit and extra balls are off."
+  ],
+  venue: {
+    notes: [],
+    copy: [
+      "This is the Chicago Gaming remake. Competitive players often treat the remakes as playing differently from the originals even with the same rules, so take a feel for the flippers before committing to saucer shots.",
+      "A ball wedged into the saucer is a known AFM quirk that many events leave in play. Ask the TD before you count on it."
+    ],
+    scores: [["5,132,247,930", "turndown4what", "Oct 17, 2026"]]
+  },
+  tips: [
+    ["secret", 17, "In video mode, the launch button works once as a smart bomb that clears every saucer on screen."],
+    ["general", 11, "Only take the super skill shot to knock out the center bank. If the bank is already down, take a regular skill shot."],
+    ["skillshot", 10, "Hold the left flipper while launching, then make any shot within a few seconds to complete that lane or start a Saucer Attack Wave."],
+    ["multiball", 9, "Three shots to each ramp and orbit starts Total Annihilation, a 4-ball multiball where every shot scores big."],
+    ["multiball", 4, "Bring the visor down before you start multiball so the extra balls can finish off the saucer."],
+    ["general", 4, "In Total Annihilation, the orbits and the cow/lobster ramps grow the jackpot; the lock ramp collects it."]
+  ],
+  rules: "Ramps and orbits build toward Total Annihilation. The center ramp lights locks for multiball. Drop the forcefield and hit the saucer to destroy it; Martians at the targets build Martian Attack. Conquering every nation leads to Rule the Universe.",
+  sources: [
+    ["Kineticist: Attack From Mars tutorial", "https://www.kineticist.com/post/attack-from-mars-pinball-tutorial"],
+    ["Pinball Primer: Attack From Mars", "https://pinballprimer.github.io/afm_G4do5.html"],
+    ["Tilt Forums: remakes vs. originals", "https://tiltforums.com/t/medieval-madness-williams-1997/444"]
+  ]
+},
+{
+  id: "back-to-the-future", code: "BTTF", name: "Back to the Future", sort: "Back to the Future",
+  mfr: "Data East", year: 1990, variant: "", group: "classic", opdb: "GRpbW",
+  thesis: "Left ramp, over and over. Switch to DMC multiball if the right flipper can’t make it.",
+  plan: [
+    "Early in the game, loop the left ramp. Ramp combos score rising values and eventually light an extra ball.",
+    "Every ramp shot adds a DELOREAN letter. Spelling it opens a short window where the ramps score millions, so keep looping the left ramp through it.",
+    "If the right flipper is too weak to make the left ramp, or DeLorean Millions has shrunk too far to matter, switch to multiball: complete the DMC drop targets to light locks at the upper-left saucer.",
+    "In multiball, complete DMC again to light jackpots on both ramps.",
+    "Check the skill shot after plunging. The left ramp collects whatever is lit: 100K, double score, or an extra ball."
+  ],
+  avoid: [
+    "Forcing left-ramp shots from bad angles on a weak right flipper. Take the DMC route instead.",
+    "Letting DeLorean Millions run with the ball sitting on a flipper; the window is only a few seconds."
+  ],
+  venue: { notes: [], copy: [], scores: [] },
+  tips: [
+    ["general", 3, "Ramp shots light DELOREAN letters on the backpanel. Finish the word and you get 12 seconds to repeat the left ramp for millions."],
+    ["multiball", 3, "The DMC drop targets light locks at the upper-left kicker. Lock three for multiball, then hit DMC to light the jackpot and shoot the ramps to collect."],
+    ["skillshot", 2, "After plunging, the left ramp collects the lit award: 100K, double score or an extra ball."]
+  ],
+  rules: "Ramps spell DELOREAN for timed millions. DMC drops light locks at the upper-left saucer; three locks start multiball, and DMC during multiball lights ramp jackpots.",
+  sources: [["Pinball Primer: Back to the Future", "https://pinballprimer.github.io/backtothefuture_GRpbW.html"]]
+},
+{
+  id: "cactus-canyon", code: "CC", name: "Cactus Canyon", sort: "Cactus Canyon",
+  mfr: "Chicago Gaming", year: 2021, variant: "Remake LE", group: "chicago", opdb: "G4835",
+  thesis: "For a tournament game: start Gold Mine Multiball, stay there, and keep collecting Mother Lodes.",
+  plan: [
+    "In a typical tournament game, start Gold Mine Multiball at the mine and stay with it, building and cashing Mother Lodes.",
+    "Mother Lode only cashes at the mine during Gold Mine Multiball. Jackpots build its value, and every set of five jackpots raises its multiplier.",
+    "End-of-ball bonus counts switch hits and is a big share of the score. Take every top-lane completion for bonus X, and never tilt away a long ball.",
+    "Four Quick Draws start Showdown. To stack it with another multiball, light the last Quick Draw, start the other multiball, then knock the Quick Draw down.",
+    "Watch the current skill shot award; a soft plunge that doesn’t reach the switch collects it."
+  ],
+  avoid: [
+    "Chasing High Noon in a short tournament game. It is the long-game, high-score route.",
+    "Tilting late in a long ball, which throws away the bonus."
+  ],
+  venue: {
+    notes: [["Right flipper sometimes fails to stay up.", "macgruber007", "May 7, 2026"]],
+    copy: [
+      "If the right flipper drops a held ball, favor cradling on the left and tell the TD at once. A flipper that won’t hold is a malfunction.",
+      "Chicago Gaming’s 2026 Lyman Sheats Complete Upgrade adds swinging saloon doors in front of Bart, a right-orbit spinner and reworked modes. If you see the saloon doors, this copy runs the upgraded rules."
+    ],
+    scores: [["66,166,190", "turndown4what", "Oct 17, 2026"], ["62,294,270", "deadydoc", "Oct 7, 2026"], ["18,051,020", "fae", "Oct 5, 2024"]]
+  },
+  tips: [
+    ["multiball", 7, "Four Quick Draws start Showdown multiball, and each time you clear the drops during it another ball joins."],
+    ["multiball", 5, "Stack Showdown with another multiball: light the last Quick Draw, start the other multiball, then knock down the Quick Draw target."],
+    ["general", 5, "In a shootout, watch the four Bad Guy targets while the playfield is dark. The one that pops up is the one that didn’t flash."],
+    ["general", 4, "Ramps and loops are the combo shots, building up to 4-way combos. Ten combos are one of the High Noon requirements."],
+    ["general", 3, "Bonus multipliers can be huge. Complete the top two lanes to raise them; Collect Bounty can add more."],
+    ["general", 2, "Mother Lode resets to 250K once cashed, and can’t be collected after Gold Mine Multiball ends."]
+  ],
+  rules: "The gold mine lights and locks balls for Gold Mine Multiball, where jackpots build Mother Lode. Quick Draws lead to gunfights and Showdown; ramps and loops three times each start Stampede. Bart brothers are beaten at the bandit toy. High Noon is the wizard mode.",
+  sources: [
+    ["Pinball Primer: Cactus Canyon", "https://pinballprimer.github.io/cactuscanyon_G4835.html"],
+    ["Tilt Forums: Cactus Canyon Remake (Lyman Sheats upgrade) rulesheet", "https://tiltforums.com/t/cactus-canyon-remake-lyman-sheats-complete-upgrade-rulesheet/10018"]
+  ]
+},
+{
+  id: "centaur", code: "CEN", name: "Centaur", sort: "Centaur",
+  mfr: "Bally", year: 1981, variant: "", group: "classic", opdb: "GrX7q",
+  thesis: "Stay in multiball. Almost everything on the table leads to more of it.",
+  plan: [
+    "Centaur’s multiball has no jackpots or multipliers. Its value is protection: more balls keep you further from draining, and multiball progress is easiest while you’re already in one.",
+    "Fastest add-a-ball: hit the O-R-B-S drop targets in order for an instant 2-ball, or light all four flipper lanes.",
+    "Hitting O-R-B-S out of order lights virtual locks. Release them with the upper-left captive ball, or the 1-2-3-4 drops in order followed by the upper-right lane.",
+    "Clearing the far-right drop bank in order scores well and lights Collect Bonus at the right lane.",
+    "If the outlane posts have rubbers, a well-timed nudge can bounce a ball back through the gap between inlane and outlane."
+  ],
+  avoid: [
+    "Shooting for single-ball points with no multiball progress. Nothing else on the table protects your ball.",
+    "Assuming a ball save. This is a 1981 game, so every drain counts."
+  ],
+  venue: { notes: [], copy: ["The oldest game on the floor. Expect a different flipper feel from the modern Sterns next to it."], scores: [] },
+  tips: [
+    ["multiball", 14, "Hit the O-R-B-S drops in order to start an instant two-ball multiball."],
+    ["general", 7, "With rubbers on the outlane posts, nudging can save balls through the gate between inlane and outlane."],
+    ["multiball", 6, "Completing all four flipper lanes adds a ball."],
+    ["multiball", 5, "O-R-B-S out of order locks balls; release them with the upper-left standup, or 1-2-3-4 in order then the upper-right standup."],
+    ["general", 3, "Clearing the far-right drops in order is worth good points and lights Collect Bonus at the right orbit."]
+  ],
+  rules: "O-R-B-S drops, flipper lanes and the 1-2-3-4 bank all feed multiball. Multiball adds balls rather than jackpots.",
+  sources: [["Pinball Primer: Centaur", "https://pinballprimer.github.io/centaur_GrX7q.html"]]
+},
+{
+  id: "elvira-party-monsters", code: "ELV", name: "Elvira and the Party Monsters", sort: "Elvira and the Party Monsters",
+  mfr: "Bally", year: 1989, variant: "", group: "classic", opdb: "Grlxp",
+  thesis: "Assume it’s brutal. Lock three at the left orbit, and in multiball pair the ramps for jackpots.",
+  plan: [
+    "This game is famously hard: hungry outlanes and three major shots that center-drain when you miss. Trap and aim; don’t flail at moving balls.",
+    "Lock balls at the left orbit (the skull); three locks start multiball. If the lock isn’t lit, complete the BAT top lanes or the JAM drops.",
+    "In multiball, make one ramp within 15 seconds of the other for a jackpot worth up to 4M.",
+    "If the flippers here are strong enough to loop the left ramp, looping it for millions and ELVIRA letters is a strong way to play.",
+    "Spell ELVIRA (letters from BAT, JAM, the Wake the Dead heads or left-ramp combos) to light 3M at the skull for 20 seconds."
+  ],
+  avoid: [
+    "Leaving locks lit for your opponent in a multi-player game: lock stealing is on, and ELVIRA letters are shared by every player.",
+    "Shooting the major shots from bad angles. Misses are what drain you here."
+  ],
+  venue: { notes: [], copy: ["Lock stealing and shared ELVIRA letters make player order matter in head-to-head groups. Watch what the player before you leaves lit."], scores: [] },
+  tips: [
+    ["multiball", 3, "Lock three balls in the left skull shot for multiball; relight the lock with J-A-M or B-A-T afterward. Shoot ramps for the jackpot, then the 250K Party Ramps."],
+    ["general", 2, "The game has lock stealing, and ELVIRA letters are shared between all players."],
+    ["general", 2, "If the flippers can loop the left ramp, doing it for millions and ELVIRA letters is a good way to play."],
+    ["general", 2, "J-A-M, B-A-T, the dead heads or 5 left-ramp combos light a letter; spelling ELVIRA lights 3M at the skull for 20 seconds."]
+  ],
+  rules: "Left orbit locks balls for multiball; ramps paired within 15 seconds score jackpots. Letters from the target banks and ramp combos spell ELVIRA for a timed 3M skull shot.",
+  sources: [["Pinball Primer: Elvira and the Party Monsters", "https://pinballprimer.github.io/elvira_Grlxp.html"]]
+},
+{
+  id: "evil-dead", code: "ED", name: "Evil Dead", sort: "Evil Dead",
+  mfr: "Spooky", year: 2024, variant: "", group: "spooky", opdb: "GYWvw",
+  thesis: "Pick your movie, stack modes with multiball, and trap off the right ramp. Check the shotgun before relying on Boomstick.",
+  plan: [
+    "At game start you pick one of the two movies. It decides which four modes you get, so choose the set you know.",
+    "Super skill shot: hold the left flipper on the plunge for a soft feed, then hit the random flashing shot within 5 seconds for double the skill shot value.",
+    "Light modes at the white ramps and start them under the right ramp. Each mode after the first needs one more ramp; the action button switches which mode you’re qualifying.",
+    "Stack modes with multiball. Give Me Back My Hand is a known good stack, and Deadites multiball stacks with every other mode. Its second round, Deadite Frenzy, is best stacked with a multiball.",
+    "The right ramp returns to the upper (Groovy) flipper. Hold it up as the ball comes back, then release to a held right flipper for an easy trap."
+  ],
+  avoid: [
+    "Leaving locks behind in a multi-player game: Cabin multiball can steal them.",
+    "Shaking a ball loose yourself during competition. Call the TD for stuck balls."
+  ],
+  venue: {
+    notes: [
+      ["Ball gets stuck on switches in outlanes. Shotgun shells reject.", "abq505", "Sep 11, 2026"],
+      ["Pin not working.", "tonipeterson1", "Aug 5, 2026"]
+    ],
+    copy: [
+      "Loading shells into the shotgun qualifies Boomstick multiball, so that path may be unreliable on this copy. Plan around modes and Deadites instead.",
+      "If a ball is trapped behind the open cellar or by the hand, holding the action button for 3–4 seconds starts a ball search. Anything else stuck is a TD call."
+    ],
+    scores: []
+  },
+  tips: [
+    ["general", 1, "The right ramp returns straight to the Groovy flipper. Hold it up, then release to a held right flipper for an easy trap."],
+    ["general", 1, "If a ball gets stuck behind the open cellar or trapped by the hand, hold the action button; a ball search starts after 3–4 seconds."]
+  ],
+  rules: "Choose Movie 1 or 2 at start. Ramps light modes, started under the right ramp; two completed modes light a mini-wizard, four light the wizard. Shells in the shotgun qualify Boomstick multiball; Deadites and Cabin multiball run alongside.",
+  sources: [["Pinball Rulesheets: Evil Dead", "https://pinballrulesheets.com/spooky/evil-dead-by-spooky-pinball-rulesheet"]]
+},
+{
+  id: "game-of-thrones", code: "GOT", name: "Game of Thrones", sort: "Game of Thrones",
+  mfr: "Stern", year: 2015, variant: "Premium", group: "stern", opdb: "G41d5",
+  thesis: "Multiply, don’t add. Stack two modes, build the Battering Ram, and go for one or two huge collects.",
+  plan: [
+    "Scores come from multipliers: playfield X from the Battering Ram plus combo multipliers, and the two stack. Billion-point competitive games usually come from one or two monster collects.",
+    "House pick: Martell is the easy, strong default because of its add-a-ball in multiball. Tyrell suits combo players. Lannister buys playfield X with gold (up to 8 times a game) and skips the risky Ram. Greyjoy is high-risk, high-reward; take it only if you know the rules well.",
+    "Start two modes at once. If only one is lit, pass to light a second. Lannister, Greyjoy and Tyrell pair well; Martell goes with Baratheon.",
+    "Blackwater is the main multiball. Green targets on the right light locks at the center ramp. Collect the green jackpots, then hit the Ram repeatedly for supers.",
+    "Plunge softly so fewer switches fire and ball save lasts longer. Shoot the right two-bank for locks only while ball save covers it.",
+    "Don’t get greedy: a 10X shot isn’t much better than 8X, and every extra shot risks the ball."
+  ],
+  avoid: [
+    "Center ramp from the left flipper; it often bricks down the middle. Take it from the right.",
+    "Winter is Coming hurry-ups. They lock you out of modes for little value.",
+    "Starting Iron Throne (about 63 shots, everything else locked out) unless you can commit to finishing it.",
+    "Targaryen expecting all three dragons: competition settings spot only two."
+  ],
+  venue: {
+    notes: [],
+    copy: ["Premium with the upper castle playfield: each castle collected adds 15M to bonus for the rest of the game."],
+    scores: [["191,436,190", "macgruber007", "May 24, 2026"]]
+  },
+  tips: [
+    ["general", 9, "Shooting the Battering Ram over and over raises the playfield multiplier. Line it up with super jackpots or mode-completion shots."],
+    ["general", 8, "Greyjoy makes modes harder to complete, especially Stark, but they can pay more."],
+    ["skillshot", 5, "Short plunge as many times as it takes to get the ball onto the flipper you want."],
+    ["general", 5, "Top lanes advance Wall multiball; the green targets on the right light Blackwater locks at the center ramp."],
+    ["general", 4, "Lannister earns gold faster, and its button trades gold for a playfield multiplier advance, up to 8 times per game."],
+    ["general", 3, "As Targaryen, the button freezes all timers once per ball, which is handy in Blackwater."]
+  ],
+  rules: "Choose a house at start for its powers. Three shots to a house’s color lights its mode; Battering Ram builds playfield X. Blackwater (center ramp locks) and Battle for the Wall are the main multiballs. Four completed modes light Hand of the King; all of them lead to Iron Throne.",
+  sources: [
+    ["Kineticist: Game of Thrones tutorial", "https://www.kineticist.com/news/got-pinball-tutorial"],
+    ["Pinball Rulesheets: Game of Thrones", "https://pinballrulesheets.com/stern/game-of-thrones-pinball-rulesheet"]
+  ]
+},
+{
+  id: "godzilla", code: "GZ", name: "Godzilla", sort: "Godzilla",
+  mfr: "Stern", year: 2021, variant: "Premium", group: "stern", opdb: "GweeP",
+  thesis: "Take skill shots for ball save, battle Gigan first, then build Godzilla Multiball.",
+  plan: [
+    "Skill shots add ball-save time, which matters most on tournament settings. Vary them; the upper-flipper lane and the upper loop are the most reliable.",
+    "Hold the ball on the left flipper and shoot over the Z for the scoop. It starts Kaiju Battles and changes cities.",
+    "Battle Gigan first: its ramp shots also build Godzilla Multiball. Then move to London for +6M on Destruction Jackpots.",
+    "Godzilla Multiball: shoot the ramps and building to light it, flashing shots for jackpots, and the building for the super. On the Premium the add-a-ball needs the three targets, then the right spinner.",
+    "Charge the Heat Ray with the center spinner and hold the action button about 5 seconds to collect everything lit. Use it often.",
+    "Pick allies with the right flipper: Rodan for 2X during a big mode, Mothra for the left outlane save, Anguirus for an add-a-ball."
+  ],
+  avoid: [
+    "Chasing jets and saucer attacks on purpose. Play them out when they come up.",
+    "Giving up on a last-ball right-outlane drain: Oxygen Destroyer gives you 12 seconds to save the ball by shooting the building."
+  ],
+  venue: {
+    notes: [["Left lower flipper weak.", "tinygiant", "Mar 18, 2025"]],
+    copy: [
+      "That report is old and may be fixed. If the left flipper is still short, the over-the-Z scoop shot will suffer, so test it on ball one.",
+      "Premium: more skill shots, a super train loop and easier Mechagodzilla progress than the Pro the main tutorial was written on."
+    ],
+    scores: [["231,722,040", "macgruber007", "May 24, 2026"]]
+  },
+  tips: [
+    ["general", 16, "Shoot both ramps, then the scoop, to start a Kaiju Battle."],
+    ["multiball", 9, "On the Premium, the Godzilla Multiball add-a-ball needs the three targets completed; then the next spinner shot adds a ball."],
+    ["general", 8, "Rodan gives 2X scoring for 60 seconds or until the ball drains."],
+    ["multiball", 4, "Ramps plus the building light Godzilla Multiball locks; three building hits start it."],
+    ["skillshot", 4, "A short plunge to the first switch is a less valuable skill shot, but far easier than looping the ball over the upper-flipper lane."],
+    ["general", 3, "On the last ball, a right-outlane drain starts Oxygen Destroyer: 12 seconds to save the ball at the building."]
+  ],
+  rules: "Ramps light Kaiju Battles at the scoop; win battles to change cities and start every objective there for Planet X. Ramps and the building light Godzilla Multiball; the right spinner leads to Mechagodzilla Multiball. Allies, Heat Ray and the Powerup meter feed the wizard modes.",
+  sources: [
+    ["Kineticist: Godzilla tutorial", "https://www.kineticist.com/news/godzilla-pinball-tutorial"],
+    ["Pinball Rulesheets: Godzilla", "https://pinballrulesheets.com/stern/stern-godzilla-rulesheet"]
+  ]
+},
+{
+  id: "john-wick", code: "JW", name: "John Wick", sort: "John Wick",
+  mfr: "Stern", year: 2024, variant: "LE", group: "stern", opdb: "GQK1P",
+  thesis: "Stack a job with Deconsecrated multiball, and save your ball save for single-ball play.",
+  plan: [
+    "The best stack is Security Detail (left ramp) or Heist (center ramp) with Deconsecrated multiball. Spell WINSTON at the captive ball to light its lock at the center ramp.",
+    "At each ball start, go for the car while ball save runs. Right-flipper backhands to the car are safer than left-flipper shots.",
+    "Start a job at the crate, then shoot the left orbit to add car multiball. Hit the car to change which one is lit; Helipad Showdown and Bagarre are the two worth playing.",
+    "All five battles are worth playing, especially with Lights Out and motion sensors on. Viggo has the most predictable shots; Cassian with sensors can be bigger.",
+    "Don’t spend ball save in multiball. Unused ball save adds time to your next battle.",
+    "A soft plunge that avoids both rollovers is the Baba Yaga skill shot, starting at 1.5M."
+  ],
+  avoid: [
+    "Soft plunges that roll past the second rollover and back into the crate: no job progress, little score, and they burn ball save.",
+    "Risky feeds from the Red Circle area, the left orbit and fast right-orbit returns.",
+    "Left-flipper shots at the car."
+  ],
+  venue: { notes: [], copy: ["LE: the first car multiball lights after two car hits instead of the Pro’s four.", "Oath Marker standups light the outlane saves. Flashing means active; solid means used. Fighting an adversary resets both."], scores: [] },
+  tips: [
+    ["multiball", 15, "Shoot the left orbit, smash the car several times, then left orbit again for multiball."],
+    ["skillshot", 11, "Soft plunges that pass the second rollover and roll back into the crate give no job progress, minimal score and burn the ball save timer."],
+    ["skillshot", 6, "A soft plunge that misses both rollovers gives the Baba Yaga skill shot, starting at 1.5M."],
+    ["multiball", 6, "Soft-plunge balls served from the trough before they auto-launch to feed them to the right flipper via the crate."],
+    ["general", 4, "Job shots add 5 seconds, and once per job, finishing the crate sequence again adds about 30 more."],
+    ["multiball", 2, "When car multiball is lit, hit the car to change which one starts. Helipad Showdown and Bagarre are the best."]
+  ],
+  rules: "The crate lights and starts jobs; enemies spawn in front of shots and multiply job scoring. Ten enemy kills light an adversary battle at the left eject. Car hits light car multiballs at the left orbit; WINSTON lights Deconsecrated locks; the Red Circle builds toward Excommunicado. Mini-wizard and wizard modes follow.",
+  sources: [
+    ["Kineticist: John Wick tutorial", "https://www.kineticist.com/news/john-wick-pinball-tutorial"],
+    ["Pinball Rulesheets: John Wick", "https://pinballrulesheets.com/stern/john-wick-rulesheet"]
+  ]
+},
+{
+  id: "lord-of-the-rings", code: "LOTR", name: "Lord of the Rings", sort: "Lord of the Rings",
+  mfr: "Stern", year: 2003, variant: "", group: "stern", opdb: "GrqZX",
+  thesis: "Run three things at once: a mode, Gollum multiball, then a movie multiball started last.",
+  plan: [
+    "The simplest big-score plan is a triple stack: a mode, Gollum multiball, and one of the three movie multiballs, with the movie multiball started last.",
+    "Two Towers is the easiest to set up. Spell KEEP at the inlanes to light locks at the right ramp; light the third lock, start a mode, start Gollum, then lock the last ball.",
+    "Modes start at the center ring shot. From a trap, use the flippers to pick the mode before you shoot. Three white elf rings relight mode start; nine rings of men light Gollum.",
+    "Play War of the Ents in single ball to build souls fastest toward Return of the King (5,000 souls).",
+    "Gifts of the Elves light when you finish a mode or multiball. Don’t waste 2X; line it up with Two Towers and a mode.",
+    "Light the Palantir with a left-orbit tower shot during multiball for an add-a-ball. Use it early in Two Towers, and save it for two-ball moments in Fellowship and Return of the King."
+  ],
+  avoid: [
+    "Selecting the Tower skill shot after locking a ball while War of the Ents is running; the diverter won’t send the ball to the Tower.",
+    "Relying on the display in a stack. The game gives no mode-shot feedback during multiball, so know each mode’s shot order first."
+  ],
+  venue: { notes: [], copy: [], scores: [] },
+  tips: [
+    ["general", 6, "From a trap you can choose your mode by lighting the insert next to the one you want; the shot advances it one more step."],
+    ["multiball", 5, "Fellowship multiball: make every shot the required number of times, then shoot the left loop once all are lit."],
+    ["skillshot", 5, "Plunge just hard enough to pass the first switch and roll back onto the plunger to pick your skill shot."],
+    ["skillshot", 3, "The Tower skill shot is the safest and feeds the left flipper cleanly."],
+    ["general", 3, "Return of the King jackpots grow when made in order, and each round starts higher."],
+    ["multiball", 2, "In any multiball, a left-orbit tower shot lights the Palantir; hit it for an add-a-ball, once per multiball."]
+  ],
+  rules: "Modes start at the ring shot. Fellowship (all major shots plus pops, start at left orbit), Two Towers (KEEP lights right-ramp locks) and Return of the King (5,000 souls on the mini-playfield) are the movie multiballs. Rings light modes, mystery and Gollum.",
+  sources: [["Tilt Forums: Lord of the Rings basics", "https://tiltforums.com/t/lord-of-the-rings-basic-tutorial-needed/1164"]]
+},
+{
+  id: "medieval-madness", code: "MM", name: "Medieval Madness", sort: "Medieval Madness",
+  mfr: "Chicago Gaming", year: 2015, variant: "Remake LE", group: "chicago", opdb: "G5pe4",
+  thesis: "Castles all day: drawbridge, gate, castle, repeat.",
+  plan: [
+    "Shoot the castle: moat to lower the drawbridge, gate to open it, then the castle itself. Each castle is worth more than the last, and two castles light an extra ball.",
+    "The castle front-door shot is less of a center-drain risk than AFM’s saucer. Check which flipper makes it more safely on this copy.",
+    "Use the first two castles to post an establishing score, then go after Castle Multiball at the lock shot left of the castle. During it, the castle is often worth more than the small ramp jackpots.",
+    "Left-ramp hurry-ups stack: every set of four left-ramp shots builds the value, and you cash it at the castle. Weigh the timer against the value.",
+    "Build Multiball Madness before you start it. Complete as many major shots as you can, and stay off Merlin’s saucer while you stack, so supers pay more."
+  ],
+  avoid: [
+    "The super skill shot; it isn’t worth the effort.",
+    "Chasing Battle for the Kingdom in a tournament game. Hurry-ups and castles score better per risk."
+  ],
+  venue: { notes: [], copy: ["Remake note: players report the remake’s flipper geometry makes the castle harder to hit and brings more troll hits. Treat it as its own game and test the castle shot from both flippers early."], scores: [] },
+  tips: [
+    ["general", 15, "Shoot the castle repeatedly to open it up and score big. Each castle is worth more."],
+    ["multiball", 9, "The lock shot left of the castle starts multiball. Ramp jackpots are small, so the castle is usually the better target."],
+    ["general", 6, "Destroy two castles to light an extra ball."],
+    ["general", 4, "Finish the ramps and orbits until only trolls are left, start Multiball Madness, and finish the trolls inside it."],
+    ["multiball", 2, "Light Trolls and Multiball Madness together, then shoot the saucer to start both. Killing both trolls adds a ball with a fresh ball save."],
+    ["secret", 31, "Trivia for the queue: Tina Fey voiced all the female characters."]
+  ],
+  rules: "Moat, gate and castle shots destroy castles. Major shots (catapult, both orbits, both ramps) three times each, ten trolls and six castles lead to Battle for the Kingdom. Castle Multiball starts at the lock shot; Multiball Madness at the saucer.",
+  sources: [
+    ["Kineticist: Medieval Madness tutorial", "https://www.kineticist.com/news/medieval-madness-tutorial"],
+    ["Tilt Forums: 60-second tournament strategy", "https://tiltforums.com/t/medieval-madness-williams-1997/444"],
+    ["Pinball Primer: Medieval Madness", "https://pinballprimer.github.io/medieval_G5pe4.html"]
+  ]
+},
+{
+  id: "rush", code: "RUSH", name: "Rush", sort: "Rush",
+  mfr: "Stern", year: 2022, variant: "LE", group: "stern", opdb: "G2Lkd",
+  thesis: "Never full plunge. Master the Time Machine ramp and bring a song mode into multiball.",
+  plan: [
+    "Short plunge to the upper flipper every ball. A full plunge goes straight into the bumpers. Auto-plunging in multiball is fine.",
+    "Take skill shots for the extra ball save: from the upper flipper, hit the upper scoop or left ramp, or the inner loop followed by the ramp or scoop for the super.",
+    "The center Time Machine ramp starts modes, multiballs, combos and albums. Learn a controlled shot to it from the left flipper.",
+    "Early, light the first multiball at the Time Machine, then collect records to bring a song mode into it. Tom Sawyer and Working Man play best in multiball.",
+    "Hold the Weapon until a mode or multiball is running. It collects every lit shot in a song mode or adds a ball in multiball, and it’s strongest in Far Cry.",
+    "Headlong Flight (bumpers to midnight, then the right orbit) is the one multiball that stacks with the others."
+  ],
+  avoid: [
+    "The right orbit unless a mode needs it; it feeds the bumpers.",
+    "Bastille Day as its own goal. Take it during chaotic multiball.",
+    "Old tutorials for record and mode lighting; the code has changed since launch."
+  ],
+  venue: { notes: [], copy: ["LE: with one ball locked in Far Cry, the lock always kicks out the bottom, never to the side."], scores: [] },
+  tips: [
+    ["general", 12, "The green targets by the right ramp advance Far Cry multiball; then shoot the ramp to light the lock."],
+    ["skillshot", 4, "Short plunge to the upper flipper and hit the upper scoop or left ramp for the skill shot; the inner loop first, then ramp or scoop, gives the super."],
+    ["general", 3, "Song mode is set by whichever color has the most records. Shoot flashing records to lock them in; the RUSH targets shuffle the colors."],
+    ["general", 2, "The action button changes which side ramp shots divert to; a slowly strobing flasher shows the current side."],
+    ["general", 1, "If you have a Weapon and are close to starting multiball, wait. Used then, it spots shots in both the mode and the multiball."],
+    ["general", 1, "Records lit in a song mode’s color stay lit during that mode and pay double."]
+  ],
+  rules: "Records light Planet modes at the Time Machine; Time Machine shots start one of three Time Machine multiballs. LITE/LOCK standups and the right ramp lead to Far Cry; drop targets collect instruments for Freewill; bumpers to midnight light Headlong Flight. Albums earn Weapons; wizard modes follow the Cygnus books and 2112.",
+  sources: [
+    ["Kineticist: Rush tutorial", "https://www.kineticist.com/news/rush-through-time"],
+    ["Pinball Rulesheets: Rush", "https://pinballrulesheets.com/stern/stern-rush-rulesheet"]
+  ]
+},
+{
+  id: "shrek", code: "SHRK", name: "Shrek", sort: "Shrek",
+  mfr: "Stern", year: 2008, variant: "", group: "stern", opdb: "G5LW9",
+  thesis: "Right spinner for Swamp modes, upper-left drops for Baby Multiball, and take Donkey Pinball when it’s lit.",
+  plan: [
+    "Shrek runs the same playfield and rules as Family Guy under different names. Shoot the right spinner to light Swamp modes, then start them at the scoop just left of it. Most modes last 30 seconds.",
+    "Complete the upper-left drop bank three times to start Baby Multiball (more completions are needed each time after). It can run alongside Villain modes.",
+    "Spell PINBALL at the captive balls, then shoot the scoop for Donkey Pinball on the mini-playfield. The long ball save at its start lets you ignore drains and focus on mini-playfield shots.",
+    "Left-orbit standup awards build to Repay Your Debts: 20 seconds where every major shot scores 400K. Alternate the left ramp and left orbit.",
+    "Play the Swamp modes properly instead of timing them out; Swamp Wizard only pays well if you scored in all five."
+  ],
+  avoid: [
+    "Timing out modes just to reach Swamp Wizard.",
+    "Playing like a modern Stern: there’s a center post blocking the drain, and two inlanes on the left."
+  ],
+  venue: { notes: [], copy: ["Most guides and PinTips entries are written for Family Guy. Swamp = TV, Donkey = Stewie, Baby Multiball = Fart Multiball, Repay Your Debts = Crazy Chris."], scores: [] },
+  tips: [
+    ["multiball", 7, "Completing the drop target bank a set number of times starts multiball."],
+    ["general", 5, "Shoot the right orbit spinner to light modes, then the scoop left of the captive ball to start one."],
+    ["multiball", 3, "Donkey Pinball starts with a long ball save; use it to focus on the mini-playfield and ignore drains."],
+    ["general", 3, "Repay Your Debts can pay a lot: the left ramp secures value and the left orbit advances it, so alternate."],
+    ["multiball", 3, "Spell PINBALL at the captive balls, then the scoop, to play the mini-playfield; finish its shots for multiball."],
+    ["wizard", 2, "Shots made during the Swamp modes count toward the wizard mode’s jackpots, so don’t time them all out."]
+  ],
+  rules: "The right spinner lights Swamp modes at the scoop; the Prince Charming toy awards Villains for Villain modes. Upper-left drops start Baby Multiball. PINBALL at the captive balls opens Donkey Pinball. Swamp Wizard and Far Far Away are the wizard modes.",
+  sources: [["Pinball Primer: Family Guy / Shrek", "https://pinballprimer.github.io/familyguy_G5LW9.html"]]
+},
+{
+  id: "sopranos", code: "SOP", name: "The Sopranos", sort: "Sopranos",
+  mfr: "Stern", year: 2005, variant: "", group: "stern", opdb: "G5WoB",
+  thesis: "Rank up on dollar signs and the safe; run Stugots and the Bing together.",
+  plan: [
+    "Advance ranks. In single ball, shoot the green dollar-sign shots, then the spinner lane. In multiball, bash the safe until it opens. Each rank-up makes one area worth 2X until end of ball.",
+    "Left ramp and boat ramp shots build toward multiballs. Lock one ball in the Stugots boat, repeat the left ramp to start Party at the Bing, then start Stugots multiball so both run and you can bash the safe.",
+    "Underboss multiball stacks with Stugots and the Bing if you start it during either one.",
+    "The FISH bottom lanes light the left saucer mystery. The first one in any multiball is always an add-a-ball.",
+    "Short plunge to collect boat locks without starting the ball saver."
+  ],
+  avoid: [
+    "The playfield-validation trick (short plunge, hit one target, drain and get the ball back) without asking the TD first. It works on unmodified copies, but events may rule it out.",
+    "Building your plan around the safe on this copy; see the note below."
+  ],
+  venue: {
+    notes: [["Safe shot doesn’t register except for a hard hit on the left side.", "macgruber007", "May 7, 2026"]],
+    copy: ["If the safe is still unreliable, lean on the dollar-sign shots and the spinner lane for rank advances, and report missed safe hits to the TD during competition."],
+    scores: []
+  },
+  tips: [
+    ["multiball", 8, "Short plunge to set up and collect boat locks without activating the ball saver."],
+    ["wizard", 5, "In Boss, the Fish hole gives unlimited add-a-balls. Back in single ball, focus on spelling FISH to add another."],
+    ["multiball", 5, "Lock one in the Stugots boat, repeat the left ramp for Party at the Bing, then start Stugots to run both and bash the safe."],
+    ["multiball", 4, "Underboss multiball stacks with Stugots and the Bing if started during either."],
+    ["general", 2, "Rank advances make a playfield area worth 2X until the end of the ball. The safe and dollar-sign shots advance rank."],
+    ["skillshot", 2, "Hold the left flipper and full plunge for a super skill shot, then hit the spinner to start your first episode with one shot."]
+  ],
+  rules: "Dollar-sign shots plus the spinner lane, or the safe in multiball, advance rank toward Underboss and Boss. The left ramp builds Party at the Bing; the boat ramp locks for Stugots. FISH lights mystery at the left saucer.",
+  sources: [["Pinball Primer: The Sopranos", "https://pinballprimer.github.io/sopranos_G5WoB.html"]]
+},
+{
+  id: "stranger-things", code: "ST", name: "Stranger Things", sort: "Stranger Things",
+  mfr: "Stern", year: 2019, variant: "Premium", group: "stern", opdb: "Gzy89",
+  thesis: "Start a chapter, add Demodog, then start Telekinesis multiball, in that order.",
+  plan: [
+    "The standard stack is a Chapter mode, then Demodog, then Telekinesis multiball. Chapters must start before the multiball, or with the shot that starts it.",
+    "Chapters light from three shots to any main shot: left orbit, left ramp, right ramp or right orbit. Inserts show your progress.",
+    "The standups on each side of the left ramp light locks there; three locks start Telekinesis.",
+    "Don’t neglect Burn It Back, the lane right of the center drops. It pays out Spell of Protection (an outlane save that works like an extra ball), extra balls and 2X scoring.",
+    "Bonus can be huge. Once you’ve built bonus-boosting progress, loop your favorite ramp for inlane completions to max out Bonus X.",
+    "Premium: the action button destroys the Demogorgon once per game. Use it before the drain registers."
+  ],
+  avoid: [
+    "Stacking Telekinesis onto a single-ball Demogorgon mode unless you can hit the mouth reliably; the big ramp flap blocks Mystery and Burn It Back.",
+    "Waiting on The Upside Down: it starts randomly in normal play but not in tournament mode."
+  ],
+  venue: { notes: [], copy: ["Premium: this copy has the moving Demogorgon toy, so the mouth shots and the once-per-game destroy button apply."], scores: [] },
+  tips: [
+    ["general", 12, "Three hits to any main shot (left orbit, left ramp, right ramp, right orbit) starts a mode; inserts show progress."],
+    ["secret", 11, "Hit the Demogorgon with the center of the flipper to get the ball into its mouth."],
+    ["multiball", 9, "Standups on either side of the left ramp light locks there. Three locks start multiball."],
+    ["general", 4, "Burn It Back pays left outlane saves, extra balls and 2X scoring at set intervals."],
+    ["general", 4, "Ten left inner-loop shots qualify 2X scoring; start it at the left scoop."],
+    ["general", 2, "The Upside Down starts randomly in normal play, but not in tournament mode."]
+  ],
+  rules: "Main shots three times each light Chapters; left-ramp standups light Telekinesis locks; Demodog and Demogorgon modes add stacks. Burn It Back and the Upside Down are side scoring. Total Isolation, Send It Back and Light the Fire are the season-two mini-wizards.",
+  sources: [["Pinball Rulesheets: Stranger Things", "https://pinballrulesheets.com/stern/stranger-things-rulesheet"]]
+},
+{
+  id: "uncanny-x-men", code: "XMEN", name: "The Uncanny X-Men", sort: "Uncanny X-Men",
+  mfr: "Stern", year: 2024, variant: "LE", group: "stern", opdb: "G7ZEz",
+  thesis: "Open with Sentinel Facility Raid, then Sentinel multiball with the Danger Room ramp multiplied.",
+  plan: [
+    "Take the uptown ramp skill shot. It feeds the left flipper safely, advances Cerebro and gets early Sentinel hits in before ball save ends.",
+    "Start with Sentinel Facility Raid and loop the center ramp to finish it fast. Its reward is an add-a-ball for any multiball, best saved for Save the City or Berzerker.",
+    "Don’t fear the challenging missions. Genosha Under Siege and Fiery Assault score more consistently than the easy ones.",
+    "Soften the Sentinel head so the last hit starts multiball, then start a mission. Backhand the head from the right flipper, especially when its mouth is down.",
+    "In Sentinel multiball, pick the four easiest jackpot shots and hit the Danger Room exit ramp early to raise jackpots to 2X, then 3X.",
+    "Save Bishop charges for the future. There, clear the flashing shots and escape at the center ramp instead of chasing the giant head.",
+    "Prioritize Save the City when you can: three shots to every ramp and orbit (multiball shots count), then the center ramp when nothing else is running."
+  ],
+  avoid: [
+    "The X-Jet standup that sends balls to the center drain. Shoot it late from the right flipper.",
+    "Letting a short midtown feed reach the bumpers or right outlane; nudge right. On the subway loop rubber, nudge left.",
+    "Holding the left flipper for a Danger Room entry from the X-Jet exit; that one drains."
+  ],
+  venue: { notes: [], copy: [], scores: [] },
+  tips: [
+    ["general", 11, "Don’t be afraid of the challenging missions; Genosha Under Siege and Fiery Assault aren’t too hard and score consistently higher."],
+    ["multiball", 7, "On recent code, Fiery Assault is a recommended first mission: finishing its future lets every later Sentinel multiball be extended if all balls drain."],
+    ["general", 2, "Soften the Sentinel so the last hit starts multiball, then start a mission, ideally a challenging one."],
+    ["general", 2, "Sentinel Facility Raid plus saving Rogue gives an add-a-ball for any multiball once per ball; hold the action button when it flashes green."],
+    ["multiball", 2, "Save the City can be worth a lot: each shot three times (in any multiball counts), then the center ramp when nothing else is running."],
+    ["general", 1, "Easier missions send you to a future with more Sentinels to destroy, building toward the 35 needed for Berzerker."]
+  ],
+  rules: "White shots light missions at the center ramp or right loop; finishing one sends you to the future (destroy 6 Sentinels, escape at the center ramp) for a perk. The Sentinel head starts Sentinel multiball. Three shots to every ramp and orbit light Save the City; Cerebro leads to To Me, My X-Men; 35 Sentinels light Berzerker.",
+  sources: [
+    ["Kineticist: The Uncanny X-Men tutorial", "https://www.kineticist.com/news/uncanny-xmen-tutorial"],
+    ["Pinball Rulesheets: The Uncanny X-Men", "https://pinballrulesheets.com/stern/the-uncanny-x-men-rulesheet"]
+  ]
+}
+];
+
+MACHINES.sort((a, b) => a.sort.localeCompare(b.sort));
+const byId = Object.fromEntries(MACHINES.map(m => [m.id, m]));
+
+const GROUPS = [
+  ["all", "All", () => true],
+  ["stern", "Stern", m => m.group === "stern"],
+  ["chicago", "Chicago Gaming", m => m.group === "chicago"],
+  ["classic", "Classics", m => m.group === "classic"],
+  ["spooky", "Spooky", m => m.group === "spooky"],
+  ["notes", "Venue notes", m => m.venue.notes.length > 0]
+];
+const CAT = { multiball: "Multiball", skillshot: "Skill shot", secret: "Secret", general: "General", wizard: "Wizard" };
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const shortScore = s => {
+  const n = Number(s.replace(/,/g, ""));
+  if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";
+  if (n >= 1e6) return Math.round(n / 1e6) + "M";
+  return s;
+};
+const meta = m => [m.mfr, m.year, m.variant].filter(Boolean).join(" · ");
+
+let state = { group: "all", q: "" };
+try { const g = localStorage.getItem("sister-group"); if (g && GROUPS.some(x => x[0] === g)) state.group = g; } catch (e) {}
+
+function renderTally() {
+  const c = k => MACHINES.filter(GROUPS.find(g => g[0] === k)[2]).length;
+  document.getElementById("tally").innerHTML =
+    `<span><b>${MACHINES.length}</b> machines</span><span><b>${c("stern")}</b> Stern</span><span><b>${c("chicago")}</b> Chicago Gaming remakes</span><span><b>${c("classic")}</b> classics</span><span><b>${c("spooky")}</b> Spooky</span>`;
+  document.getElementById("bar-count").textContent = MACHINES.length + " machines";
+}
+
+function renderChips() {
+  const wrap = document.getElementById("chips");
+  wrap.innerHTML = GROUPS.map(([k, label, fn]) =>
+    `<button type="button" class="chip" id="chip-${k}" data-k="${k}" aria-pressed="${state.group === k}">${label}<span class="n">${MACHINES.filter(fn).length}</span></button>`
+  ).join("");
+  wrap.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
+    state.group = b.dataset.k;
+    try { localStorage.setItem("sister-group", state.group); } catch (e) {}
+    wrap.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x.dataset.k === state.group));
+    renderGrid();
+  }));
+}
+
+function renderGrid() {
+  const fn = GROUPS.find(g => g[0] === state.group)[2];
+  const q = state.q.trim().toLowerCase();
+  const list = MACHINES.filter(fn).filter(m => !q || (m.name + " " + m.code + " " + m.mfr).toLowerCase().includes(q));
+  const grid = document.getElementById("grid");
+  if (!list.length) {
+    grid.innerHTML = `<div class="empty mono">No machines match “${esc(state.q)}”. Try a code like AFM or MM.</div>`;
+    return;
+  }
+  grid.innerHTML = list.map(m => {
+    const flags = [];
+    if (m.venue.notes.length) flags.push(`<span class="flag warn"><span class="sq"></span>Venue note</span>`);
+    if (m.venue.scores.length) flags.push(`<span class="flag">Top score ${shortScore(m.venue.scores[0][0])}</span>`);
+    flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
+    return `<a class="card" href="#${m.id}">
+      <div class="card-top"><span class="code" aria-hidden="true">${m.code}</span><span class="mono dim">${m.year}</span></div>
+      <h3>${esc(m.name)}</h3>
+      <div class="meta mono">${esc([m.mfr, m.variant].filter(Boolean).join(" · "))}</div>
+      <p class="line">${esc(m.thesis)}</p>
+      <div class="flags">${flags.join("")}</div>
+    </a>`;
+  }).join("");
+}
+
+function renderDetail(m) {
+  const i = MACHINES.indexOf(m);
+  const prev = MACHINES[(i - 1 + MACHINES.length) % MACHINES.length];
+  const next = MACHINES[(i + 1) % MACHINES.length];
+  const v = m.venue;
+  const notes = v.notes.length
+    ? v.notes.map(([t, by, d]) => `<div class="note"><q>${esc(t)}</q><span class="by mono">${esc(by)} · ${esc(d)} · Pinball Map</span></div>`).join("")
+    : `<p class="dim" style="margin:0 0 10px">No condition reports posted for this copy.</p>`;
+  const copy = v.copy.length ? `<div class="sub mono">This copy</div><ul class="plain copy">${v.copy.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : "";
+  const scores = v.scores.length
+    ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${s[0]}</td><td class="w">${esc(s[1])} · ${esc(s[2])}</td></tr>`).join("")}</tbody></table>`
+    : "";
+  const tips = m.tips.map(([c, n, t]) => `<li>
+      <div class="tip-meta mono"><span class="cat" style="color:var(--cat-${c})"><span class="sq"></span>${CAT[c]}</span><span class="votes">▲ ${n}</span></div>
+      <div>${esc(t)}</div></li>`).join("");
+  const srcs = [["PinTips on Match Play", PT(m.opdb)], ...m.sources, ["Pinball Map: Sister", PM]]
+    .map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("");
+
+  document.getElementById("detail-body").innerHTML = `
+    <nav class="crumbs mono" aria-label="Machine navigation">
+      <a href="#">← All machines</a>
+      <span class="dim">${i + 1} / ${MACHINES.length}</span>
+    </nav>
+    <header class="d-head">
+      <div class="d-title-bar mono"><span>[ ${esc(m.name)} ]</span><span>${esc(meta(m))}</span></div>
+      <div class="d-head-body">
+        <span class="code" aria-hidden="true">${m.code}</span>
+        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))} · At Sister now</div></div>
+      </div>
+    </header>
+    <p class="thesis"><span class="tag">If you remember one thing</span>${esc(m.thesis)}</p>
+    <div class="d-grid">
+      <div class="col">
+        <section class="sec primary">
+          <div class="sec-h mono"><span>Tournament plan</span><span>In priority order</span></div>
+          <div class="sec-b"><ol class="plan">${m.plan.map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ol></div>
+        </section>
+        <section class="sec">
+          <div class="sec-h mono"><span>Avoid</span><span class="dim">${m.avoid.length}</span></div>
+          <div class="sec-b"><ul class="plain">${m.avoid.map(a => `<li><span>${esc(a)}</span></li>`).join("")}</ul></div>
+        </section>
+        <section class="sec">
+          <div class="sec-h mono"><span>Rules in brief</span></div>
+          <div class="sec-b"><p class="rules">${esc(m.rules)}</p></div>
+        </section>
+      </div>
+      <div class="col">
+        <section class="sec">
+          <div class="sec-h mono"><span>At Sister</span><span class="dim">Pinball Map</span></div>
+          <div class="sec-b">${notes}${copy}${scores}</div>
+        </section>
+        <section class="sec">
+          <div class="sec-h mono"><span>PinTips</span><span class="dim">Top voted, summarized</span></div>
+          <div class="sec-b"><ul class="tips">${tips}</ul></div>
+        </section>
+        <section class="sec">
+          <div class="sec-h mono"><span>Sources</span></div>
+          <div class="sec-b"><ul class="srcs">${srcs}</ul></div>
+        </section>
+      </div>
+    </div>
+    <nav class="pager" aria-label="Previous and next machine">
+      <a href="#${prev.id}"><span class="mono dim">← Previous</span><span class="nm">${esc(prev.name)}</span></a>
+      <a href="#${next.id}"><span class="mono dim">Next →</span><span class="nm">${esc(next.name)}</span></a>
+    </nav>`;
+}
+
+let homeScroll = 0;
+function route() {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const m = byId[id];
+  const home = document.getElementById("home"), detail = document.getElementById("detail");
+  if (m) {
+    if (!home.hidden) homeScroll = window.scrollY;
+    renderDetail(m);
+    home.hidden = true; detail.hidden = false;
+    window.scrollTo(0, 0);
+  } else {
+    detail.hidden = true; home.hidden = false;
+    window.scrollTo(0, homeScroll);
+  }
+}
+
+/* ---------- DMD ---------- */
+(function dmd() {
+  const cv = document.getElementById("dmd");
+  const ctx = cv.getContext("2d");
+  const COLS = 128, ROWS = 32;
+  const off = document.createElement("canvas");
+  off.width = COLS; off.height = ROWS;
+  const octx = off.getContext("2d", { willReadFrequently: true });
+  const MSG = "SISTER · 16 PINS · PLAN FIRST · ";
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let x = 0, textW = 0, raf = 0, last = 0, visible = true;
+  const css = getComputedStyle(document.documentElement);
+  const ON = css.getPropertyValue("--dmd").trim() || "#ff6b1f";
+  const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
+
+  function size() {
+    const r = cv.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.max(256, Math.round(r.width * dpr));
+    cv.height = Math.round(cv.width / 4);
+  }
+  function setFont() {
+    octx.font = "600 23px 'IBM Plex Mono', ui-monospace, monospace";
+    octx.textBaseline = "middle";
+    textW = octx.measureText(MSG).width;
+  }
+  function frame(staticWord) {
+    octx.clearRect(0, 0, COLS, ROWS);
+    octx.fillStyle = "#fff";
+    if (staticWord) {
+      octx.textAlign = "center";
+      octx.fillText("SISTER", COLS / 2, ROWS / 2 + 1);
+    } else {
+      octx.textAlign = "left";
+      octx.fillText(MSG, -x, ROWS / 2 + 1);
+      octx.fillText(MSG, -x + textW, ROWS / 2 + 1);
+    }
+    const data = octx.getImageData(0, 0, COLS, ROWS).data;
+    const cw = cv.width / COLS, rad = cw * 0.36;
+    ctx.fillStyle = "#050506";
+    ctx.fillRect(0, 0, cv.width, cv.height);
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const lit = data[(r * COLS + c) * 4 + 3] > 110;
+        ctx.fillStyle = lit ? ON : OFF;
+        ctx.beginPath();
+        ctx.arc(c * cw + cw / 2, r * cw + cw / 2, rad, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  function loop(t) {
+    raf = requestAnimationFrame(loop);
+    if (!visible || t - last < 55) return;
+    last = t;
+    x = (x + 1) % Math.max(1, Math.round(textW));
+    frame(false);
+  }
+  function start() {
+    size(); setFont();
+    if (reduce) { frame(true); return; }
+    frame(false);
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(loop);
+  }
+  start();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
+  window.addEventListener("resize", () => { size(); frame(reduce); });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+  }
+})();
+
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
+window.addEventListener("hashchange", route);
+renderTally(); renderChips(); renderGrid(); route();
+</script>
+</body>
+</html>
