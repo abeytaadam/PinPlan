@@ -220,6 +220,8 @@ ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: va
 .pager a:hover { background: var(--panel); }
 .pager .nm { font-family: var(--f-display); font-size: 22px; color: var(--fg-hi); line-height: 1.1; }
 
+.flag.new { color: var(--dmd); border-color: color-mix(in srgb, var(--dmd) 45%, transparent); background: var(--dmd-soft); }
+.banner { border: 1px dashed var(--line-2); color: var(--fg); padding: 10px 14px; margin-bottom: 18px; }
 @media (max-width: 860px) {
   .hero-grid, .d-grid { grid-template-columns: minmax(0, 1fr); }
   .hero { padding-block: 28px 20px; }
@@ -261,7 +263,7 @@ img { max-width: 100%; }
       <div>
         <div class="mono eyebrow">[ Tournament guide · Albuquerque, NM ]</div>
         <h1>Walk up to every game <em>with a plan.</em></h1>
-        <p class="lede">Tournament strategy for all 16 machines on the floor at Sister, with community tips from PinTips and notes on how each copy is playing right now.</p>
+        <p class="lede">Tournament strategy for all <span id="lede-count">16</span> machines on the floor at Sister, with community tips from PinTips and notes on how each copy is playing right now.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
       <div class="dmd-frame" aria-hidden="true">
@@ -276,7 +278,7 @@ img { max-width: 100%; }
       <div><div class="k mono">Hours</div><p>Tue–Thu 4pm–midnight<br>Fri–Sun 2pm–midnight<br>Closed Mondays</p></div>
       <div><div class="k mono">Paying</div><p>Quarters only. The bill changer takes $1, $5, $10 and $20.</p></div>
       <div><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC.</p></div>
-      <div><div class="k mono">Lineup checked</div><p>Nov 4, 2026 on Pinball Map. Games rotate, so confirm before an event.</p></div>
+      <div><div class="k mono">Lineup checked</div><p id="lineup-status">Nov 4, 2026 on Pinball Map. Games rotate, so confirm before an event.</p></div>
     </div>
 
     <details class="basics" id="basics">
@@ -306,7 +308,7 @@ img { max-width: 100%; }
 
 <footer>
   <div class="wrap">
-    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com/map/?by_location_id=6422" target="_blank" rel="noopener">Pinball Map</a> (last updated Nov 4, 2026). Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Tournament strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
+    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com/map/?by_location_id=6422" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0, and refresh automatically twice a day. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Tournament strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
     <p>Machine conditions change between visits. Comments are as posted by players and may already be fixed. Not affiliated with Sister or Geekon LLC.</p>
   </div>
 </footer>
@@ -398,9 +400,9 @@ const MACHINES = [
   venue: {
     notes: [["Right flipper sometimes fails to stay up.", "macgruber007", "May 7, 2026"]],
     copy: [
-      "If the right flipper drops a held ball, favor cradling on the left and tell the TD at once. A flipper that won’t hold is a malfunction.",
       "Chicago Gaming’s 2026 Lyman Sheats Complete Upgrade adds swinging saloon doors in front of Bart, a right-orbit spinner and reworked modes. If you see the saloon doors, this copy runs the upgraded rules."
     ],
+    tied: [["flipper", "If the right flipper drops a held ball, favor cradling on the left and tell the TD at once. A flipper that won’t hold is a malfunction."]],
     scores: [["66,166,190", "turndown4what", "Oct 17, 2026"], ["62,294,270", "deadydoc", "Oct 7, 2026"], ["18,051,020", "fae", "Oct 5, 2024"]]
   },
   tips: [
@@ -489,9 +491,9 @@ const MACHINES = [
       ["Pin not working.", "tonipeterson1", "Aug 5, 2026"]
     ],
     copy: [
-      "Loading shells into the shotgun qualifies Boomstick multiball, so that path may be unreliable on this copy. Plan around modes and Deadites instead.",
       "If a ball is trapped behind the open cellar or by the hand, holding the action button for 3–4 seconds starts a ball search. Anything else stuck is a TD call."
     ],
+    tied: [["shell", "Loading shells into the shotgun qualifies Boomstick multiball, so that path is unreliable while shells are rejecting. Plan around modes and Deadites instead."]],
     scores: []
   },
   tips: [
@@ -557,9 +559,9 @@ const MACHINES = [
   venue: {
     notes: [["Left lower flipper weak.", "tinygiant", "Mar 18, 2025"]],
     copy: [
-      "That report is old and may be fixed. If the left flipper is still short, the over-the-Z scoop shot will suffer, so test it on ball one.",
       "Premium: more skill shots, a super train loop and easier Mechagodzilla progress than the Pro the main tutorial was written on."
     ],
+    tied: [["flipper", "If the left flipper is still weak, the over-the-Z scoop shot will come up short, so test it on ball one."]],
     scores: [["231,722,040", "macgruber007", "May 24, 2026"]]
   },
   tips: [
@@ -743,7 +745,8 @@ const MACHINES = [
   ],
   venue: {
     notes: [["Safe shot doesn’t register except for a hard hit on the left side.", "macgruber007", "May 7, 2026"]],
-    copy: ["If the safe is still unreliable, lean on the dollar-sign shots and the spinner lane for rank advances, and report missed safe hits to the TD during competition."],
+    copy: [],
+    tied: [["safe", "While the safe is unreliable, lean on the dollar-sign shots and the spinner lane for rank advances, and report missed safe hits to the TD during competition."]],
     scores: []
   },
   tips: [
@@ -820,8 +823,103 @@ const MACHINES = [
 }
 ];
 
-MACHINES.sort((a, b) => a.sort.localeCompare(b.sort));
-const byId = Object.fromEntries(MACHINES.map(m => [m.id, m]));
+/* ---------- lineup ----------
+   The built-in list above shows first. If lineup.json exists next to this page
+   (written twice a day by the GitHub Action in .github/workflows), it replaces the
+   list: curated plans are matched to live machines by OPDB id or name, live
+   condition notes and scores replace the snapshot, new machines get a basic page,
+   and curated machines that left the floor stay reachable by link. */
+const LIBRARY = MACHINES.slice();
+const norm = s => String(s || "").toLowerCase().replace(/\([^)]*\)/g, " ").replace(/^\s*the\s+/, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, " ").trim();
+const baseName = s => String(s || "").replace(/\s*\([^)]*\)\s*$/, "").trim();
+const variantOf = s => { const v = String(s || "").match(/\(([^)]+)\)\s*$/); return v ? v[1].trim() : ""; };
+const slug = s => norm(s).replace(/\s+/g, "-") || "machine";
+const libByGroup = new Map(LIBRARY.map(m => [m.opdb, m]));
+const libByName = new Map(LIBRARY.map(m => [norm(m.name), m]));
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function fmtDate(v) {
+  if (!v) return "";
+  const s = String(v);
+  const d = /^\d{4}-\d{2}-\d{2}$/.test(s) ? new Date(s + "T12:00:00") : new Date(s);
+  return isNaN(d.getTime()) ? s : MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+}
+function groupFor(mfr, year) {
+  const f = String(mfr || "").toLowerCase();
+  if (f.includes("stern")) return "stern";
+  if (f.includes("chicago gaming")) return "chicago";
+  if (f.includes("spooky")) return "spooky";
+  if (Number(year) && Number(year) < 2000) return "classic";
+  return "other";
+}
+function codeFor(name) {
+  const words = baseName(name).replace(/^the\s+/i, "").split(/[^A-Za-z0-9]+/).filter(Boolean);
+  if (!words.length) return "PIN";
+  const c = words.length > 1 ? words.map(w => w[0]).join("") : words[0].slice(0, 4);
+  return c.toUpperCase().slice(0, 4);
+}
+
+let LINEUP = LIBRARY.slice();
+let byId = {};
+
+function indexLineup() {
+  LINEUP.sort((a, b) => a.sort.localeCompare(b.sort));
+  byId = Object.fromEntries(LIBRARY.map(m => [m.id, m]));
+  LINEUP.forEach(m => { byId[m.id] = m; });
+}
+
+function fromLive(live, used) {
+  const group = String(live.opdb_id || "").split("-")[0];
+  const cur = (group && libByGroup.get(group)) || libByName.get(norm(live.name));
+  const variant = variantOf(live.name);
+  const notes = (live.conditions || []).filter(c => c && c.comment)
+    .map(c => [String(c.comment), c.user || "Pinball Map user", fmtDate(c.date)]);
+  const scores = (live.scores || []).filter(s => s && Number(s.score) > 0)
+    .map(s => [Number(s.score).toLocaleString("en-US"), s.user || "Anonymous", fmtDate(s.date)]);
+  let m;
+  if (cur) {
+    const copy = cur.venue.copy.slice();
+    if (variant !== (cur.variant || "")) {
+      copy.unshift("Pinball Map lists this copy as " + (variant || "the standard model") + ". The plan was written for the " +
+        (cur.variant || "standard model") + "; the rules are shared, but model-specific notes may not apply.");
+    }
+    m = Object.assign({}, cur, {
+      variant: variant, mfr: live.manufacturer || cur.mfr, year: live.year || cur.year,
+      venue: Object.assign({}, cur.venue, { notes: notes, scores: scores, copy: copy })
+    });
+  } else {
+    const name = baseName(live.name) || "Unknown machine";
+    m = {
+      id: slug(name), code: codeFor(name), name: name, sort: name.replace(/^the\s+/i, ""),
+      mfr: live.manufacturer || "", year: live.year || "", variant: variant,
+      group: groupFor(live.manufacturer, live.year), opdb: group,
+      thesis: "New to the lineup. No tournament plan written yet, so start with its PinTips and a rulesheet.",
+      plan: [], avoid: [], tips: [], rules: "", sources: [], uncurated: true,
+      venue: { notes: notes, scores: scores, copy: [], tied: [] }
+    };
+  }
+  let id = m.id, k = 2;
+  while (used.has(id)) id = m.id + "-" + k++;
+  used.add(id);
+  return id === m.id ? m : Object.assign({}, m, { id: id });
+}
+
+async function syncLineup() {
+  let data;
+  try {
+    const r = await fetch("lineup.json", { cache: "no-cache" });
+    if (!r.ok) return;
+    data = await r.json();
+  } catch (e) { return; }
+  if (!data || !Array.isArray(data.machines) || !data.machines.length) return;
+  const used = new Set();
+  LINEUP = data.machines.map(x => fromLive(x, used));
+  indexLineup();
+  const when = fmtDate(data.location && data.location.date_last_updated);
+  document.getElementById("lineup-status").textContent =
+    (when ? "Updated " + when + " on Pinball Map." : "Pulled from Pinball Map.") + " Synced automatically twice a day.";
+  refreshAll(true);
+}
 
 const GROUPS = [
   ["all", "All", () => true],
@@ -829,13 +927,14 @@ const GROUPS = [
   ["chicago", "Chicago Gaming", m => m.group === "chicago"],
   ["classic", "Classics", m => m.group === "classic"],
   ["spooky", "Spooky", m => m.group === "spooky"],
+  ["other", "Other", m => m.group === "other"],
   ["notes", "Venue notes", m => m.venue.notes.length > 0]
 ];
 const CAT = { multiball: "Multiball", skillshot: "Skill shot", secret: "Secret", general: "General", wizard: "Wizard" };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const shortScore = s => {
-  const n = Number(s.replace(/,/g, ""));
+  const n = Number(String(s).replace(/,/g, ""));
   if (n >= 1e9) return (n / 1e9).toFixed(2) + "B";
   if (n >= 1e6) return Math.round(n / 1e6) + "M";
   return s;
@@ -846,16 +945,21 @@ let state = { group: "all", q: "" };
 try { const g = localStorage.getItem("sister-group"); if (g && GROUPS.some(x => x[0] === g)) state.group = g; } catch (e) {}
 
 function renderTally() {
-  const c = k => MACHINES.filter(GROUPS.find(g => g[0] === k)[2]).length;
+  const n = k => LINEUP.filter(GROUPS.find(g => g[0] === k)[2]).length;
+  const parts = [["stern", "Stern"], ["chicago", "Chicago Gaming"], ["classic", "classics"], ["spooky", "Spooky"], ["other", "other"]]
+    .map(([k, l]) => [n(k), l]).filter(([c]) => c > 0);
   document.getElementById("tally").innerHTML =
-    `<span><b>${MACHINES.length}</b> machines</span><span><b>${c("stern")}</b> Stern</span><span><b>${c("chicago")}</b> Chicago Gaming remakes</span><span><b>${c("classic")}</b> classics</span><span><b>${c("spooky")}</b> Spooky</span>`;
-  document.getElementById("bar-count").textContent = MACHINES.length + " machines";
+    `<span><b>${LINEUP.length}</b> machines</span>` + parts.map(([c, l]) => `<span><b>${c}</b> ${l}</span>`).join("");
+  document.getElementById("bar-count").textContent = LINEUP.length + " machines";
+  document.getElementById("lede-count").textContent = LINEUP.length;
 }
 
 function renderChips() {
+  const shown = GROUPS.filter(([k, , fn]) => k === "all" || LINEUP.some(fn));
+  if (!shown.some(g => g[0] === state.group)) state.group = "all";
   const wrap = document.getElementById("chips");
-  wrap.innerHTML = GROUPS.map(([k, label, fn]) =>
-    `<button type="button" class="chip" id="chip-${k}" data-k="${k}" aria-pressed="${state.group === k}">${label}<span class="n">${MACHINES.filter(fn).length}</span></button>`
+  wrap.innerHTML = shown.map(([k, label, fn]) =>
+    `<button type="button" class="chip" id="chip-${k}" data-k="${k}" aria-pressed="${state.group === k}">${label}<span class="n">${LINEUP.filter(fn).length}</span></button>`
   ).join("");
   wrap.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
     state.group = b.dataset.k;
@@ -868,7 +972,7 @@ function renderChips() {
 function renderGrid() {
   const fn = GROUPS.find(g => g[0] === state.group)[2];
   const q = state.q.trim().toLowerCase();
-  const list = MACHINES.filter(fn).filter(m => !q || (m.name + " " + m.code + " " + m.mfr).toLowerCase().includes(q));
+  const list = LINEUP.filter(fn).filter(m => !q || (m.name + " " + m.code + " " + m.mfr).toLowerCase().includes(q));
   const grid = document.getElementById("grid");
   if (!list.length) {
     grid.innerHTML = `<div class="empty mono">No machines match “${esc(state.q)}”. Try a code like AFM or MM.</div>`;
@@ -876,11 +980,12 @@ function renderGrid() {
   }
   grid.innerHTML = list.map(m => {
     const flags = [];
+    if (m.uncurated) flags.push(`<span class="flag new"><span class="sq"></span>No plan yet</span>`);
     if (m.venue.notes.length) flags.push(`<span class="flag warn"><span class="sq"></span>Venue note</span>`);
     if (m.venue.scores.length) flags.push(`<span class="flag">Top score ${shortScore(m.venue.scores[0][0])}</span>`);
-    flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
+    if (m.tips.length) flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
     return `<a class="card" href="#${m.id}">
-      <div class="card-top"><span class="code" aria-hidden="true">${m.code}</span><span class="mono dim">${m.year}</span></div>
+      <div class="card-top"><span class="code" aria-hidden="true">${esc(m.code)}</span><span class="mono dim">${esc(m.year)}</span></div>
       <h3>${esc(m.name)}</h3>
       <div class="meta mono">${esc([m.mfr, m.variant].filter(Boolean).join(" · "))}</div>
       <p class="line">${esc(m.thesis)}</p>
@@ -890,60 +995,80 @@ function renderGrid() {
 }
 
 function renderDetail(m) {
-  const i = MACHINES.indexOf(m);
-  const prev = MACHINES[(i - 1 + MACHINES.length) % MACHINES.length];
-  const next = MACHINES[(i + 1) % MACHINES.length];
+  const n = LINEUP.length;
+  const i = LINEUP.indexOf(m);
+  const onFloor = i >= 0;
+  const prev = LINEUP[onFloor ? (i - 1 + n) % n : n - 1];
+  const next = LINEUP[onFloor ? (i + 1) % n : 0];
   const v = m.venue;
+  const tied = (v.tied || []).filter(([k]) => v.notes.some(note => String(note[0]).toLowerCase().includes(k))).map(t => t[1]);
+  const copyLines = v.copy.concat(tied);
   const notes = v.notes.length
-    ? v.notes.map(([t, by, d]) => `<div class="note"><q>${esc(t)}</q><span class="by mono">${esc(by)} · ${esc(d)} · Pinball Map</span></div>`).join("")
+    ? v.notes.map(([t, by, d]) => `<div class="note"><q>${esc(t)}</q><span class="by mono">${esc(by)}${d ? " · " + esc(d) : ""} · Pinball Map</span></div>`).join("")
     : `<p class="dim" style="margin:0 0 10px">No condition reports posted for this copy.</p>`;
-  const copy = v.copy.length ? `<div class="sub mono">This copy</div><ul class="plain copy">${v.copy.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : "";
+  const copy = copyLines.length ? `<div class="sub mono">This copy</div><ul class="plain copy">${copyLines.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : "";
   const scores = v.scores.length
-    ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${s[0]}</td><td class="w">${esc(s[1])} · ${esc(s[2])}</td></tr>`).join("")}</tbody></table>`
+    ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${esc(s[0])}</td><td class="w">${esc(s[1])}${s[2] ? " · " + esc(s[2]) : ""}</td></tr>`).join("")}</tbody></table>`
     : "";
-  const tips = m.tips.map(([c, n, t]) => `<li>
-      <div class="tip-meta mono"><span class="cat" style="color:var(--cat-${c})"><span class="sq"></span>${CAT[c]}</span><span class="votes">▲ ${n}</span></div>
-      <div>${esc(t)}</div></li>`).join("");
-  const srcs = [["PinTips on Match Play", PT(m.opdb)], ...m.sources, ["Pinball Map: Sister", PM]]
+  const planSec = m.plan.length
+    ? `<section class="sec primary">
+        <div class="sec-h mono"><span>Tournament plan</span><span>In priority order</span></div>
+        <div class="sec-b"><ol class="plan">${m.plan.map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ol></div>
+      </section>`
+    : `<section class="sec primary">
+        <div class="sec-h mono"><span>Tournament plan</span><span>Not written yet</span></div>
+        <div class="sec-b"><p class="rules">This machine joined the lineup after the guide was written. Its PinTips page and a rulesheet are the best places to start. The At Sister panel still updates from Pinball Map.</p></div>
+      </section>`;
+  const avoidSec = m.avoid.length
+    ? `<section class="sec">
+        <div class="sec-h mono"><span>Avoid</span><span class="dim">${m.avoid.length}</span></div>
+        <div class="sec-b"><ul class="plain">${m.avoid.map(a => `<li><span>${esc(a)}</span></li>`).join("")}</ul></div>
+      </section>` : "";
+  const rulesSec = m.rules
+    ? `<section class="sec">
+        <div class="sec-h mono"><span>Rules in brief</span></div>
+        <div class="sec-b"><p class="rules">${esc(m.rules)}</p></div>
+      </section>` : "";
+  const tipsSec = m.tips.length
+    ? `<section class="sec">
+        <div class="sec-h mono"><span>PinTips</span><span class="dim">Top voted, summarized</span></div>
+        <div class="sec-b"><ul class="tips">${m.tips.map(([c, k, t]) => `<li>
+          <div class="tip-meta mono"><span class="cat" style="color:var(--cat-${c})"><span class="sq"></span>${CAT[c]}</span><span class="votes">▲ ${k}</span></div>
+          <div>${esc(t)}</div></li>`).join("")}</ul></div>
+      </section>`
+    : (m.opdb ? `<section class="sec">
+        <div class="sec-h mono"><span>PinTips</span></div>
+        <div class="sec-b"><p class="rules"><a href="${PT(m.opdb)}" target="_blank" rel="noopener">Open the community tips for this machine on Match Play ↗</a></p></div>
+      </section>` : "");
+  const extra = m.uncurated
+    ? [["Pinball Rulesheets: master list", "https://pinballrulesheets.com/rulesheet-master-list"], ["Pinball Primer: game list", "https://pinballprimer.github.io/gamelist.html"]]
+    : [];
+  const srcs = [].concat(m.opdb ? [["PinTips on Match Play", PT(m.opdb)]] : [], m.sources, extra, [["Pinball Map: Sister", PM]])
     .map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("");
+  const banner = onFloor ? "" : `<div class="banner mono">Not in Sister’s current Pinball Map lineup. The plan stays here for when it comes back.</div>`;
 
   document.getElementById("detail-body").innerHTML = `
     <nav class="crumbs mono" aria-label="Machine navigation">
       <a href="#">← All machines</a>
-      <span class="dim">${i + 1} / ${MACHINES.length}</span>
+      <span class="dim">${onFloor ? (i + 1) + " / " + n : "Off the floor"}</span>
     </nav>
+    ${banner}
     <header class="d-head">
       <div class="d-title-bar mono"><span>[ ${esc(m.name)} ]</span><span>${esc(meta(m))}</span></div>
       <div class="d-head-body">
-        <span class="code" aria-hidden="true">${m.code}</span>
-        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))} · At Sister now</div></div>
+        <span class="code" aria-hidden="true">${esc(m.code)}</span>
+        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At Sister now" : ""}</div></div>
       </div>
     </header>
-    <p class="thesis"><span class="tag">If you remember one thing</span>${esc(m.thesis)}</p>
+    <p class="thesis"><span class="tag">${m.uncurated ? "New to the lineup" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
     <div class="d-grid">
-      <div class="col">
-        <section class="sec primary">
-          <div class="sec-h mono"><span>Tournament plan</span><span>In priority order</span></div>
-          <div class="sec-b"><ol class="plan">${m.plan.map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ol></div>
-        </section>
-        <section class="sec">
-          <div class="sec-h mono"><span>Avoid</span><span class="dim">${m.avoid.length}</span></div>
-          <div class="sec-b"><ul class="plain">${m.avoid.map(a => `<li><span>${esc(a)}</span></li>`).join("")}</ul></div>
-        </section>
-        <section class="sec">
-          <div class="sec-h mono"><span>Rules in brief</span></div>
-          <div class="sec-b"><p class="rules">${esc(m.rules)}</p></div>
-        </section>
-      </div>
+      <div class="col">${planSec}${avoidSec}${rulesSec}</div>
       <div class="col">
         <section class="sec">
           <div class="sec-h mono"><span>At Sister</span><span class="dim">Pinball Map</span></div>
           <div class="sec-b">${notes}${copy}${scores}</div>
         </section>
-        <section class="sec">
-          <div class="sec-h mono"><span>PinTips</span><span class="dim">Top voted, summarized</span></div>
-          <div class="sec-b"><ul class="tips">${tips}</ul></div>
-        </section>
+        ${tipsSec}
         <section class="sec">
           <div class="sec-h mono"><span>Sources</span></div>
           <div class="sec-b"><ul class="srcs">${srcs}</ul></div>
@@ -957,19 +1082,27 @@ function renderDetail(m) {
 }
 
 let homeScroll = 0;
-function route() {
+function route(soft) {
   const id = decodeURIComponent(location.hash.slice(1));
   const m = byId[id];
   const home = document.getElementById("home"), detail = document.getElementById("detail");
   if (m) {
-    if (!home.hidden) homeScroll = window.scrollY;
+    const wasHome = !home.hidden;
+    if (wasHome) homeScroll = window.scrollY;
     renderDetail(m);
     home.hidden = true; detail.hidden = false;
-    window.scrollTo(0, 0);
+    if (!soft || wasHome) window.scrollTo(0, 0);
   } else {
+    const wasDetail = !detail.hidden;
     detail.hidden = true; home.hidden = false;
-    window.scrollTo(0, homeScroll);
+    if (wasDetail) window.scrollTo(0, homeScroll);
   }
+}
+
+function refreshAll(soft) {
+  renderTally(); renderChips(); renderGrid();
+  if (window.dmdRefresh) window.dmdRefresh();
+  route(soft);
 }
 
 /* ---------- DMD ---------- */
@@ -980,7 +1113,8 @@ function route() {
   const off = document.createElement("canvas");
   off.width = COLS; off.height = ROWS;
   const octx = off.getContext("2d", { willReadFrequently: true });
-  const MSG = "SISTER · 16 PINS · PLAN FIRST · ";
+  const makeMsg = () => "SISTER · " + LINEUP.length + " PINS · PLAN FIRST · ";
+  let MSG = makeMsg();
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let x = 0, textW = 0, raf = 0, last = 0, visible = true;
   const css = getComputedStyle(document.documentElement);
@@ -1038,6 +1172,7 @@ function route() {
     raf = requestAnimationFrame(loop);
   }
   start();
+  window.dmdRefresh = () => { MSG = makeMsg(); setFont(); x = 0; frame(reduce); };
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
   window.addEventListener("resize", () => { size(); frame(reduce); });
   if ("IntersectionObserver" in window) {
@@ -1046,8 +1181,8 @@ function route() {
 })();
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
-window.addEventListener("hashchange", route);
-renderTally(); renderChips(); renderGrid(); route();
+window.addEventListener("hashchange", () => route(false));
+indexLineup(); refreshAll(false); syncLineup();
 </script>
 </body>
 </html>
