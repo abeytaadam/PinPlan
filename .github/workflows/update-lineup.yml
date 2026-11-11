@@ -1,0 +1,48 @@
+name: Update lineup from Pinball Map
+
+on:
+  schedule:
+    # Twice a day: about 5:17am and 5:17pm in Albuquerque (times are UTC).
+    - cron: "17 0,12 * * *"
+  # Adds a "Run workflow" button on the Actions tab for an immediate refresh.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-lineup
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      # Skips the job quietly until the Pinball Map key is added as a repository secret.
+      HAS_TOKEN: ${{ secrets.PINBALLMAP_API_TOKEN != '' }}
+    steps:
+      - name: Waiting for the Pinball Map API key
+        if: env.HAS_TOKEN != 'true'
+        run: echo "PINBALLMAP_API_TOKEN isn't set yet, so there's nothing to sync. Add it under Settings > Secrets and variables > Actions."
+
+      - uses: actions/checkout@v5
+        if: env.HAS_TOKEN == 'true'
+
+      - name: Fetch Sister's lineup
+        if: env.HAS_TOKEN == 'true'
+        env:
+          PINBALLMAP_API_TOKEN: ${{ secrets.PINBALLMAP_API_TOKEN }}
+        run: node scripts/update-lineup.mjs
+
+      - name: Commit lineup.json if it changed
+        if: env.HAS_TOKEN == 'true'
+        run: |
+          if git ls-files --error-unmatch lineup.json >/dev/null 2>&1 && git diff --quiet -- lineup.json; then
+            echo "Lineup unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lineup.json
+          git commit -m "Update Sister lineup from Pinball Map"
+          git push
