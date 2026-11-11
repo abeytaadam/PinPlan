@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sister Pin Guide</title>
-<meta name="description" content="Tournament strategy, PinTips and venue notes for every pinball machine at Sister in Albuquerque.">
+<title>PinPlan Albuquerque</title>
+<meta name="description" content="Tournament strategy and venue notes for the pinball machines at Albuquerque venues.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -69,9 +69,22 @@ a { color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg-hi); }
+.brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg-hi); }
 .brand-dot { width: 10px; height: 10px; background: var(--dmd); box-shadow: 0 0 10px var(--dmd); }
 .bar-right { display: flex; gap: 16px; align-items: center; }
+
+/* ---------- venue picker ---------- */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.venue-pick select {
+  appearance: none; -webkit-appearance: none; max-width: min(62vw, 300px);
+  background: var(--panel) linear-gradient(45deg, transparent 50%, var(--dmd) 50%) no-repeat right 12px center / 6px 6px;
+  border: 1px solid var(--line-2); color: var(--fg-hi); border-radius: 0;
+  font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+  padding: 8px 30px 8px 10px; cursor: pointer; text-overflow: ellipsis;
+}
+.venue-pick select:hover { border-color: var(--dmd); }
+.venue-title { font-family: var(--f-mono); color: var(--fg-hi); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding-left: 10px; border-left: 2px solid var(--dmd); }
+.venue a { color: var(--fg-hi); text-underline-offset: 3px; }
 
 /* ---------- hero ---------- */
 .hero { padding-block: 44px 28px; }
@@ -93,9 +106,8 @@ h1 em { font-style: italic; color: var(--fg); }
 #dmd { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; max-width: 100%; }
 
 /* ---------- venue strip ---------- */
-.venue { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); margin-block: 8px 18px; }
-.venue > div { padding: 14px 16px; border-right: 1px solid var(--line); min-width: 0; }
-.venue > div:last-child { border-right: 0; }
+.venue { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-block: 8px 18px; }
+.venue > div { padding: 14px 16px; background: var(--bg); min-width: 0; }
 .venue .k { color: var(--fg-dim); margin-bottom: 6px; }
 .venue p { margin: 0; font-size: 14px; line-height: 1.45; }
 
@@ -225,16 +237,10 @@ ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: va
 @media (max-width: 860px) {
   .hero-grid, .d-grid { grid-template-columns: minmax(0, 1fr); }
   .hero { padding-block: 28px 20px; }
-  .venue { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .venue > div:nth-child(2) { border-right: 0; }
-  .venue > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
 }
 @media (max-width: 520px) {
-  .venue { grid-template-columns: minmax(0, 1fr); }
-  .venue > div { border-right: 0; border-bottom: 1px solid var(--line); }
-  .venue > div:last-child { border-bottom: 0; }
   .d-head-body { grid-template-columns: minmax(0, 1fr); gap: 10px; }
-  .bar-right .hide-sm { display: none; }
+  .bar-right .hide-sm, .brand .hide-sm { display: none; }
   .pager { grid-template-columns: minmax(0, 1fr); }
   .pager a + a { border-left: 0; border-top: 1px solid var(--line); text-align: left; }
 }
@@ -252,8 +258,11 @@ img { max-width: 100%; }
 <body>
 <header class="bar">
   <div class="wrap">
-    <a class="brand mono" href="#"><span class="brand-dot" aria-hidden="true"></span>Sister / Pin Guide</a>
-    <div class="bar-right mono dim"><span class="hide-sm">407 Central Ave NW</span><span id="bar-count">16 machines</span></div>
+    <a class="brand mono" href="#" id="brand"><span class="brand-dot" aria-hidden="true"></span>PinPlan<span class="hide-sm">&nbsp;/ ABQ</span></a>
+    <div class="bar-right mono dim">
+      <label class="venue-pick"><span class="sr">Venue</span><select id="venue-select" aria-label="Choose a venue"></select></label>
+      <span id="bar-count" class="hide-sm"></span>
+    </div>
   </div>
 </header>
 
@@ -262,12 +271,13 @@ img { max-width: 100%; }
     <div class="wrap hero-grid">
       <div>
         <div class="mono eyebrow">[ Tournament guide · Albuquerque, NM ]</div>
+        <div class="venue-title" id="venue-title">Sister</div>
         <h1>Walk up to every game <em>with a plan.</em></h1>
-        <p class="lede">Tournament strategy for all <span id="lede-count">16</span> machines on the floor at Sister, with community tips from PinTips and notes on how each copy is playing right now.</p>
+        <p class="lede">Tournament strategy for <span id="lede-count">every machine</span> on the floor here, with notes on how each copy is playing. Switch venues from the menu at the top.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
       <div class="dmd-frame" aria-hidden="true">
-        <div class="dmd-title mono"><span>■ DMD 128×32</span><span>Sister · ABQ</span></div>
+        <div class="dmd-title mono"><span>■ DMD 128×32</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
         <div class="dmd-screen"><canvas id="dmd" width="512" height="128"></canvas></div>
       </div>
     </div>
@@ -275,19 +285,18 @@ img { max-width: 100%; }
 
   <div class="wrap">
     <div class="venue" aria-label="Venue details">
-      <div><div class="k mono">Hours</div><p>Tue–Thu 4pm–midnight<br>Fri–Sun 2pm–midnight<br>Closed Mondays</p></div>
-      <div><div class="k mono">Paying</div><p>Quarters only. The bill changer takes $1, $5, $10 and $20.</p></div>
-      <div><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC.</p></div>
-      <div><div class="k mono">Lineup checked</div><p id="lineup-status">Nov 4, 2026 on Pinball Map. Games rotate, so confirm before an event.</p></div>
+      <div><div class="k mono">Lineup checked</div><p id="lineup-status"></p></div>
+      <div><div class="k mono">Hours, location, events</div><p><a id="venue-pm" href="#" target="_blank" rel="noopener"></a></p></div>
+      <div id="sister-extra"><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC. Quarters only; the bill changer takes $1–$20.</p></div>
     </div>
 
     <details class="basics" id="basics">
       <summary class="mono"><span>Match play basics</span><span class="tog" aria-hidden="true"></span></summary>
       <ul>
         <li>You only need to beat the other players in your group on this game. On your last ball, know the number you need and take the lowest-risk route to it.</li>
-        <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed under <b>At Sister</b>.</li>
+        <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
         <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
-        <li>Bring quarters or small bills. The machines here are coin-op, and most events add a coin drop to the entry fee.</li>
+        <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
       </ul>
     </details>
 
@@ -308,13 +317,12 @@ img { max-width: 100%; }
 
 <footer>
   <div class="wrap">
-    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com/map/?by_location_id=6422" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0, and refresh automatically twice a day. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Tournament strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
-    <p>Machine conditions change between visits. Comments are as posted by players and may already be fixed. Not affiliated with Sister or Geekon LLC.</p>
+    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Tournament strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
+    <p>Machine conditions change between visits. Comments are as posted by players and may already be fixed. Not affiliated with any venue or operator.</p>
   </div>
 </footer>
 
 <script>
-const PM = "https://pinballmap.com/map/?by_location_id=6422";
 const PT = g => "https://app.matchplay.events/opdb/entries/" + g + "/pintips";
 
 const MACHINES = [
@@ -823,20 +831,1201 @@ const MACHINES = [
 }
 ];
 
-/* ---------- lineup ----------
-   The built-in list above shows first. If lineup.json exists next to this page
-   (written twice a day by the GitHub Action in .github/workflows), it replaces the
-   list: curated plans are matched to live machines by OPDB id or name, live
-   condition notes and scores replace the snapshot, new machines get a basic page,
-   and curated machines that left the floor stay reachable by link. */
-const LIBRARY = MACHINES.slice();
+/* Plans for games at other Albuquerque venues. They're in the shared library (reachable by link and
+   matched against lineup.json) but not shown in Sister's grid unless Sister's lineup includes them.
+   OPDB ids are blank until confirmed, so these match live machines by name. */
+const RB = s => "https://pinballrulesheets.com/" + s;
+const KN = s => "https://www.kineticist.com/news/" + s;
+const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
+
+const MORE_PLANS = [
+{
+  id: "avengers-infinity-quest", code: "AIQ", name: "Avengers: Infinity Quest", sort: "Avengers: Infinity Quest",
+  mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gj66P",
+  thesis: "Light a Portal Lock with combos before your first Gem Quest, then bring Thor Multiball into the Quest.",
+  plan: [
+    "Make four combos to light a Portal Lock at the disc. Locked balls boost scoring for as long as they stay in play, so get one before your first Gem Quest.",
+    "Spell STRANGE at the disc, then start the Gem Quest (right ramp on the Pro, the portal on Premium/LE).",
+    "Three captive-ball hits start Thor Multiball, and it can run during a Gem Quest. Time it so the two overlap.",
+    "Build Hulk with the left spinner (Level 1 takes about 110 spins). Hulk levels give multipliers and better Gem perks.",
+    "Finish grid lines to start Super Modes. 30M in one earns a Gold Trophy.",
+    "Put each Gem you win on a shot you can hit reliably and that’s worth a lot."
+  ],
+  avoid: [
+    "Draining during a Gem Quest. The Gem goes to Thanos.",
+    "Chasing Iron Man locks. Take them at the Tower when they come up.",
+    "Holding the action button in Black Order Multiball without a plan for the Soul Gem. Missing the super jackpot costs it."
+  ],
+  venue: blank(["Pro vs. Premium/LE: Captain Marvel advances on spins on the Pro and on ramps on Premium/LE. The Binary hurry-up multiplier (up to 5x) is Premium/LE only."]),
+  tips: [
+    ["skillshot", 7, "Super secret skill shot: plunge and hit the middle drop target. It earns a trophy and is easier than the soft plunge back through the upper orbit."],
+    ["wizard", 6, "Soul Gem Hard Mode scores 10x with fewer flips. Since Soul Gem has under 10 objectives, a weak Hard run can still beat a good Normal one."],
+    ["skillshot", 6, "Skill shots: basic is the star rollover by the pops; super is a full plunge to the right flipper and up to the tower; super secret is a soft plunge that stays short of the top gate."],
+    ["multiball", 5, "Portal Locks multiply Quest scoring. If multiball is still going when you win the battle, Victory Laps start, so start Thor or Iron Man multiball to stretch them."],
+    ["general", 3, "Super Disc pays well paired with a Reality or Mind Gem mode and Thor or Iron Man multiball. Starting another super mode resets its 40-second timer."]
+  ],
+  rules: "Win Infinity Gems through Gem Quests while levelling up heroes, then take them into the Black Order and Thanos fights. Iron Man and Thor multiballs can run alongside Quests and Super Modes.",
+  sources: [["Pinball Rulesheets: Avengers: Infinity Quest", RB("stern/avengers-infinity-quest-rulesheet")]]
+},
+{
+  id: "deadpool", code: "DP", name: "Deadpool", sort: "Deadpool",
+  mfr: "Stern", year: 2018, variant: "Pro", group: "stern", opdb: "G6lnq",
+  thesis: "Everything runs through the scoop. Spell DEAD for Battles and stack Ninja Multiball on top.",
+  plan: [
+    "Go for the super secret skill shot: hit the SNIKT target, then the right ramp. It’s worth about 15M and +1 playfield X.",
+    "Complete DEAD to light a Battle at the scoop. Use Team-Ups to add damage and bonus.",
+    "Lock three balls at the right katana ramp for Ninja Multiball. It can stack into Battles and Quests, so start one first.",
+    "Cash 45 weapons for Mechsuit Multiball, a 4-ball mode where jackpots start around 5M. It needs nothing else running.",
+    "Collect chimichangas at the orange shots for Quests, then cash the Mode Jackpot at the scoop.",
+    "Playfield X can climb to 5x. Save big cash-ins for when it’s high."
+  ],
+  avoid: [
+    "Draining during a Battle. It counts as a loss.",
+    "Tilting with the Final Shot lit. You lose the battle credit.",
+    "Trying to start Lil’ Deadpool modes during Quests or multiball. They won’t start."
+  ],
+  venue: blank(["Pro vs. Premium/LE: Premium/LE replaces Disco Multiball with Disco Loops, a timed single-ball mode."]),
+  tips: [
+    ["secret", 8, "If a soft right-orbit shot drops the ball into the plunger lane, let it auto-plunge: you get another try at a right-ramp super skill shot."],
+    ["multiball", 7, "The left spinner starts Disco Multiball: 60 spins the first time, 120 the next. It can’t run with battles or quests."],
+    ["multiball", 5, "The P-O-O-L targets relight the Katana locks on the right ramp."],
+    ["multiball", 5, "Hit the standups in front of the Lil’ Deadpool toy to expose the drop target behind it; a few hits light a mode, and the first one is a multiball."],
+    ["general", 4, "Shoot the right orbit early so your other major shots count toward the T-Rex or Megalodon quests."]
+  ],
+  rules: "Battles, Quests and Mechsuit Multiball all start at the scoop. The wizard path runs through Megakrakolodonus Rex, Clone Multiball and the Final Battle.",
+  sources: [["Pinball Rulesheets: Deadpool", RB("stern/deadpool-rulesheet")]]
+},
+{
+  id: "dungeons-and-dragons", code: "DND", name: "Dungeons & Dragons: The Tyrant's Eye", sort: "Dungeons & Dragons",
+  mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "GK1Ej",
+  thesis: "Play dungeon crawls from the spinner and orange targets, then stack Dragon and Gelatinous Cube multiballs.",
+  plan: [
+    "At the start, pick Arabel or Kobold as your town. Paladin makes Dragon Multiball easier, which makes it the safe tournament pick.",
+    "In travel mode, skip the blue shots. Work the center spinner and orange targets to start dungeon crawls: 5M+ per battle, 10M+ when you win.",
+    "Finish the town’s location mode: Retrieve a Potion for Nighdaar in Arabel, or Spy on Puck / Rescue Missing Miners in Kobold.",
+    "Spell DRAGON for Dragon Multiball. The first dragon needs 9 hits before you lose too many balls.",
+    "Lock for Gelatinous Cube Multiball (jackpots up to about 25M). It only runs once until a map mode requalifies it, so stack it with one.",
+    "After crawl, Dragon and Cube, qualify Tavern Brawl, a 2-ball multiball with 6M+ jackpots."
+  ],
+  avoid: [
+    "Starting town dungeons early. They lock out other modes and multiballs.",
+    "Forcing hard battle shots when a captive-ball critical hit can spot them.",
+    "Letting balls drain early in Dragon Multiball. It ends before the dragon goes down."
+  ],
+  venue: blank(["Pro vs. Premium/LE: the Pro’s Rath sculpt only moves up and down and can be hit directly. Premium/LE adds staged ball capture and a pop-up scoop."]),
+  tips: [
+    ["multiball", 3, "Dragon Multiball jackpots drop for every ball that drains, so consider using a Shield early to keep balls in play."],
+    ["multiball", 2, "Hit the dragon a few times to light the right orbit for Dragon Multiball."],
+    ["secret", 2, "The right ramp and left orbit can often be hit by letting the ball rest on the raised shield and flipping from there."],
+    ["multiball", 1, "Gelatinous Cube locks: after the first, lock the second at the left eject, shortcut or right orbit, and the third at the left orbit for a 4-ball multiball."]
+  ],
+  rules: "Travel between towns, play location modes and dungeon crawls, and build toward dragon fights. Good scores usually clear 200M. The action-button shield can save a straight-down-the-middle drain.",
+  sources: [["Kineticist: Dungeons & Dragons tutorial", KN("dungeons-and-dragons-tutorial")]]
+},
+{
+  id: "fallout", code: "FO", name: "Fallout", sort: "Fallout",
+  mfr: "Stern", year: 2026, variant: "Pro", group: "stern", opdb: "GELVv",
+  thesis: "Build multipliers first (Power Armor, weapon upgrades), then cash them in with Deathclaw and Wasteland multiballs.",
+  plan: [
+    "Make the skill shot, then rip the Nuka-Cola spinner for caps. Spend caps at Sundries on Fusion Cores and Nuka-Cola inlanes.",
+    "Charge the fusion core at the left pop bumper and turn on Power Armor once it’s past 50%.",
+    "Upgrade your weapon at the scoop. Level 2 takes five junk and adds playfield X and bonus X.",
+    "Play Deathclaw Multiball 1 (jackpots from about 2M), then 2 and 3 as weapons unlock.",
+    "Complete Wasteland Multiball (jackpots from about 3M, rising each shot).",
+    "Keep HP above 50 so you can start quests. NOVAC and Radscorpion Attack have the best ramp values."
+  ],
+  avoid: [
+    "Ending a ball with unspent caps.",
+    "Hitting a lit radroach target over and over. It adds RAD and lowers your max HP.",
+    "On Premium/LE, hitting a Deathclaw limb that’s already crippled. It fires the ball back."
+  ],
+  venue: blank(["This game is new (fall 2026, code around 0.8x). The rulesheet is still incomplete, and there’s almost no tournament writing yet, so this plan will change as code updates land."]),
+  tips: [
+    ["skillshot", 3, "Time a full plunge so the ball rolls over the flashing right inlane switch, then shoot the center bottlecap spinner."],
+    ["general", 1, "The three white targets on the right award a mini nuke for the Fat Man launcher."]
+  ],
+  rules: "Play as Lucy, Maximus or The Ghoul. Collect caps and junk, fight through quests, and run Deathclaw, Wasteland and Vault multiballs. Premium/LE adds a lower playfield and a Fat Man launcher.",
+  sources: [["Pinball Rulesheets: Fallout", RB("stern/fallout-rulesheet")], ["Arcade Heroes: Fallout hands-on preview", "https://arcadeheroes.com/2026/09/03/stern-pinball-special-preview/"]]
+},
+{
+  id: "foo-fighters", code: "FF", name: "Foo Fighters", sort: "Foo Fighters",
+  mfr: "Stern", year: 2023, variant: "Pro", group: "stern", opdb: "GpeoL",
+  thesis: "Finish van modes in one visit, stack the multipliers, and cash combos at the Overlord.",
+  plan: [
+    "Light the left ramp with white shots and finish each van mode in one visit. Full completions pay more and give the FooBot left leg.",
+    "Clear the three drops, then level Engine, Speakers or Bomb at the MOD-ulator target.",
+    "Play the Overlord multiballs in order: All My Life, Monkey Wrench, then The Pretender.",
+    "On the Pro, five right-ramp shots start Area 51 Multiball. It can run alongside Combotron.",
+    "Cash six combos at the Overlord to light Combotron Multiball at the side ramp.",
+    "Ray gun, playfield and Overlord multipliers stack, and FooBot shot multipliers persist. Save big shots for when several are on."
+  ],
+  avoid: [
+    "Letting a van mode time out before the final Overlord shot.",
+    "Spending action-button charges on low-value shots.",
+    "Draining without using Overdrive or the ball save you have left."
+  ],
+  venue: blank(["Pro vs. Premium/LE: the Pro uses a virtual ball save. Premium/LE has a raising deadpost and an upper-playfield path into Area 51."]),
+  tips: [
+    ["general", 10, "The left ramp is easy to backhand."],
+    ["skillshot", 9, "The left crossover stays lit for a skill-shot combo at the start of each ball even if you missed the others: shoot it, then the upper loop or side ramp, and repeat for up to six shots."],
+    ["general", 6, "Start with New York, which you can progress with just the spinner."],
+    ["multiball", 6, "Area 51 Multiball can start during an Overlord multiball, but not the other way around."],
+    ["general", 4, "Three right-orbit shots into the Rock-O-Meter lane give 40 seconds of 2x playfield; repeat inside the timer for 3x."]
+  ],
+  rules: "Save cities with van modes, build FooBot from parts, and fight the Overlord through three multiballs. Saving every city plus the multiballs leads to the Final Battle.",
+  sources: [["Pinball Rulesheets: Foo Fighters", RB("stern/foo-fighters-rulesheet")]]
+},
+{
+  id: "ghostbusters", code: "GB", name: "Ghostbusters", sort: "Ghostbusters",
+  mfr: "Stern", year: 2016, variant: "Pro", group: "stern", opdb: "GR9Nr",
+  thesis: "Everything is about 6X. A good scene at 6X can be worth more than a whole game at 1X.",
+  plan: [
+    "Take a Start Scene skill shot, ideally on the left ramp.",
+    "Build Gear Combos: left ramp, then the captive ball or yellow gear targets, to light 2X and then 3X.",
+    "Keep scenes running and finish whole sequences to start their multiballs. Longer sequences give more balls, so the left-ramp sequence (three scenes) beats the left scoop (two).",
+    "Collect ghosts. Ten lights a Storage Facility lock, then every 20 more. Storage Facility stacks with scenes and multipliers.",
+    "At 40 ghosts, play Don’t Cross the Streams (about 60M). At 60, start Loopin’ Supers and loop the left ramp."
+  ],
+  avoid: [
+    "Hitting the GHOST target with no mode lit. It brings out Slimer.",
+    "Chasing super jackpots outside of 6X or Loopin’ Supers. They’re usually small.",
+    "Taking the PKE Frenzy skill shot when your score is low."
+  ],
+  venue: blank(["Pro vs. Premium/LE: the rules are the same, but the Premium plays differently: a subway lock, magnet slings, a moving Slimer and a harder right ramp."]),
+  tips: [
+    ["skillshot", 9, "Pick the left (P) rollover for the skill shot. It’s the most consistent and adds +3x bonus each time."],
+    ["general", 7, "Repeated left-ramp gear collects start a hurry-up on the proton pack targets on the left."],
+    ["skillshot", 6, "With a mode already running, go for the K rollover to light multipliers. Paired with Stay Puft, that’s where the big scores come from."],
+    ["general", 4, "We Came, We Saw starts when you finish a branch of modes: two from the left scoop, three from the left ramp, four from the right loop."],
+    ["general", 3, "During ball save, short-plunge to a trap on the right flipper, hit the captive balls twice to qualify locks, then take your skill shot."]
+  ],
+  rules: "A scene-based game: start scenes from skill shots and ghost counts, then stack them with multipliers and multiballs. It’s known as one of Stern’s hardest modern games.",
+  sources: [["Kineticist: Ghostbusters tutorial", KN("ghostbusters-pinball-tutorial")]]
+},
+{
+  id: "guardians-of-the-galaxy", code: "GOTG", name: "Guardians of the Galaxy", sort: "Guardians of the Galaxy",
+  mfr: "Stern", year: 2017, variant: "Pro", group: "stern", opdb: "GRWvz",
+  thesis: "Complete modes, keep a multiball running, and stack Rocket’s 2x with the Nova Corps multipliers.",
+  plan: [
+    "Pick a mode with the flippers before each ball. Antiquities Shop and Knowhere are good early choices.",
+    "Spend Upgrades on high-value modes like Pod Chase or Sibling Rivalry.",
+    "Lock balls in Groot’s mouth for Groot Multiball (3 balls the first time, jackpots from 300K). Groot progress carries between balls.",
+    "Play Quill’s Quest once early. The first time it’s a 2-ball multiball; after that it’s single-ball.",
+    "Collect three Orbs to qualify Orb Multiball, then time the hurry-up at the Orb drop target.",
+    "Rocket’s Rampage (2x for 45 seconds) multiplies with Nova Corps shot multipliers. Make your big shots while both are on."
+  ],
+  avoid: [
+    "Spending the Hadron Enforcer on Sanctuary shots or on the last shot of a mode or super jackpot.",
+    "Letting Sanctuary time out. It starts over from scratch.",
+    "Restarting a level-2 mode before the second cycle. It isn’t available yet."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 11, "New to the machine? Pick Quill’s Quest before plunging ball one: it starts a 2-ball multiball you can use to learn the shots and collect Hadrons."],
+    ["multiball", 10, "Three Groot shots lock balls for multiball. During it, putting balls back into Groot gives 2x, then 3x playfield. The next multiball needs two shots to open Groot and four locks."],
+    ["multiball", 3, "Put a shot multiplier on Groot, start Groot Multiball and lock two balls, then start Rocket’s 2x. The Groot shot multipliers stack very high."],
+    ["wizard", 3, "After fully completing four modes, Cherry Bomb Multiball lights at the scoop."],
+    ["secret", 4, "A slow ball rolling up a raised right flipper can be backhanded into the scoop with a quick double tap."]
+  ],
+  rules: "Eight modes and two multiballs (Groot and Orb), with modes running inside either multiball. Four modes light Cherry Bomb; finishing everything leads to Immolation Initiative and then Save Xandar.",
+  sources: [["Pinball Rulesheets: Guardians of the Galaxy", RB("stern/guardians-of-the-galaxy-pinball-rulesheet")]]
+},
+{
+  id: "guns-n-roses", code: "GNR", name: "Guns N' Roses", sort: "Guns N' Roses",
+  mfr: "Jersey Jack", year: 2020, variant: "LE", group: "other", opdb: "GqZZ1",
+  thesis: "Build Song Level before starting a song, keep the Rock-It Meter full, and cash Power Chords in multiball.",
+  plan: [
+    "Qualify band members: Axl at the A-X-L lanes, Slash on record spins, Duff at the left ramp, Frank at the jets and right ramp.",
+    "Raise Song Level before you start a song. Matching patches add +15, and each Booster super jackpot adds +50.",
+    "Win Booster multiballs (Make Some Noise, Throw the Lights, Ignite the Flames, Turn It Up!) for their super jackpots.",
+    "Lock balls before starting multiball. It raises starting values and ball-save time.",
+    "Finish songs with a full Rock-It Meter to chain Encores.",
+    "Hit the scoop in a song’s last 10 seconds for the Applause Jackpot."
+  ],
+  avoid: [
+    "Changing songs by hand. It costs 15 Song Level.",
+    "Pushing past a completed stage in single-ball play, where there’s no ball save.",
+    "Cradling for long. The Rock-It Meter drains quickly."
+  ],
+  venue: blank(["Launchpad’s copy is the LE, which uses a VUK for Duff and collects patches when the ball drains from the upper playfield."]),
+  tips: [
+    ["general", 7, "The bra and underwear patch combo doubles your bonus for the rest of the game."],
+    ["general", 4, "Hold the left flipper to cycle patches backward. Each drain from the upper playfield adds a G-N-R letter."],
+    ["general", 3, "Finish a song to collect bonus."],
+    ["general", 2, "Firecracker, horned hand, amp and lights patches together give unlimited warm-up multiball starts for the rest of the game."]
+  ],
+  rules: "Songs are the main modes. Their value depends on Song Level, which you build with band members, patches and Booster multiballs. Power Chords pay more with more balls in play.",
+  sources: [["Pinball Rulesheets: Guns N’ Roses (JJP)", RB("jersey-jack/guns-n-roses-jjp-rulesheet")]]
+},
+{
+  id: "iron-maiden", code: "IM", name: "Iron Maiden: Legacy of the Beast", sort: "Iron Maiden",
+  mfr: "Stern", year: 2018, variant: "Premium", group: "stern", opdb: "G4dOQ",
+  thesis: "Climb the Power Jackpot multiplier with modes and multiballs, and don’t cash it in early.",
+  plan: [
+    "Spell EDDIE with the white arrows to light a battle (center jump ramp on the Pro, the scoop on Premium).",
+    "Lock three balls for Trooper Multiball. Clear the three-bank to open the cannon shot.",
+    "Spell MUMMY at the captive ball for Mummy Multiball.",
+    "Complete Power Features (ramps, orbits, spinners, pops, targets) to build the Power Jackpot at the Orb.",
+    "Spell REVIVE with the lower spinner for outlane saves.",
+    "Light Playfield X (2X, then 3X) when a mode or multiball is ready to use it."
+  ],
+  avoid: [
+    "Chasing Loop Jackpots on the side loop. A missed lower loop usually drains.",
+    "Starting Playfield X before something valuable is ready.",
+    "Cashing in a small Power Jackpot just because it’s lit."
+  ],
+  venue: blank(["Putts N Pints has the Premium: battles start at the scoop, the Mummy lock and Tomb Treasures are at the left ramp, and there’s a Sarcophagus rule."]),
+  tips: [
+    ["skillshot", 14, "Secret super skill shot: soft-plunge into the left outlane. Many events disable it, and with ball save off you’ll just lose the ball."],
+    ["general", 8, "Single-ball modes stack with Mummy or Trooper multiball if you start the mode first. Hallowed Be Thy Name is especially good for this."],
+    ["general", 8, "Spell MUMMY at the captive ball to light locks, then lock in the sarcophagus (left ramp on Premium/LE)."],
+    ["general", 6, "Spell EDDIE on the white arrows to light a mode up the middle. Until EDDIE is spelled, the left spinner changes the flashing mode."],
+    ["general", 4, "Aces High is a multiball and worth getting early."]
+  ],
+  rules: "Multiballs never stack. Modes can carry into Trooper or Mummy but can’t start during them. Four Level 1 Eddie cards light the Beast fight; 250M is a strong score, and multipliers can push games past a billion.",
+  sources: [["Kineticist: Iron Maiden tutorial", KN("iron-maiden-pinball-tutorial")], ["Pinball Rulesheets: Iron Maiden", RB("stern/iron-maiden-pinball-rulesheet")]]
+},
+{
+  id: "james-bond-007", code: "007", name: "James Bond 007", sort: "James Bond 007",
+  mfr: "Stern", year: 2022, variant: "Pro", group: "stern", opdb: "GQKyP",
+  thesis: "Build Bond Women and playfield awards early, chain combos, and save 007 Scoring for multiball jackpots.",
+  plan: [
+    "Hold the left flipper and plunge for a super skill shot (Undercover, Double O or Top Secret). It pays about 2.5M plus a smart missile.",
+    "Start Henchmen modes at the side ramp.",
+    "Play SPECTRE modes for their perks: Death By Derby upgrades mystery awards, and Swimming With Sharks gives two smart missiles per ball after.",
+    "Qualify DB5 Q Branch at the DB5 eject. Its multiball jackpots start around 3M.",
+    "Bird One and Jetpack multiballs are the main jackpot sources. Later, Bond… James Bond multiball has a super jackpot worth up to 100M.",
+    "Each mode you start or finish adds to end-of-ball bonus, so starting modes still helps when you can’t finish them."
+  ],
+  avoid: [
+    "Progressing Feeding Frenzy. It blocks Bird One.",
+    "Expecting SPECTRE countdowns to run during multiball. They don’t stack.",
+    "Lighting a super jackpot while using smart missiles. It turns the missiles off."
+  ],
+  venue: blank(["Pro vs. Premium/LE: Pro locks are virtual. Premium/LE locks are physical and can be stolen by other players."]),
+  tips: [
+    ["skillshot", 10, "Basic skill shot: plunge and complete the flashing M-I-6 rollover for 250,000."],
+    ["skillshot", 9, "Super skill shot: hold the left flipper and plunge, then complete one of the four violet arrows for 2.5M and a smart missile."],
+    ["general", 8, "Your first left-scoop shot lights Jetpack Multiball."],
+    ["general", 6, "A quick backhand from the right flipper to the right orbit helps in several modes and gets you to the pops to change villain or henchman."],
+    ["general", 5, "Bond Women give playfield multipliers: complete shots to light them, top loops raise the ready multiplier, and the violet action button activates it."]
+  ],
+  rules: "Villain, Henchmen, Q Branch and SPECTRE modes lead to villain mini-wizard modes; all four villains light the final wizard mode. Rulesheet code: 1.01.",
+  sources: [["Pinball Rulesheets: James Bond 007", RB("stern/james-bond-007-rulesheet")]]
+},
+{
+  id: "jaws", code: "JAWS", name: "JAWS", sort: "JAWS",
+  mfr: "Stern", year: 2024, variant: "Pro", group: "stern", opdb: "GLWll",
+  thesis: "Shark encounters and bounty hunts are the big points. Use Jaws Multiball 1 as a utility multiball.",
+  plan: [
+    "Plunge into the bumpers for the level 1 skill shot (5M).",
+    "Make quickshots from the harpoon lane. Three in a row awards an extra ball and helps light gear.",
+    "In single-ball play, start with the Scars encounter, then Raft Attack.",
+    "Start bounty hunts with Mako, the easiest shark. Bounty progress pauses during multiball.",
+    "Collect gear: shark cage, binoculars and barrel hook.",
+    "Stack Jaws Multiball 1 with Night Swim or Beach Panic. Cage Dive (Multiball 3) can’t stack with modes."
+  ],
+  avoid: [
+    "Tilting. You lose your banked Feeding Frenzy points.",
+    "Missing quickshots. A miss resets their multiplier.",
+    "Pond Attack, if you can’t hit the fishing reel reliably."
+  ],
+  venue: blank(["Pro vs. Premium/LE: Premium/LE starts shark encounters by bashing the boat; the Pro uses the captive ball."]),
+  tips: [
+    ["general", 5, "A blinking orange center button means the life-ring outlane save is ready. Don’t press it early while picking a Bounty Hunt shark."],
+    ["general", 4, "Beach Tower sets start Feeding Frenzy. Completing the towers again gives more awards (the third target 3x), and the totals go into end-of-ball bonus."],
+    ["general", 3, "The Machete doubles (sometimes triples) a single shot. Closing the middle beach is the easiest good use."],
+    ["multiball", 3, "Fill the chum bucket, hit the pop-up fin to attach the harpoon, then hit a yellow shot to start Jaws Multiball. Missed the fin? Relight it at the left ramp."],
+    ["general", 3, "Premium/LE: the upper-playfield Orca Wheel stops on any switch hit or the action button, so you can time which award you get."]
+  ],
+  rules: "Catch Bruce while scouting beaches and evacuating swimmers. All five encounters light the 4th of July mini-wizard, and all three Jaws Multiballs light the final wizard. 200–300M is a solid tournament score.",
+  sources: [["Kineticist: JAWS tutorial", KN("jaws-pinball-tutorial")], ["Pinball Rulesheets: JAWS", RB("stern/jaws-rulesheet")]]
+},
+{
+  id: "jurassic-park", code: "JP", name: "Jurassic Park", sort: "Jurassic Park",
+  mfr: "Stern", year: 2019, variant: "Pro", group: "stern", opdb: "GK17D",
+  thesis: "Shoot from a cradle, clear paddocks, and add 2x scoring to Raptor or T-Rex multiball.",
+  plan: [
+    "Spell MAP and clear your first paddock quickly, focusing on the set-trap targets.",
+    "Play the control room in order: System Boot, then Restore Power, then Virus Attack.",
+    "Feed the T-Rex for the hurry-up and T-Rex Multiball. Work toward T-Rex Rampage, then Encounter, then Chase.",
+    "Learn the amber mine shot for Smart Missile. Outside paddocks, take Raptor Multiball or +5 Rescues.",
+    "Build Raptor Tri-Ball through the raptor pen (harder on the Pro). Use Chaos Multiball as a utility multiball.",
+    "Add 2x to Raptor or T-Rex multiballs and control room modes. Pteranodon Attack is a good bonus during any multiball."
+  ],
+  avoid: [
+    "Weak spinner shots. They drain.",
+    "Hitting the truck without knowing where you are on the map.",
+    "Chasing Nedry on purpose. It takes a lot of 2x target hits."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 7, "T-Rex Events (spell T-REX at the truck) and Control Room modes are valuable. Start them right before a multiball."],
+    ["general", 6, "In T-Rex Multiball, shoot the red arrows in order (spelling CHAOS) for double jackpots."],
+    ["skillshot", 5, "Standard skill shot combo: full plunge, T-Rex ramp, Pteranodon ramp, tower side ramp."],
+    ["general", 4, "Rescuing six staff or capturing the T-Rex in its paddock lights an extra ball at the right ramp."],
+    ["multiball", 3, "Keep shooting the raptor gate for a 3-ball multiball. In it, hit both ramps and then all CHAOS letters to add three more balls and light supers."]
+  ],
+  rules: "Rescue employees and capture dinosaurs to clear paddocks, then use the control room modes and multiballs to score. Steep learning curve; shots are much safer from a cradle.",
+  sources: [["Kineticist: Jurassic Park tutorial", KN("stern-jurassic-park-pinball-tutorial")], ["Pinball Rulesheets: Jurassic Park", RB("stern/stern-jurassic-park-rulesheet")]]
+},
+{
+  id: "king-kong", code: "KONG", name: "King Kong: Myth of Terror Island", sort: "King Kong",
+  mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "GEL0V",
+  thesis: "Controlled King Kong multiball with the 2x relock, plus island scenes boosted by island lock.",
+  plan: [
+    "Hit the spider pit four times for a pit multiball. Giant Spider is the one to want.",
+    "Open with Stegosaurus Encounter or Cross the Chasm, in single-ball play.",
+    "Complete the drop targets to light the Kong lock, then start King Kong Multiball. Use the 2x relock.",
+    "Feed the side ramp to start Biplane Attack. It can’t start during multiball, but it carries into one.",
+    "Start Treasure Hunt when it’s lit.",
+    "NYC event perks are once per game. Pick them with your whole game in mind."
+  ],
+  avoid: [
+    "Playing Cross the Chasm or Stegosaurus Encounter during multiball.",
+    "Running Cross the Chasm with island lock or other modes stacked on it.",
+    "Starting Crash the Gate before three or four scenes have built 80–90M."
+  ],
+  venue: blank(["Pro vs. Premium/LE: on the Pro, island arrows light the gong and the Kong lock is virtual. On Premium/LE you hit the gong directly and the lock is physical."]),
+  tips: [
+    ["general", 4, "Balls coming down the left river path can be ski-jumped consistently from the left flipper over to a cradle on the right."],
+    ["general", 3, "Common tournament stacks: Save Ann with Kong Multiball, Escape the Swamp with any pit multiball, Pterodactyl Attack with island lock. Play Stegosaurus Encounter and Cross the Chasm single-ball."],
+    ["general", 3, "Shoot lit blue arrows to light the gong, then hit the gong to start modes. It can be carefully backhanded from the right flipper."],
+    ["multiball", 3, "Complete the drops by the upper-left flipper twice to light King Kong Multiball; the action button raises a block to help you reach them. Locks are at the center ramp."],
+    ["skillshot", 3, "If the ball falls back into the shooter lane in single-ball play, you get another try at the plunger skill shot."]
+  ],
+  rules: "Hunt Kong across Terror Island, collect map pieces, and head for New York. Around 100M is average; 300M+ often wins. Crash the Gate is the wizard mode after the other five scenes.",
+  sources: [["Kineticist: King Kong tutorial", KN("stern-king-kong-tutorial")], ["Pinball Rulesheets: King Kong", RB("stern/king-kong-myth-of-terror-island-rulesheet")]]
+},
+{
+  id: "kiss", code: "KISS", name: "Kiss", sort: "Kiss",
+  mfr: "Stern", year: 2015, variant: "Pro", group: "stern", opdb: "G4qX5",
+  thesis: "Finish modes to stack playfield multipliers. One long ball usually wins.",
+  plan: [
+    "Whenever no mode is running, start one at the Backstage Pass scoop.",
+    "Pick modes in this order: Deuce, Lick It Up, Shout It Out Loud, Rock and Roll All Nite.",
+    "Finish a nearly done mode before you start a multiball.",
+    "Shoot the center ramp before a valuable left-flipper shot so it counts as a combo and doubles.",
+    "Light Love Gun with STAR hits and start it at the right ramp. On the Pro it starts as a 2-ball multiball; the super jackpot is 50M.",
+    "Complete KISS and ARMY and collect all four instruments to light Heaven’s on Fire."
+  ],
+  avoid: [
+    "Detroit Rock City as a single-ball mode. Its shots are hard.",
+    "Black Diamond during multiball. Its one lit shot keeps moving.",
+    "Hotter Than Hell in single-ball play. Its targets send the ball toward the right outlane."
+  ],
+  venue: blank(["Pro vs. Premium: the Pro’s KISS bank is standups and Love Gun can start at the saucer. The Premium uses drop targets."]),
+  tips: [
+    ["general", 7, "Deuce ends with roving flashing shots. Time repeated center-ramp shots to finish it."],
+    ["skillshot", 6, "If a mode shot is lit on either orbit, a skillful soft plunge that just clears the orbit counts as that shot."],
+    ["general", 5, "Finishing a song lights the scoop to pick the next one. Always keep a song running."],
+    ["multiball", 5, "Short-plunge to the flippers and go hard for the Demon locks while ball save is still on."],
+    ["general", 4, "During modes, shoot the center ramp first, then the mode shot. Combos multiply."]
+  ],
+  rules: "Each completed mode adds playfield multiplier for the rest of the ball, and combos double shot values. Multiballs don’t stack.",
+  sources: [["Kineticist: Kiss tutorial", KN("modern-kiss-pinball-tutorial")], ["Pinball Rulesheets: Kiss", RB("stern/kiss-wiki-rulesheet")]]
+},
+{
+  id: "led-zeppelin", code: "LZ", name: "Led Zeppelin", sort: "Led Zeppelin",
+  mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gweel",
+  thesis: "Keep a song running, build Icarus X evenly, and use multiballs to set up big supers.",
+  plan: [
+    "Make the left eject early to build Tour locks. Earl’s Court (70 spins for a lock) is the easiest first tour.",
+    "Go for the far-left scoop (right flipper only). It starts the first multiball series.",
+    "Clear Ball Save, LED, ZEP and ROCK, then hit the Icarus standup to raise Icarus X. Combos that end in a bank add +0.1x each.",
+    "Lock three at the left ramp for Zeppelin Multiball. Icarus X multiplies the supers.",
+    "During guitar solos, loop the center ramp for mode points."
+  ],
+  avoid: [
+    "Upper-flipper shots that end up in the outlanes. Keep the ball below the slings.",
+    "Chasing bank targets hard in single-ball play.",
+    "Going Platinum on a song early. It locks that song out."
+  ],
+  venue: blank(["Revel has the Pro, which has no Electric Magic Multiball. On the Premium, the side shot is a ramp back to the right flipper."]),
+  tips: [
+    ["general", 6, "Don’t start Icarus (playfield multiplier) until all four standup sets have some combo value. If any is still 1.0x, wait."],
+    ["general", 5, "Combos build Icarus. You complete a combo by hitting one of the four standup sets."],
+    ["general", 4, "Hit the far-left scoop to qualify tours, pick one, finish its goals, then shoot the scoop again for tour multiball. Regular multiball is three left ramps."],
+    ["multiball", 4, "The left ramp locks balls for Zeppelin Multiball. For later ones, spell ROCK on the right standups to relight locks."],
+    ["general", 3, "Lit shots and switches earn Record Sales: 100K sales is a Gold Record, five light Change Song, ten complete a song."]
+  ],
+  rules: "Earn Record Sales through song shots, clear banks for Icarus X, and lock balls for multiball. Multiballs don’t stack, but songs keep running during them.",
+  sources: [["Kineticist: Led Zeppelin tutorial", KN("led-zeppelin-pinball-tutorial")], ["Pinball Rulesheets: Led Zeppelin", RB("stern/led-zeppelin-rulesheet")]]
+},
+{
+  id: "mandalorian", code: "MANDO", name: "The Mandalorian", sort: "Mandalorian",
+  mfr: "Stern", year: 2021, variant: "Pro", group: "stern", opdb: "GBLLP",
+  thesis: "Get all three +1x playfield multipliers running (up to 6x), then start a Razor Crest multiball.",
+  plan: [
+    "Complete Scope (U-turn, left 2x, right ramp) for +1x for 75 seconds plus an award.",
+    "Complete a Hunter mode for Beskar and another +1x for 75 seconds. It also relights the Razor Crest.",
+    "Hit both green Boba Fett targets for +1x for 30 seconds.",
+    "Stack a Mission with a Razor Crest multiball.",
+    "Spend Beskar at the Foundry: Multiplier (500), Razor Crest (300) or Start Mission (175).",
+    "Save the Flamethrower for Ice Spider or Pirates multiball."
+  ],
+  avoid: [
+    "Draining with the Flamethrower unused. Flaming shots disappear on drain.",
+    "Failing a Mission. It stays locked until This Is The Way.",
+    "Cashing out Ambush early instead of going for the restart bonuses."
+  ],
+  venue: blank(["Revel has the Pro: Rising Phoenix and a one-flipper mini playfield. Premium/LE has Jet Pack and a tilting two-flipper mini playfield."]),
+  tips: [
+    ["multiball", 18, "Make three Razor Crest shots up the middle before starting a mission at the scoop, then hit the final middle shot to stack Razor Crest Multiball on the mission."],
+    ["skillshot", 8, "Pro only: a softer plunge up and into the upper playfield, hitting a couple of targets, scores a 750,000 sneaky skill shot."],
+    ["general", 6, "Both ramps plus the scoop start a mission and light an extra ball at the scoop, which backhands well from the left flipper."],
+    ["general", 5, "Scope, Hunter and the Boba Fett target pair each add +1x playfield; all three at once is 6x. The Fett targets can extend the timer."],
+    ["general", 3, "Hold the action button to sweep the Flamethrower across the shots. Flaming shots score 2x on the next hit."]
+  ],
+  rules: "Missions, Hunter modes and Razor Crest multiballs lead to three mini-wizards and then This Is The Way. Each super jackpot in multiball adds 2.5M to bonus. Rulesheet code: 1.42.",
+  sources: [["Pinball Rulesheets: The Mandalorian", RB("stern/the-mandalorian-rulesheet")]]
+},
+{
+  id: "metallica", code: "MET", name: "Metallica", sort: "Metallica",
+  mfr: "Stern", year: 2013, variant: "Pro", group: "stern", opdb: "GRBE4",
+  thesis: "Use the spider to light several items per shot, bank Coffin hurry-ups, then cash in through multiball and Crank It Up.",
+  plan: [
+    "Electric Chair Multiball is worth a lot, but the chair shot is dangerous. Take it when it’s safe.",
+    "Grave Marker Multiball needs fewer hits, but progress resets when you drain.",
+    "Lady Justice: spell METALLICA with ramp shots, then alternate sides.",
+    "Coffin hurry-ups are worth about 1.5M each, and locked inserts carry over.",
+    "Complete FUEL for 2X playfield.",
+    "In Crank It Up, For Whom the Bell Tolls is the best pick on the Pro (Fade to Black on the Premium)."
+  ],
+  avoid: [
+    "Starting Seek & Destroy early. It clears your locked inserts.",
+    "Shots that feed the left inlane/outlane and the slings.",
+    "Expecting multiballs to stack. Only Coffin stacks with another one."
+  ],
+  venue: blank(),
+  tips: [],
+  rules: "Four multiballs (Electric Chair, Grave Marker, Snake, Coffin) and the Crank It Up rounds lead to End of the Line. Modes carry into multiballs.",
+  sources: [["Kineticist: Metallica tutorial", KN("metallica-pinball-tutorial")], ["Pinball Rulesheets: Metallica", RB("stern/metallica-rulesheet")]]
+},
+{
+  id: "monster-bash", code: "MB", name: "Monster Bash", sort: "Monster Bash",
+  mfr: "Chicago Gaming", year: 2018, variant: "Remake", group: "chicago", opdb: "Gr3EW",
+  thesis: "Start several monster modes before any multiball. Multiball freezes mode timers.",
+  plan: [
+    "Modes run in parallel, so get two or three going at once.",
+    "Creature Feature: four saucer hits start it, then make the five major shots quickly.",
+    "Ball & Chain: three shots to each non-Frankenstein ramp start it.",
+    "Full Moon Fever: four orbit shots start the hurry-up.",
+    "Hit the Frankenstein toy to collect body parts, then start Frankenstein Multiball only with other modes running.",
+    "Starting all six monster modes lights Monster Bash, a 4-ball wizard mode worth 50M or more."
+  ],
+  avoid: [
+    "The center spinner shot when a miss means a drain.",
+    "Starting any multiball with nothing else running.",
+    "Phantom Flip. It misses most shots, and many events turn it off."
+  ],
+  venue: blank(["This is the Chicago Gaming remake. Rules match the 1998 Williams game, but the flippers can play differently, so take a feel on ball one."]),
+  tips: [
+    ["multiball", 12, "Six center-spinner shots light Mosh Pit Multiball at the scoop. Once it’s running, the spinner can add two balls."],
+    ["general", 8, "The scoop sometimes gives smart bombs. Press launch during a mode for free monster hits."],
+    ["general", 7, "Hitting Dracula while he’s moving counts double."],
+    ["wizard", 6, "Start all six monsters, then hit the scoop for the Monster Bash mini-wizard mode."],
+    ["multiball", 4, "Bash Frankenstein and shoot the ramp for multiball. Stack other monsters with it to hold their timers."]
+  ],
+  rules: "Light and start the six monster modes, then use multiballs and the Monster Bash / Monsters of Rock wizard modes for big scores. You can’t light or progress modes during multiball, and multiballs don’t stack.",
+  sources: [["Kineticist: Monster Bash tutorial", KN("monster-bash-pinball-tutorial")]]
+},
+{
+  id: "munsters", code: "MUN", name: "The Munsters", sort: "Munsters",
+  mfr: "Stern", year: 2019, variant: "Pro", group: "stern", opdb: "GbPde",
+  thesis: "Finish family-member levels to light Playfield X at Kitty, then stack super jackpots and cash them at the Dragula lane.",
+  plan: [
+    "Shoot Herman for his hurry-up, capture the ball, then shoot the captured ball for 2x value and Herman Multiball.",
+    "Spell SPOT on the red-lit ramps, then shoot Spot four times to qualify its super jackpot.",
+    "Hit the LILY targets to start Lily’s frenzy. 100 switches qualify its super jackpot, and it runs alongside other modes.",
+    "Fill the chattering teeth to light the scoop for Grandpa (Enlarging Ray on the Pro).",
+    "After a level is done, three left-ramp shots start Raven Multiball. Four jackpots light its super.",
+    "During Playfield X, hit Kitty to keep the timer and multiplier going."
+  ],
+  avoid: [
+    "Draining during Spot stage 2 or Herman Multiball. Draining ends them.",
+    "Letting the Playfield X timer run out without hitting Kitty.",
+    "Cashing super jackpots too early. Hold the Zap button to cancel the collect and keep stacking."
+  ],
+  venue: blank(["Pro vs. Premium/LE: the Pro has Enlarging Ray; Premium/LE has Grandpa’s Laboratory, a mystery VUK and an extra super skill shot."]),
+  tips: [
+    ["general", 7, "Hold the zap button to cancel a super jackpot collect. Wait until several are stacked and playfield X is high, ideally 6x."],
+    ["multiball", 6, "Shoot Herman for a hurry-up, shoot him again to collect it and magna-lock a ball, then shoot the captive ball for multiball."],
+    ["general", 4, "The blue Kitty target right of Herman raises the playfield multiplier when lit."],
+    ["general", 3, "By default there’s no ball save. Short-plunge to a right-flipper trap and skip the low-value skill shots."]
+  ],
+  rules: "Each family member has levels. Completing them lights Playfield X and builds stacked super jackpots, collected at the Dragula lane. Munster Madness is the wizard mode. Rulesheet code: 1.24.",
+  sources: [["Pinball Rulesheets: The Munsters", RB("stern/the-munsters-rulesheet")]]
+},
+{
+  id: "mustang", code: "MUS", name: "Mustang", sort: "Mustang",
+  mfr: "Stern", year: 2014, variant: "Pro", group: "stern", opdb: "GrPOR",
+  thesis: "Super skill shot early, then RPM targets in Silverball Stampede, which can outscore the multiballs.",
+  plan: [
+    "Hold the left flipper before launching and hit the lit shot for the super skill shot. It advances two gears (up to gear 4).",
+    "Light all six modes solid to set up Silverball Stampede at the scoop.",
+    "In Stampede, each RPM target bank hit is worth 2M, or 4M with N2O.",
+    "Clear drop targets to climb gears for Gear Shift Multiball. Each gear can only be played once.",
+    "Four captive-ball hits qualify Burnout Multiball (main jackpot 10M). You can bring modes into it.",
+    "Spell MUSTANG and shoot the scoop for Mustang Multiball. The super jackpot starts at the sum of your gears; the first gear-6 super is 50M."
+  ],
+  avoid: [
+    "Letting the RPM timer run out. Restarting it means hitting the bank again.",
+    "Hitting Stunt Driver or Cruisin’ shots out of order. You have to redo them.",
+    "Replaying a gear’s multiball. It won’t start again."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 3, "Hold the left flipper while plunging for the super skill shot, and hit the strobing GEARS light when it’s centered for +2 gears."],
+    ["multiball", 2, "Shift up by completing the drops. Try to reach 4th or 5th gear before starting multiball at the scoop; only settle for 3rd on ball three."],
+    ["skillshot", 1, "The super skill shot can be short-plunged to the right flipper, which is much easier to control."],
+    ["multiball", 1, "In the 6-ball multiball, the first super jackpot is always 50M. Double it if N2O is ready."],
+    ["general", 1, "Cruisin’ is the best mode to stack with multiball because it uses every shot."]
+  ],
+  rules: "Gears, drag races and car-themed modes build toward Silverball Stampede and the Mustang super jackpot. Add-a-ball comes from spelling the bottom lanes and shooting the scoop.",
+  sources: [["Pinball Rulesheets: Mustang", RB("stern/mustang-wiki-rulesheet")]]
+},
+{
+  id: "pokemon", code: "PKMN", name: "Pokémon", sort: "Pokemon",
+  mfr: "Stern", year: 2026, variant: "Pro", group: "stern", opdb: "GV8wB",
+  thesis: "Start Pikachu’s story mode first, and treat the Pokédex captive ball as your most important shot.",
+  plan: [
+    "Plunge for the top-lane skill shot, so you start catching Pokémon right away.",
+    "Hit the bumpers to spawn Pokémon, then build CATCH! at the left ramp.",
+    "Start Pikachu’s story mode first (three Pikachu ramp or orbit shots in single-ball play). It’s the easiest to finish and plays as a 2-ball multiball.",
+    "Lower the Meowth balloon with the BATTLE targets, then shoot it to start Team Rocket Multiball (four balloon shots on code 0.87). Stack Squirtle’s mode with it.",
+    "Hit the Pokédex captive ball hard and often. 25 hits light an extra ball at the town scoop.",
+    "During the early ball save, hit BATTLE targets to light add-a-ball."
+  ],
+  avoid: [
+    "Dead bounces off the left flipper. They leave the bottom of the playfield wide open.",
+    "Letting the captive ball send the ball toward an outlane. Nudge if needed.",
+    "Getting surprised by the fast town-scoop eject. Be ready for a reflex flip."
+  ],
+  venue: blank(["Code is still early (0.8x). Competition mode is the default and starts in the Forest biome. Pro has a Psyduck target at the left orbit; Premium/LE has a scoop there, plus a whirlpool and battlefield magnets."]),
+  tips: [
+    ["general", 4, "After filling the discover bar, shoot the Pokédex to scan, finish CATCH on the standups, shoot the Poké Ball to catch, then the scoop to battle."],
+    ["general", 3, "Shoot each of the four main shots three times for its mode."],
+    ["multiball", 2, "Aim at the center standups to break the Team Rocket mech and start multiball."],
+    ["skillshot", 2, "Skip the hold-left-flipper skill shot unless that outlane has been rebuilt."]
+  ],
+  rules: "Catch Pokémon, battle rivals, and play the four starter story modes. All four at the same level light Pikachu vs. Charizard, a 4-ball mini-wizard on the right ramp.",
+  sources: [["Kineticist: Pokémon tutorial", "https://www.kineticist.com/post/pokemon-pinball-tutorial"], ["Pinball Rulesheets: Pokémon", RB("stern/pokemon-rulesheet")]]
+},
+{
+  id: "pulp-fiction", code: "PULP", name: "Pulp Fiction", sort: "Pulp Fiction",
+  mfr: "Chicago Gaming", year: 2023, variant: "SE", group: "chicago", opdb: "GoEkx",
+  thesis: "Build the Big Kahuna playfield multiplier in single-ball play, then cash it in during multiball.",
+  plan: [
+    "Big Kahuna Bonus: hit the two flashing standups by the bumpers, then the target above the bullseye magnet. Each advance on the same ball adds +1x playfield, up to 6x.",
+    "Lock three at the briefcase kicker for Briefcase Boogie. Payoffs gain +1x each phase; finish with the super payoffs.",
+    "Roll a scene with the right drop target, and collect at the right saucer in its last 10 seconds.",
+    "Qualify all five characters at the top saucer, then collect them at the right saucer for Cast Chaos (4-ball).",
+    "Complete 11 red-arrow banks in single-ball play, then shoot the pawn shop for Pulp Fiction Frenzy.",
+    "Extra balls: 6x bonus after five 1-2-3-4 lane completions, or 146 MPH."
+  ],
+  avoid: [
+    "Expecting Big Kahuna advances or PULP FICTION letters to count in multiball. Both are single-ball only.",
+    "Counting on ball save. It’s off in competition mode.",
+    "Draining every ball during Divine Intervention. It resets your progress."
+  ],
+  venue: blank(["Stone Face Tavern has the LE and La Cumbre has the SE. The rulesheet doesn’t list rule differences between them."]),
+  tips: [
+    ["skillshot", 7, "Hold the left flipper while plunging for a different skill shot: make any of the four flashing Payoff shots. It’s worth the same as the saucer skill shot."],
+    ["general", 1, "The left drop targets advance Briefcase Boogie multiball."]
+  ],
+  rules: "A 1970s-style flipper layout with modern rules. Five objectives lead to Divine Intervention, a six-phase wizard mode that doubles your score if you finish it. Multiballs can’t overlap; scenes pause during multiball.",
+  sources: [["Pinball Rulesheets: Pulp Fiction", RB("chicago-gaming/pulp-fiction-rulesheet")]]
+},
+{
+  id: "spider-man", code: "SPDY", name: "Spider-Man", sort: "Spider-Man",
+  mfr: "Stern", year: 2007, variant: "", group: "stern", opdb: "G5D94",
+  thesis: "Light the white arrows, then put the multiplied shot into timed modes. Stack Doc Ock with Black Suit Multiball.",
+  plan: [
+    "Light all six white spider arrows. Finishing them makes your next shot 2x (3x after you complete a timed mode).",
+    "Play the timed modes: Daily Bugle, Rescue MJ, Bonesaw, The Amazing Spider-Man, New Goblin. All five qualify Super Hero.",
+    "Four side-ramp shots qualify Venom. Build Venom Value with spinner hits before you start it.",
+    "Clear the 3-bank, then shoot the center hole for Sandman modes.",
+    "Use the Light Lock target to lock three balls for Black Suit Multiball, and stack Doc Ock modes with it.",
+    "Spider Sense can give one add-a-ball per multiball, so two multiballs stacked can give two."
+  ],
+  avoid: [
+    "Stacking Black Suit Multiball with Battle Royale. They don’t combine.",
+    "Aiming at the Spider Sense lane with the upper-right flipper down. It only counts when that flipper is up.",
+    "Missing Spider Sense awards. They only flash on screen briefly."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 5, "After you complete a mode, your next major shot is tripled for the rest of the ball."],
+    ["general", 4, "If you drain out of Battle Royale with the Royale Jackpot lit, shooting it awards the jackpot and restarts the multiball with two balls."],
+    ["multiball", 4, "Shoot Doc Ock to start multiball (the number of hits is a setting). It’s safer as a backhand from the right flipper."],
+    ["general", 3, "Beating all four villains once lights an extra ball, twice lights Battle Royale, and three times is needed for Super Hero."],
+    ["general", 3, "After the white spiders are complete, your next loop, ramp or Doc Ock shot doubles in value for the rest of the ball."]
+  ],
+  rules: "Battle villains (Doc Ock, Green Goblin, Sandman, Venom) through timed modes and multiballs while keeping the white arrows lit for multiplied shots.",
+  sources: [["Pinball Rulesheets: Spider-Man", RB("stern/spider-man-rulesheet-wip")]]
+},
+{
+  id: "star-trek", code: "ST", name: "Star Trek", sort: "Star Trek",
+  mfr: "Stern", year: 2013, variant: "Pro", group: "stern", opdb: "Gryw4",
+  thesis: "Always start a mode before Klingon Multiball, and use combos to double mode shots.",
+  plan: [
+    "Start a Level I mode (Prime Directive, Space Jump, Save the Enterprise, Nero, Destroy the Drill or Klingon Battle) from Mission Start or Away Team.",
+    "Shoot Away Team during a mode for Galactic mode: 20 more seconds and higher shot values.",
+    "Complete the three green standups to light locks, then lock three for Klingon Multiball. If the third lock is lit when Mission Start is lit, pick a mode and start multiball right after.",
+    "Combo into mode shots for double points.",
+    "Build the Warp ramp: Warp 4 lights an extra ball, Warp 9.1 gives 60 seconds of 2X, Warp 9.9 adds a ball.",
+    "Finish Level I to open Level II and Level III; Level III gives a permanent 2X shot."
+  ],
+  avoid: [
+    "Starting multiball before a mode.",
+    "Draining in Galactic mode. It ends with whatever medals you have.",
+    "Low-value Level II and III shots that lock you out of better medals."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 6, "Time Warp 9.1 or 9.9 to land during a multiball for double scoring and big jackpots."],
+    ["general", 5, "Any shot that’s part of a combo scores 2x: big for Kobayashi Maru, the Klingon super jackpot and defeating Vengeance."],
+    ["general", 5, "How well you do in each Level One mode sets the value of that mode’s second shot in Kobayashi Maru (up to 7.5M a shot)."],
+    ["multiball", 5, "Hit the Vengeance enough to open it, hit it again for a second ball, and again for multiball."],
+    ["general", 5, "The left spinner shot can be backhanded safely on the fly."]
+  ],
+  rules: "Play missions at three levels to earn medals. All Level I modes start Kobayashi Maru, all Level II start Enterprise Amok, and all Level III start Five Year Mission. Rulesheet code: 1.62.",
+  sources: [["Pinball Rulesheets: Star Trek", RB("stern/star-trek-wiki")]]
+},
+{
+  id: "star-wars", code: "SW", name: "Star Wars", sort: "Star Wars",
+  mfr: "Stern", year: 2017, variant: "Pro", group: "stern", opdb: "G5vLR",
+  thesis: "Keep the center 3-bank shot multipliers alive and shoot lit shots while they’re multiplied.",
+  plan: [
+    "Hit the center 3-bank to build shot multipliers, and hit it again before they time out.",
+    "Shoot each planet’s shot three times to qualify it.",
+    "Play Rescue the Princess early. Its hurry-up grows with each collect.",
+    "Work through the FORCE awards: Mystery, Escape, Video Mode, then Double Multipliers.",
+    "Finish a final planet mode (Destroy the Death Star, Battle Above Endor, Escape from Hoth or Escape from Tatooine) to start Victory Multiball.",
+    "After FORCE, holding the action button can add a ball, and it carries over."
+  ],
+  avoid: [
+    "Letting multipliers time out.",
+    "Starting Lightsaber Duel without Double Multipliers.",
+    "Mashing the action button in TIE Fighter Hurry-Up when it costs you ball control."
+  ],
+  venue: blank(["Pro vs. Premium/LE: Escape is a virtual ball save on the Pro. The Comic Art Pro (at Putts N Pints) has the same rules as the regular Pro."]),
+  tips: [
+    ["multiball", 7, "Hit the five red-lit targets to start the TIE Fighter hurry-up. Hit the TIE Fighter, then mash the action button to move on to multiball."],
+    ["multiball", 5, "Complete the bottom lanes and shoot the lit yellow shots for Hyperspace hurry-ups; three of them start multiball."],
+    ["general", 3, "A good opener: put multipliers on Death Star, Endor and Hoth, then work Endor and Hoth from the left flipper."],
+    ["skillshot", 2, "Choose Light Tatooine Missions from the skill shot, or you’ll need three hard scoop shots to light them."]
+  ],
+  rules: "Qualify planets, play their modes, and finish final planet multiballs for medals. Planet modes stack except in competition mode. Jedi Multiball is the wizard mode. Rulesheet code: 1.31.",
+  sources: [["Pinball Rulesheets: Star Wars (Stern)", RB("stern/star-wars-stern-rulesheet")]]
+},
+{
+  id: "star-wars-fall-of-the-empire", code: "FOTE", name: "Star Wars: Fall of the Empire", sort: "Star Wars: Fall of the Empire",
+  mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "Gxv81",
+  thesis: "Lock up Battle of Hoth, start Lightspeed Escape before the third lock, and play the easy yellow missions first.",
+  plan: [
+    "Light lock early at the Droids target, then lock three balls at the Luke VUK for Battle of Hoth.",
+    "Light the Falcon with the right ramp, then hit the center ramp for Lightspeed Escape, ideally before the third Hoth lock. That’s the only way two multiballs stack.",
+    "Play the yellow (easy) Rebel missions first. Yoda, Luke, Droids and Han are good picks. Spell FORCE to light missions.",
+    "Play Rancor, the best Jabba event, by following its fixed shot order.",
+    "After 15 Death Star jackpots, shoot the Death Star for the super jackpot.",
+    "Use bumper-earned shot multipliers during multiball. 300M+ often wins."
+  ],
+  avoid: [
+    "Death Star shots after a short plunge. They’re high drain risk.",
+    "Vader scoop feeds that start modes you don’t want.",
+    "Luke’s Gift. It’s the weakest award."
+  ],
+  venue: blank(["Pro vs. Premium/LE: the Pro center ramp is a fixed jump ramp. Premium/LE has a moving ramp, mynock multiball and a magnetic JEDI ball save."]),
+  tips: [
+    ["general", 3, "On default settings, looping the center ramp starts the first Falcon feature."],
+    ["general", 3, "Beat Droids (3x) and put an ion cannon on the Hoth AT-AT (2x) to collect a 12x jackpot instead of a double."]
+  ],
+  rules: "24 Rebel missions (three per character) light at the character shots when you spell FORCE. Multiball stacking is off except Lightspeed Escape with Battle of Hoth. Ten Sarlacc spins light add-a-ball.",
+  sources: [["Kineticist: Fall of the Empire tutorial", "https://kineticist.com/post/star-wars-fote-tutorial"], ["Pinball Rulesheets: Fall of the Empire", RB("stern/star-wars-fall-of-the-empire-rulesheet")]]
+},
+{
+  id: "teenage-mutant-ninja-turtles", code: "TMNT", name: "Teenage Mutant Ninja Turtles", sort: "Teenage Mutant Ninja Turtles",
+  mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gd2Xb",
+  thesis: "Get to Ninja Pizza Multiball early. It’s the biggest scorer.",
+  plan: [
+    "Pick Michelangelo (lights Battle Again and adds pizza slices) or Raphael (lights Start Episode).",
+    "Lock three at the Pizza Parlor for Ninja Pizza Multiball. Defeat six Foot Soldiers to light the mondo jackpot on the upper loop, then the super at LAIR.",
+    "Four right-ramp shots start Turtle Power.",
+    "Spell LAIR to light Training, then light 2x playfield at the center target.",
+    "Light and start episodes with the left and right ramps, then the Pizza Parlor.",
+    "Seven pizza targets light the Pizza Eating Contest. Only start mashing with the ball under control."
+  ],
+  avoid: [
+    "Shooting the right ramp from the left flipper. Hitting the post drains; backhand it instead.",
+    "Letting the spinning pizza disc throw balls around.",
+    "Starting the Pizza Eating Contest mash while the ball is loose."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 8, "Donatello is a good beginner pick: multiball starts with a single shot, and you get a swing at the skill shot on launch."],
+    ["general", 6, "Extra balls light at the Van from starting modes (two by default), collecting pizza slices (55 by default) or a Pict-O-Pop award."],
+    ["wizard", 6, "Getting past four modes (finished, timed out or drained) lights Team Up multiball at the right ramp."],
+    ["multiball", 4, "In Pizza Multiball, each lock fixes toppings (two, two, then one). Pizza targets cycle the unlocked toppings and the pops change the next ones."],
+    ["multiball", 3, "Turtle Power add-a-ball: hit the four turtle shots, then the right ramp."]
+  ],
+  rules: "Play as a Turtle through episodes and multiballs. Four episodes light Team-Up multiball and all eight light the Final Battle. Multiballs relight after four episodes.",
+  sources: [["Kineticist: TMNT tutorial", KN("teenage-mutant-ninja-turtles-tutorial")], ["Pinball Rulesheets: TMNT", RB("stern/stern-tmnt-rulesheet")]]
+},
+{
+  id: "theatre-of-magic", code: "TOM", name: "Theatre of Magic", sort: "Theatre of Magic",
+  mfr: "Bally", year: 1995, variant: "", group: "classic", opdb: "G5BLE",
+  thesis: "Bonus is huge. Build bonus X early with THEATRE on the safe left orbit.",
+  plan: [
+    "At the start of each ball, take the Start Illusion Trunk skill shot if it’s offered; otherwise Advance Clock, then Bonus X.",
+    "Spell THEATRE on the left orbit and light both top lanes to reach 8x bonus.",
+    "Shoot the trunk’s blank face three times, then shoot inside, to start Illusion modes.",
+    "In Tiger Saw Multiball, hit the captive ball for rising jackpots and keep collecting THEATRE letters.",
+    "Catch the right-orbit feed so you can keep shooting the left orbit.",
+    "Light all four diamonds, then shoot the left entrance of the center loop for Grand Finale (completion is worth 500M)."
+  ],
+  avoid: [
+    "Risky nudging. Tilting loses bonus that can be worth hundreds of millions.",
+    "Taking Bonus X before Start Illusion or Advance Clock.",
+    "Chasing small Trap Door awards like Trunk Magic."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 7, "Ball one: pick the levitating woman, make the trunk skill shot for Start Illusion, and loop the center ramp for points and lock progress."],
+    ["multiball", 4, "Center-ramp shots spell MAGIC and light locks behind the trunk. Shoot the trunk to start multiball, then hit it again right away."],
+    ["secret", 3, "Secret lock: tap the ball up the left orbit so it drops into the trunk from behind. It locks a ball and lights the second lock."],
+    ["general", 3, "Repeated left-orbit shots build combos, bonus, bonus X and a 50M trunk hurry-up. Simple and solid."],
+    ["multiball", 2, "In multiball, left-orbit shots feed the lanes and pops, raising bonus and the jackpot together."]
+  ],
+  rules: "Illusions, multiballs and the end-of-ball bonus build toward four diamonds and Grand Finale. Magic Multiball needs two locks plus a trunk magnet shot.",
+  sources: [["Kineticist: Theatre of Magic tutorial", KN("theatre-of-magic-tutorial")]]
+},
+{
+  id: "transformers-more-than-meets-the-eye", code: "TF", name: "Transformers: More Than Meets the Eye", sort: "Transformers",
+  mfr: "Stern", year: 2026, variant: "Pro", group: "stern", opdb: "GBLzz",
+  thesis: "Stack missions, Dinobot missions and Transformers Multiball. Two missions light One Shall Fall.",
+  plan: [
+    "Soft-plunge to the upper flipper and hit the space bridge for the skill shot (8M plus 10 seconds of ball save).",
+    "Start and finish Autobot Run or Prime Target first, then hit Megatron for the final-blow multiplier.",
+    "Qualify Transformers Multiball with six lock VUK shots.",
+    "Play Solar Needle during multiball, using an Energon cube to make it easier.",
+    "After two missions, hit the right ramp to light One Shall Fall, a 4-ball wizard mode.",
+    "Play the rusted version of your remaining missions. They’re harder but worth more."
+  ],
+  avoid: [
+    "Hitting standups by accident. They can knock the ball out of control.",
+    "Missed side-ramp shots bouncing between bumper and slings. Nudge the ball up.",
+    "Trying to add Playfield X after multiball starts. Start it first."
+  ],
+  venue: blank(["New game (2026, launched on 0.85 code). Pro vs. Premium/LE: on Premium/LE, Megatron’s cannon fires the ball to the left ramp; on the Pro it’s a lock that feeds the upper flipper."]),
+  tips: [
+    ["multiball", 8, "Optimus, lock, Optimus, lock, Optimus, mode shot, lock: that order carries your mode into the main multiball."],
+    ["skillshot", 3, "Short-plunge and use the upper-right flipper to hit Optimus Prime."],
+    ["general", 2, "Short-plunge and hit the space bridge for 8M and 10 seconds of ball save."],
+    ["general", 2, "Backhand the three standups in front of the mission-start hole with the right flipper, then start a mission at the same shot."]
+  ],
+  rules: "Five missions, Dinobot and Tech Spec modes, and multiballs. Beating a mission without energizing it rusts the next one. You get one add-a-ball per game.",
+  sources: [["Kineticist: Transformers tutorial", KN("transformers-pinball-tutorial")], ["Pinball Rulesheets: Transformers", RB("stern/transformers-more-than-meets-the-eye-rulesheet")]]
+},
+{
+  id: "twilight-zone", code: "TZ", name: "Twilight Zone", sort: "Twilight Zone",
+  mfr: "Bally", year: 1993, variant: "", group: "classic", opdb: "GrXzD",
+  thesis: "Multiball over modes. Lock two before starting so the Piano jackpot is 40M instead of 10M.",
+  plan: [
+    "Hit both ramps to spell GUM-BALL and light the lock.",
+    "Lock two balls before you start multiball.",
+    "Start multiball at the left ramp, collect the Piano jackpot, and relight it at the Camera.",
+    "Shoot the right orbit when Gumballs are lit: 15M, 20M, then 25M each after.",
+    "In Powerball Mania, return the Powerball to the right orbit and hit the top hole of the Powerfield for the 50M Mania jackpot."
+  ],
+  avoid: [
+    "The skill shot. It feeds the bumpers.",
+    "The hitchhiker loop, which also feeds the bumpers.",
+    "Tilting while bonus is pending. Mania and mode points are paid in bonus."
+  ],
+  venue: blank(["There’s no ball save, so every drain counts."]),
+  tips: [
+    ["secret", 15, "If bonus earns a replay or extra ball, press both flippers as the first reel stops for an extra 5M."],
+    ["general", 10, "Don’t tilt. Most modes and multiballs pay in bonus."],
+    ["general", 9, "The Camera shot is easier with the upper-left flipper held up."],
+    ["general", 6, "Save Gumball shots until you have enough to free the Powerball, so you don’t help the next player get it."],
+    ["general", 5, "Skip the Collect Bonus Camera award until after Powerball Mania, when bonus is huge."]
+  ],
+  rules: "Lock-based multiball is the main score; modes are worth much less and pay in bonus. All 14 door panels light Lost in the Zone, a timed 6-ball wizard mode.",
+  sources: [["Kineticist: Twilight Zone tutorial", KN("twilight-zone-pinball-tutorial")]]
+},
+{
+  id: "venom", code: "VEN", name: "Venom", sort: "Venom",
+  mfr: "Stern", year: 2023, variant: "Pro", group: "stern", opdb: "G3EBl",
+  thesis: "Build combos and playfield X early, keep mini-modes flowing, and never ignore a lit battle.",
+  plan: [
+    "Pick a host to fit your plan: Eddie Brock (stronger Mayhem), Gwen Stacy (Doppelganger value) or Peter Parker (easier Carnage).",
+    "Finish a full mini-mode column (yellow, blue or white) to light Mayhem locks and a host change.",
+    "At level 10, start battles from the center ramp.",
+    "Repeated center-ramp shots build the Bell Tower; hitting it lit gives +1x playfield, up to 7x.",
+    "Complete grid squares for perks like 2x experience and +1x playfield.",
+    "In Mayhem Multiball, lock three in the left canister for 2x XP, or the right one for untimed playfield X."
+  ],
+  avoid: [
+    "Ignoring a lit battle. It blocks Mayhem locks and Carnage.",
+    "Failing battles. It resets the mini-mode path and turns off that square’s perks.",
+    "Draining in the first phase of Toxin Team-Up. It ends the mode."
+  ],
+  venue: blank(["Pro vs. Premium/LE: on the Pro, Doppelganger is shot at the left loop and can be combo-multiplied. Premium/LE uses a flyaway target bank."]),
+  tips: [
+    ["general", 8, "Against Grendel the flippers reverse. Cross your arms so each hand stays on the side it’s controlling."],
+    ["general", 4, "Start Mayhem before Carnage so they stack."],
+    ["general", 2, "Eddie start: set the skill shot left of the scoop and hit it on the plunge for a combo. Lock three from the right flipper for multiball and 2x, then start Carnage during it."],
+    ["general", 1, "Both the Alchemax ramp and the Daily Bugle can be backhanded."]
+  ],
+  rules: "Level up through mini-modes and battles, and use playfield X across everything. Grendel and Knull unlock at levels 20 and 30; Klyntar is the final 2-ball mode. Rulesheet code: 1.06.",
+  sources: [["Pinball Rulesheets: Venom", RB("stern/venom-rulesheet")]]
+},
+{
+  id: "walking-dead-remastered", code: "TWD", name: "The Walking Dead Remastered", sort: "Walking Dead Remastered",
+  mfr: "Stern", year: 2025, variant: "Premium", group: "stern", opdb: "Gj6DE",
+  thesis: "Control first. Play CDC as your single-ball mode and save shot X and 2X playfield for big cash-outs.",
+  plan: [
+    "Survive the bumper feed, then get the ball to the left flipper.",
+    "Clear the left drops to light Dead Features (one bank for the first mode, two after).",
+    "In CDC, loop the left ramp to build value, then cash out, ideally with X (about 30–40M).",
+    "Use Riot for multiball stacking. Its value rises with switch hits.",
+    "Collect all three supplies for Blood Bath, a 2-ball multiball that can run with Prison or Well Walker.",
+    "Build Prison to its super jackpot, and put Well Walker’s super on an X."
+  ],
+  avoid: [
+    "Spending shot X on small shots.",
+    "Finishing CDC early. You lose its scoring.",
+    "Chasing Bit or Woodbury. They pay very little."
+  ],
+  venue: blank(["This plan and the PinTips shown are based on the original 2014 game (code 1.60). We couldn’t find a rulesheet or PinTips for the 2025 Remastered code, so some values may differ."]),
+  tips: [
+    ["general", 13, "Complete a set of drops to light the major shots for mode start; each shot is a different mode."],
+    ["multiball", 10, "Bash the Well Walker many times to start a multiball."],
+    ["general", 9, "Avoid using the inlane shot multiplier so it keeps building. Save it for a big mode or multiball."],
+    ["general", 7, "Hit both Prison standups, then Riot, for 30 seconds of 2x playfield (hit each twice first for 40 seconds)."],
+    ["general", 5, "Stay away from the pop bumpers when you can. The tunnel-lane drain is the worst on the game."]
+  ],
+  rules: "Shoot lit shots to light modes and multiballs, kill walkers for points, and build multipliers on a dangerous layout. Prison and Well Walker can’t run together.",
+  sources: [["Kineticist: The Walking Dead tutorial", KN("the-walking-dead-pinball-tutorial")], ["Pinball Rulesheets: The Walking Dead", RB("stern/walking-dead-wiki-rulesheet")]]
+},
+{
+  id: "x-men", code: "XMEN", name: "X-Men", sort: "X-Men",
+  mfr: "Stern", year: 2012, variant: "Pro", group: "stern", opdb: "Grj6X",
+  thesis: "Chain combos, finish heroes for bonus X, and keep a villain running with Deadpool’s help.",
+  plan: [
+    "Complete the rollover lanes to light Villain at the Blackbird scoop. Villain modes pay roughly 5–12M.",
+    "Ten combos hire Deadpool. Use him on a villain you’ve already damaged, not on its final shot.",
+    "Start and finish heroes (two shots each, about 2–3M) for bonus multiplier.",
+    "Qualify Hellfire Club and Brotherhood for quick villain relights.",
+    "Run Magneto Multiball up to four balls with as many heroes started as possible. Wolverine and Magneto both stack on villain modes."
+  ],
+  avoid: [
+    "Draining with Deadpool active. You lose him.",
+    "Hiring Deadpool for a villain you can’t make progress on.",
+    "Starting Hellfire or Brotherhood multiball early if you’re going for Dark Phoenix."
+  ],
+  venue: blank(["This is the 2012 Stern X-Men, not The Uncanny X-Men (2024). Pro vs. LE: on the Pro, Nightcrawler uses shifting red-arrow shots instead of the LE’s pop-up targets."]),
+  tips: [
+    ["general", 7, "Shots chained into unique X-Men combos count toward Deadpool; after 10 he activates and awards shots against villains."],
+    ["multiball", 5, "Enough hits to the left standups qualify Hellfire Club multiball, the right standups Brotherhood. Start them at the scoop."],
+    ["multiball", 5, "Bash Wolverine enough for a multiball, ideally with a mode already running."],
+    ["multiball", 4, "Hold off on Magneto Multiball until you’ve started several X-Men. More started or finished heroes means more points in it."],
+    ["skillshot", 3, "Short-plunge and hit the Storm ramp or the Rogue shot for the skill shot. A lit lock at Rogue is collected too."]
+  ],
+  rules: "Villain modes, hero modes and combos feed Danger Room and Dark Phoenix. Combos start at 125K and grow with each chained shot. Rulesheet code: 1.51.",
+  sources: [["Pinball Rulesheets: X-Men (2012)", RB("stern/x-men-stern-2012")]]
+},
+{
+  id: "addams-family", code: "TAF", name: "The Addams Family", sort: "Addams Family",
+  mfr: "Bally", year: 1992, variant: "", group: "classic", opdb: "G4ODR",
+  thesis: "Pick a lane: keep multiball going, or build Mansion rooms with center-ramp-to-Electric-Chair combos.",
+  plan: [
+    "Power-plunge into Thing’s saucer for the skill shot (2M, rising to 5M).",
+    "Hit the bookcase to spell GREED and light locks, then lock at the Vault behind it. On the first multiball, the Swamp and Thing’s Hideout lock too.",
+    "In multiball, the Train Wreck lane gives the jackpot and the side ramp gives the super jackpot (double on the first multiball, triple after).",
+    "Use the center ramp to build Bear Kicks, then collect Mansion rooms at the Electric Chair or the Swamp kickout.",
+    "Raise the Graveyard value at the Swamp entrance and chain the three-way (5M) and four-way (10M) combos.",
+    "Missed every jackpot? Thing’s Hideout gives a 20-second restart."
+  ],
+  avoid: [
+    "Tilting late in a good game. Timed-mode points are only paid in bonus.",
+    "Trying to lock anywhere but the Vault after the second multiball.",
+    "Draining in Tour the Mansion. The run ends immediately."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 11, "The Electric Chair starts modes, and either ramp lights it. Modes stack. If the chair is unlit, the right inlane lights it briefly."],
+    ["skillshot", 4, "Plunge for Thing’s saucer. A short plunge that hits no switch drains and comes back for another try."],
+    ["general", 3, "After the first GREED lock, short-plunge to lock ball two, then short-plunge again, catch on the right flipper and hit the chair."],
+    ["general", 3, "The chair scoop and the bookcase are safer as backhands. Follow bookcase hits with Million Plus ramp shots."],
+    ["multiball", 3, "Hit the bookcase to spell GREED and lock at the green lights. Start multiball at the Electric Chair or Vault; the side ramp gives a double jackpot."]
+  ],
+  rules: "Spell words, shoot ramps and scoops to collect Mansion rooms, and use multiball and bonus X. Tour the Mansion starts with a 50M award and runs the timed rooms in order, ending in Thing Multiball.",
+  sources: [["Pinball Primer: The Addams Family", "https://pinballprimer.github.io/addams_G4ODR.html"]]
+},
+{
+  id: "fish-tales", code: "FT", name: "Fish Tales", sort: "Fish Tales",
+  mfr: "Williams", year: 1992, variant: "", group: "classic", opdb: "G5Wxd",
+  thesis: "Multiball is the game. Lock three in Caster’s Club and climb the jackpot ladder.",
+  plan: [
+    "Lock three balls in Caster’s Club to start multiball.",
+    "Relock a ball, then shoot the left orbit within 15 seconds for each jackpot: Tropical (20M), Fresh Water (30M), Deep Sea (40M). Progress carries to the next multiball.",
+    "Collect the 100M Super Jackpot. Once lit, it repeats for the rest of multiball.",
+    "Shoot the boat during multiball when Rock the Boat is lit. Each shot is worth 10M.",
+    "Six center-ramp shots light Monster Fish (up to 50M with repeat collects).",
+    "Take strong captive-ball awards: Long Cast at the right orbit, and Fish Finder at the right inlane."
+  ],
+  avoid: [
+    "Letting a relocked ball time out before you collect the jackpot.",
+    "Ignoring a lit Monster Fish or Rock the Boat during multiball.",
+    "Skipping a lit Fish Finder mystery."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 9, "Alternate the center ramps. Six light Monster Fish, a left-orbit hurry-up that grows each time."],
+    ["multiball", 7, "Score three jackpots (Caster’s Club, then the left orbit within 15 seconds) to light 100M+ supers at the captive ball until multiball ends."],
+    ["general", 4, "Fish standups light TALE, collected at the left orbit. Four start Feeding Frenzy, a 30-second mode that can reach about 45M."],
+    ["general", 3, "In video mode, the flippers work instead of the gun and feel faster. Hit enough targets for an extra ball."]
+  ],
+  rules: "Lock balls in Caster’s Club for multiball, then combine jackpots, ramps, fish awards and timed features. Two balls up both ramps close together score a 5M Double Cross.",
+  sources: [["Pinball Primer: Fish Tales", "https://pinballprimer.github.io/fishtales_G5Wxd.html"]]
+},
+{
+  id: "last-action-hero", code: "LAH", name: "Last Action Hero", sort: "Last Action Hero",
+  mfr: "Data East", year: 1993, variant: "", group: "classic", opdb: "GRwyq",
+  thesis: "Work the Dynamite Features toward LAH 6-Ball, and get two Crane locks before M-Ball.",
+  plan: [
+    "Time the launch to hit the lit Crane target for the skill shot (2M on ball 1, 3M on ball 2, 4M on ball 3).",
+    "Shoot the left ramp to light the center scoop, then complete the Last, Action and Hero Dynamite Features to start LAH 6-Ball.",
+    "Eight captive-ball hits light M-Ball. An inlane followed by a captive hit within about two seconds counts twice.",
+    "Complete the left Crane drop targets for locks. Two locks make M-Ball five balls and raise its starting jackpot to 25M.",
+    "In M-Ball, collect Jackpot 1 at the left ramp, then Jackpot 2 at the Crane lane within 10 seconds.",
+    "During most Dynamite Features, make the left inlane, then the lower-right scoop within about five seconds to double scoring."
+  ],
+  avoid: [
+    "Hitting the danger bar. It resets the drop-target bank.",
+    "Hitting captive balls during Go to the Movies. They don’t advance M-Ball then.",
+    "Using Smart Missile carelessly. You get it once per game."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 5, "Smart Missile starts multiball if it’s lit. If you never lit it yourself, multiball lights on ball three."],
+    ["general", 2, "Hitting the wall behind the drop bank resets it, so drop completions need accurate shots."],
+    ["general", 2, "The ramp lights modes at the top-left scoop. The next mode can be lit while one is running."],
+    ["general", 1, "During modes, the far-right scoop collects the Wild Card, with a reward specific to each mode."]
+  ],
+  rules: "Dynamite Features, captive-ball hits and Crane locks build to M-Ball and LAH 6-Ball. 6-Ball has no ball save and no add-a-ball. All ten modes plus 6-Ball light World Premiere.",
+  sources: [["Pinball Primer: Last Action Hero", "https://pinballprimer.github.io/lastactionhero_GRwyq.html"]]
+},
+{
+  id: "simpsons-pinball-party", code: "TSPP", name: "The Simpsons Pinball Party", sort: "Simpsons Pinball Party",
+  mfr: "Stern", year: 2003, variant: "", group: "stern", opdb: "GRvBL",
+  thesis: "Start modes rather than finishing them, and overlap stacks with multiball. Skip the wizard mode.",
+  plan: [
+    "Start Homer’s Day first (pop bumper, right ramp, garage, couch). It’s easy and opens the garage.",
+    "Match modes to the shots they reward: Duffman with the right ramp, Krusty’s Last Stand with the right orbit, Willie’s Woes with the right loop.",
+    "Lock balls at the couch to build toward multiball.",
+    "Run Stop the Monorail during multiball. It pays for missed supers and couch locks.",
+    "When victory laps are worth about 500K or more, keep shooting the right ramp until the timer runs out.",
+    "Save Alien Invasion for late. Plug the right loop and the Itchy & Scratchy saucer first, then lock the last ball at the TV or garage."
+  ],
+  avoid: [
+    "Chasing the wizard mode. It’s a trophy, not a points source.",
+    "Running Secret Stash alongside Alien Invasion. They don’t stack well.",
+    "Finishing modes just to extend Alien Invasion’s timer."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 12, "The garage leads to the upper playfield, the horseshoe starts modes, and the couch locks balls toward multiball."],
+    ["secret", 10, "Holding the left flipper up as the ball fires out of the Itchy & Scratchy hole can save it over to the right flipper."],
+    ["general", 5, "Almost everything stacks. The right orbit lights TV modes, so get several stacked for faster scoring."],
+    ["general", 4, "Modes stack as long as the TV timer runs. Starting another mode or shooting Otto resets it."],
+    ["general", 2, "Few features are worth much alone. Playing several modes badly at once usually beats playing one well."]
+  ],
+  rules: "Modes start from the TV shots and share one timer, so they stack with multiballs and multipliers. Mystery Spot is the strongest stacking boost once your active multipliers end.",
+  sources: [["Kineticist: Simpsons Pinball Party advanced tutorial", KN("simpsons-pinball-party-tutorial-advanced")]]
+},
+{
+  id: "star-trek-the-next-generation", code: "TNG", name: "Star Trek: The Next Generation", sort: "Star Trek: The Next Generation",
+  mfr: "Williams", year: 1993, variant: "", group: "classic", opdb: "GR6d8",
+  thesis: "Left orbit into side ramp (the Picard maneuver) builds Warp and sets up Borg Multiball triple jackpots.",
+  plan: [
+    "For the skill shot, take Warp 4 or Light Lock. Only take Start Mission if you’re playing for modes.",
+    "Make the right inlane, then the left orbit/spinner to advance Warp. The side ramp also advances Warp up to Warp 9.",
+    "Shoot the right orbit to light locks, then lock at the right orbit or side ramp. The third lock has to come from the right orbit.",
+    "In Borg Multiball, the side ramp always pays a triple jackpot, and the spinner relights the Start Mission jackpot.",
+    "Start missions from the center scoop or Command Decision. Use the bumpers or Q target to rotate to the one you want.",
+    "The Holodeck lights on the third right ramp. Shuttle Simulator can pay up to 159M plus an Artifact."
+  ],
+  avoid: [
+    "The other two skill-shot options.",
+    "Tilting. It costs your bonus multiplier, which climbs as high as 10x with rank.",
+    "Staying in the center lane during Shuttle splits. You crash."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 6, "Repeat the Picard Maneuver (left orbit to side ramp) back to back for big points and Warp progress."],
+    ["multiball", 5, "Pick Light Lock before plunging your first two balls and Light Holodeck on the third for multiball every game."],
+    ["secret", 4, "When Data says you could have been rewarded with the proper trajectory, hit both flippers for 10M."],
+    ["general", 3, "With Command Decision, Rescue is the safe pick: 21 switch hits award an artifact (50M), and the center scoop gives five hits."],
+    ["multiball", 2, "Each early cannon shot in multiball raises the jackpot by 10M. Line them up carefully."]
+  ],
+  rules: "Warp progression, seven missions and a rank-based bonus multiplier up to 10x. All seven missions light the wizard mode, which pays per Artifact, so it’s weak with only a few.",
+  sources: [["Pinball Primer: Star Trek: TNG", "https://pinballprimer.github.io/startrektng_GR6d8.html"]]
+},
+{
+  id: "star-wars-trilogy", code: "SWT", name: "Star Wars Trilogy", sort: "Star Wars Trilogy",
+  mfr: "Sega", year: 1997, variant: "", group: "classic", opdb: "GrybN",
+  thesis: "Build to Star Wars Multiball and its super jackpot, and bank Heroic modes on the way to Darth Vader Redemption.",
+  plan: [
+    "Load the X-Wing: hit the drop target in the lit row at the start, or clear all 16 inserts.",
+    "Start Star Wars Multiball: left ramp, fire the X-Wing, then shoot through the drop-target gap. Jackpots start at 500K and grow with drop-target hits; six jackpots lead to the super.",
+    "Spell FALCON at the left ramp for Falcon Multiball (four balls).",
+    "Complete all five Force targets to light the right-hole hurry-up.",
+    "Start Heroic modes at the top saucer. All six light an extra ball.",
+    "Three right-hole shots thaw Han Solo (300K), and lit orbits give Landspeeder awards."
+  ],
+  avoid: [
+    "Expecting a ball save in Star Wars Multiball. There isn’t one.",
+    "Letting FALCON letters time out. They go faster after the first Falcon Multiball.",
+    "Trying to time the plunge. The launch gives a flat 400K."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 1, "Hit the blinking drop target at the start of the game to light multiball right away."],
+    ["multiball", 1, "Load the cannon on the left ramp and fire the ball through the drops to start multiball."],
+    ["multiball", 1, "FALCON on the left ramp lights the Falcon multiball, but it scores less overall."]
+  ],
+  rules: "Multiballs, Heroic modes and the Force hurry-up feed Darth Vader Redemption, a 2-ball wizard mode with 50 seconds of ball save that you light after six tasks.",
+  sources: [["Pinball Primer: Star Wars Trilogy", "https://pinballprimer.github.io/starwarstrilogy_GrybN.html"]]
+},
+{
+  id: "indiana-jones-the-pinball-adventure", code: "IJ", name: "Indiana Jones: The Pinball Adventure", sort: "Indiana Jones: The Pinball Adventure",
+  mfr: "Williams", year: 1993, variant: "", group: "classic", opdb: "G4xZy",
+  thesis: "For points, it’s multiball: lock three behind E-N-T, then raise and multiply jackpots before cashing at the right ramp.",
+  plan: [
+    "Knock down the E-N-T drop targets to reveal the lock saucer, and lock three balls for multiball.",
+    "In multiball, the left ramp (or the lock saucer) lights the jackpot and the right ramp collects it. Before collecting, raise it: the captive ball adds 5M (10M on a full hit), the captive-ball drop target 3M, and the Raise Jackpot target 2M.",
+    "Relock a ball in the saucer for a 15-second double jackpot; with three balls up, relock a second for a triple. Jackpot progress carries between multiballs.",
+    "After three jackpots, full hits to the captive ball score super jackpots (80M, 90M, then 100M each on default code).",
+    "When nothing else is running, an early left-flipper backhand into the left scoop starts the flashing mode. Ramps and orbits change which mode is flashing.",
+    "Complete the Indy top lanes for bonus X (up to 8x). It carries between balls, and mode points are paid in bonus."
+  ],
+  avoid: [
+    "Tilting. Mode points sit in end-of-ball bonus, which often reaches hundreds of millions.",
+    "Letting a relocked ball’s 15 seconds run out before you collect the multiplied jackpot.",
+    "Collecting the Loop Jackpot early or draining with it lit. It resets to zero either way."
+  ],
+  venue: blank(["Jackpot values vary by code revision: some versions pay 20/30/40M jackpots and 100/125/150M supers. Watch the display on ball one."]),
+  tips: [
+    ["general", 8, "The left saucer starts modes. Mode points come in bonus, so don’t tilt."],
+    ["multiball", 5, "In multiball, lock one or two balls to double or triple the jackpot, then shoot the right ramp to collect. After three jackpots, the captive ball scores supers."],
+    ["general", 4, "Ramp shots change the next mode. Well of Souls is a multiball; Choose Wisely, Escape the Mine and Raven Bar are video modes."],
+    ["wizard", 2, "All 12 modes light Eternal Life: every switch is lit for 10M, and hitting all of them, Path of Adventure included, scores a billion and relights them."],
+    ["secret", 2, "In Streets of Cairo, the shot matching the monkey’s spot on the display finds Marion. Then the saucer is 20M, or pull the trigger for 2M."]
+  ],
+  rules: "Twelve modes, multiball, Path of Adventure, Quick Multiball, Loop Jackpot and Dogfight. Playing all 12 modes lights Eternal Life, a 6-ball wizard mode: hit all 30 major switches for a billion.",
+  sources: [["Pinball Primer: Indiana Jones", "https://pinballprimer.github.io/indianajones_G4xZy.html"]]
+},
+{
+  id: "super-star", code: "STAR", name: "Super Star", sort: "Super Star",
+  mfr: "Williams", year: 1972, variant: "", group: "classic", opdb: "GRV2y",
+  thesis: "Build the center saucer to 20,000 with the 1-2-3-4-5 buttons, and raise the drain posts before you take risks.",
+  plan: [
+    "Roll the 1-2-3-4-5 buttons in order. Each completed run adds 5,000 to the center saucer (it starts at 5,000 and caps at 20,000). A well-aimed flipper shot can sweep all five in one pass.",
+    "Use the blue Advance standups halfway up each side. They spot several buttons at once.",
+    "Hold off on the saucer until its value is high. Collecting it resets the value to 5,000 and drops the out-lane posts.",
+    "Finish the three SUPER top lanes to light the saucer for an extra ball. Completing 1-2-3-4-5 while the saucer is maxed also lights an extra ball.",
+    "Raise the center post first (rebound switches just below the Advance targets), then hit the upper-left and upper-right standups to raise each out-lane post. That order is the only way to get all three up."
+  ],
+  avoid: [
+    "Counting on the center post. Its Down button sits right by the drain and drops it easily.",
+    "Hitting an Advance target on a side with its out-lane post up while the saucer’s drop target is down. It lowers that post.",
+    "Playing for bonus. There isn’t any, so every point is scored live."
+  ],
+  venue: blank(["This is the 1972 electromechanical game: 3-inch flippers, no inlanes, no end-of-ball bonus. Scores are in the thousands, so small differences decide matches."]),
+  tips: [],
+  rules: "Top lanes light bumpers and, once all three are lit, an extra ball at the center saucer. The 1-2-3-4-5 buttons build the saucer value. Standups and rebounds raise posts that block the out lanes and center drain.",
+  sources: [["Pinball Primer: Super Star", "https://pinballprimer.github.io/superstar_GRV2y.html"]]
+},
+{
+  id: "avengers", code: "AVEN", name: "The Avengers", sort: "Avengers",
+  mfr: "Stern", year: 2012, variant: "Pro", group: "stern", opdb: "GRzNR",
+  thesis: "Soft-plunge into Captain America, get several Avengers running, then start multiball and finish them there.",
+  plan: [
+    "Soft-plunge for the super skill shot and hit Captain America, the inner-left shot just right of the left orbit. Four Cap shots get him going.",
+    "Make at least one left-orbit (Hawkeye) shot before you light the Loki locks. That way Hawkeye is already running if Loki Multiball starts.",
+    "Spell L-O-K-I on the bottom lanes to light the Loki locks (O and K sit under the plastics, so lean in to check), then lock three for Loki Multiball. Players on the Pro lock at the left orbit; Stern’s card says the right-ramp lock, so watch which shot is lit.",
+    "Clear the Hulk drop targets until Hulk Multiball is ready, then hit Hulk or a lit Hulk Multiball arrow to start it.",
+    "Hit lit Avenger shots to start and advance their modes. Start as many as you can before a multiball, then finish them during it. All six Avengers qualify the wizard modes.",
+    "Once Captain America is running, stop soft-plunging. Feed the bumpers on later plunges until he’s done."
+  ],
+  avoid: [
+    "Forcing the Black Widow ramp (entrance between the Tesseract and Iron Man). It needs a dead-on shot, and misses are risky.",
+    "The right orbit (Iron Man) on a copy where it rattles back. It’s a hard shot.",
+    "Assuming the slings will fire. They can be inconsistent on this game, so play the bottom of the table conservatively."
+  ],
+  venue: blank(["No full community rulesheet exists for this game. The plan combines Stern’s instruction card with 2013 player advice from early code, so exact shot counts may differ on later code. On early code, 100M+ was a strong score."]),
+  tips: [
+    ["multiball", 14, "Complete the Hulk drop targets three times to light Hulk Multiball (the standups behind Hulk spot targets), then start it at the Hulk saucer."],
+    ["general", 4, "Soft-plunge to get the K in LOKI, let the ball drain, and repeat for another letter. Then only two left-orbit shots are needed to light the lock."],
+    ["general", 3, "Spelling LOKI at the lanes lights the multiball lock at the left orbit."],
+    ["skillshot", 3, "Soft-plunge for a 500K super skill shot at Captain America."],
+    ["multiball", 2, "Completed Avengers light inserts in the center. With two lit, hit their shots back to back to start a versus multiball."]
+  ],
+  rules: "Assemble the six Avengers (Thor, Hawkeye, Hulk, Captain America, Black Widow, Iron Man) through their lit shots, with Loki and Hulk multiballs along the way. Hitting the spinning cube spells COSMIC for a Tesseract scoring round, and the S.H.I.E.L.D. targets light Nick Fury for a Secrets of S.H.I.E.L.D. award. All six Avengers qualify the Assault on the Helicarrier and Battle for Earth wizard modes.",
+  sources: [["Stern: The Avengers instruction card", "https://www.pinballrebel.com/pinball/cards/Stern/Stern_The_Avengers_755-51D3-XX.pdf"], ["r/pinball: Avengers tips and strategies", "https://www.reddit.com/r/pinball/comments/1cwi35/avengers_tips_and_strategies/"]]
+}
+];
+MORE_PLANS.forEach(m => { m.elsewhere = true; });
+
+/* ---------- venues ----------
+   Every Albuquerque venue on Pinball Map, by name only (no addresses, hours or maps: see the
+   Pinball Map rules in CLAUDE.md). Lineups are the snapshot in data/abq-venues-2026-11-11.json.
+   If lineup.json exists (written by the GitHub Action), its live lineups replace the snapshot for
+   the venues it covers. It can be the single-venue format ({location, machines}) or the
+   multi-venue one ({venues: [{id, name, date_last_updated, machines}]}). */
+const SNAPSHOT_DATE = "2026-11-11";
+const VENUES = [
+  { id: 2789, name: "Anodyne Pool Hall & Cocktails", dmd: "ANODYNE", machines: ["The Addams Family (Bally, 1992)", "Star Trek: The Next Generation (Williams, 1993)", "Twilight Zone (Bally, 1993)"] },
+  { id: 27749, name: "Brew Lab 101 Beer & Cider Co.", dmd: "BREW LAB 101", machines: ["Deadpool (Pro) (Stern, 2018)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Jurassic Park (Pro) (Stern, 2019)", "Stranger Things (Pro) (Stern, 2019)", "JAWS (Pro) (Stern, 2024)"] },
+  { id: 27915, name: "Calavida Cantina Corrales", dmd: "CALAVIDA", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "Foo Fighters (Pro) (Stern, 2023)", "John Wick (Pro) (Stern, 2024)", "Jurassic Park (Premium) (Stern, 2019)", "King Kong: Myth of Terror Island (Pro) (Stern, 2025)", "The Munsters (Pro) (Stern, 2019)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Transformers: More Than Meets the Eye (Premium) (Stern, 2026)", "The Uncanny X-Men (Pro) (Stern, 2024)", "Venom (Pro) (Stern, 2023)"] },
+  { id: 29637, name: "Enchanted Trails RV Park & Trading Post", dmd: "ENCHANTED TRAILS", machines: ["Super Star (Williams, 1972)"] },
+  { id: 27108, name: "La Cumbre Brewing Co", dmd: "LA CUMBRE", machines: ["Stranger Things (Pro) (Stern, 2019)", "Transformers: More Than Meets the Eye (Premium) (Stern, 2026)", "Pulp Fiction (SE) (Chicago Gaming, 2023)", "Fallout (Premium) (Stern, 2026)"] },
+  { id: 27112, name: "La Cumbre Brewing Co. Westside", dmd: "LA CUMBRE WEST", machines: ["Avengers: Infinity Quest (Pro) (Stern, 2020)", "Jurassic Park (Premium) (Stern, 2019)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "Pokémon (Premium) (Stern, 2026)"] },
+  { id: 2788, name: "Launchpad", dmd: "LAUNCHPAD", machines: ["Monster Bash (Remake) (Chicago Gaming, 2018)", "X-Men (Pro) (Stern, 2012)", "Guns N' Roses (LE) (Jersey Jack, 2020)", "Jurassic Park (Pro) (Stern, 2019)"] },
+  { id: 19721, name: "Old Town Pizza Parlor", dmd: "OLD TOWN PIZZA", machines: ["Fish Tales (Williams, 1992)", "Last Action Hero (Data East, 1993)"] },
+  { id: 5132, name: "Pizza Castle", dmd: "PIZZA CASTLE", machines: ["Theatre of Magic (Bally, 1995)", "Indiana Jones: The Pinball Adventure (Williams, 1993)"] },
+  { id: 29052, name: "Poki Poki", dmd: "POKI POKI", machines: ["Star Wars Trilogy (Sega, 1997)"] },
+  { id: 30149, name: "Putts N Pints", dmd: "PUTTS N PINTS", machines: ["The Avengers (Pro) (Stern, 2012)", "Game of Thrones (Pro) (Stern, 2015)", "Iron Maiden: Legacy of the Beast (Premium) (Stern, 2018)", "Kiss (Stern, 2015)", "Mustang (Pro) (Stern, 2014)", "Pokémon (Pro) (Stern, 2026)", "Spider-Man (Stern, 2007)", "Star Wars (Comic Art Pro) (Stern, 2019)", "Transformers: More Than Meets the Eye (Pro) (Stern, 2026)"] },
+  { id: 28857, name: "Revel", dmd: "REVEL", machines: ["Led Zeppelin (Pro) (Stern, 2020)", "The Mandalorian (Pro) (Stern, 2021)", "Star Trek (Pro) (Stern, 2013)", "Teenage Mutant Ninja Turtles (Pro) (Stern, 2020)", "Rush (Pro) (Stern, 2022)"] },
+  { id: 27114, name: "Rio Bravo Brewing Company", dmd: "RIO BRAVO", machines: ["Fallout (Pro) (Stern, 2026)", "Godzilla (Pro) (Stern, 2021)", "Pokémon (Pro) (Stern, 2026)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Stranger Things (Pro) (Stern, 2019)", "Transformers: More Than Meets the Eye (Pro) (Stern, 2026)"] },
+  { id: 10449, name: "Round1 Bowling & Amusement", dmd: "ROUND1", machines: ["Guardians of the Galaxy (Pro) (Stern, 2017)", "Ghostbusters (Pro) (Stern, 2016)", "Metallica (Pro) (Stern, 2013)", "Star Wars (Pro) (Stern, 2017)"] },
+  { id: 2775, name: "Silva Lanes", dmd: "SILVA LANES", machines: ["The Simpsons Pinball Party (Stern, 2003)", "The Munsters (Pro) (Stern, 2019)", "Twilight Zone (Bally, 1993)"] },
+  { id: 6422, name: "Sister", dmd: "SISTER", machines: null },
+  { id: 23079, name: "Skate-O-Mania", dmd: "SKATE-O-MANIA", machines: ["Stranger Things (Pro) (Stern, 2019)"] },
+  { id: 28980, name: "Stone Face Tavern", dmd: "STONE FACE", machines: ["James Bond 007 (Pro) (Stern, 2022)", "King Kong: Myth of Terror Island (Pro) (Stern, 2025)", "Godzilla (Pro) (Stern, 2021)", "Pokémon (Pro) (Stern, 2026)", "Pulp Fiction (LE) (Chicago Gaming, 2023)"] },
+  { id: 27473, name: "Unhinged Brewing Co", dmd: "UNHINGED", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "Fallout (Pro) (Stern, 2026)", "JAWS (Pro) (Stern, 2024)", "James Bond 007 (Pro) (Stern, 2022)", "Pokémon (Premium) (Stern, 2026)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "The Uncanny X-Men (Pro) (Stern, 2024)", "The Walking Dead Remastered (Premium) (Stern, 2025)"] },
+  { id: 28937, name: "Uptown Sports Bar", dmd: "UPTOWN", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "JAWS (Pro) (Stern, 2024)", "Transformers: More Than Meets the Eye (Pro) (Stern, 2026)", "Guardians of the Galaxy (Pro) (Stern, 2017)", "Fallout (Pro) (Stern, 2026)"] }
+];
+const SISTER_ID = 6422;
+
+const LIBRARY = MACHINES.concat(MORE_PLANS);
 const norm = s => String(s || "").toLowerCase().replace(/\([^)]*\)/g, " ").replace(/^\s*the\s+/, "").replace(/&/g, " and ").replace(/[^a-z0-9]+/g, " ").trim();
 const baseName = s => String(s || "").replace(/\s*\([^)]*\)\s*$/, "").trim();
 const variantOf = s => { const v = String(s || "").match(/\(([^)]+)\)\s*$/); return v ? v[1].trim() : ""; };
 const slug = s => norm(s).replace(/\s+/g, "-") || "machine";
-const libByGroup = new Map(LIBRARY.map(m => [m.opdb, m]));
+const libByGroup = new Map(LIBRARY.filter(m => m.opdb).map(m => [m.opdb, m]));
 const libByName = new Map(LIBRARY.map(m => [norm(m.name), m]));
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+VENUES.forEach(v => { v.slug = slug(v.name); v.url = "https://pinballmap.com/map/?by_location_id=" + v.id; });
+// Sister's snapshot lineup is the curated MACHINES list itself.
+VENUES.find(v => v.id === SISTER_ID).machines = MACHINES.map(m => m.name + (m.variant ? " (" + m.variant + ")" : ""));
+const venueBySlug = new Map(VENUES.map(v => [v.slug, v]));
+const venueById = new Map(VENUES.map(v => [v.id, v]));
+const LIVE = new Map();   // venue id -> { machines, date } from lineup.json
 
 function fmtDate(v) {
   if (!v) return "";
@@ -859,23 +2048,27 @@ function codeFor(name) {
   return c.toUpperCase().slice(0, 4);
 }
 
-let LINEUP = LIBRARY.slice();
-let byId = {};
-
-function indexLineup() {
-  LINEUP.sort((a, b) => a.sort.localeCompare(b.sort));
-  byId = Object.fromEntries(LIBRARY.map(m => [m.id, m]));
-  LINEUP.forEach(m => { byId[m.id] = m; });
+/* A plan as seen from one venue. Sister's curated notes, scores and copy lines describe Sister's
+   machines, so other venues start blank; the general model notes on the newer plans travel. */
+function atVenue(plan, venue) {
+  if (venue.id === SISTER_ID || plan.elsewhere) return plan;
+  return Object.assign({}, plan, { venue: { notes: [], copy: [], tied: [], scores: [] } });
 }
 
-function fromLive(live, used) {
+let VENUE = venueById.get(SISTER_ID);
+let LINEUP = [];
+let byId = {};
+
+function fromLive(live, used, venue) {
   const group = String(live.opdb_id || "").split("-")[0];
-  const cur = (group && libByGroup.get(group)) || libByName.get(norm(live.name));
+  const found = (group && libByGroup.get(group)) || libByName.get(norm(live.name));
+  const cur = found ? atVenue(found, venue) : null;
   const variant = variantOf(live.name);
   const notes = (live.conditions || []).filter(c => c && c.comment)
     .map(c => [String(c.comment), c.user || "Pinball Map user", fmtDate(c.date)]);
   const scores = (live.scores || []).filter(s => s && Number(s.score) > 0)
     .map(s => [Number(s.score).toLocaleString("en-US"), s.user || "Anonymous", fmtDate(s.date)]);
+  const hasLive = live.conditions !== undefined || live.scores !== undefined;
   let m;
   if (cur) {
     const copy = cur.venue.copy.slice();
@@ -885,7 +2078,7 @@ function fromLive(live, used) {
     }
     m = Object.assign({}, cur, {
       variant: variant, mfr: live.manufacturer || cur.mfr, year: live.year || cur.year,
-      venue: Object.assign({}, cur.venue, { notes: notes, scores: scores, copy: copy })
+      venue: Object.assign({}, cur.venue, hasLive ? { notes: notes, scores: scores } : {}, { copy: copy })
     });
   } else {
     const name = baseName(live.name) || "Unknown machine";
@@ -893,7 +2086,7 @@ function fromLive(live, used) {
       id: slug(name), code: codeFor(name), name: name, sort: name.replace(/^the\s+/i, ""),
       mfr: live.manufacturer || "", year: live.year || "", variant: variant,
       group: groupFor(live.manufacturer, live.year), opdb: group,
-      thesis: "New to the lineup. No tournament plan written yet, so start with its PinTips and a rulesheet.",
+      thesis: "No tournament plan written yet. Start with a rulesheet and its PinTips.",
       plan: [], avoid: [], tips: [], rules: "", sources: [], uncurated: true,
       venue: { notes: notes, scores: scores, copy: [], tied: [] }
     };
@@ -904,6 +2097,33 @@ function fromLive(live, used) {
   return id === m.id ? m : Object.assign({}, m, { id: id });
 }
 
+function buildLineup(venue) {
+  const used = new Set();
+  const live = LIVE.get(venue.id);
+  if (live) return live.machines.map(x => fromLive(x, used, venue));
+  if (venue.id === SISTER_ID) return MACHINES.map(m => { used.add(m.id); return m; });
+  // Snapshot strings look like "Name (Variant) (Manufacturer, Year)".
+  return venue.machines.map(str => {
+    const mm = String(str).match(/^(.*?)\s*\(([^(),]+),\s*(\d{4})\)\s*$/);
+    return fromLive(mm ? { name: mm[1], manufacturer: mm[2], year: Number(mm[3]) } : { name: str }, used, venue);
+  });
+}
+
+function setVenue(venue) {
+  VENUE = venue;
+  try { localStorage.setItem("pinplan-venue", venue.slug); } catch (e) {}
+  LINEUP = buildLineup(venue);
+  LINEUP.sort((a, b) => a.sort.localeCompare(b.sort));
+  byId = Object.fromEntries(LIBRARY.map(m => [m.id, atVenue(m, venue)]));
+  LINEUP.forEach(m => { byId[m.id] = m; });
+}
+
+function lineupStatus() {
+  const live = LIVE.get(VENUE.id);
+  if (live) return (live.date ? "Updated " + fmtDate(live.date) + " on Pinball Map." : "Pulled from Pinball Map.") + " Synced automatically twice a day.";
+  return fmtDate(SNAPSHOT_DATE) + " on Pinball Map. Games rotate, so confirm before an event.";
+}
+
 async function syncLineup() {
   let data;
   try {
@@ -911,13 +2131,15 @@ async function syncLineup() {
     if (!r.ok) return;
     data = await r.json();
   } catch (e) { return; }
-  if (!data || !Array.isArray(data.machines) || !data.machines.length) return;
-  const used = new Set();
-  LINEUP = data.machines.map(x => fromLive(x, used));
-  indexLineup();
-  const when = fmtDate(data.location && data.location.date_last_updated);
-  document.getElementById("lineup-status").textContent =
-    (when ? "Updated " + when + " on Pinball Map." : "Pulled from Pinball Map.") + " Synced automatically twice a day.";
+  if (!data) return;
+  const list = Array.isArray(data.venues) ? data.venues
+    : (Array.isArray(data.machines) ? [Object.assign({ id: SISTER_ID }, data.location || {}, { machines: data.machines })] : []);
+  list.forEach(v => {
+    const id = Number(v.id);
+    if (venueById.has(id) && Array.isArray(v.machines) && v.machines.length) LIVE.set(id, { machines: v.machines, date: v.date_last_updated });
+  });
+  if (!LIVE.size) return;
+  setVenue(VENUE);
   refreshAll(true);
 }
 
@@ -942,7 +2164,7 @@ const shortScore = s => {
 const meta = m => [m.mfr, m.year, m.variant].filter(Boolean).join(" · ");
 
 let state = { group: "all", q: "" };
-try { const g = localStorage.getItem("sister-group"); if (g && GROUPS.some(x => x[0] === g)) state.group = g; } catch (e) {}
+try { const g = localStorage.getItem("pinplan-group") || localStorage.getItem("sister-group"); if (g && GROUPS.some(x => x[0] === g)) state.group = g; } catch (e) {}
 
 function renderTally() {
   const n = k => LINEUP.filter(GROUPS.find(g => g[0] === k)[2]).length;
@@ -950,8 +2172,8 @@ function renderTally() {
     .map(([k, l]) => [n(k), l]).filter(([c]) => c > 0);
   document.getElementById("tally").innerHTML =
     `<span><b>${LINEUP.length}</b> machines</span>` + parts.map(([c, l]) => `<span><b>${c}</b> ${l}</span>`).join("");
-  document.getElementById("bar-count").textContent = LINEUP.length + " machines";
-  document.getElementById("lede-count").textContent = LINEUP.length;
+  document.getElementById("bar-count").textContent = LINEUP.length + (LINEUP.length === 1 ? " machine" : " machines");
+  document.getElementById("lede-count").textContent = LINEUP.length === 1 ? "the one machine" : "all " + LINEUP.length + " machines";
 }
 
 function renderChips() {
@@ -963,7 +2185,7 @@ function renderChips() {
   ).join("");
   wrap.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => {
     state.group = b.dataset.k;
-    try { localStorage.setItem("sister-group", state.group); } catch (e) {}
+    try { localStorage.setItem("pinplan-group", state.group); } catch (e) {}
     wrap.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x.dataset.k === state.group));
     renderGrid();
   }));
@@ -984,7 +2206,7 @@ function renderGrid() {
     if (m.venue.notes.length) flags.push(`<span class="flag warn"><span class="sq"></span>Venue note</span>`);
     if (m.venue.scores.length) flags.push(`<span class="flag">Top score ${shortScore(m.venue.scores[0][0])}</span>`);
     if (m.tips.length) flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
-    return `<a class="card" href="#${m.id}">
+    return `<a class="card" href="#${VENUE.slug}/${m.id}">
       <div class="card-top"><span class="code" aria-hidden="true">${esc(m.code)}</span><span class="mono dim">${esc(m.year)}</span></div>
       <h3>${esc(m.name)}</h3>
       <div class="meta mono">${esc([m.mfr, m.variant].filter(Boolean).join(" · "))}</div>
@@ -1017,7 +2239,7 @@ function renderDetail(m) {
       </section>`
     : `<section class="sec primary">
         <div class="sec-h mono"><span>Tournament plan</span><span>Not written yet</span></div>
-        <div class="sec-b"><p class="rules">This machine joined the lineup after the guide was written. Its PinTips page and a rulesheet are the best places to start. The At Sister panel still updates from Pinball Map.</p></div>
+        <div class="sec-b"><p class="rules">No tournament plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
       </section>`;
   const avoidSec = m.avoid.length
     ? `<section class="sec">
@@ -1043,13 +2265,13 @@ function renderDetail(m) {
   const extra = m.uncurated
     ? [["Pinball Rulesheets: master list", "https://pinballrulesheets.com/rulesheet-master-list"], ["Pinball Primer: game list", "https://pinballprimer.github.io/gamelist.html"]]
     : [];
-  const srcs = [].concat(m.opdb ? [["PinTips on Match Play", PT(m.opdb)]] : [], m.sources, extra, [["Pinball Map: Sister", PM]])
+  const srcs = [].concat(m.opdb ? [["PinTips on Match Play", PT(m.opdb)]] : [], m.sources, extra, [["Pinball Map: " + VENUE.name, VENUE.url]])
     .map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("");
-  const banner = onFloor ? "" : `<div class="banner mono">Not in Sister’s current Pinball Map lineup. The plan stays here for when it comes back.</div>`;
+  const banner = onFloor ? "" : `<div class="banner mono">Not in ${esc(VENUE.name)}’s current Pinball Map lineup. The plan stays here in case it shows up.</div>`;
 
   document.getElementById("detail-body").innerHTML = `
     <nav class="crumbs mono" aria-label="Machine navigation">
-      <a href="#">← All machines</a>
+      <a href="#${VENUE.slug}">← ${esc(VENUE.name)}</a>
       <span class="dim">${onFloor ? (i + 1) + " / " + n : "Off the floor"}</span>
     </nav>
     ${banner}
@@ -1057,15 +2279,15 @@ function renderDetail(m) {
       <div class="d-title-bar mono"><span>[ ${esc(m.name)} ]</span><span>${esc(meta(m))}</span></div>
       <div class="d-head-body">
         <span class="code" aria-hidden="true">${esc(m.code)}</span>
-        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At Sister now" : ""}</div></div>
+        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
-    <p class="thesis"><span class="tag">${m.uncurated ? "New to the lineup" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
+    <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
     <div class="d-grid">
       <div class="col">${planSec}${avoidSec}${rulesSec}</div>
       <div class="col">
         <section class="sec">
-          <div class="sec-h mono"><span>At Sister</span><span class="dim">Pinball Map</span></div>
+          <div class="sec-h mono"><span>At ${esc(VENUE.name)}</span><span class="dim">Pinball Map</span></div>
           <div class="sec-b">${notes}${copy}${scores}</div>
         </section>
         ${tipsSec}
@@ -1076,15 +2298,25 @@ function renderDetail(m) {
       </div>
     </div>
     <nav class="pager" aria-label="Previous and next machine">
-      <a href="#${prev.id}"><span class="mono dim">← Previous</span><span class="nm">${esc(prev.name)}</span></a>
-      <a href="#${next.id}"><span class="mono dim">Next →</span><span class="nm">${esc(next.name)}</span></a>
+      <a href="#${VENUE.slug}/${prev.id}"><span class="mono dim">← Previous</span><span class="nm">${esc(prev.name)}</span></a>
+      <a href="#${VENUE.slug}/${next.id}"><span class="mono dim">Next →</span><span class="nm">${esc(next.name)}</span></a>
     </nav>`;
 }
 
 let homeScroll = 0;
+/* Hash routes: #venue-slug (venue home), #venue-slug/machine-id (plan), #machine-id (old Sister links). */
+function parseHash() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (!h) return { venue: null, id: "" };
+  const [first, rest] = h.split("/");
+  if (venueBySlug.has(first)) return { venue: venueBySlug.get(first), id: rest || "" };
+  return { venue: venueById.get(SISTER_ID), id: first };
+}
+
 function route(soft) {
-  const id = decodeURIComponent(location.hash.slice(1));
-  const m = byId[id];
+  const r = parseHash();
+  if (r.venue && r.venue !== VENUE) { setVenue(r.venue); renderHome(); }
+  const m = byId[r.id];
   const home = document.getElementById("home"), detail = document.getElementById("detail");
   if (m) {
     const wasHome = !home.hidden;
@@ -1097,11 +2329,32 @@ function route(soft) {
     detail.hidden = true; home.hidden = false;
     if (wasDetail) window.scrollTo(0, homeScroll);
   }
+  document.title = (m ? m.name + " · " : "") + VENUE.name + " · PinPlan Albuquerque";
+}
+
+function renderVenue() {
+  const sel = document.getElementById("venue-select");
+  if (!sel.options.length) {
+    sel.innerHTML = VENUES.map(v => `<option value="${v.slug}">${esc(v.name)}</option>`).join("");
+    sel.addEventListener("change", () => { location.hash = sel.value; });
+  }
+  sel.value = VENUE.slug;
+  document.getElementById("venue-title").textContent = VENUE.name;
+  document.getElementById("dmd-venue").textContent = VENUE.name;
+  document.getElementById("lineup-status").textContent = lineupStatus();
+  const pm = document.getElementById("venue-pm");
+  pm.href = VENUE.url;
+  pm.textContent = VENUE.name + " on Pinball Map ↗";
+  document.getElementById("sister-extra").hidden = VENUE.id !== SISTER_ID;
+}
+
+function renderHome() {
+  renderVenue(); renderTally(); renderChips(); renderGrid();
+  if (window.dmdRefresh) window.dmdRefresh();
 }
 
 function refreshAll(soft) {
-  renderTally(); renderChips(); renderGrid();
-  if (window.dmdRefresh) window.dmdRefresh();
+  renderHome();
   route(soft);
 }
 
@@ -1113,7 +2366,7 @@ function refreshAll(soft) {
   const off = document.createElement("canvas");
   off.width = COLS; off.height = ROWS;
   const octx = off.getContext("2d", { willReadFrequently: true });
-  const makeMsg = () => "SISTER · " + LINEUP.length + " PINS · PLAN FIRST · ";
+  const makeMsg = () => VENUE.dmd + " · " + LINEUP.length + (LINEUP.length === 1 ? " PIN" : " PINS") + " · PLAN FIRST · ";
   let MSG = makeMsg();
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let x = 0, textW = 0, raf = 0, last = 0, visible = true;
@@ -1137,7 +2390,7 @@ function refreshAll(soft) {
     octx.fillStyle = "#fff";
     if (staticWord) {
       octx.textAlign = "center";
-      octx.fillText("SISTER", COLS / 2, ROWS / 2 + 1);
+      octx.fillText(VENUE.dmd.length <= 8 ? VENUE.dmd : "ABQ PINS", COLS / 2, ROWS / 2 + 1);
     } else {
       octx.textAlign = "left";
       octx.fillText(MSG, -x, ROWS / 2 + 1);
@@ -1182,7 +2435,13 @@ function refreshAll(soft) {
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
 window.addEventListener("hashchange", () => route(false));
-indexLineup(); refreshAll(false); syncLineup();
+(function init() {
+  let saved = null;
+  try { saved = venueBySlug.get(localStorage.getItem("pinplan-venue")); } catch (e) {}
+  setVenue(parseHash().venue || saved || venueById.get(SISTER_ID));
+  refreshAll(false);
+  syncLineup();
+})();
 </script>
 </body>
 </html>
