@@ -1,204 +1,1103 @@
 {
-  "location": {
-    "id": 6422,
-    "name": "Sister",
-    "url": "https://pinballmap.com/map/?by_location_id=6422",
-    "date_last_updated": "2026-11-04",
-    "last_updated_by": "weathrboi"
-  },
   "source": "Pinball Map (pinballmap.com), CC BY-SA 4.0",
-  "machines": [
+  "region": "new-mexico",
+  "venues": [
     {
-      "name": "Attack From Mars (Remake LE)",
-      "manufacturer": "Chicago Gaming",
-      "year": 2017,
-      "opdb_id": "G4do5-MW9z8",
-      "conditions": [],
-      "scores": [
+      "id": 2789,
+      "name": "Anodyne Pool Hall & Cocktails",
+      "url": "https://pinballmap.com/map/?by_location_id=2789",
+      "date_last_updated": "2024-10-18",
+      "machines": [
         {
-          "score": 5132247930,
-          "user": "turndown4what",
-          "date": "2026-10-17T19:20:15.137-07:00"
-        }
-      ]
-    },
-    {
-      "name": "Back to the Future",
-      "manufacturer": "Data East",
-      "year": 1990,
-      "opdb_id": "GRpbW-MLXq2",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Cactus Canyon (Remake LE)",
-      "manufacturer": "Chicago Gaming",
-      "year": 2021,
-      "opdb_id": "G4835-M2YPK-A9ylv",
-      "conditions": [
-        {
-          "comment": "Right flipper sometimes fails to stay up",
-          "user": "macgruber007",
-          "date": "2026-05-07T20:44:54.937-07:00"
-        }
-      ],
-      "scores": [
-        {
-          "score": 66166190,
-          "user": "turndown4what",
-          "date": "2026-10-17T12:12:48.796-07:00"
+          "name": "Star Trek: The Next Generation",
+          "manufacturer": "Williams",
+          "year": 1993,
+          "opdb_id": "GR6d8-M1rZd",
+          "conditions": [
+            {
+              "comment": "Off",
+              "user": "zmoney69",
+              "date": "2024-10-18T20:49:28.915-07:00"
+            },
+            {
+              "comment": "Runs great! But eats quarters.  Coin drop registration needs to be checked!",
+              "user": "mattybu",
+              "date": "2024-01-03T21:59:16.161-08:00"
+            }
+          ],
+          "scores": []
         },
         {
-          "score": 62294270,
-          "user": "deadydoc",
-          "date": "2026-10-07T17:49:36.759-07:00"
+          "name": "The Addams Family",
+          "manufacturer": "Bally",
+          "year": 1992,
+          "opdb_id": "G4ODR-MDXEy",
+          "conditions": [
+            {
+              "comment": "Off",
+              "user": "zmoney69",
+              "date": "2024-10-18T20:49:16.974-07:00"
+            }
+          ],
+          "scores": []
         },
         {
-          "score": 18051020,
-          "user": "fae",
-          "date": "2024-10-05T04:13:03.522-07:00"
+          "name": "Twilight Zone",
+          "manufacturer": "Bally",
+          "year": 1993,
+          "opdb_id": "GrXzD-MjBPX",
+          "conditions": [
+            {
+              "comment": "Dollar bills only.",
+              "user": "mattybu",
+              "date": "2024-01-03T21:59:47.425-08:00"
+            }
+          ],
+          "scores": []
         }
       ]
     },
     {
-      "name": "Centaur",
-      "manufacturer": "Bally",
-      "year": 1981,
-      "opdb_id": "GrX7q-MLWkn",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Elvira and the Party Monsters",
-      "manufacturer": "Bally",
-      "year": 1989,
-      "opdb_id": "Grlxp-MVKBW",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Evil Dead",
-      "manufacturer": "Spooky",
-      "year": 2024,
-      "opdb_id": "GYWvw-MKNP4",
-      "conditions": [
+      "id": 27749,
+      "name": "Brew Lab 101 Beer & Cider Co.",
+      "url": "https://pinballmap.com/map/?by_location_id=27749",
+      "date_last_updated": "2026-10-11",
+      "machines": [
         {
-          "comment": "Ball gets stuck on switches in outlanes. Shotgun shells reject.",
-          "user": "abq505",
-          "date": "2026-09-11T10:31:55.843-07:00"
+          "name": "Deadpool (Pro)",
+          "manufacturer": "Stern",
+          "year": 2018,
+          "opdb_id": "G6lnq-Mq1kv",
+          "conditions": [
+            {
+              "comment": "left flipper very weak.\r\n\r\nalso, bartenders aren't happy if you ask for dollar bills to play. no coin machine.",
+              "user": "abq505",
+              "date": "2026-08-31T19:03:25.292-07:00"
+            }
+          ],
+          "scores": []
         },
         {
-          "comment": "Pin not working.",
-          "user": "tonipeterson1",
-          "date": "2026-08-05T10:45:52.918-07:00"
-        }
-      ],
-      "scores": []
-    },
-    {
-      "name": "Game of Thrones (Premium)",
-      "manufacturer": "Stern",
-      "year": 2015,
-      "opdb_id": "G41d5-M0ovk",
-      "conditions": [],
-      "scores": [
+          "name": "JAWS (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "GLWll-MXr4N",
+          "conditions": [],
+          "scores": []
+        },
         {
-          "score": 191436190,
-          "user": "macgruber007",
-          "date": "2026-05-24T12:34:02.075-07:00"
+          "name": "Jurassic Park (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "GK17D-MdEqz",
+          "conditions": [
+            {
+              "comment": "Bill reader is turned off. Must have quarters",
+              "user": "thekid",
+              "date": "2026-10-11T13:38:32.571-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Star Wars: Fall of the Empire (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gxv81-M610r",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Stranger Things (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "Gzy89-MNEeO",
+          "conditions": [],
+          "scores": []
         }
       ]
     },
     {
-      "name": "Godzilla (Premium)",
-      "manufacturer": "Stern",
-      "year": 2021,
-      "opdb_id": "GweeP-Ml9pZ-ARZoY",
-      "conditions": [
+      "id": 27915,
+      "name": "Calavida Cantina Corrales",
+      "url": "https://pinballmap.com/map/?by_location_id=27915",
+      "date_last_updated": "2026-08-26",
+      "machines": [
         {
-          "comment": "Left lower flipper weak.",
-          "user": "tinygiant",
-          "date": "2025-03-18T16:03:35.297-07:00"
-        }
-      ],
-      "scores": [
+          "name": "Dungeons & Dragons: The Tyrant's Eye (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "GK1Ej-MwNZr",
+          "conditions": [],
+          "scores": []
+        },
         {
-          "score": 231722040,
-          "user": "macgruber007",
-          "date": "2026-05-24T12:34:54.639-07:00"
+          "name": "Foo Fighters (Pro)",
+          "manufacturer": "Stern",
+          "year": 2023,
+          "opdb_id": "GpeoL-MyNPq",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "John Wick (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "GQK1P-MW9pj",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Jurassic Park (Premium)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "GK17D-MKNKd-A15Yn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "King Kong: Myth of Terror Island (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "GEL0V-MBRyb",
+          "conditions": [
+            {
+              "comment": "Broken",
+              "user": "Cindo",
+              "date": "2025-12-27T16:21:19.219-08:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Star Wars: Fall of the Empire (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gxv81-M610r",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "The Munsters (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "GbPde-M5Rkv",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "The Uncanny X-Men (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "G7ZEz-MBRYn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Transformers: More Than Meets the Eye (Premium)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GBLzz-M4ok4-AO2XW",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Venom (Pro)",
+          "manufacturer": "Stern",
+          "year": 2023,
+          "opdb_id": "G3EBl-Mq1zy",
+          "conditions": [],
+          "scores": []
         }
       ]
     },
     {
-      "name": "John Wick (LE)",
-      "manufacturer": "Stern",
-      "year": 2024,
-      "opdb_id": "GQK1P-Ml95Z-A9bjw",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Lord of the Rings",
-      "manufacturer": "Stern",
-      "year": 2003,
-      "opdb_id": "GrqZX-MD15w",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Medieval Madness (Remake LE)",
-      "manufacturer": "Chicago Gaming",
-      "year": 2015,
-      "opdb_id": "G5pe4-M61y6",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Rush (LE)",
-      "manufacturer": "Stern",
-      "year": 2022,
-      "opdb_id": "G2Lkd-M0ope-A97xV",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Shrek",
-      "manufacturer": "Stern",
-      "year": 2008,
-      "opdb_id": "G5LW9-ML371",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "Stranger Things (Premium)",
-      "manufacturer": "Stern",
-      "year": 2019,
-      "opdb_id": "Gzy89-M0oPy-A1zrL",
-      "conditions": [],
-      "scores": []
-    },
-    {
-      "name": "The Sopranos",
-      "manufacturer": "Stern",
-      "year": 2005,
-      "opdb_id": "G5WoB-MDyNZ",
-      "conditions": [
+      "id": 29637,
+      "name": "Enchanted Trails RV Park & Trading Post",
+      "url": "https://pinballmap.com/map/?by_location_id=29637",
+      "date_last_updated": "2026-08-16",
+      "machines": [
         {
-          "comment": "Safe shot doesn’t register except for a hard hit on the left side",
-          "user": "macgruber007",
-          "date": "2026-05-07T20:46:00.388-07:00"
+          "name": "Super Star",
+          "manufacturer": "Williams",
+          "year": 1972,
+          "opdb_id": "GRV2y-M0ozp",
+          "conditions": [
+            {
+              "comment": "Machine is on site, but was not plugged in.",
+              "user": "l3n3tt3",
+              "date": "2026-08-16T22:42:57.423-07:00"
+            }
+          ],
+          "scores": []
         }
-      ],
-      "scores": []
+      ]
     },
     {
-      "name": "The Uncanny X-Men (LE)",
-      "manufacturer": "Stern",
-      "year": 2024,
-      "opdb_id": "G7ZEz-MyN3K-ARl3o",
-      "conditions": [],
-      "scores": []
+      "id": 27108,
+      "name": "La Cumbre Brewing Co",
+      "url": "https://pinballmap.com/map/?by_location_id=27108",
+      "date_last_updated": "2026-10-27",
+      "machines": [
+        {
+          "name": "Fallout (Premium)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GELVv-Mx0dl-A9jbv",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pulp Fiction (SE)",
+          "manufacturer": "Chicago Gaming",
+          "year": 2023,
+          "opdb_id": "GoEkx-MdEzN-ARJQz",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Stranger Things (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "Gzy89-MNEeO",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Transformers: More Than Meets the Eye (Premium)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GBLzz-M4ok4-AO2XW",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 27112,
+      "name": "La Cumbre Brewing Co. Westside",
+      "url": "https://pinballmap.com/map/?by_location_id=27112",
+      "date_last_updated": "2026-08-19",
+      "machines": [
+        {
+          "name": "Avengers: Infinity Quest (Pro)",
+          "manufacturer": "Stern",
+          "year": 2020,
+          "opdb_id": "Gj66P-M3dxn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Jurassic Park (Premium)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "GK17D-MKNKd-A15Yn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pokémon (Premium)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GV8wB-MRjKd-AOVy7",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Star Wars: Fall of the Empire (Premium)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gxv81-Mo1rp-A9vrL",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 2788,
+      "name": "Launchpad",
+      "url": "https://pinballmap.com/map/?by_location_id=2788",
+      "date_last_updated": "2026-07-19",
+      "machines": [
+        {
+          "name": "Guns N' Roses (LE)",
+          "manufacturer": "Jersey Jack",
+          "year": 2020,
+          "opdb_id": "GqZZ1-M85y9",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Jurassic Park (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "GK17D-MdEqz",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Monster Bash (Remake)",
+          "manufacturer": "Chicago Gaming",
+          "year": 2018,
+          "opdb_id": "Gr3EW-M3dBn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "X-Men (Pro)",
+          "manufacturer": "Stern",
+          "year": 2012,
+          "opdb_id": "Grj6X-MJwj5",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 19721,
+      "name": "Old Town Pizza Parlor",
+      "url": "https://pinballmap.com/map/?by_location_id=19721",
+      "date_last_updated": "2026-08-30",
+      "machines": [
+        {
+          "name": "Fish Tales",
+          "manufacturer": "Williams",
+          "year": 1992,
+          "opdb_id": "G5Wxd-MLxl3",
+          "conditions": [
+            {
+              "comment": "Currently out of order",
+              "user": "lifewithcozmo",
+              "date": "2026-08-30T14:09:52.445-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Last Action Hero",
+          "manufacturer": "Data East",
+          "year": 1993,
+          "opdb_id": "GRwyq-MW9lN",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 5132,
+      "name": "Pizza Castle",
+      "url": "https://pinballmap.com/map/?by_location_id=5132",
+      "date_last_updated": "2026-08-05",
+      "machines": [
+        {
+          "name": "Indiana Jones: The Pinball Adventure",
+          "manufacturer": "Williams",
+          "year": 1993,
+          "opdb_id": "G4xZy-MLno6",
+          "conditions": [
+            {
+              "comment": "Not working. Ball got stuck upon launch in upper playfield. My ball became stuck ball #3. Looked like the machine had been inoperable for awhile.  On site owner gave me a refund on my quarters, but made no attempt to fix the issue while I was there.",
+              "user": "tonipeterson1",
+              "date": "2026-08-05T13:06:24.355-07:00"
+            },
+            {
+              "comment": "Not working",
+              "user": "noah",
+              "date": "2022-11-26T16:12:03.584-08:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Theatre of Magic",
+          "manufacturer": "Bally",
+          "year": 1995,
+          "opdb_id": "G5BLE-MQ75Y",
+          "conditions": [
+            {
+              "comment": "Missing pinball, won’t play",
+              "user": "deadydoc",
+              "date": "2026-07-01T13:25:43.921-07:00"
+            }
+          ],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 29052,
+      "name": "Poki Poki",
+      "url": "https://pinballmap.com/map/?by_location_id=29052",
+      "date_last_updated": "2026-05-06",
+      "machines": [
+        {
+          "name": "Star Wars Trilogy",
+          "manufacturer": "Sega",
+          "year": 1997,
+          "opdb_id": "GrybN-MLl5X",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 30149,
+      "name": "Putts N Pints",
+      "url": "https://pinballmap.com/map/?by_location_id=30149",
+      "date_last_updated": "2026-09-27",
+      "machines": [
+        {
+          "name": "Game of Thrones (Pro)",
+          "manufacturer": "Stern",
+          "year": 2015,
+          "opdb_id": "G41d5-MKNwX",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Iron Maiden: Legacy of the Beast (Premium)",
+          "manufacturer": "Stern",
+          "year": 2018,
+          "opdb_id": "G4dOQ-MkPxr",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Kiss",
+          "manufacturer": "Stern",
+          "year": 2015,
+          "opdb_id": "G4qX5-Mz2Pp",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Mustang (Pro)",
+          "manufacturer": "Stern",
+          "year": 2014,
+          "opdb_id": "GrPOR-MJK2k",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pokémon (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GV8wB-Mq12N",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Spider-Man",
+          "manufacturer": "Stern",
+          "year": 2007,
+          "opdb_id": "G5D94-MLnXq",
+          "conditions": [
+            {
+              "comment": "Plunger doesn't fully plunge during multiball.",
+              "user": "abq505",
+              "date": "2026-09-11T10:32:38.354-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Star Wars (Comic Art Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "G5vLR-MwNwy-A9Vob",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "The Avengers (Pro)",
+          "manufacturer": "Stern",
+          "year": 2012,
+          "opdb_id": "GRzNR-MLlEj",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Transformers: More Than Meets the Eye (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GBLzz-M7Zd5",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 28857,
+      "name": "Revel",
+      "url": "https://pinballmap.com/map/?by_location_id=28857",
+      "date_last_updated": "2026-08-21",
+      "machines": [
+        {
+          "name": "Led Zeppelin (Pro)",
+          "manufacturer": "Stern",
+          "year": 2020,
+          "opdb_id": "Gweel-M9Rk0",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Rush (Pro)",
+          "manufacturer": "Stern",
+          "year": 2022,
+          "opdb_id": "G2Lkd-MNEdK",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Star Trek (Pro)",
+          "manufacturer": "Stern",
+          "year": 2013,
+          "opdb_id": "Gryw4-MwNky",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Teenage Mutant Ninja Turtles (Pro)",
+          "manufacturer": "Stern",
+          "year": 2020,
+          "opdb_id": "Gd2Xb-Mq1qv",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "The Mandalorian (Pro)",
+          "manufacturer": "Stern",
+          "year": 2021,
+          "opdb_id": "GBLLP-MkPpr",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 27114,
+      "name": "Rio Bravo Brewing Company",
+      "url": "https://pinballmap.com/map/?by_location_id=27114",
+      "date_last_updated": "2026-10-29",
+      "machines": [
+        {
+          "name": "Fallout (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GELVv-Mp4Pq",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Godzilla (Pro)",
+          "manufacturer": "Stern",
+          "year": 2021,
+          "opdb_id": "GweeP-MW95j",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pokémon (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GV8wB-Mq12N",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Star Wars: Fall of the Empire (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gxv81-M610r",
+          "conditions": [
+            {
+              "comment": "Only. 50 cents per play from now to the end of November",
+              "user": "bbking",
+              "date": "2025-10-23T11:32:45.313-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Stranger Things (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "Gzy89-MNEeO",
+          "conditions": [
+            {
+              "comment": "Flippers and lights died mid-game.",
+              "user": "abq505",
+              "date": "2026-06-05T11:51:51.032-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Transformers: More Than Meets the Eye (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GBLzz-M7Zd5",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 10449,
+      "name": "Round1 Bowling & Amusement",
+      "url": "https://pinballmap.com/map/?by_location_id=10449",
+      "date_last_updated": "2024-08-31",
+      "machines": [
+        {
+          "name": "Ghostbusters (Pro)",
+          "manufacturer": "Stern",
+          "year": 2016,
+          "opdb_id": "GR9Nr-Mz2dY",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Guardians of the Galaxy (Pro)",
+          "manufacturer": "Stern",
+          "year": 2017,
+          "opdb_id": "GRWvz-Mp4yl",
+          "conditions": [
+            {
+              "comment": "This is not tired as of today, but the left game Groot is stuck open, and right won't open. Games need cleaning, too.",
+              "user": "maz",
+              "date": "2019-02-13T20:34:27.244-08:00"
+            },
+            {
+              "comment": "Machine on the Left has a drop target issue that automatically picks mode for you when starting a game. \r\nMachine on the Right does not have the updated code. Code update would be great!",
+              "user": "nts",
+              "date": "2018-09-25T08:26:04.344-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Metallica (Pro)",
+          "manufacturer": "Stern",
+          "year": 2013,
+          "opdb_id": "GRBE4-MQK1Z",
+          "conditions": [
+            {
+              "comment": "The left Metallica gets balls stuck on the Sparky magnet randomly. Right one has super tight Tilt but works great.",
+              "user": "maz",
+              "date": "2019-02-13T20:36:04.363-08:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Star Wars (Pro)",
+          "manufacturer": "Stern",
+          "year": 2017,
+          "opdb_id": "G5vLR-MwNwy",
+          "conditions": [
+            {
+              "comment": "Leftmost game was down with a sign. Rightmost one played well, but the force targets were being weird. Played about 20 games and never got Lightsaber duel. Only topped out around 835mil.",
+              "user": "maz",
+              "date": "2019-02-13T20:37:19.191-08:00"
+            }
+          ],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 2775,
+      "name": "Silva Lanes",
+      "url": "https://pinballmap.com/map/?by_location_id=2775",
+      "date_last_updated": "2026-07-27",
+      "machines": [
+        {
+          "name": "The Munsters (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "GbPde-M5Rkv",
+          "conditions": [
+            {
+              "comment": "Coin recognition is awful. It took nearly $6 to register $2 worth of credits. They know about the problem and apparently aren't in a hurry to fix it.",
+              "user": "thekid",
+              "date": "2020-03-13T12:57:07.318-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "The Simpsons Pinball Party",
+          "manufacturer": "Stern",
+          "year": 2003,
+          "opdb_id": "GRvBL-MP3Ev",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Twilight Zone",
+          "manufacturer": "Bally",
+          "year": 1993,
+          "opdb_id": "GrXzD-MjBPX",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 6422,
+      "name": "Sister",
+      "url": "https://pinballmap.com/map/?by_location_id=6422",
+      "date_last_updated": "2026-11-04",
+      "machines": [
+        {
+          "name": "Attack From Mars (Remake LE)",
+          "manufacturer": "Chicago Gaming",
+          "year": 2017,
+          "opdb_id": "G4do5-MW9z8",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Back to the Future",
+          "manufacturer": "Data East",
+          "year": 1990,
+          "opdb_id": "GRpbW-MLXq2",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Cactus Canyon (Remake LE)",
+          "manufacturer": "Chicago Gaming",
+          "year": 2021,
+          "opdb_id": "G4835-M2YPK-A9ylv",
+          "conditions": [
+            {
+              "comment": "Right flipper sometimes fails to stay up",
+              "user": "macgruber007",
+              "date": "2026-05-07T20:44:54.937-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Centaur",
+          "manufacturer": "Bally",
+          "year": 1981,
+          "opdb_id": "GrX7q-MLWkn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Elvira and the Party Monsters",
+          "manufacturer": "Bally",
+          "year": 1989,
+          "opdb_id": "Grlxp-MVKBW",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Evil Dead",
+          "manufacturer": "Spooky",
+          "year": 2024,
+          "opdb_id": "GYWvw-MKNP4",
+          "conditions": [
+            {
+              "comment": "Ball gets stuck on switches in outlanes. Shotgun shells reject.",
+              "user": "abq505",
+              "date": "2026-09-11T10:31:55.843-07:00"
+            },
+            {
+              "comment": "Pin not working.",
+              "user": "tonipeterson1",
+              "date": "2026-08-05T10:45:52.918-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "Game of Thrones (Premium)",
+          "manufacturer": "Stern",
+          "year": 2015,
+          "opdb_id": "G41d5-M0ovk",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Godzilla (Premium)",
+          "manufacturer": "Stern",
+          "year": 2021,
+          "opdb_id": "GweeP-Ml9pZ-ARZoY",
+          "conditions": [
+            {
+              "comment": "Left lower flipper weak.",
+              "user": "tinygiant",
+              "date": "2025-03-18T16:03:35.297-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "John Wick (LE)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "GQK1P-Ml95Z-A9bjw",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Lord of the Rings",
+          "manufacturer": "Stern",
+          "year": 2003,
+          "opdb_id": "GrqZX-MD15w",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Medieval Madness (Remake LE)",
+          "manufacturer": "Chicago Gaming",
+          "year": 2015,
+          "opdb_id": "G5pe4-M61y6",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Rush (LE)",
+          "manufacturer": "Stern",
+          "year": 2022,
+          "opdb_id": "G2Lkd-M0ope-A97xV",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Shrek",
+          "manufacturer": "Stern",
+          "year": 2008,
+          "opdb_id": "G5LW9-ML371",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Stranger Things (Premium)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "Gzy89-M0oPy-A1zrL",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "The Sopranos",
+          "manufacturer": "Stern",
+          "year": 2005,
+          "opdb_id": "G5WoB-MDyNZ",
+          "conditions": [
+            {
+              "comment": "Safe shot doesn’t register except for a hard hit on the left side",
+              "user": "macgruber007",
+              "date": "2026-05-07T20:46:00.388-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "The Uncanny X-Men (LE)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "G7ZEz-MyN3K-ARl3o",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 23079,
+      "name": "Skate-O-Mania",
+      "url": "https://pinballmap.com/map/?by_location_id=23079",
+      "date_last_updated": "2025-11-21",
+      "machines": [
+        {
+          "name": "Stranger Things (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "Gzy89-MNEeO",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 28980,
+      "name": "Stone Face Tavern",
+      "url": "https://pinballmap.com/map/?by_location_id=28980",
+      "date_last_updated": "2026-10-29",
+      "machines": [
+        {
+          "name": "Godzilla (Pro)",
+          "manufacturer": "Stern",
+          "year": 2021,
+          "opdb_id": "GweeP-MW95j",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "James Bond 007 (Pro)",
+          "manufacturer": "Stern",
+          "year": 2022,
+          "opdb_id": "GQKyP-Mx0O4",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "King Kong: Myth of Terror Island (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "GEL0V-MBRyb",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pokémon (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GV8wB-Mq12N",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pulp Fiction (LE)",
+          "manufacturer": "Chicago Gaming",
+          "year": 2023,
+          "opdb_id": "GoEkx-MdEzN-AR50E",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 27473,
+      "name": "Unhinged Brewing Co",
+      "url": "https://pinballmap.com/map/?by_location_id=27473",
+      "date_last_updated": "2026-10-29",
+      "machines": [
+        {
+          "name": "Dungeons & Dragons: The Tyrant's Eye (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "GK1Ej-MwNZr",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Fallout (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GELVv-Mp4Pq",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "James Bond 007 (Pro)",
+          "manufacturer": "Stern",
+          "year": 2022,
+          "opdb_id": "GQKyP-Mx0O4",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "JAWS (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "GLWll-MXr4N",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Pokémon (Premium)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GV8wB-MRjKd-AOVy7",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Star Wars: Fall of the Empire (Premium)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gxv81-Mo1rp-A9vrL",
+          "conditions": [
+            {
+              "comment": "Wow a new premium for .50 a play. Crazy\nFrom now until Nov 12th",
+              "user": "bbking",
+              "date": "2025-10-23T12:21:44.912-07:00"
+            }
+          ],
+          "scores": []
+        },
+        {
+          "name": "The Uncanny X-Men (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "G7ZEz-MBRYn",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "The Walking Dead Remastered (Premium)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gj6DE-MePEz-ARJ35",
+          "conditions": [],
+          "scores": []
+        }
+      ]
+    },
+    {
+      "id": 28937,
+      "name": "Uptown Sports Bar",
+      "url": "https://pinballmap.com/map/?by_location_id=28937",
+      "date_last_updated": "2026-10-28",
+      "machines": [
+        {
+          "name": "Dungeons & Dragons: The Tyrant's Eye (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "GK1Ej-MwNZr",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Fallout (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GELVv-Mp4Pq",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Guardians of the Galaxy (Pro)",
+          "manufacturer": "Stern",
+          "year": 2017,
+          "opdb_id": "GRWvz-Mp4yl",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "JAWS (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "GLWll-MXr4N",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Transformers: More Than Meets the Eye (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GBLzz-M7Zd5",
+          "conditions": [],
+          "scores": []
+        }
+      ]
     }
   ],
-  "synced_at": "2026-11-11T18:22:40.719Z"
+  "synced_at": "2026-11-11T18:33:46.146Z"
 }
