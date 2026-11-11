@@ -27,7 +27,8 @@ Each machine page leads with **tournament** strategy, not general play:
 - Sister guide: done and live. A QR code for the live URL exists.
 - Pinball Map API key: requested or about to be. The request text is at the bottom of this file.
 - **Next: expand to every Albuquerque venue.** 20 venues, 98 machines, 58 distinct games. 16 already have plans (covering 27 machines). **42 games still need plans.** Don't re-research games that already have one; reuse them.
-- The owner hasn't yet picked how deep to go:
+- **2026-11-11 update:** owner picked option 3 (full plans for all 42). All 42 are written and live in `MORE_PLANS` in `index.html` (in the shared library, matched by name, not shown in Sister's grid). The Avengers (2012) has no community rulesheet anywhere (checked Pinball Rulesheets, Kineticist, Pinball Primer); its plan combines Stern's instruction card (pinballrebel.com) with a 2013 Reddit thread. A text guide some fans circulate describes Zen's digital Avengers table, not the Stern machine, so don't use it. Indiana Jones and Super Star came from Primer text the owner pasted. All 42 plans have OPDB group ids and PinTips, pulled 2026-11-11 through the owner's browser because Match Play blocks automated fetchers (space requests about 8s apart or the API returns 429). Metallica and Super Star have no PinTips yet. Walking Dead Remastered (Gj6DE) has none, so its page shows the original 2014 game's tips. 
+- Original options were:
   1. Full plans for the 14 games at 2+ venues (with Sister's, covers 70 of 98 machines); basic pages for the rest.
   2. Short plans (thesis + 3–4 priorities) for all 42.
   3. Full plans for all 42.
@@ -81,7 +82,15 @@ Each machine page leads with **tournament** strategy, not general play:
 
 Note: "X-Men" at Launchpad is the 2012 Stern X-Men, a different game from The Uncanny X-Men (2024). "Star Wars" is the 2017 Stern game; one copy is the 2019 Comic Art edition, same rules.
 
-## Planned multi-venue structure
+## Multi-venue UI (built 2026-11-11)
+- A venue selector in the top bar switches between all 20 Albuquerque venues (names only). The choice is remembered per browser.
+- Routes: `#<venue-slug>` is a venue's lineup, `#<venue-slug>/<machine-id>` is a plan seen from that venue, and old `#<machine-id>` links open Sister's pages. Each venue's QR code should point at `.../PinPlan/#<venue-slug>` (e.g. `#putts-n-pints`).
+- `VENUES` in `index.html` holds each venue's snapshot lineup. Sister's curated notes, scores and copy lines only show at Sister; at other venues the venue panel starts blank and fills from live data.
+- `lineup.json` is `{venues: [{id, name, date_last_updated, machines}]}` (the page also still reads the old single-venue `{location, machines}` format). `scripts/update-lineup.mjs` now pulls all 20 venues with region-wide requests: locations with `with_lmx=1` and the machine catalog (4 requests per run, 2 once `PBM_REGION` is set in the workflow, which matches the ~4/day in the API request). High scores were dropped on purpose for now: the owner wants to focus on strategy, so no score request is made. `VENUE_IDS` in the script must stay in sync with `VENUES` in `index.html`. Tested against mock data only (`PBM_MOCK_DIR`); the response shapes are guessed from the docs, so check the first live run's log.
+- The Pinball Map API key (approved 2026-11-11) belongs only in the `PINBALLMAP_API_TOKEN` repository secret. Never put it in a file.
+- Sister's hours/address strip was removed to follow the Pinball Map rules below. Each venue links to its own Pinball Map listing instead.
+
+## Planned multi-venue structure (original notes)
 - Home page: a list of venues (name only). Each venue page shows its lineup and has its own QR code.
 - Machine plans live once in a shared library keyed by OPDB group id. Every venue that has the game links to the same plan. Venue-specific notes (condition reports, scores, model differences) stay per venue.
 - Sync: one bulk request per run instead of one per venue. Pinball Map explicitly calls looping over `/locations/:id` an anti-pattern. Likely `GET /api/v1/locations.json?region=new-mexico` filtered to Albuquerque. Check whether the bulk response includes condition notes and scores before relying on it.
