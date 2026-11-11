@@ -8,6 +8,8 @@ PinPlan is a free tournament strategy guide for pinball venues, starting in Albu
 - Players reach it from a QR code posted at the venue.
 - The current version covers one venue: **Sister**, 407 Central Ave NW (Pinball Map location 6422), with 16 machines.
 
+**Reframed 2026-11-11:** PinPlan is now a general pinball strategy guide with tournament notes, so venues don't need to be labelled casual or tournament. Page order: thesis, PinTips, Game plan, Avoid, In a tournament (game-specific `tourney[]` lines, or three general match-play basics when empty), then venue panel, rules and sources. Original structure, for reference:
+
 Each machine page leads with **tournament** strategy, not general play:
 1. A one-line thesis ("If you remember one thing")
 2. A tournament plan in priority order
@@ -17,7 +19,7 @@ Each machine page leads with **tournament** strategy, not general play:
 6. Rules in brief, then sources (every page links its sources)
 
 ## Files
-- `index.html`: the whole site in one file. The curated plans are the `MACHINES` array in the script near the bottom. Each entry has: id, code (DMD-style 2–4 letters), name, sort, mfr, year, variant, group (stern/chicago/classic/spooky/other), opdb (OPDB group id, e.g. G4do5), thesis, plan[], avoid[], venue {notes, copy, tied, scores}, tips [[category, votes, text]], rules, sources [[label, url]].
+- `index.html`: the whole site in one file. The curated plans are the `MACHINES` array in the script near the bottom. Each entry has: id, code (DMD-style 2–4 letters), name, sort, mfr, year, variant, group (stern/chicago/classic/spooky/other), opdb (OPDB group id, e.g. G4do5), thesis, plan[], avoid[], venue {notes, copy, tied, scores}, tips [[category, votes, text]], tourney [] (tournament-only notes), rules, sources [[label, url]].
   - `venue.tied` holds [keyword, line] pairs. Each line only shows while a live Pinball Map condition note contains that keyword.
 - `index.html` also loads `lineup.json` if it exists. Live machines are matched to plans by OPDB group id, then by name. New machines get a basic "No plan yet" page. Curated machines that leave the floor stay reachable by link.
 - `scripts/update-lineup.mjs` + `.github/workflows/update-lineup.yml`: a GitHub Action that runs twice a day, calls the Pinball Map API with the `PINBALLMAP_API_TOKEN` repository secret, and commits `lineup.json` only when it changes. Until the secret exists, the job skips quietly instead of failing. Currently single-venue (location 6422). It was tested against mocked data, not the live API, because the key wasn't approved yet.

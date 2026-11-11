@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PinPlan Albuquerque</title>
-<meta name="description" content="Tournament strategy and venue notes for the pinball machines at Albuquerque venues.">
+<meta name="description" content="Pinball strategy, community tips and tournament notes for the machines at Albuquerque venues.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -278,9 +278,9 @@ img { max-width: 100%; }
 <main id="landing" hidden>
   <section class="hero">
     <div class="wrap">
-      <div class="mono eyebrow">[ Tournament guide · Albuquerque, NM ]</div>
+      <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
       <h1>Walk up to every game <em>with a plan.</em></h1>
-      <p class="lede">Tournament strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues. Pick where you’re playing.</p>
+      <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
       <a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a>
     </div>
   </section>
@@ -294,10 +294,10 @@ img { max-width: 100%; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="mono eyebrow">[ Tournament guide · Albuquerque, NM ]</div>
+        <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
         <div class="venue-title" id="venue-title">Sister</div>
         <h1>Walk up to every game <em>with a plan.</em></h1>
-        <p class="lede">Tournament strategy for <span id="lede-count">every machine</span> on the floor here, with notes on how each copy is playing. Switch venues from the menu at the top.</p>
+        <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
       <div class="dmd-frame" aria-hidden="true">
@@ -341,7 +341,7 @@ img { max-width: 100%; }
 
 <footer>
   <div class="wrap">
-    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Tournament strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
+    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
     <p>Machine conditions change between visits. Comments are as posted by players and may already be fixed. Not affiliated with any venue or operator.</p>
   </div>
 </footer>
@@ -367,11 +367,13 @@ const MACHINES = [
     "Spending Martian Bombs early, when each one only kills a single Martian.",
     "Completing in/outlanes when Stroke of Luck is already lit and extra balls are off."
   ],
+  tourney: [
+    "A ball wedged in the saucer is a known AFM quirk that many events leave in play. Ask the TD before you count on it."
+  ],
   venue: {
     notes: [],
     copy: [
-      "This is the Chicago Gaming remake. Competitive players often treat the remakes as playing differently from the originals even with the same rules, so take a feel for the flippers before committing to saucer shots.",
-      "A ball wedged into the saucer is a known AFM quirk that many events leave in play. Ask the TD before you count on it."
+      "This is the Chicago Gaming remake. Competitive players often treat the remakes as playing differently from the originals even with the same rules, so take a feel for the flippers before committing to saucer shots."
     ],
     scores: [["5,132,247,930", "turndown4what", "Oct 17, 2026"]]
   },
@@ -405,6 +407,7 @@ const MACHINES = [
     "Forcing left-ramp shots from bad angles on a weak right flipper. Take the DMC route instead.",
     "Letting DeLorean Millions run with the ball sitting on a flipper; the window is only a few seconds."
   ],
+  tourney: [],
   venue: { notes: [], copy: [], scores: [] },
   tips: [
     ["general", 3, "Ramp shots light DELOREAN letters on the backpanel. Finish the word and you get 12 seconds to repeat the left ramp for millions."],
@@ -417,17 +420,19 @@ const MACHINES = [
 {
   id: "cactus-canyon", code: "CC", name: "Cactus Canyon", sort: "Cactus Canyon",
   mfr: "Chicago Gaming", year: 2021, variant: "Remake LE", group: "chicago", opdb: "G4835",
-  thesis: "For a tournament game: start Gold Mine Multiball, stay there, and keep collecting Mother Lodes.",
+  thesis: "Start Gold Mine Multiball, stay there, and keep collecting Mother Lodes.",
   plan: [
-    "In a typical tournament game, start Gold Mine Multiball at the mine and stay with it, building and cashing Mother Lodes.",
+    "Start Gold Mine Multiball at the mine and stay with it, building and cashing Mother Lodes.",
     "Mother Lode only cashes at the mine during Gold Mine Multiball. Jackpots build its value, and every set of five jackpots raises its multiplier.",
     "End-of-ball bonus counts switch hits and is a big share of the score. Take every top-lane completion for bonus X, and never tilt away a long ball.",
     "Four Quick Draws start Showdown. To stack it with another multiball, light the last Quick Draw, start the other multiball, then knock the Quick Draw down.",
     "Watch the current skill shot award; a soft plunge that doesn’t reach the switch collects it."
   ],
   avoid: [
-    "Chasing High Noon in a short tournament game. It is the long-game, high-score route.",
     "Tilting late in a long ball, which throws away the bonus."
+  ],
+  tourney: [
+    "In a short tournament game, skip High Noon. It’s the long-game, high-score route; Gold Mine Multiball and Mother Lodes are the safer points."
   ],
   venue: {
     notes: [["Right flipper sometimes fails to stay up.", "macgruber007", "May 7, 2026"]],
@@ -466,6 +471,7 @@ const MACHINES = [
     "Shooting for single-ball points with no multiball progress. Nothing else on the table protects your ball.",
     "Assuming a ball save. This is a 1981 game, so every drain counts."
   ],
+  tourney: [],
   venue: { notes: [], copy: ["The oldest game on the floor. Expect a different flipper feel from the modern Sterns next to it."], scores: [] },
   tips: [
     ["multiball", 14, "Hit the O-R-B-S drops in order to start an instant two-ball multiball."],
@@ -489,8 +495,10 @@ const MACHINES = [
     "Spell ELVIRA (letters from BAT, JAM, the Wake the Dead heads or left-ramp combos) to light 3M at the skull for 20 seconds."
   ],
   avoid: [
-    "Leaving locks lit for your opponent in a multi-player game: lock stealing is on, and ELVIRA letters are shared by every player.",
     "Shooting the major shots from bad angles. Misses are what drain you here."
+  ],
+  tourney: [
+    "Lock stealing is on and ELVIRA letters are shared by every player, so don’t leave locks lit for your opponent."
   ],
   venue: { notes: [], copy: ["Lock stealing and shared ELVIRA letters make player order matter in head-to-head groups. Watch what the player before you leaves lit."], scores: [] },
   tips: [
@@ -514,8 +522,10 @@ const MACHINES = [
     "The right ramp returns to the upper (Groovy) flipper. Hold it up as the ball comes back, then release to a held right flipper for an easy trap."
   ],
   avoid: [
-    "Leaving locks behind in a multi-player game: Cabin multiball can steal them.",
-    "Shaking a ball loose yourself during competition. Call the TD for stuck balls."
+  ],
+  tourney: [
+    "Cabin multiball can steal locks in a multiplayer game, so don’t leave them behind for the next player.",
+    "Don’t shake a stuck ball loose yourself. Call the TD."
   ],
   venue: {
     notes: [
@@ -550,8 +560,10 @@ const MACHINES = [
   avoid: [
     "Center ramp from the left flipper; it often bricks down the middle. Take it from the right.",
     "Winter is Coming hurry-ups. They lock you out of modes for little value.",
-    "Starting Iron Throne (about 63 shots, everything else locked out) unless you can commit to finishing it.",
-    "Targaryen expecting all three dragons: competition settings spot only two."
+    "Starting Iron Throne (about 63 shots, everything else locked out) unless you can commit to finishing it."
+  ],
+  tourney: [
+    "Competition settings spot only two Targaryen dragons, so don’t plan around all three."
   ],
   venue: {
     notes: [],
@@ -577,7 +589,7 @@ const MACHINES = [
   mfr: "Stern", year: 2021, variant: "Premium", group: "stern", opdb: "GweeP",
   thesis: "Take skill shots for ball save, battle Gigan first, then build Godzilla Multiball.",
   plan: [
-    "Skill shots add ball-save time, which matters most on tournament settings. Vary them; the upper-flipper lane and the upper loop are the most reliable.",
+    "Skill shots add ball-save time. Vary them; the upper-flipper lane and the upper loop are the most reliable.",
     "Hold the ball on the left flipper and shoot over the Z for the scoop. It starts Kaiju Battles and changes cities.",
     "Battle Gigan first: its ramp shots also build Godzilla Multiball. Then move to London for +6M on Destruction Jackpots.",
     "Godzilla Multiball: shoot the ramps and building to light it, flashing shots for jackpots, and the building for the super. On the Premium the add-a-ball needs the three targets, then the right spinner.",
@@ -587,6 +599,9 @@ const MACHINES = [
   avoid: [
     "Chasing jets and saucer attacks on purpose. Play them out when they come up.",
     "Giving up on a last-ball right-outlane drain: Oxygen Destroyer gives you 12 seconds to save the ball by shooting the building."
+  ],
+  tourney: [
+    "Tournament settings usually keep ball save short, so the extra ball-save time from skill shots is worth more there."
   ],
   venue: {
     notes: [["Left lower flipper weak.", "tinygiant", "Mar 18, 2025"]],
@@ -627,6 +642,7 @@ const MACHINES = [
     "Risky feeds from the Red Circle area, the left orbit and fast right-orbit returns.",
     "Left-flipper shots at the car."
   ],
+  tourney: [],
   venue: { notes: [], copy: ["LE: the first car multiball lights after two car hits instead of the Pro’s four.", "Oath Marker standups light the outlane saves. Flashing means active; solid means used. Fighting an adversary resets both."], scores: [] },
   tips: [
     ["multiball", 15, "Shoot the left orbit, smash the car several times, then left orbit again for multiball."],
@@ -658,6 +674,7 @@ const MACHINES = [
     "Selecting the Tower skill shot after locking a ball while War of the Ents is running; the diverter won’t send the ball to the Tower.",
     "Relying on the display in a stack. The game gives no mode-shot feedback during multiball, so know each mode’s shot order first."
   ],
+  tourney: [],
   venue: { notes: [], copy: [], scores: [] },
   tips: [
     ["general", 6, "From a trap you can choose your mode by lighting the insert next to the one you want; the shot advances it one more step."],
@@ -682,8 +699,10 @@ const MACHINES = [
     "Build Multiball Madness before you start it. Complete as many major shots as you can, and stay off Merlin’s saucer while you stack, so supers pay more."
   ],
   avoid: [
-    "The super skill shot; it isn’t worth the effort.",
-    "Chasing Battle for the Kingdom in a tournament game. Hurry-ups and castles score better per risk."
+    "The super skill shot; it isn’t worth the effort."
+  ],
+  tourney: [
+    "In a tournament game, skip Battle for the Kingdom. Hurry-ups and castles score better for the risk."
   ],
   venue: { notes: [], copy: ["Remake note: players report the remake’s flipper geometry makes the castle harder to hit and brings more troll hits. Treat it as its own game and test the castle shot from both flippers early."], scores: [] },
   tips: [
@@ -718,6 +737,7 @@ const MACHINES = [
     "Bastille Day as its own goal. Take it during chaotic multiball.",
     "Old tutorials for record and mode lighting; the code has changed since launch."
   ],
+  tourney: [],
   venue: { notes: [], copy: ["LE: with one ball locked in Far Cry, the lock always kicks out the bottom, never to the side."], scores: [] },
   tips: [
     ["general", 12, "The green targets by the right ramp advance Far Cry multiball; then shoot the ramp to light the lock."],
@@ -748,6 +768,7 @@ const MACHINES = [
     "Timing out modes just to reach Swamp Wizard.",
     "Playing like a modern Stern: there’s a center post blocking the drain, and two inlanes on the left."
   ],
+  tourney: [],
   venue: { notes: [], copy: ["Most guides and PinTips entries are written for Family Guy. Swamp = TV, Donkey = Stewie, Baby Multiball = Fart Multiball, Repay Your Debts = Crazy Chris."], scores: [] },
   tips: [
     ["multiball", 7, "Completing the drop target bank a set number of times starts multiball."],
@@ -772,8 +793,10 @@ const MACHINES = [
     "Short plunge to collect boat locks without starting the ball saver."
   ],
   avoid: [
-    "The playfield-validation trick (short plunge, hit one target, drain and get the ball back) without asking the TD first. It works on unmodified copies, but events may rule it out.",
     "Building your plan around the safe on this copy; see the note below."
+  ],
+  tourney: [
+    "Ask the TD before using the playfield-validation trick (short plunge, hit one target, drain and get the ball back). It works on unmodified copies, but events may rule it out."
   ],
   venue: {
     notes: [["Safe shot doesn’t register except for a hard hit on the left side.", "macgruber007", "May 7, 2026"]],
@@ -805,8 +828,10 @@ const MACHINES = [
     "Premium: the action button destroys the Demogorgon once per game. Use it before the drain registers."
   ],
   avoid: [
-    "Stacking Telekinesis onto a single-ball Demogorgon mode unless you can hit the mouth reliably; the big ramp flap blocks Mystery and Burn It Back.",
-    "Waiting on The Upside Down: it starts randomly in normal play but not in tournament mode."
+    "Stacking Telekinesis onto a single-ball Demogorgon mode unless you can hit the mouth reliably; the big ramp flap blocks Mystery and Burn It Back."
+  ],
+  tourney: [
+    "The Upside Down starts randomly in normal play but not in tournament mode, so don’t wait on it."
   ],
   venue: { notes: [], copy: ["Premium: this copy has the moving Demogorgon toy, so the mouth shots and the once-per-game destroy button apply."], scores: [] },
   tips: [
@@ -838,6 +863,7 @@ const MACHINES = [
     "Letting a short midtown feed reach the bumpers or right outlane; nudge right. On the subway loop rubber, nudge left.",
     "Holding the left flipper for a Danger Room entry from the X-Jet exit; that one drains."
   ],
+  tourney: [],
   venue: { notes: [], copy: [], scores: [] },
   tips: [
     ["general", 11, "Don’t be afraid of the challenging missions; Genosha Under Siege and Fiery Assault aren’t too hard and score consistently higher."],
@@ -880,6 +906,7 @@ const MORE_PLANS = [
     "Chasing Iron Man locks. Take them at the Tower when they come up.",
     "Holding the action button in Black Order Multiball without a plan for the Soul Gem. Missing the super jackpot costs it."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: Captain Marvel advances on spins on the Pro and on ramps on Premium/LE. The Binary hurry-up multiplier (up to 5x) is Premium/LE only."]),
   tips: [
     ["skillshot", 7, "Super secret skill shot: plunge and hit the middle drop target. It earns a trophy and is easier than the soft plunge back through the upper orbit."],
@@ -908,6 +935,7 @@ const MORE_PLANS = [
     "Tilting with the Final Shot lit. You lose the battle credit.",
     "Trying to start Lil’ Deadpool modes during Quests or multiball. They won’t start."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: Premium/LE replaces Disco Multiball with Disco Loops, a timed single-ball mode."]),
   tips: [
     ["secret", 8, "If a soft right-orbit shot drops the ball into the plunger lane, let it auto-plunge: you get another try at a right-ramp super skill shot."],
@@ -924,7 +952,7 @@ const MORE_PLANS = [
   mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "GK1Ej",
   thesis: "Play dungeon crawls from the spinner and orange targets, then stack Dragon and Gelatinous Cube multiballs.",
   plan: [
-    "At the start, pick Arabel or Kobold as your town. Paladin makes Dragon Multiball easier, which makes it the safe tournament pick.",
+    "At the start, pick Arabel or Kobold as your town. Paladin makes Dragon Multiball easier.",
     "In travel mode, skip the blue shots. Work the center spinner and orange targets to start dungeon crawls: 5M+ per battle, 10M+ when you win.",
     "Finish the town’s location mode: Retrieve a Potion for Nighdaar in Arabel, or Spy on Puck / Rescue Missing Miners in Kobold.",
     "Spell DRAGON for Dragon Multiball. The first dragon needs 9 hits before you lose too many balls.",
@@ -936,6 +964,10 @@ const MORE_PLANS = [
     "Forcing hard battle shots when a captive-ball critical hit can spot them.",
     "Letting balls drain early in Dragon Multiball. It ends before the dragon goes down."
   ],
+  tourney: [
+    "Paladin is the safe tournament pick: it makes Dragon Multiball easier.",
+    "Good tournament scores usually clear 200M."
+  ],
   venue: blank(["Pro vs. Premium/LE: the Pro’s Rath sculpt only moves up and down and can be hit directly. Premium/LE adds staged ball capture and a pop-up scoop."]),
   tips: [
     ["multiball", 3, "Dragon Multiball jackpots drop for every ball that drains, so consider using a Shield early to keep balls in play."],
@@ -943,7 +975,7 @@ const MORE_PLANS = [
     ["secret", 2, "The right ramp and left orbit can often be hit by letting the ball rest on the raised shield and flipping from there."],
     ["multiball", 1, "Gelatinous Cube locks: after the first, lock the second at the left eject, shortcut or right orbit, and the third at the left orbit for a 4-ball multiball."]
   ],
-  rules: "Travel between towns, play location modes and dungeon crawls, and build toward dragon fights. Good scores usually clear 200M. The action-button shield can save a straight-down-the-middle drain.",
+  rules: "Travel between towns, play location modes and dungeon crawls, and build toward dragon fights. The action-button shield can save a straight-down-the-middle drain.",
   sources: [["Kineticist: Dungeons & Dragons tutorial", KN("dungeons-and-dragons-tutorial")]]
 },
 {
@@ -963,7 +995,8 @@ const MORE_PLANS = [
     "Hitting a lit radroach target over and over. It adds RAD and lowers your max HP.",
     "On Premium/LE, hitting a Deathclaw limb that’s already crippled. It fires the ball back."
   ],
-  venue: blank(["This game is new (fall 2026, code around 0.8x). The rulesheet is still incomplete, and there’s almost no tournament writing yet, so this plan will change as code updates land."]),
+  tourney: [],
+  venue: blank(["This game is new (fall 2026, code around 0.8x). The rulesheet is still incomplete, and there’s almost no strategy writing yet, so this plan will change as code updates land."]),
   tips: [
     ["skillshot", 3, "Time a full plunge so the ball rolls over the flashing right inlane switch, then shoot the center bottlecap spinner."],
     ["general", 1, "The three white targets on the right award a mini nuke for the Fat Man launcher."]
@@ -988,6 +1021,7 @@ const MORE_PLANS = [
     "Spending action-button charges on low-value shots.",
     "Draining without using Overdrive or the ball save you have left."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: the Pro uses a virtual ball save. Premium/LE has a raising deadpost and an upper-playfield path into Area 51."]),
   tips: [
     ["general", 10, "The left ramp is easy to backhand."],
@@ -1015,6 +1049,7 @@ const MORE_PLANS = [
     "Chasing super jackpots outside of 6X or Loopin’ Supers. They’re usually small.",
     "Taking the PKE Frenzy skill shot when your score is low."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: the rules are the same, but the Premium plays differently: a subway lock, magnet slings, a moving Slimer and a harder right ramp."]),
   tips: [
     ["skillshot", 9, "Pick the left (P) rollover for the skill shot. It’s the most consistent and adds +3x bonus each time."],
@@ -1043,6 +1078,7 @@ const MORE_PLANS = [
     "Letting Sanctuary time out. It starts over from scratch.",
     "Restarting a level-2 mode before the second cycle. It isn’t available yet."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["multiball", 11, "New to the machine? Pick Quill’s Quest before plunging ball one: it starts a 2-ball multiball you can use to learn the shots and collect Hadrons."],
@@ -1071,6 +1107,7 @@ const MORE_PLANS = [
     "Pushing past a completed stage in single-ball play, where there’s no ball save.",
     "Cradling for long. The Rock-It Meter drains quickly."
   ],
+  tourney: [],
   venue: blank(["Launchpad’s copy is the LE, which uses a VUK for Duff and collects patches when the ball drains from the upper playfield."]),
   tips: [
     ["general", 7, "The bra and underwear patch combo doubles your bonus for the rest of the game."],
@@ -1098,6 +1135,10 @@ const MORE_PLANS = [
     "Starting Playfield X before something valuable is ready.",
     "Cashing in a small Power Jackpot just because it’s lit."
   ],
+  tourney: [
+    "The secret super skill shot (soft plunge into the left outlane) is often disabled in events, and with ball save off you just lose the ball.",
+    "About 250M is a strong score."
+  ],
   venue: blank(["Putts N Pints has the Premium: battles start at the scoop, the Mummy lock and Tomb Treasures are at the left ramp, and there’s a Sarcophagus rule."]),
   tips: [
     ["skillshot", 14, "Secret super skill shot: soft-plunge into the left outlane. Many events disable it, and with ball save off you’ll just lose the ball."],
@@ -1106,7 +1147,7 @@ const MORE_PLANS = [
     ["general", 6, "Spell EDDIE on the white arrows to light a mode up the middle. Until EDDIE is spelled, the left spinner changes the flashing mode."],
     ["general", 4, "Aces High is a multiball and worth getting early."]
   ],
-  rules: "Multiballs never stack. Modes can carry into Trooper or Mummy but can’t start during them. Four Level 1 Eddie cards light the Beast fight; 250M is a strong score, and multipliers can push games past a billion.",
+  rules: "Multiballs never stack. Modes can carry into Trooper or Mummy but can’t start during them. Four Level 1 Eddie cards light the Beast fight; multipliers can push games past a billion.",
   sources: [["Kineticist: Iron Maiden tutorial", KN("iron-maiden-pinball-tutorial")], ["Pinball Rulesheets: Iron Maiden", RB("stern/iron-maiden-pinball-rulesheet")]]
 },
 {
@@ -1126,6 +1167,7 @@ const MORE_PLANS = [
     "Expecting SPECTRE countdowns to run during multiball. They don’t stack.",
     "Lighting a super jackpot while using smart missiles. It turns the missiles off."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: Pro locks are virtual. Premium/LE locks are physical and can be stolen by other players."]),
   tips: [
     ["skillshot", 10, "Basic skill shot: plunge and complete the flashing M-I-6 rollover for 250,000."],
@@ -1154,6 +1196,9 @@ const MORE_PLANS = [
     "Missing quickshots. A miss resets their multiplier.",
     "Pond Attack, if you can’t hit the fishing reel reliably."
   ],
+  tourney: [
+    "200–300M is a solid tournament score."
+  ],
   venue: blank(["Pro vs. Premium/LE: Premium/LE starts shark encounters by bashing the boat; the Pro uses the captive ball."]),
   tips: [
     ["general", 5, "A blinking orange center button means the life-ring outlane save is ready. Don’t press it early while picking a Bounty Hunt shark."],
@@ -1162,7 +1207,7 @@ const MORE_PLANS = [
     ["multiball", 3, "Fill the chum bucket, hit the pop-up fin to attach the harpoon, then hit a yellow shot to start Jaws Multiball. Missed the fin? Relight it at the left ramp."],
     ["general", 3, "Premium/LE: the upper-playfield Orca Wheel stops on any switch hit or the action button, so you can time which award you get."]
   ],
-  rules: "Catch Bruce while scouting beaches and evacuating swimmers. All five encounters light the 4th of July mini-wizard, and all three Jaws Multiballs light the final wizard. 200–300M is a solid tournament score.",
+  rules: "Catch Bruce while scouting beaches and evacuating swimmers. All five encounters light the 4th of July mini-wizard, and all three Jaws Multiballs light the final wizard.",
   sources: [["Kineticist: JAWS tutorial", KN("jaws-pinball-tutorial")], ["Pinball Rulesheets: JAWS", RB("stern/jaws-rulesheet")]]
 },
 {
@@ -1182,6 +1227,7 @@ const MORE_PLANS = [
     "Hitting the truck without knowing where you are on the map.",
     "Chasing Nedry on purpose. It takes a lot of 2x target hits."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 7, "T-Rex Events (spell T-REX at the truck) and Control Room modes are valuable. Start them right before a multiball."],
@@ -1210,6 +1256,9 @@ const MORE_PLANS = [
     "Running Cross the Chasm with island lock or other modes stacked on it.",
     "Starting Crash the Gate before three or four scenes have built 80–90M."
   ],
+  tourney: [
+    "Around 100M is average; 300M+ often wins."
+  ],
   venue: blank(["Pro vs. Premium/LE: on the Pro, island arrows light the gong and the Kong lock is virtual. On Premium/LE you hit the gong directly and the lock is physical."]),
   tips: [
     ["general", 4, "Balls coming down the left river path can be ski-jumped consistently from the left flipper over to a cradle on the right."],
@@ -1218,7 +1267,7 @@ const MORE_PLANS = [
     ["multiball", 3, "Complete the drops by the upper-left flipper twice to light King Kong Multiball; the action button raises a block to help you reach them. Locks are at the center ramp."],
     ["skillshot", 3, "If the ball falls back into the shooter lane in single-ball play, you get another try at the plunger skill shot."]
   ],
-  rules: "Hunt Kong across Terror Island, collect map pieces, and head for New York. Around 100M is average; 300M+ often wins. Crash the Gate is the wizard mode after the other five scenes.",
+  rules: "Hunt Kong across Terror Island, collect map pieces, and head for New York. Crash the Gate is the wizard mode after the other five scenes.",
   sources: [["Kineticist: King Kong tutorial", KN("stern-king-kong-tutorial")], ["Pinball Rulesheets: King Kong", RB("stern/king-kong-myth-of-terror-island-rulesheet")]]
 },
 {
@@ -1238,6 +1287,7 @@ const MORE_PLANS = [
     "Black Diamond during multiball. Its one lit shot keeps moving.",
     "Hotter Than Hell in single-ball play. Its targets send the ball toward the right outlane."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium: the Pro’s KISS bank is standups and Love Gun can start at the saucer. The Premium uses drop targets."]),
   tips: [
     ["general", 7, "Deuce ends with roving flashing shots. Time repeated center-ramp shots to finish it."],
@@ -1265,6 +1315,7 @@ const MORE_PLANS = [
     "Chasing bank targets hard in single-ball play.",
     "Going Platinum on a song early. It locks that song out."
   ],
+  tourney: [],
   venue: blank(["Revel has the Pro, which has no Electric Magic Multiball. On the Premium, the side shot is a ramp back to the right flipper."]),
   tips: [
     ["general", 6, "Don’t start Icarus (playfield multiplier) until all four standup sets have some combo value. If any is still 1.0x, wait."],
@@ -1293,6 +1344,7 @@ const MORE_PLANS = [
     "Failing a Mission. It stays locked until This Is The Way.",
     "Cashing out Ambush early instead of going for the restart bonuses."
   ],
+  tourney: [],
   venue: blank(["Revel has the Pro: Rising Phoenix and a one-flipper mini playfield. Premium/LE has Jet Pack and a tilting two-flipper mini playfield."]),
   tips: [
     ["multiball", 18, "Make three Razor Crest shots up the middle before starting a mission at the scoop, then hit the final middle shot to stack Razor Crest Multiball on the mission."],
@@ -1321,6 +1373,7 @@ const MORE_PLANS = [
     "Shots that feed the left inlane/outlane and the slings.",
     "Expecting multiballs to stack. Only Coffin stacks with another one."
   ],
+  tourney: [],
   venue: blank(),
   tips: [],
   rules: "Four multiballs (Electric Chair, Grave Marker, Snake, Coffin) and the Crank It Up rounds lead to End of the Line. Modes carry into multiballs.",
@@ -1340,8 +1393,10 @@ const MORE_PLANS = [
   ],
   avoid: [
     "The center spinner shot when a miss means a drain.",
-    "Starting any multiball with nothing else running.",
-    "Phantom Flip. It misses most shots, and many events turn it off."
+    "Starting any multiball with nothing else running."
+  ],
+  tourney: [
+    "Many events turn Phantom Flip off. Even when it’s on, it misses most shots."
   ],
   venue: blank(["This is the Chicago Gaming remake. Rules match the 1998 Williams game, but the flippers can play differently, so take a feel on ball one."]),
   tips: [
@@ -1371,6 +1426,7 @@ const MORE_PLANS = [
     "Letting the Playfield X timer run out without hitting Kitty.",
     "Cashing super jackpots too early. Hold the Zap button to cancel the collect and keep stacking."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: the Pro has Enlarging Ray; Premium/LE has Grandpa’s Laboratory, a mystery VUK and an extra super skill shot."]),
   tips: [
     ["general", 7, "Hold the zap button to cancel a super jackpot collect. Wait until several are stacked and playfield X is high, ideally 6x."],
@@ -1398,6 +1454,7 @@ const MORE_PLANS = [
     "Hitting Stunt Driver or Cruisin’ shots out of order. You have to redo them.",
     "Replaying a gear’s multiball. It won’t start again."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["skillshot", 3, "Hold the left flipper while plunging for the super skill shot, and hit the strobing GEARS light when it’s centered for +2 gears."],
@@ -1426,7 +1483,10 @@ const MORE_PLANS = [
     "Letting the captive ball send the ball toward an outlane. Nudge if needed.",
     "Getting surprised by the fast town-scoop eject. Be ready for a reflex flip."
   ],
-  venue: blank(["Code is still early (0.8x). Competition mode is the default and starts in the Forest biome. Pro has a Psyduck target at the left orbit; Premium/LE has a scoop there, plus a whirlpool and battlefield magnets."]),
+  tourney: [
+    "The game defaults to competition mode, which starts in the Forest biome every time."
+  ],
+  venue: blank(["Code is still early (0.8x). Pro has a Psyduck target at the left orbit; Premium/LE has a scoop there, plus a whirlpool and battlefield magnets."]),
   tips: [
     ["general", 4, "After filling the discover bar, shoot the Pokédex to scan, finish CATCH on the standups, shoot the Poké Ball to catch, then the scoop to battle."],
     ["general", 3, "Shoot each of the four main shots three times for its mode."],
@@ -1450,8 +1510,10 @@ const MORE_PLANS = [
   ],
   avoid: [
     "Expecting Big Kahuna advances or PULP FICTION letters to count in multiball. Both are single-ball only.",
-    "Counting on ball save. It’s off in competition mode.",
     "Draining every ball during Divine Intervention. It resets your progress."
+  ],
+  tourney: [
+    "Ball save is off in competition mode, so don’t count on it."
   ],
   venue: blank(["Stone Face Tavern has the LE and La Cumbre has the SE. The rulesheet doesn’t list rule differences between them."]),
   tips: [
@@ -1478,6 +1540,7 @@ const MORE_PLANS = [
     "Aiming at the Spider Sense lane with the upper-right flipper down. It only counts when that flipper is up.",
     "Missing Spider Sense awards. They only flash on screen briefly."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 5, "After you complete a mode, your next major shot is tripled for the rest of the ball."],
@@ -1506,6 +1569,7 @@ const MORE_PLANS = [
     "Draining in Galactic mode. It ends with whatever medals you have.",
     "Low-value Level II and III shots that lock you out of better medals."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 6, "Time Warp 9.1 or 9.9 to land during a multiball for double scoring and big jackpots."],
@@ -1534,6 +1598,9 @@ const MORE_PLANS = [
     "Starting Lightsaber Duel without Double Multipliers.",
     "Mashing the action button in TIE Fighter Hurry-Up when it costs you ball control."
   ],
+  tourney: [
+    "In competition mode, planet modes don’t stack."
+  ],
   venue: blank(["Pro vs. Premium/LE: Escape is a virtual ball save on the Pro. The Comic Art Pro (at Putts N Pints) has the same rules as the regular Pro."]),
   tips: [
     ["multiball", 7, "Hit the five red-lit targets to start the TIE Fighter hurry-up. Hit the TIE Fighter, then mash the action button to move on to multiball."],
@@ -1541,7 +1608,7 @@ const MORE_PLANS = [
     ["general", 3, "A good opener: put multipliers on Death Star, Endor and Hoth, then work Endor and Hoth from the left flipper."],
     ["skillshot", 2, "Choose Light Tatooine Missions from the skill shot, or you’ll need three hard scoop shots to light them."]
   ],
-  rules: "Qualify planets, play their modes, and finish final planet multiballs for medals. Planet modes stack except in competition mode. Jedi Multiball is the wizard mode. Rulesheet code: 1.31.",
+  rules: "Qualify planets, play their modes, and finish final planet multiballs for medals. Jedi Multiball is the wizard mode. Rulesheet code: 1.31.",
   sources: [["Pinball Rulesheets: Star Wars (Stern)", RB("stern/star-wars-stern-rulesheet")]]
 },
 {
@@ -1554,12 +1621,15 @@ const MORE_PLANS = [
     "Play the yellow (easy) Rebel missions first. Yoda, Luke, Droids and Han are good picks. Spell FORCE to light missions.",
     "Play Rancor, the best Jabba event, by following its fixed shot order.",
     "After 15 Death Star jackpots, shoot the Death Star for the super jackpot.",
-    "Use bumper-earned shot multipliers during multiball. 300M+ often wins."
+    "Use bumper-earned shot multipliers during multiball."
   ],
   avoid: [
     "Death Star shots after a short plunge. They’re high drain risk.",
     "Vader scoop feeds that start modes you don’t want.",
     "Luke’s Gift. It’s the weakest award."
+  ],
+  tourney: [
+    "300M+ often wins a tournament game."
   ],
   venue: blank(["Pro vs. Premium/LE: the Pro center ramp is a fixed jump ramp. Premium/LE has a moving ramp, mynock multiball and a magnetic JEDI ball save."]),
   tips: [
@@ -1586,6 +1656,7 @@ const MORE_PLANS = [
     "Letting the spinning pizza disc throw balls around.",
     "Starting the Pizza Eating Contest mash while the ball is loose."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 8, "Donatello is a good beginner pick: multiball starts with a single shot, and you get a swing at the skill shot on launch."],
@@ -1614,6 +1685,7 @@ const MORE_PLANS = [
     "Taking Bonus X before Start Illusion or Advance Clock.",
     "Chasing small Trap Door awards like Trunk Magic."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 7, "Ball one: pick the levitating woman, make the trunk skill shot for Start Illusion, and loop the center ramp for points and lock progress."],
@@ -1642,6 +1714,7 @@ const MORE_PLANS = [
     "Missed side-ramp shots bouncing between bumper and slings. Nudge the ball up.",
     "Trying to add Playfield X after multiball starts. Start it first."
   ],
+  tourney: [],
   venue: blank(["New game (2026, launched on 0.85 code). Pro vs. Premium/LE: on Premium/LE, Megatron’s cannon fires the ball to the left ramp; on the Pro it’s a lock that feeds the upper flipper."]),
   tips: [
     ["multiball", 8, "Optimus, lock, Optimus, lock, Optimus, mode shot, lock: that order carries your mode into the main multiball."],
@@ -1668,6 +1741,7 @@ const MORE_PLANS = [
     "The hitchhiker loop, which also feeds the bumpers.",
     "Tilting while bonus is pending. Mania and mode points are paid in bonus."
   ],
+  tourney: [],
   venue: blank(["There’s no ball save, so every drain counts."]),
   tips: [
     ["secret", 15, "If bonus earns a replay or extra ball, press both flippers as the first reel stops for an extra 5M."],
@@ -1696,6 +1770,7 @@ const MORE_PLANS = [
     "Failing battles. It resets the mini-mode path and turns off that square’s perks.",
     "Draining in the first phase of Toxin Team-Up. It ends the mode."
   ],
+  tourney: [],
   venue: blank(["Pro vs. Premium/LE: on the Pro, Doppelganger is shot at the left loop and can be combo-multiplied. Premium/LE uses a flyaway target bank."]),
   tips: [
     ["general", 8, "Against Grendel the flippers reverse. Cross your arms so each hand stays on the side it’s controlling."],
@@ -1723,6 +1798,7 @@ const MORE_PLANS = [
     "Finishing CDC early. You lose its scoring.",
     "Chasing Bit or Woodbury. They pay very little."
   ],
+  tourney: [],
   venue: blank(["This plan and the PinTips shown are based on the original 2014 game (code 1.60). We couldn’t find a rulesheet or PinTips for the 2025 Remastered code, so some values may differ."]),
   tips: [
     ["general", 13, "Complete a set of drops to light the major shots for mode start; each shot is a different mode."],
@@ -1750,6 +1826,7 @@ const MORE_PLANS = [
     "Hiring Deadpool for a villain you can’t make progress on.",
     "Starting Hellfire or Brotherhood multiball early if you’re going for Dark Phoenix."
   ],
+  tourney: [],
   venue: blank(["This is the 2012 Stern X-Men, not The Uncanny X-Men (2024). Pro vs. LE: on the Pro, Nightcrawler uses shifting red-arrow shots instead of the LE’s pop-up targets."]),
   tips: [
     ["general", 7, "Shots chained into unique X-Men combos count toward Deadpool; after 10 he activates and awards shots against villains."],
@@ -1778,6 +1855,7 @@ const MORE_PLANS = [
     "Trying to lock anywhere but the Vault after the second multiball.",
     "Draining in Tour the Mansion. The run ends immediately."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 11, "The Electric Chair starts modes, and either ramp lights it. Modes stack. If the chair is unlit, the right inlane lights it briefly."],
@@ -1806,6 +1884,7 @@ const MORE_PLANS = [
     "Ignoring a lit Monster Fish or Rock the Boat during multiball.",
     "Skipping a lit Fish Finder mystery."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 9, "Alternate the center ramps. Six light Monster Fish, a left-orbit hurry-up that grows each time."],
@@ -1833,6 +1912,7 @@ const MORE_PLANS = [
     "Hitting captive balls during Go to the Movies. They don’t advance M-Ball then.",
     "Using Smart Missile carelessly. You get it once per game."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["multiball", 5, "Smart Missile starts multiball if it’s lit. If you never lit it yourself, multiball lights on ball three."],
@@ -1860,6 +1940,7 @@ const MORE_PLANS = [
     "Running Secret Stash alongside Alien Invasion. They don’t stack well.",
     "Finishing modes just to extend Alien Invasion’s timer."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 12, "The garage leads to the upper playfield, the horseshoe starts modes, and the couch locks balls toward multiball."],
@@ -1888,6 +1969,7 @@ const MORE_PLANS = [
     "Tilting. It costs your bonus multiplier, which climbs as high as 10x with rank.",
     "Staying in the center lane during Shuttle splits. You crash."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["general", 6, "Repeat the Picard Maneuver (left orbit to side ramp) back to back for big points and Warp progress."],
@@ -1916,6 +1998,7 @@ const MORE_PLANS = [
     "Letting FALCON letters time out. They go faster after the first Falcon Multiball.",
     "Trying to time the plunge. The launch gives a flat 400K."
   ],
+  tourney: [],
   venue: blank(),
   tips: [
     ["multiball", 1, "Hit the blinking drop target at the start of the game to light multiball right away."],
@@ -1942,6 +2025,7 @@ const MORE_PLANS = [
     "Letting a relocked ball’s 15 seconds run out before you collect the multiplied jackpot.",
     "Collecting the Loop Jackpot early or draining with it lit. It resets to zero either way."
   ],
+  tourney: [],
   venue: blank(["Jackpot values vary by code revision: some versions pay 20/30/40M jackpots and 100/125/150M supers. Watch the display on ball one."]),
   tips: [
     ["general", 8, "The left saucer starts modes. Mode points come in bonus, so don’t tilt."],
@@ -1969,6 +2053,7 @@ const MORE_PLANS = [
     "Hitting an Advance target on a side with its out-lane post up while the saucer’s drop target is down. It lowers that post.",
     "Playing for bonus. There isn’t any, so every point is scored live."
   ],
+  tourney: [],
   venue: blank(["This is the 1972 electromechanical game: 3-inch flippers, no inlanes, no end-of-ball bonus. Scores are in the thousands, so small differences decide matches."]),
   tips: [],
   rules: "Top lanes light bumpers and, once all three are lit, an extra ball at the center saucer. The 1-2-3-4-5 buttons build the saucer value. Standups and rebounds raise posts that block the out lanes and center drain.",
@@ -1991,7 +2076,10 @@ const MORE_PLANS = [
     "The right orbit (Iron Man) on a copy where it rattles back. It’s a hard shot.",
     "Assuming the slings will fire. They can be inconsistent on this game, so play the bottom of the table conservatively."
   ],
-  venue: blank(["No full community rulesheet exists for this game. The plan combines Stern’s instruction card with 2013 player advice from early code, so exact shot counts may differ on later code. On early code, 100M+ was a strong score."]),
+  tourney: [
+    "On early code, 100M+ was a strong score."
+  ],
+  venue: blank(["No full community rulesheet exists for this game. The plan combines Stern’s instruction card with 2013 player advice from early code, so exact shot counts may differ on later code."]),
   tips: [
     ["multiball", 14, "Complete the Hulk drop targets three times to light Hulk Multiball (the standups behind Hulk spot targets), then start it at the Hulk saucer."],
     ["general", 4, "Soft-plunge to get the K in LOKI, let the ball drain, and repeat for another letter. Then only two left-orbit shots are needed to light the lock."],
@@ -2110,7 +2198,7 @@ function fromLive(live, used, venue) {
       id: slug(name), code: codeFor(name), name: name, sort: name.replace(/^the\s+/i, ""),
       mfr: live.manufacturer || "", year: live.year || "", variant: variant,
       group: groupFor(live.manufacturer, live.year), opdb: group,
-      thesis: "No tournament plan written yet. Start with a rulesheet and its PinTips.",
+      thesis: "No plan written yet. Start with a rulesheet and its PinTips.",
       plan: [], avoid: [], tips: [], rules: "", sources: [], uncurated: true,
       venue: { notes: notes, scores: scores, copy: [], tied: [] }
     };
@@ -2257,12 +2345,12 @@ function renderDetail(m) {
     : "";
   const planSec = m.plan.length
     ? `<section class="sec primary">
-        <div class="sec-h mono"><span>Tournament plan</span><span>In priority order</span></div>
+        <div class="sec-h mono"><span>Game plan</span><span>In priority order</span></div>
         <div class="sec-b"><ol class="plan">${m.plan.map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ol></div>
       </section>`
     : `<section class="sec primary">
-        <div class="sec-h mono"><span>Tournament plan</span><span>Not written yet</span></div>
-        <div class="sec-b"><p class="rules">No tournament plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
+        <div class="sec-h mono"><span>Game plan</span><span>Not written yet</span></div>
+        <div class="sec-b"><p class="rules">No plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
       </section>`;
   const avoidSec = m.avoid.length
     ? `<section class="sec">
@@ -2285,6 +2373,15 @@ function renderDetail(m) {
         <div class="sec-h mono"><span>PinTips</span></div>
         <div class="sec-b"><p class="rules"><a href="${PT(m.opdb)}" target="_blank" rel="noopener">Open the community tips for this machine on Match Play ↗</a></p></div>
       </section>` : "");
+  const tourneyLines = (m.tourney && m.tourney.length) ? m.tourney : null;
+  const tourneySec = m.uncurated ? "" : `<section class="sec">
+        <div class="sec-h mono"><span>In a tournament</span><span class="dim">${tourneyLines ? "This game" : "The basics"}</span></div>
+        <div class="sec-b"><ul class="plain copy">${(tourneyLines || [
+          "You only need to beat the other players in your group. On your last ball, know the number you need and take the lowest-risk route to it.",
+          "Use ball one to learn the copy: flipper strength, outlane posts, which shots come back safely.",
+          "Call the tournament director for a stuck ball, a flipper that won’t hold or a shot that doesn’t register, before you play through it."
+        ]).map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>
+      </section>`;
   const extra = m.uncurated
     ? [["Pinball Rulesheets: master list", "https://pinballrulesheets.com/rulesheet-master-list"], ["Pinball Primer: game list", "https://pinballprimer.github.io/gamelist.html"]]
     : [];
@@ -2307,13 +2404,13 @@ function renderDetail(m) {
     </header>
     <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
     <div class="d-grid">
-      <div class="col">${planSec}${avoidSec}${rulesSec}</div>
+      <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
         <section class="sec">
           <div class="sec-h mono"><span>At ${esc(VENUE.name)}</span><span class="dim">Pinball Map</span></div>
           <div class="sec-b">${notes}${copy}${scores}</div>
         </section>
-        ${tipsSec}
+        ${m.tips.length ? "" : tipsSec}${rulesSec}
         <section class="sec">
           <div class="sec-h mono"><span>Sources</span></div>
           <div class="sec-b"><ul class="srcs">${srcs}</ul></div>
