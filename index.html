@@ -357,6 +357,16 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .eyebrow { color: var(--lime); }
 .venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--lime); }
 
+/* Easter egg: the display floats up and away, then drifts back */
+.dmd-frame.abduct { animation: abduct 6s ease-in-out both; }
+@keyframes abduct {
+  0% { transform: none; opacity: 1; }
+  12% { transform: translateY(6px) rotate(-1deg); }
+  45% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
+  60% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .dmd-frame.abduct { animation: none; } }
 /* the DMD in a cream rim with a lime outer ring */
 .dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
 .dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
@@ -420,12 +430,12 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
+        <div class="mono eyebrow">[ Recovered document · Roswell, NM · 1947 ]</div>
         <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
         <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
       </div>
       <div class="dmd-frame" aria-hidden="true">
-        <div class="dmd-title mono"><span>■ DMD 128×32</span><span>Albuquerque, NM</span></div>
+        <div class="dmd-title mono"><span>■ Onboard display</span><span>Albuquerque, NM</span></div>
         <div class="dmd-screen"><canvas id="dmd-land" width="512" height="128"></canvas></div>
       </div>
     </div>
@@ -440,14 +450,14 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
+        <div class="mono eyebrow">[ Recovered document · Roswell, NM · 1947 ]</div>
         <div class="venue-title" id="venue-title">Sister</div>
         <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
         <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
       <div class="dmd-frame" aria-hidden="true">
-        <div class="dmd-title mono"><span>■ DMD 128×32</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
+        <div class="dmd-title mono"><span>■ Onboard display</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
         <div class="dmd-screen"><canvas id="dmd" width="512" height="128"></canvas></div>
       </div>
     </div>
@@ -467,7 +477,7 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
         <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
         <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
         <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
-        <li>New to the lingo? <a href="#glossary">Pinball terms explained</a>.</li>
+        <li>New to the lingo? <a href="#glossary">Earthling terms</a> explains it.</li>
       </ul>
     </details>
 
@@ -494,7 +504,8 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 <footer>
   <div class="wrap">
     <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
-    <p><a href="#glossary">Pinball terms explained</a>: what a VUK, a cradle or a playfield multiplier is.</p>
+    <p><a href="#glossary">Earthling terms</a>: what a VUK, a cradle or a playfield multiplier is.</p>
+    <p>Recovered near Roswell, NM. Translated for earthlings by <b>SAPO Studios</b>.</p>
     <p>Machine reports come from PinPlan players, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
   </div>
 </footer>
@@ -2478,7 +2489,7 @@ function renderGrid() {
   const list = LINEUP.filter(fn).filter(m => !q || (m.name + " " + m.code + " " + m.mfr).toLowerCase().includes(q));
   const grid = document.getElementById("grid");
   if (!list.length) {
-    grid.innerHTML = `<div class="empty mono">No machines match “${esc(state.q)}”. Try a code like AFM or MM.</div>`;
+    grid.innerHTML = `<div class="empty mono">Nothing in the wreckage matches “${esc(state.q)}”. Try a code like AFM or MM.</div>`;
     return;
   }
   grid.innerHTML = list.map(m => {
@@ -2582,7 +2593,7 @@ function renderDetail(m) {
       </section>`
     : `<section class="sec primary">
         <div class="sec-h mono"><span>Game plan</span><span>Not written yet</span></div>
-        <div class="sec-b"><p class="rules nogl">No plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
+        <div class="sec-b"><p class="rules nogl">This page was damaged in the crash, so there’s no plan for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
       </section>`;
   const avoidSec = m.avoid.length
     ? `<section class="sec">
@@ -2624,7 +2635,7 @@ function renderDetail(m) {
   document.getElementById("detail-body").innerHTML = `
     <nav class="crumbs mono" aria-label="Machine navigation">
       <a href="#${VENUE.slug}">← ${esc(VENUE.name)}</a>
-      <span class="dim">${onFloor ? (i + 1) + " / " + n : "Off the floor"}</span>
+      <span class="dim">${onFloor ? "File " + String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0") : "File not on this floor"}</span>
     </nav>
     ${banner}
     <header class="d-head">
@@ -2634,7 +2645,7 @@ function renderDetail(m) {
         <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
-    <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
+    <p class="thesis"><span class="tag">${m.uncurated ? "Damaged in the crash · No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
     <div class="d-grid">
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
@@ -2755,7 +2766,7 @@ function renderGlossary() {
   const back = glBack ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← PinPlan</a>`;
   document.getElementById("glossary-body").innerHTML = `
     <nav class="crumbs mono">${back}<span class="dim">${GLOSSARY.length} terms</span></nav>
-    <h2>Pinball terms</h2>
+    <h2>Earthling terms</h2>
     <p class="lede">The words that show up in PinPlan's game plans, in plain language. On any plan page, tap a dotted word to see its meaning without leaving the page.</p>
     ${groups.map(gr => `<section class="gl-group">
       <div class="sec-label mono"><span>${esc(gr)}</span></div>
@@ -2811,7 +2822,7 @@ function route(soft) {
     renderGlossary(); gloss.hidden = false;
     const t = glJump && document.getElementById("gl-" + glJump); glJump = "";
     if (t) { t.scrollIntoView(); t.classList.add("hl"); } else window.scrollTo(0, 0);
-    document.title = "Pinball terms · PinPlan Albuquerque";
+    document.title = "Earthling terms · PinPlan Albuquerque";
     return;
   }
   if (!gloss.hidden) { gloss.hidden = true; }
@@ -2942,7 +2953,7 @@ function startDmd(cv, content, refreshName) {
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
 
   function setup() {
-    const c = content();
+    const c = (window.dmdOverride && Date.now() < window.dmdOverride.until) ? window.dmdOverride : content();
     name = c.name.toUpperCase();
     nameW = width(name, BIG, BIG_GAP);
     scroll = nameW > COLS;
@@ -3007,13 +3018,33 @@ function startDmd(cv, content, refreshName) {
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
   }
 }
+/* Easter egg: tap a display five times quickly and it gets beamed up. */
+document.querySelectorAll(".dmd-frame").forEach(frame => {
+  let taps = [];
+  frame.addEventListener("click", () => {
+    const now = Date.now();
+    taps = taps.filter(t => now - t < 1500).concat(now);
+    if (taps.length < 5 || frame.classList.contains("abduct")) return;
+    taps = [];
+    window.dmdOverride = { name: "BEAM ME UP", lines: ["TAKE ME TO YOUR", "WIZARD MODE"], until: now + 6000 };
+    if (window.dmdRefresh) window.dmdRefresh();
+    if (window.dmdLandRefresh) window.dmdLandRefresh();
+    frame.classList.add("abduct");
+    setTimeout(() => {
+      frame.classList.remove("abduct");
+      window.dmdOverride = null;
+      if (window.dmdRefresh) window.dmdRefresh();
+      if (window.dmdLandRefresh) window.dmdLandRefresh();
+    }, 6000);
+  });
+});
 startDmd(document.getElementById("dmd"), () => {
   const n = LINEUP.length;
   return { name: VENUE.dmd, lines: [n + (n === 1 ? " PIN" : " PINS") + " ON THE FLOOR", "WALK UP WITH A PLAN"] };
 }, "dmdRefresh");
 startDmd(document.getElementById("dmd-land"), () => {
   const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
-  return { name: "WELCOME", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW"] };
+  return { name: "WELCOME", lines: ["SIGNAL RECOVERED", "TRANSLATING...", "TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW"] };
 }, "dmdLandRefresh");
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
