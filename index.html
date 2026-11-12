@@ -378,7 +378,7 @@ h1 .fx { white-space: nowrap; margin-left: 0.06em; }
 .card .code { fill: var(--lime); filter: drop-shadow(0 0 6px rgba(201, 220, 139, 0.3)); }
 .card:hover::before, .card:hover::after { border-color: var(--lime); }
 .d-head { border-color: var(--line-2); }
-.d-head h2 { font-size: clamp(30px, 4.8vw, 56px); line-height: 1.4; margin: 6px 0 12px; }
+.d-head h2 { font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; color: var(--cream); font-size: clamp(28px, 4.4vw, 52px); line-height: 1.4; margin: 6px 0 12px; }
 .d-head .code { fill: var(--lime); }
 .thesis { font-family: var(--f-body); font-style: normal; font-weight: 500; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.3; color: var(--fg-hi); max-width: 38ch; }
 .thesis .tag { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.24em; color: var(--lime); }
@@ -2615,7 +2615,7 @@ function renderDetail(m) {
       <div class="d-title-bar mono"><span>[ ${esc(m.name)} ]</span><span>${esc(meta(m))}</span></div>
       <div class="d-head-body">
         ${dotSvg(m.code)}
-        <div><h2 class="fx-wrap">${fx(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
+        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
     <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
