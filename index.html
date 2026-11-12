@@ -2748,7 +2748,7 @@ function renderVenue() {
   }
   sel.value = VENUE.slug;
   document.getElementById("venue-title").textContent = VENUE.name;
-  document.getElementById("dmd-venue").textContent = VENUE.name;
+  document.getElementById("dmd-venue").textContent = VENUE.dmd;
   document.getElementById("lineup-status").textContent = lineupStatus();
   const pm = document.getElementById("venue-pm");
   pm.href = VENUE.url;
@@ -2771,71 +2771,118 @@ function refreshAll(soft) {
   const cv = document.getElementById("dmd");
   const ctx = cv.getContext("2d");
   const COLS = 128, ROWS = 32;
-  const off = document.createElement("canvas");
-  off.width = COLS; off.height = ROWS;
-  const octx = off.getContext("2d", { willReadFrequently: true });
-  const makeMsg = () => VENUE.dmd + " · " + LINEUP.length + (LINEUP.length === 1 ? " PIN" : " PINS") + " · PLAN FIRST · ";
-  let MSG = makeMsg();
+  /* 5x7 dot font, drawn dot for dot so letters stay crisp at any size. Narrow glyphs keep their own width. */
+  const F = {
+    A:"01110 10001 10001 11111 10001 10001 10001", B:"11110 10001 10001 11110 10001 10001 11110",
+    C:"01110 10001 10000 10000 10000 10001 01110", D:"11110 10001 10001 10001 10001 10001 11110",
+    E:"11111 10000 10000 11110 10000 10000 11111", F:"11111 10000 10000 11110 10000 10000 10000",
+    G:"01110 10001 10000 10111 10001 10001 01111", H:"10001 10001 10001 11111 10001 10001 10001",
+    I:"111 010 010 010 010 010 111", J:"00111 00010 00010 00010 00010 10010 01100",
+    K:"10001 10010 10100 11000 10100 10010 10001", L:"10000 10000 10000 10000 10000 10000 11111",
+    M:"10001 11011 10101 10101 10001 10001 10001", N:"10001 10001 11001 10101 10011 10001 10001",
+    O:"01110 10001 10001 10001 10001 10001 01110", P:"11110 10001 10001 11110 10000 10000 10000",
+    Q:"01110 10001 10001 10001 10101 10010 01101", R:"11110 10001 10001 11110 10100 10010 10001",
+    S:"01111 10000 10000 01110 00001 00001 11110", T:"11111 00100 00100 00100 00100 00100 00100",
+    U:"10001 10001 10001 10001 10001 10001 01110", V:"10001 10001 10001 10001 10001 01010 00100",
+    W:"10001 10001 10001 10101 10101 10101 01010", X:"10001 10001 01010 00100 01010 10001 10001",
+    Y:"10001 10001 01010 00100 00100 00100 00100", Z:"11111 00001 00010 00100 01000 10000 11111",
+    0:"01110 10001 10011 10101 11001 10001 01110", 1:"010 110 010 010 010 010 111",
+    2:"01110 10001 00001 00010 00100 01000 11111", 3:"11111 00010 00100 00010 00001 10001 01110",
+    4:"00010 00110 01010 10010 11111 00010 00010", 5:"11111 10000 11110 00001 00001 10001 01110",
+    6:"00110 01000 10000 11110 10001 10001 01110", 7:"11111 00001 00010 00100 01000 01000 01000",
+    8:"01110 10001 10001 01110 10001 10001 01110", 9:"01110 10001 10001 01111 00001 00010 01100",
+    " ":"00 00 00 00 00 00 00", "-":"000 000 000 111 000 000 000", "·":"0 0 0 1 0 0 0",
+    ".":"0 0 0 0 0 0 1", "'":"1 1 0 0 0 0 0", "!":"1 1 1 1 1 0 1", ":":"0 0 1 0 1 0 0",
+    "&":"01100 10010 10100 01000 10101 10010 01101", "?":"01110 10001 00001 00010 00100 00000 00100",
+    "/":"00001 00010 00010 00100 01000 01000 10000"
+  };
+  const glyph = ch => (F[ch] || F[" "]).split(" ");
+  /* Width in dots of text drawn at scale s with a gap of g dots between letters. */
+  const width = (t, s, g) => [...t].reduce((w, ch, i) => w + glyph(ch)[0].length * s + (i ? g : 0), 0);
+  function draw(grid, t, x0, y0, s, g) {
+    let x = x0;
+    for (const ch of t) {
+      const rows = glyph(ch), w = rows[0].length;
+      for (let r = 0; r < 7; r++) for (let c = 0; c < w; c++) {
+        if (rows[r][c] !== "1") continue;
+        for (let dy = 0; dy < s; dy++) for (let dx = 0; dx < s; dx++) {
+          const X = x + c * s + dx, Y = y0 + r * s + dy;
+          if (X >= 0 && X < COLS && Y >= 0 && Y < ROWS) grid[Y * COLS + X] = 1;
+        }
+      }
+      x += w * s + g;
+    }
+  }
+
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let x = 0, textW = 0, raf = 0, last = 0, visible = true;
   const css = getComputedStyle(document.documentElement);
   const ON = css.getPropertyValue("--dmd").trim() || "#ff6b1f";
   const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
+  const BIG = 2, BIG_GAP = 1, BIG_Y = 2, SMALL_Y = 21, GAP_TEXT = "   ";
+  let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
 
+  function setup() {
+    name = VENUE.dmd.toUpperCase();
+    nameW = width(name, BIG, BIG_GAP);
+    scroll = nameW > COLS;
+    if (scroll && reduce) {   // no marquee: show as many whole words as fit
+      const words = name.split(" ");
+      while (words.length > 1 && width(words.join(" "), BIG, BIG_GAP) > COLS) words.pop();
+      name = words.join(" "); nameW = width(name, BIG, BIG_GAP); scroll = nameW > COLS;
+    }
+    const n = LINEUP.length;
+    lines = [n + (n === 1 ? " PIN" : " PINS") + " ON THE FLOOR", "WALK UP WITH A PLAN"].filter(t => width(t, 1, 1) <= COLS);
+    x = 0; line = 0; lineAt = performance.now();
+  }
   function size() {
     const r = cv.getBoundingClientRect();
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     cv.width = Math.max(256, Math.round(r.width * dpr));
     cv.height = Math.round(cv.width / 4);
   }
-  function setFont() {
-    octx.font = "600 23px 'IBM Plex Mono', ui-monospace, monospace";
-    octx.textBaseline = "middle";
-    textW = octx.measureText(MSG).width;
-  }
-  function frame(staticWord) {
-    octx.clearRect(0, 0, COLS, ROWS);
-    octx.fillStyle = "#fff";
-    if (staticWord) {
-      octx.textAlign = "center";
-      octx.fillText(VENUE.dmd.length <= 8 ? VENUE.dmd : "ABQ PINS", COLS / 2, ROWS / 2 + 1);
+  function frame() {
+    const grid = new Uint8Array(COLS * ROWS);
+    if (scroll) {
+      const loopW = width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP;
+      draw(grid, name + GAP_TEXT, -x, BIG_Y, BIG, BIG_GAP);
+      draw(grid, name + GAP_TEXT, -x + loopW, BIG_Y, BIG, BIG_GAP);
     } else {
-      octx.textAlign = "left";
-      octx.fillText(MSG, -x, ROWS / 2 + 1);
-      octx.fillText(MSG, -x + textW, ROWS / 2 + 1);
+      draw(grid, name, Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
     }
-    const data = octx.getImageData(0, 0, COLS, ROWS).data;
-    const cw = cv.width / COLS, rad = cw * 0.36;
+    const t = lines[line] || "";
+    draw(grid, t, Math.floor((COLS - width(t, 1, 1)) / 2), SMALL_Y, 1, 1);
+    const cw = cv.width / COLS, rad = cw * 0.38;
     ctx.fillStyle = "#050506";
     ctx.fillRect(0, 0, cv.width, cv.height);
-    for (let r = 0; r < ROWS; r++) {
-      for (let c = 0; c < COLS; c++) {
-        const lit = data[(r * COLS + c) * 4 + 3] > 110;
-        ctx.fillStyle = lit ? ON : OFF;
-        ctx.beginPath();
-        ctx.arc(c * cw + cw / 2, r * cw + cw / 2, rad, 0, Math.PI * 2);
-        ctx.fill();
+    for (const on of [0, 1]) {   // batch dots by color: one path per color
+      ctx.fillStyle = on ? ON : OFF;
+      ctx.beginPath();
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        if (grid[r * COLS + c] !== on) continue;
+        const cx = c * cw + cw / 2, cy = r * cw + cw / 2;
+        ctx.moveTo(cx + rad, cy); ctx.arc(cx, cy, rad, 0, Math.PI * 2);
       }
+      ctx.fill();
     }
   }
   function loop(t) {
     raf = requestAnimationFrame(loop);
-    if (!visible || t - last < 55) return;
+    if (!visible || t - last < 45) return;
     last = t;
-    x = (x + 1) % Math.max(1, Math.round(textW));
-    frame(false);
+    let changed = false;
+    if (scroll) { x = (x + 1) % (width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP); changed = true; }
+    if (lines.length > 1 && t - lineAt > 3500) { line = (line + 1) % lines.length; lineAt = t; changed = true; }
+    if (changed) frame();
   }
   function start() {
-    size(); setFont();
-    if (reduce) { frame(true); return; }
-    frame(false);
+    size(); setup(); frame();
     cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(loop);
+    if (!reduce) raf = requestAnimationFrame(loop);
   }
   start();
-  window.dmdRefresh = () => { MSG = makeMsg(); setFont(); x = 0; frame(reduce); };
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
-  window.addEventListener("resize", () => { size(); frame(reduce); });
+  window.dmdRefresh = () => { setup(); frame(); };
+  if ("ResizeObserver" in window) new ResizeObserver(() => { size(); frame(); }).observe(cv);
+  else window.addEventListener("resize", () => { size(); frame(); });
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
   }
