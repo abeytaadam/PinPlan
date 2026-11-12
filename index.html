@@ -2756,19 +2756,8 @@ function renderGlossary() {
 /* Poster lettering. fx() wraps text so CSS can stack the cream outline, dark gap and lime line behind it. */
 const fx = t => `<span class="fx" data-text="${esc(t)}"><span class="fx-t">${esc(t)}</span></span>`;
 function buildArch(el) {
-  const words = el.dataset.arch.split(" ");
-  const letters = words.join(" ").length - (words.length - 1);
-  let i = 0, html = "";
-  words.forEach((w, wi) => {
-    if (wi) html += '<span class="gap"></span>';
-    for (const ch of w) {
-      const t = letters > 1 ? (i / (letters - 1)) * 2 - 1 : 0;   // -1 .. 1 across the word
-      const rot = t * 9, lift = (1 - t * t) * 0.28;               // fan out and rise in the middle
-      html += `<span class="fx" data-text="${esc(ch)}" style="transform: translateY(${-lift}em) rotate(${rot}deg)"><span class="fx-t">${esc(ch)}</span></span>`;
-      i++;
-    }
-  });
-  el.innerHTML = `<span class="sr">${esc(el.textContent)}</span><span class="arch-in" aria-hidden="true">${html}</span>`;
+  const text = el.textContent.trim();
+  el.innerHTML = `<span class="sr">${esc(text)}</span><span class="arch-in" aria-hidden="true">${fx(text)}</span>`;
   el.classList.add("fx-wrap");
 }
 document.querySelectorAll("h1 .arch").forEach(buildArch);
