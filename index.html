@@ -9,10 +9,10 @@
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="icons/site.webmanifest">
-<meta name="theme-color" content="#08090c">
+<meta name="theme-color" content="#F8E7CB">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400..600&family=Caveat:wght@500;600&display=swap">
 <style>
 /* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
 :root {
@@ -306,9 +306,113 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
+
+/* ================= Southwest theme =================
+   Sun-bleached paper, chile red, ochre, terracotta and juniper green.
+   Borders are drawn by ::after overlays run through the #rough SVG filter,
+   so lines look hand-drawn while text stays sharp. */
+:root {
+  color-scheme: light;
+  --bg: #F8E7CB;
+  --bg-2: #F3DCB4;
+  --panel: #FBF0DC;
+  --line: rgba(50, 58, 39, 0.26);
+  --line-2: rgba(50, 58, 39, 0.62);
+  --fg: #4a4c39;
+  --fg-hi: #323A27;
+  --fg-dim: #7d7558;
+  --dmd: #CD3529;
+  --dmd-soft: rgba(205, 53, 41, 0.08);
+  --dmd-on: #E2B843;
+  --dmd-off: #3a4130;
+  --dmd-screen: #262c1d;
+  --warn: #a8790f;
+  --warn-soft: rgba(226, 184, 67, 0.22);
+  --ochre: #E2B843;
+  --terra: #D99886;
+  --juniper: #323A27;
+  --cat-multiball: #3f6b4f;
+  --cat-skillshot: #a8790f;
+  --cat-secret: #b5523f;
+  --cat-general: #6f6a50;
+  --cat-wizard: #7b5287;
+  --f-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --f-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+}
+body {
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.18 0 0 0 0 0.1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.mono { font-weight: 500; }
+h1, .d-head h2, .card h3, .pager .nm, .gl-page h2, #gl-pop .t { font-variation-settings: "SOFT" 100, "WONK" 1; }
+h1 { font-weight: 400; letter-spacing: -0.03em; }
+h1 em { color: var(--dmd); }
+.brand-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--ochre); box-shadow: inset 0 0 0 1.5px var(--juniper); }
+
+/* hand-drawn outlines */
+.card, .sec, .d-head, details.basics, .venue, details.rep-form, .pager, .resume, .banner, .full-tog { position: relative; border-color: transparent !important; }
+.card::before { content: none; }
+.card::after, .sec::after, .d-head::after, details.basics::after, .venue::after, details.rep-form::after, .pager::after, .resume::after, .banner::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  border: 1.6px solid var(--line-2); border-radius: 4px; filter: url(#rough);
+  width: auto; height: auto;
+}
+.banner::after { border-style: dashed; }
+.sec.primary::after, details.rep-form::after, .resume::after { border-color: var(--dmd); }
+.grid { border: 0; gap: 14px; }
+.card { border: 0; background: var(--panel); border-radius: 4px; }
+.card:hover { background: #FFF6E6; }
+.card:hover::after { border-color: var(--dmd); }
+.code { fill: var(--dmd); filter: none; }
+.card .line { color: var(--fg); }
+.flag { border-radius: 999px; border-color: var(--line-2); color: var(--fg); }
+.flag.new { background: var(--warn-soft); border-color: var(--ochre); color: var(--fg-hi); }
+
+.venue { background: transparent; gap: 0; }
+.venue > div { background: transparent; }
+.venue > div + div { border-left: 1px dashed var(--line); }
+@media (max-width: 640px) { .venue > div + div { border-left: 0; border-top: 1px dashed var(--line); } }
+
+.sec-h { border-bottom: 1px dashed var(--line-2); }
+.sec.primary .sec-h { border-bottom-color: color-mix(in srgb, var(--dmd) 50%, transparent); }
+.d-head { background: var(--panel); }
+.d-title-bar { border-bottom: 1px dashed var(--line-2); }
+.pager a + a { border-left: 1px dashed var(--line-2); }
+
+/* the "one thing" reads like a note in the margin */
+.thesis .tag { font-family: var(--f-hand); font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--dmd); margin-bottom: 2px; transform: rotate(-1.5deg); transform-origin: left; }
+.thesis { color: var(--fg-hi); }
+
+/* hero: sketch of the Sandias across the bottom */
+.hero { padding-bottom: clamp(130px, 18vw, 190px); background: url("art/sandias.svg") no-repeat center bottom 6px / max(100%, 820px) auto; }
+@media (max-width: 700px) { .hero { background-position: 80% bottom 6px; } }
+.eyebrow { color: var(--dmd); }
+.venue-title { border-left-color: var(--ochre); border-left-width: 3px; }
+
+/* DMD: dark juniper glass, ochre dots */
+.dmd-frame { background: var(--dmd-screen); border: 0; border-radius: 6px; box-shadow: 4px 5px 0 var(--terra); }
+.dmd-title { color: #c9bf9c; border-bottom-color: rgba(248, 231, 203, 0.18); }
+
+/* controls */
+.venue-pick select, .search input { background-color: var(--panel); border-color: var(--line-2); border-radius: 4px; }
+.chip { border-radius: 999px; border-color: var(--line-2); }
+.chip[aria-pressed="true"] { background: var(--dmd); border-color: var(--dmd); color: #FBF0DC; }
+.rep-send { background: var(--dmd); color: #FBF0DC; border-radius: 4px; }
+.rchip span { border-radius: 999px; }
+.rchip input:checked + span { background: var(--warn-soft); border-color: var(--ochre); }
+.rep-text input, .rep-text textarea { background: #FFF8EC; border-radius: 4px; }
+details.rep-form { background: color-mix(in srgb, var(--ochre) 12%, transparent); }
+.note { background: var(--warn-soft); }
+#gl-pop { background: var(--panel); border-radius: 6px; box-shadow: 4px 5px 0 var(--terra); }
+button.gl { border-bottom: 1.5px dotted var(--dmd); }
+.bar { background: color-mix(in srgb, var(--bg) 90%, transparent); }
+footer { border-top: 1px dashed var(--line-2); }
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="rough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></svg>
 <header class="bar">
   <div class="wrap">
     <a class="brand mono" href="#" id="brand"><span class="brand-dot" aria-hidden="true"></span>PinPlan<span class="hide-sm">&nbsp;/ ABQ</span></a>
@@ -2828,7 +2932,8 @@ function dotSvg(t, cls) {
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css = getComputedStyle(document.documentElement);
-  const ON = css.getPropertyValue("--dmd").trim() || "#ff6b1f";
+  const ON = (css.getPropertyValue("--dmd-on") || css.getPropertyValue("--dmd")).trim() || "#ff6b1f";
+  const SCREEN = css.getPropertyValue("--dmd-screen").trim() || "#050506";
   const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
   const BIG = 2, BIG_GAP = 1, BIG_Y = 2, SMALL_Y = 21, GAP_TEXT = "   ";
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
@@ -2864,7 +2969,7 @@ function dotSvg(t, cls) {
     const t = lines[line] || "";
     draw(grid, t, Math.floor((COLS - width(t, 1, 1)) / 2), SMALL_Y, 1, 1);
     const cw = cv.width / COLS, rad = cw * 0.38;
-    ctx.fillStyle = "#050506";
+    ctx.fillStyle = SCREEN;
     ctx.fillRect(0, 0, cv.width, cv.height);
     for (const on of [0, 1]) {   // batch dots by color: one path per color
       ctx.fillStyle = on ? ON : OFF;
