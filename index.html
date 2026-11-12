@@ -9,10 +9,10 @@
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="icons/site.webmanifest">
-<meta name="theme-color" content="#F8E7CB">
+<meta name="theme-color" content="#323A27">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..600,0..100,0..1;1,9..144,300..600,0..100,0..1&family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400..600&family=Caveat:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Josefin+Sans:wght@600;700&family=DM+Sans:opsz,wght@9..40,400..600&family=Caveat:wght@500;600&display=swap">
 <style>
 /* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
 :root {
@@ -307,112 +307,164 @@ body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 
-/* ================= Southwest theme =================
-   Sun-bleached paper, chile red, ochre, terracotta and juniper green.
-   Borders are drawn by ::after overlays run through the #rough SVG filter,
-   so lines look hand-drawn while text stays sharp. */
+/* ================= SAPO theme =================
+   Dark juniper ground with cream and terracotta "stickers": rounded badges,
+   double-ring outlines, groovy condensed headings, widely spaced labels. */
 :root {
-  color-scheme: light;
-  --bg: #F8E7CB;
-  --bg-2: #F3DCB4;
-  --panel: #FBF0DC;
-  --line: rgba(50, 58, 39, 0.26);
-  --line-2: rgba(50, 58, 39, 0.62);
-  --fg: #4a4c39;
-  --fg-hi: #323A27;
-  --fg-dim: #7d7558;
-  --dmd: #CD3529;
-  --dmd-soft: rgba(205, 53, 41, 0.08);
+  color-scheme: dark;
+  --bg: #323A27;
+  --bg-2: #2b3221;
+  --panel: #3a4330;
+  --line: rgba(248, 231, 203, 0.2);
+  --line-2: rgba(248, 231, 203, 0.55);
+  --fg: #e6d9bd;
+  --fg-hi: #F8E7CB;
+  --fg-dim: #b2a888;
+  --dmd: #D99886;
+  --dmd-soft: rgba(217, 152, 134, 0.14);
   --dmd-on: #E2B843;
-  --dmd-off: #3a4130;
+  --dmd-off: #3d4632;
   --dmd-screen: #262c1d;
-  --warn: #a8790f;
-  --warn-soft: rgba(226, 184, 67, 0.22);
-  --ochre: #E2B843;
+  --warn: #E2B843;
+  --warn-soft: rgba(226, 184, 67, 0.13);
+  --cream: #F8E7CB;
   --terra: #D99886;
+  --ochre: #E2B843;
   --juniper: #323A27;
-  --cat-multiball: #3f6b4f;
-  --cat-skillshot: #a8790f;
-  --cat-secret: #b5523f;
-  --cat-general: #6f6a50;
-  --cat-wizard: #7b5287;
-  --f-display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --f-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ink: #323A27;
+  --ink-dim: #6c6a50;
+  --cat-multiball: #a9c99a;
+  --cat-skillshot: #E2B843;
+  --cat-secret: #eaa48f;
+  --cat-general: #c9bf9c;
+  --cat-wizard: #c9aee0;
+  --f-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --f-mono: "Josefin Sans", "Futura", "Century Gothic", system-ui, sans-serif;
   --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --f-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
 }
 body {
   background-color: var(--bg);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.18 0 0 0 0 0.1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.97 0 0 0 0 0.9 0 0 0 0 0.8 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.mono { font-weight: 500; }
-h1, .d-head h2, .card h3, .pager .nm, .gl-page h2, #gl-pop .t { font-variation-settings: "SOFT" 100, "WONK" 1; }
-h1 { font-weight: 400; letter-spacing: -0.03em; }
-h1 em { color: var(--dmd); }
-.brand-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--ochre); box-shadow: inset 0 0 0 1.5px var(--juniper); }
+.mono { font-weight: 700; letter-spacing: 0.2em; font-size: 11px; }
 
-/* hand-drawn outlines */
-.card, .sec, .d-head, details.basics, .venue, details.rep-form, .pager, .resume, .banner, .full-tog { position: relative; border-color: transparent !important; }
+/* type */
+h1, .d-head h2, .card h3, .pager .nm, .gl-page h2, #gl-pop .t, .thesis {
+  font-family: var(--f-display); font-style: normal;
+}
+h1 { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; letter-spacing: -0.035em; line-height: 0.9; text-transform: uppercase; font-size: clamp(48px, 8vw, 92px); }
+h1 em { font-style: normal; color: var(--terra); }
+.card h3 { font-weight: 700; font-variation-settings: "wdth" 80, "opsz" 36; letter-spacing: -0.01em; font-size: 28px; }
+.d-head h2 { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; letter-spacing: -0.02em; text-transform: uppercase; }
+.pager .nm { font-weight: 700; font-variation-settings: "wdth" 80; }
+.gl-page h2 { font-weight: 800; font-variation-settings: "wdth" 75; text-transform: uppercase; }
+#gl-pop .t { font-weight: 700; font-variation-settings: "wdth" 80; }
+.thesis { font-weight: 600; font-variation-settings: "wdth" 85, "opsz" 36; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.12; color: var(--fg-hi); max-width: 30ch; }
+.thesis .tag { font-family: var(--f-hand); font-weight: 600; font-size: 28px; letter-spacing: 0; text-transform: none; color: var(--terra); margin-bottom: 4px; transform: rotate(-2deg); transform-origin: left; }
+
+/* top bar */
+.bar { background: color-mix(in srgb, var(--bg) 92%, transparent); border-bottom: 1px solid var(--line); }
+.brand-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--terra); box-shadow: none; }
+.venue-pick select, .search input { background-color: var(--bg-2); border: 1.5px solid var(--line-2); border-radius: 999px; padding-left: 16px; }
+.search input { padding-left: 38px; }
+.search::before { left: 17px; }
+.venue-pick select { background-image: linear-gradient(45deg, transparent 50%, var(--terra) 50%); }
+
+/* hero */
+.hero { padding-bottom: clamp(130px, 18vw, 190px); background: url("art/sandias-dark.svg") no-repeat center bottom 6px / max(100%, 820px) auto; }
+@media (max-width: 700px) { .hero { background-position: 80% calc(100% - 6px); } }
+.eyebrow { color: var(--terra); }
+.venue-title { border-left: 0; padding: 6px 14px; display: inline-block; background: var(--cream); color: var(--ink); border-radius: 999px; }
+.dmd-frame { background: var(--dmd-screen); border: 3px solid var(--cream); border-radius: 22px; box-shadow: 6px 7px 0 var(--terra); overflow: hidden; }
+.dmd-title { color: var(--cream); border-bottom: 1.5px solid rgba(248, 231, 203, 0.25); }
+.tally span b { color: var(--terra); }
+
+/* stickers: machine and venue cards */
+.grid { border: 0; gap: 16px; }
+.card {
+  border: 0; border-radius: 22px; background: var(--cream); color: var(--ink);
+  padding: 22px 22px 20px; transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
 .card::before { content: none; }
-.card::after, .sec::after, .d-head::after, details.basics::after, .venue::after, details.rep-form::after, .pager::after, .resume::after, .banner::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  border: 1.6px solid var(--line-2); border-radius: 4px; filter: url(#rough);
-  width: auto; height: auto;
-}
-.banner::after { border-style: dashed; }
-.sec.primary::after, details.rep-form::after, .resume::after { border-color: var(--dmd); }
-.grid { border: 0; gap: 14px; }
-.card { border: 0; background: var(--panel); border-radius: 4px; }
-.card:hover { background: #FFF6E6; }
-.card:hover::after { border-color: var(--dmd); }
-.code { fill: var(--dmd); filter: none; }
-.card .line { color: var(--fg); }
-.flag { border-radius: 999px; border-color: var(--line-2); color: var(--fg); }
-.flag.new { background: var(--warn-soft); border-color: var(--ochre); color: var(--fg-hi); }
+.card::after { content: ""; position: absolute; inset: 7px; width: auto; height: auto; border: 2px solid var(--ink); border-radius: 16px; opacity: 0.9; pointer-events: none; }
+.grid > .card:nth-child(3n+2) { background: var(--terra); }
+.card:hover { background: var(--cream); transform: translateY(-3px) rotate(-0.6deg); box-shadow: 6px 7px 0 var(--ochre); }
+.grid > .card:nth-child(3n+2):hover { background: var(--terra); }
+.card:hover::after { border-color: var(--ink); }
+.card h3 { color: var(--ink); }
+.card .mono, .card .meta, .card .dim { color: var(--ink-dim); }
+.grid > .card:nth-child(3n+2) .mono, .grid > .card:nth-child(3n+2) .meta, .grid > .card:nth-child(3n+2) .dim { color: #4f4a36; }
+.card .line { color: #3f4532; }
+.code { filter: none; }
+.card .code { fill: var(--ink); }
+.flag { border-radius: 999px; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; }
+.flag.new { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+.empty { color: var(--fg-dim); border: 0; }
 
-.venue { background: transparent; gap: 0; }
+/* panels: dark with a cream double ring */
+.sec, .venue, details.basics, .pager, .banner { position: relative; border: 2px solid var(--line-2) !important; border-radius: 20px; background: transparent; }
+.sec { overflow: hidden; }
+.sec-h { border-bottom: 1.5px dashed var(--line); color: var(--fg-hi); }
+.sec-h .dim { color: var(--fg-dim); }
+.sec.primary { background: var(--cream); border-color: var(--cream) !important; color: var(--ink); }
+.sec.primary .sec-h { color: var(--ink); border-bottom-color: rgba(50, 58, 39, 0.35); }
+.sec.primary .sec-h .dim { color: var(--ink-dim); }
+.sec.primary ol.plan li::before { color: #a8452f; }
+.sec.primary button.gl { border-bottom-color: #a8452f; }
+.sec.primary button.gl:hover { color: #a8452f; }
+.venue { background: transparent; gap: 0; overflow: hidden; }
 .venue > div { background: transparent; }
-.venue > div + div { border-left: 1px dashed var(--line); }
-@media (max-width: 640px) { .venue > div + div { border-left: 0; border-top: 1px dashed var(--line); } }
+.venue > div + div { border-left: 1.5px dashed var(--line); }
+@media (max-width: 640px) { .venue > div + div { border-left: 0; border-top: 1.5px dashed var(--line); } }
+.venue a { color: var(--cream); }
+details.basics { background: transparent; }
+details.basics summary .tog::before { color: var(--terra); }
+.pager { overflow: hidden; }
+.pager a + a { border-left: 1.5px dashed var(--line); }
+.pager a:hover { background: var(--panel); }
+.banner { border-style: dashed !important; }
 
-.sec-h { border-bottom: 1px dashed var(--line-2); }
-.sec.primary .sec-h { border-bottom-color: color-mix(in srgb, var(--dmd) 50%, transparent); }
-.d-head { background: var(--panel); }
-.d-title-bar { border-bottom: 1px dashed var(--line-2); }
-.pager a + a { border-left: 1px dashed var(--line-2); }
+/* plan page header: a terracotta badge */
+.d-head { background: var(--terra); color: var(--ink); border: 0; border-radius: 28px; position: relative; }
+.d-head::after { content: ""; position: absolute; inset: 8px; border: 2px solid var(--ink); border-radius: 21px; pointer-events: none; }
+.d-head h2 { color: var(--ink); }
+.d-head .mono, .d-head .dim, .d-title-bar { color: #4f4a36; }
+.d-title-bar { border-bottom: 1.5px dashed rgba(50, 58, 39, 0.4); padding: 14px 22px 10px; }
+.d-head-body { padding: 18px 22px 24px; }
+.d-head .code { fill: var(--ink); }
+.crumbs a:hover { color: var(--terra); }
 
-/* the "one thing" reads like a note in the margin */
-.thesis .tag { font-family: var(--f-hand); font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--dmd); margin-bottom: 2px; transform: rotate(-1.5deg); transform-origin: left; }
-.thesis { color: var(--fg-hi); }
+/* chips and buttons */
+.chip { border-radius: 999px; border: 1.5px solid var(--line-2); color: var(--fg); }
+.chip:hover { border-color: var(--cream); color: var(--cream); }
+.chip[aria-pressed="true"] { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+.resume { border-radius: 999px; border: 2px solid var(--cream); background: transparent; }
+.resume span:last-child { color: var(--terra); }
+details.rep-form { border: 2px solid var(--terra); border-radius: 16px; background: var(--dmd-soft); }
+details.rep-form summary { color: var(--terra); }
+.rchip span { border-radius: 999px; border: 1.5px solid var(--line-2); }
+.rchip input:checked + span { background: var(--cream); color: var(--ink); border-color: var(--cream); }
+.rep-text input, .rep-text textarea { background: var(--bg-2); border: 1.5px solid var(--line-2); border-radius: 12px; }
+.rep-send { background: var(--cream); color: var(--ink); border-radius: 999px; padding: 10px 18px; }
+.note { border-left-color: var(--ochre); border-radius: 0 10px 10px 0; }
+#gl-pop { background: var(--cream); color: var(--ink); border: 0; border-radius: 22px; box-shadow: 6px 7px 0 var(--terra); }
+#gl-pop .t { color: var(--ink); }
+#gl-pop .mono, #gl-pop button { color: var(--ink-dim); }
+#gl-pop a { color: var(--ink); }
+button.gl { border-bottom: 1.5px dotted var(--terra); }
+button.gl:hover, button.gl:focus-visible { color: var(--terra); }
+.gl-list dt { font-family: var(--f-display); font-weight: 700; font-variation-settings: "wdth" 85; font-size: 18px; }
 
-/* hero: sketch of the Sandias across the bottom */
-.hero { padding-bottom: clamp(130px, 18vw, 190px); background: url("art/sandias.svg") no-repeat center bottom 6px / max(100%, 820px) auto; }
-@media (max-width: 700px) { .hero { background-position: 80% bottom 6px; } }
-.eyebrow { color: var(--dmd); }
-.venue-title { border-left-color: var(--ochre); border-left-width: 3px; }
-
-/* DMD: dark juniper glass, ochre dots */
-.dmd-frame { background: var(--dmd-screen); border: 0; border-radius: 6px; box-shadow: 4px 5px 0 var(--terra); }
-.dmd-title { color: #c9bf9c; border-bottom-color: rgba(248, 231, 203, 0.18); }
-
-/* controls */
-.venue-pick select, .search input { background-color: var(--panel); border-color: var(--line-2); border-radius: 4px; }
-.chip { border-radius: 999px; border-color: var(--line-2); }
-.chip[aria-pressed="true"] { background: var(--dmd); border-color: var(--dmd); color: #FBF0DC; }
-.rep-send { background: var(--dmd); color: #FBF0DC; border-radius: 4px; }
-.rchip span { border-radius: 999px; }
-.rchip input:checked + span { background: var(--warn-soft); border-color: var(--ochre); }
-.rep-text input, .rep-text textarea { background: #FFF8EC; border-radius: 4px; }
-details.rep-form { background: color-mix(in srgb, var(--ochre) 12%, transparent); }
-.note { background: var(--warn-soft); }
-#gl-pop { background: var(--panel); border-radius: 6px; box-shadow: 4px 5px 0 var(--terra); }
-button.gl { border-bottom: 1.5px dotted var(--dmd); }
-.bar { background: color-mix(in srgb, var(--bg) 90%, transparent); }
-footer { border-top: 1px dashed var(--line-2); }
+/* wave divider + studio credit */
+.wave { display: block; width: 100%; height: 18px; color: var(--line-2); margin: 0 0 18px; }
+footer { border-top: 0; }
+.credit { display: flex; align-items: center; gap: 12px; margin-top: 18px; color: var(--fg-dim); }
+.credit svg { width: 54px; height: 34px; color: var(--terra); flex: none; }
+.credit b { color: var(--fg-hi); font-weight: 700; }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="rough" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></svg>
 <header class="bar">
   <div class="wrap">
     <a class="brand mono" href="#" id="brand"><span class="brand-dot" aria-hidden="true"></span>PinPlan<span class="hide-sm">&nbsp;/ ABQ</span></a>
@@ -495,9 +547,11 @@ footer { border-top: 1px dashed var(--line-2); }
 
 <footer>
   <div class="wrap">
+    <svg class="wave" viewBox="0 0 1200 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 C 50 0, 100 0, 150 9 S 250 18, 300 9 S 400 0, 450 9 S 550 18, 600 9 S 700 0, 750 9 S 850 18, 900 9 S 1000 0, 1050 9 S 1150 18, 1200 9" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
     <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
     <p><a href="#glossary">Pinball terms explained</a>: what a VUK, a cradle or a playfield multiplier is.</p>
     <p>Machine reports come from PinPlan players, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
+    <p class="credit mono"><svg viewBox="0 0 54 34" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 15 a9 9 0 0 1 18 0 M30 15 a9 9 0 0 1 18 0"/><ellipse cx="15" cy="17" rx="6.5" ry="6" fill="currentColor" stroke="none"/><ellipse cx="39" cy="17" rx="6.5" ry="6" fill="currentColor" stroke="none"/><ellipse cx="15" cy="18.5" rx="3.6" ry="2.4" fill="#323A27" stroke="none"/><ellipse cx="39" cy="18.5" rx="3.6" ry="2.4" fill="#323A27" stroke="none"/><path d="M3 29 C 12 24, 18 32, 27 28 S 42 24, 51 29"/></svg><span>Made in Albuquerque by <b>SAPO Studios</b></span></p>
   </div>
 </footer>
 
