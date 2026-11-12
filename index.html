@@ -91,6 +91,14 @@ a { color: inherit; }
 .venue-title { font-family: var(--f-mono); color: var(--fg-hi); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding-left: 10px; border-left: 2px solid var(--dmd); }
 .venue a { color: var(--fg-hi); text-underline-offset: 3px; }
 
+/* ---------- play history ---------- */
+details.history { margin: 2px 0 12px; }
+details.history summary { cursor: pointer; color: var(--fg-hi); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; padding: 6px 0; }
+details.history .note.old { opacity: .6; }
+a.report { display: inline-block; margin-top: 12px; color: var(--dmd); font-size: 12px; letter-spacing: .04em; text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--dmd) 45%, transparent); }
+a.report:hover { border-bottom-color: var(--dmd); }
+.report-hint { font-size: 12.5px; margin: 6px 0 0; }
+
 /* ---------- landing ---------- */
 .resume { display: inline-flex; gap: 12px; align-items: center; text-decoration: none; border: 1px solid color-mix(in srgb, var(--dmd) 55%, var(--line)); background: var(--dmd-soft); color: var(--fg-hi); padding: 10px 14px; margin-top: 6px; }
 .resume:hover { border-color: var(--dmd); }
@@ -2143,6 +2151,7 @@ VENUES.find(v => v.id === SISTER_ID).machines = MACHINES.map(m => m.name + (m.va
 const venueBySlug = new Map(VENUES.map(v => [v.slug, v]));
 const venueById = new Map(VENUES.map(v => [v.id, v]));
 const LIVE = new Map();   // venue id -> { machines, date } from lineup.json
+let HISTORY = {};          // "venueId:lmxId" -> { notes: [{comment, user, date}] } from data/history.json
 
 function fmtDate(v) {
   if (!v) return "";
@@ -2194,7 +2203,7 @@ function fromLive(live, used, venue) {
         (cur.variant || "standard model") + "; the rules are shared, but model-specific notes may not apply.");
     }
     m = Object.assign({}, cur, {
-      variant: variant, mfr: live.manufacturer || cur.mfr, year: live.year || cur.year,
+      variant: variant, mfr: live.manufacturer || cur.mfr, year: live.year || cur.year, lmx: live.lmx_id || null,
       venue: Object.assign({}, cur.venue, hasLive ? { notes: notes, scores: scores } : {}, { copy: copy })
     });
   } else {
@@ -2202,7 +2211,7 @@ function fromLive(live, used, venue) {
     m = {
       id: slug(name), code: codeFor(name), name: name, sort: name.replace(/^the\s+/i, ""),
       mfr: live.manufacturer || "", year: live.year || "", variant: variant,
-      group: groupFor(live.manufacturer, live.year), opdb: group,
+      group: groupFor(live.manufacturer, live.year), opdb: group, lmx: live.lmx_id || null,
       thesis: "No plan written yet. Start with a rulesheet and its PinTips.",
       plan: [], avoid: [], tips: [], rules: "", sources: [], uncurated: true,
       venue: { notes: notes, scores: scores, copy: [], tied: [] }
@@ -2241,12 +2250,9 @@ function lineupStatus() {
 }
 
 async function syncLineup() {
-  let data;
-  try {
-    const r = await fetch("lineup.json", { cache: "no-cache" });
-    if (!r.ok) return;
-    data = await r.json();
-  } catch (e) { return; }
+  const getJson = url => fetch(url, { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [data, hist] = await Promise.all([getJson("lineup.json"), getJson("data/history.json")]);
+  if (hist && hist.copies) HISTORY = hist.copies;
   if (!data) return;
   const list = Array.isArray(data.venues) ? data.venues
     : (Array.isArray(data.machines) ? [Object.assign({ id: SISTER_ID }, data.location || {}, { machines: data.machines })] : []);
@@ -2344,6 +2350,18 @@ function renderDetail(m) {
   const notes = v.notes.length
     ? v.notes.map(([t, by, d]) => `<div class="note"><q>${esc(t)}</q><span class="by mono">${esc(by)}${d ? " · " + esc(d) : ""} · Pinball Map</span></div>`).join("")
     : `<p class="dim" style="margin:0 0 10px">No condition reports posted for this copy.</p>`;
+  const shown = new Set(v.notes.map(([t, , d]) => t + "|" + d));
+  const hist = ((m.lmx && HISTORY[VENUE.id + ":" + m.lmx]) || {}).notes || [];
+  const earlier = hist.map(h => [h.comment, h.user || "Pinball Map user", fmtDate(h.date), h.date])
+    .filter(([t, , d]) => !shown.has(t + "|" + d));
+  const DAY = 864e5, now = Date.now();
+  const historySec = earlier.length
+    ? `<details class="history"><summary class="mono">Earlier reports on this copy <span class="dim">${earlier.length}</span></summary>${earlier.map(([t, by, d, raw]) => {
+        const old = raw && (now - new Date(raw).getTime()) > 90 * DAY;
+        return `<div class="note${old ? " old" : ""}"><q>${esc(t)}</q><span class="by mono">${esc(by)}${d ? " · " + esc(d) : ""}${old ? " · may be out of date" : ""}</span></div>`;
+      }).join("")}</details>`
+    : "";
+  const reportLink = `<a class="report mono" href="${VENUE.url}" target="_blank" rel="noopener">How’s it playing? Post a note on Pinball Map ↗</a><p class="dim report-hint">Notes there show up here within a day. Posting needs a free Pinball Map account.</p>`;
   const copy = copyLines.length ? `<div class="sub mono">This copy</div><ul class="plain copy">${copyLines.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : "";
   const scores = v.scores.length
     ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${esc(s[0])}</td><td class="w">${esc(s[1])}${s[2] ? " · " + esc(s[2]) : ""}</td></tr>`).join("")}</tbody></table>`
@@ -2413,7 +2431,7 @@ function renderDetail(m) {
       <div class="col">
         <section class="sec">
           <div class="sec-h mono"><span>At ${esc(VENUE.name)}</span><span class="dim">Pinball Map</span></div>
-          <div class="sec-b">${notes}${copy}${scores}</div>
+          <div class="sec-b">${notes}${historySec}${copy}${scores}${reportLink}</div>
         </section>
         ${m.tips.length ? "" : tipsSec}${rulesSec}
         <section class="sec">

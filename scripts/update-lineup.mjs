@@ -73,6 +73,8 @@ const venues = ours.map(loc => {
     const scores = x.machine_score_xrefs || [];
     return {
       name: pick(x.machine_name, m.name, "Unknown machine"),
+      lmx_id: Number(x.id) || null,
+      all_conditions: x.machine_conditions || [],
       manufacturer: pick(m.manufacturer, ""),
       year: Number(pick(m.year, 0)) || null,
       opdb_id: pick(m.opdb_id, null),
@@ -96,6 +98,38 @@ const venues = ours.map(loc => {
     machines
   };
 }).sort((a, b) => a.name.localeCompare(b.name));
+
+// Play history: keep every condition note we've ever seen for each copy (venue + location-machine id),
+// so a copy's timeline survives after Pinball Map's list moves on. Stored in data/history.json.
+const HISTORY = new URL("../data/history.json", import.meta.url);
+let history = { source: "Pinball Map (pinballmap.com), CC BY-SA 4.0", copies: {} };
+try { history = JSON.parse(await readFile(HISTORY, "utf8")); } catch {}
+const histBefore = JSON.stringify(history.copies);
+const today = new Date().toISOString().slice(0, 10);
+for (const v of venues) {
+  for (const m of v.machines) {
+    const raw = m.all_conditions;
+    delete m.all_conditions;
+    if (!m.lmx_id) continue;
+    const key = `${v.id}:${m.lmx_id}`;
+    const copy = history.copies[key] || (history.copies[key] = { venue_id: v.id, name: m.name, first_seen: today, notes: [] });
+    copy.name = m.name;
+    const seen = new Set(copy.notes.map(n => `${n.date}|${n.comment}`));
+    for (const c of raw) {
+      if (!c || !c.comment) continue;
+      const note = { comment: String(c.comment).trim(), user: userOf(c), date: pick(c.created_at, c.updated_at, null) };
+      const k = `${note.date}|${note.comment}`;
+      if (!seen.has(k)) { copy.notes.push(note); seen.add(k); }
+    }
+    copy.notes.sort((a, b) => String(b.date).localeCompare(String(a.date)));
+    copy.notes = copy.notes.slice(0, 50);
+  }
+}
+if (JSON.stringify(history.copies) !== histBefore) {
+  history.updated = new Date().toISOString();
+  await writeFile(HISTORY, JSON.stringify(history, null, 2) + "\n");
+  console.log(`Updated data/history.json (${Object.keys(history.copies).length} copies tracked).`);
+}
 
 const out = { source: "Pinball Map (pinballmap.com), CC BY-SA 4.0", region, venues };
 

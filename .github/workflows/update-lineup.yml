@@ -37,15 +37,15 @@ jobs:
           PBM_REGION: ""
         run: node scripts/update-lineup.mjs
 
-      - name: Commit lineup.json if it changed
+      - name: Commit lineup.json and play history if they changed
         if: env.HAS_TOKEN == 'true'
         run: |
-          if git ls-files --error-unmatch lineup.json >/dev/null 2>&1 && git diff --quiet -- lineup.json; then
-            echo "Lineup unchanged."
+          if [ -z "$(git status --porcelain -- lineup.json data/history.json)" ]; then
+            echo "Lineup and history unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lineup.json
+          git add -- lineup.json $(ls data/history.json 2>/dev/null)
           git commit -m "Update Albuquerque lineups from Pinball Map"
           git push
