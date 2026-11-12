@@ -346,10 +346,10 @@ body::after { content: ""; position: fixed; inset: 8px; border: 1.5px solid var(
 
 /* poster lettering: cream outline, dark gap, lime inner line, dark-to-lime fill */
 .fx { position: relative; display: inline-block; font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.95; }
-.fx::before, .fx::after { content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; }
+.fx::before, .fx::after { content: none; }
 .fx::before { -webkit-text-stroke: 0.13em var(--cream); color: var(--cream); }
 .fx::after { -webkit-text-stroke: 0.075em var(--bg); color: var(--bg); }
-.fx > .fx-t { position: relative; color: var(--bg); -webkit-text-stroke: 0.025em var(--lime); }
+.fx > .fx-t { position: relative; color: transparent; -webkit-text-stroke: 0.03em var(--lime); }
 .fx-wrap { position: relative; z-index: 0; isolation: isolate; }
 
 /* hero: one sentence, with "with a plan." in the poster lettering */
