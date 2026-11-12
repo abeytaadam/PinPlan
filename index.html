@@ -380,8 +380,13 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .d-head { border-color: var(--line-2); }
 .d-head h2 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; color: var(--cream); font-size: clamp(38px, 5.8vw, 60px); line-height: 0.98; margin: 0 0 8px; }
 .d-head .code { fill: var(--lime); }
-.thesis { font-family: var(--f-body); font-style: normal; font-weight: 500; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.3; color: var(--fg-hi); max-width: 38ch; }
-.thesis .tag { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.24em; color: var(--lime); }
+.thesis {
+  font-family: var(--f-body); font-style: normal; font-weight: 500; font-size: clamp(20px, 2.6vw, 27px); line-height: 1.35; color: var(--fg-hi);
+  max-width: none; text-wrap: pretty; margin: 0 0 22px; padding: 20px 24px 22px;
+  background: color-mix(in srgb, var(--lime) 9%, var(--bg)); border: 1.5px solid var(--lime); border-left-width: 6px;
+}
+.thesis .tag { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.24em; color: var(--lime); margin-bottom: 10px; }
+@media (max-width: 520px) { .thesis { padding: 16px 16px 18px; } }
 .sec.primary .sec-h { color: var(--lime); }
 .chip[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: #15160f; }
 .rep-send { background: var(--lime); color: #15160f; }
