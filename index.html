@@ -260,6 +260,35 @@ ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: va
 .tip-meta { display: flex; gap: 10px; align-items: center; }
 .tip-meta .cat { display: inline-flex; gap: 6px; align-items: center; }
 .votes { color: var(--fg-dim); }
+/* Quick read */
+.quick { border: 1px solid color-mix(in srgb, var(--dmd) 55%, var(--line)); background: var(--bg-2); margin: 0 0 18px; }
+.quick-h { display: flex; justify-content: space-between; gap: 10px; padding: 10px 14px; border-bottom: 1px solid color-mix(in srgb, var(--dmd) 35%, var(--line)); color: var(--dmd); }
+.quick ol { list-style: none; margin: 0; padding: 16px 16px 6px; counter-reset: q; display: grid; gap: 14px; }
+.quick ol li { counter-increment: q; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px; font-size: clamp(18px, 2.4vw, 21px); line-height: 1.35; color: var(--fg-hi); }
+.quick ol li::before { content: counter(q, decimal-leading-zero); font-family: var(--f-mono); font-size: 13px; color: var(--dmd); padding-top: 5px; }
+.quick .warn-line { margin: 6px 16px 16px; padding: 10px 12px; border-left: 2px solid var(--warn); background: var(--warn-soft); font-size: 16px; color: var(--fg-hi); }
+.quick .warn-line b { font-family: var(--f-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warn); display: block; margin-bottom: 2px; }
+.full-tog { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 10px; background: transparent; color: var(--fg-hi); border: 1px solid var(--line-2); padding: 14px 16px; margin: 0 0 22px; cursor: pointer; font: inherit; text-align: left; }
+.full-tog:hover { border-color: var(--dmd); }
+.full-tog .dim { color: var(--fg-dim); }
+.full-tog .arr { color: var(--dmd); }
+/* Glossary */
+button.gl { all: unset; cursor: help; border-bottom: 1px dotted color-mix(in srgb, var(--dmd) 70%, transparent); }
+button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
+#gl-pop { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); width: min(520px, calc(100vw - 24px)); box-sizing: border-box; background: var(--panel); border: 1px solid var(--dmd); padding: 14px 16px 12px; z-index: 50; box-shadow: 0 12px 40px rgba(0,0,0,0.6); }
+#gl-pop .t { font-family: var(--f-display); font-size: 26px; color: var(--fg-hi); margin: 0 0 4px; }
+#gl-pop p { margin: 0 0 10px; }
+#gl-pop .row { display: flex; justify-content: space-between; gap: 10px; }
+#gl-pop button { background: none; border: 0; color: var(--fg-dim); cursor: pointer; font: inherit; padding: 0; }
+.gl-page h2 { font-family: var(--f-display); font-weight: 400; color: var(--fg-hi); font-size: clamp(40px, 6vw, 64px); line-height: 1; margin: 0 0 10px; }
+.gl-page .lede { max-width: 60ch; }
+.gl-group { margin-top: 28px; }
+.gl-list { margin: 0; border-top: 1px solid var(--line); }
+.gl-list > div { display: grid; grid-template-columns: minmax(120px, 220px) minmax(0, 1fr); gap: 6px 22px; padding: 12px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 80px; }
+.gl-list dt { color: var(--fg-hi); font-weight: 600; }
+.gl-list dd { margin: 0; }
+.gl-list > div.hl { background: var(--dmd-soft); }
+@media (max-width: 560px) { .gl-list > div { grid-template-columns: 1fr; } }
 .rules { margin: 0; }
 .srcs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .srcs a { color: var(--fg); text-decoration-color: var(--line-2); text-underline-offset: 3px; }
@@ -350,6 +379,7 @@ img { max-width: 100%; }
         <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
         <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
         <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
+        <li>New to the lingo? <a href="#glossary">Pinball terms explained</a>.</li>
       </ul>
     </details>
 
@@ -368,9 +398,15 @@ img { max-width: 100%; }
   <div class="wrap" id="detail-body"></div>
 </main>
 
+<main id="glossary" class="detail" hidden>
+  <div class="wrap gl-page" id="glossary-body"></div>
+</main>
+<div id="gl-pop" role="dialog" aria-live="polite" hidden></div>
+
 <footer>
   <div class="wrap">
     <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
+    <p><a href="#glossary">Pinball terms explained</a>: what a VUK, a cradle or a playfield multiplier is.</p>
     <p>Machine reports come from PinPlan players, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
   </div>
 </footer>
@@ -2458,7 +2494,7 @@ function renderDetail(m) {
       </section>`
     : `<section class="sec primary">
         <div class="sec-h mono"><span>Game plan</span><span>Not written yet</span></div>
-        <div class="sec-b"><p class="rules">No plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
+        <div class="sec-b"><p class="rules nogl">No plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
       </section>`;
   const avoidSec = m.avoid.length
     ? `<section class="sec">
@@ -2495,6 +2531,17 @@ function renderDetail(m) {
     : [];
   const srcs = [].concat(m.opdb ? [["PinTips on Match Play", PT(m.opdb)]] : [], m.sources, extra, [["Pinball Map: " + VENUE.name, VENUE.url]])
     .map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("");
+  const quick = !m.uncurated && m.plan.length > 0;
+  let full = !quick;
+  try { if (quick && localStorage.getItem("pinplan-full") === "1") full = true; } catch (e) {}
+  const quickSec = quick ? `<section class="quick" aria-label="Quick read">
+      <div class="quick-h mono"><span>Quick read</span><span>Top ${Math.min(3, m.plan.length)} shots</span></div>
+      <ol>${m.plan.slice(0, 3).map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ol>
+      ${m.avoid.length ? `<div class="warn-line"><b>Watch out</b>${esc(m.avoid[0])}</div>` : `<div style="height:10px"></div>`}
+    </section>
+    <button type="button" class="full-tog mono" id="full-tog" aria-expanded="${full}" aria-controls="full-guide">
+      <span>${full ? "Hide full guide" : "Full guide"} <span class="dim">· plan, PinTips, this copy, rules</span></span><span class="arr" aria-hidden="true">${full ? "▴" : "▾"}</span>
+    </button>` : "";
   const banner = onFloor ? "" : `<div class="banner mono">Not in ${esc(VENUE.name)}’s current Pinball Map lineup. The plan stays here in case it shows up.</div>`;
 
   document.getElementById("detail-body").innerHTML = `
@@ -2511,7 +2558,8 @@ function renderDetail(m) {
       </div>
     </header>
     <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
-    <div class="d-grid">
+    ${quickSec}
+    <div class="d-grid" id="full-guide"${full ? "" : " hidden"}>
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
         <section class="sec">
@@ -2529,6 +2577,123 @@ function renderDetail(m) {
       <a href="#${VENUE.slug}/${prev.id}"><span class="mono dim">← Previous</span><span class="nm">${esc(prev.name)}</span></a>
       <a href="#${VENUE.slug}/${next.id}"><span class="mono dim">Next →</span><span class="nm">${esc(next.name)}</span></a>
     </nav>`;
+  const body = document.getElementById("detail-body");
+  linkGlossary(body);
+  const tog = document.getElementById("full-tog");
+  if (tog) tog.addEventListener("click", () => {
+    const g = document.getElementById("full-guide"), open = g.hidden;
+    g.hidden = !open;
+    tog.setAttribute("aria-expanded", open);
+    tog.firstElementChild.firstChild.nodeValue = open ? "Hide full guide " : "Full guide ";
+    tog.lastElementChild.textContent = open ? "▴" : "▾";
+    try { localStorage.setItem("pinplan-full", open ? "1" : "0"); } catch (e) {}
+  });
+}
+
+/* ---------- Glossary ---------- */
+/* [id, term, group, match pattern (first match per page gets a tap-to-define link, or null), definition] */
+const GLOSSARY = [
+  ["ramp", "Ramp", "Playfield", /\bramps?\b/i, "A raised track the ball rides up and over, usually returning to a flipper. Making it takes a clean, firm shot; a weak shot rolls back down."],
+  ["orbit", "Orbit", "Playfield", /\borbits?\b/i, "A lane that runs around the top of the playfield, entering on one side and coming out the other. Also called a loop. Good orbits feed the opposite flipper."],
+  ["loop", "Loop", "Playfield", /\bloops?\b/i, "Another name for an orbit, or any lane that sends the ball around and back to a flipper. Hitting several in a row is often a combo."],
+  ["spinner", "Spinner", "Playfield", /\bspinners?\b/i, "A flat metal flag that spins when the ball passes through it. Each spin scores, so a hard shot through it is worth more."],
+  ["scoop", "Scoop", "Playfield", /\bscoops?\b/i, "A hole the ball drops into and gets kicked back out of. Scoops usually start modes or award prizes."],
+  ["saucer", "Saucer", "Playfield", /\bsaucers?\b/i, "A shallow cup on the playfield that catches the ball and kicks it out. Like a scoop, but the ball stays visible."],
+  ["vuk", "VUK", "Playfield", /\bVUKs?\b/, "Vertical up-kicker: a hole that fires the ball straight up into a ramp or habitrail, often feeding it back to a flipper."],
+  ["drops", "Drop targets", "Playfield", /\bdrop targets?\b/i, "Targets that fall into the playfield when hit. Clearing a whole bank usually lights something, then they reset."],
+  ["standup", "Standup targets", "Playfield", /\bstandups?\b(?: targets?)?/i, "Fixed targets that register a hit but don't move. Often colored or lettered to spell out a word."],
+  ["captive", "Captive ball", "Playfield", /\bcaptive balls?\b/i, "A ball trapped in its own little lane. You hit it with your ball to push it into a target."],
+  ["mini", "Mini-playfield", "Playfield", /\bmini-playfields?\b/i, "A small extra playfield on the main one, sometimes with its own flippers or magnets."],
+  ["upper", "Upper flipper", "Playfield", /\bupper flippers?\b/i, "An extra flipper partway up the playfield, used for specific shots like a ramp or orbit."],
+  ["inlane", "Inlane", "Playfield", /\binlanes?\b/i, "The lanes just outside each flipper that feed the ball safely back to it. The ball is still in play."],
+  ["outlane", "Outlane", "Playfield", /\boutlanes?\b/i, "The outermost lanes on each side. A ball that goes down one drains past the flippers, unless a ball save or kickback catches it."],
+  ["sling", "Slingshots", "Playfield", /\bslingshots?\b|\bslings?\b/i, "The rubber-lined triangles above the flippers that kick the ball away when it hits them. They cause a lot of chaos and outlane drains."],
+  ["pops", "Pop bumpers", "Playfield", /\bpop bumpers?\b|\bpops\b/i, "Round bumpers that push the ball away hard when it hits them. The ball usually bounces around between them for a while."],
+  ["multiball", "Multiball", "Scoring", /\bmultiballs?\b/i, "Two or more balls in play at once. Most of a modern game's big points come from multiball, and many games let you start one on top of another."],
+  ["lock", "Lock", "Scoring", /\b(?:ball )?locks?\b|\blocked\b/i, "Holding a ball (or counting it) toward a multiball. Lock enough and the multiball starts."],
+  ["jackpot", "Jackpot", "Scoring", /\bjackpots?\b/i, "A big award, usually during multiball, for hitting a lit shot."],
+  ["superj", "Super jackpot", "Scoring", /\bsuper jackpots?\b/i, "A bigger award, usually lit after collecting enough jackpots. Often the biggest single shot in a multiball."],
+  ["mode", "Mode", "Scoring", /\bmodes?\b/i, "A timed or goal-based task the game sets, like hit the ramps five times. Modes usually start at a scoop and are a main source of points."],
+  ["stack", "Stacking", "Scoring", /\bstack(?:s|ing|ed)?\b/i, "Running two things at once, like a mode and a multiball, so your shots score for both. Stacking is how good players score big on modern games."],
+  ["combo", "Combo", "Scoring", /\bcombos?\b/i, "Making shots back to back without the ball stopping. Many games pay extra for them."],
+  ["skill", "Skill shot", "Scoring", /\bskill shots?\b/i, "An award for plunging the ball to a specific spot at the start of a ball."],
+  ["superskill", "Super skill shot", "Scoring", /\bsuper skill shots?\b/i, "A harder version of the skill shot, usually made by holding a flipper on the plunge and hitting a particular shot. Often worth more or gives a short ball save."],
+  ["plunge", "Plunge", "Scoring", /\bplung(?:e|es|ed|ing)\b/i, "Launching the ball. A soft plunge pulls the plunger partway back; a full plunge pulls it all the way. Many skill shots need a specific strength."],
+  ["ballsave", "Ball save", "Scoring", /\bball saves?\b/i, "A short window, usually at the start of a ball or multiball, when a drained ball is given back."],
+  ["eb", "Extra ball", "Scoring", /\bextra balls?\b/i, "An award that gives you another ball when this one drains. Same player shoots again."],
+  ["aab", "Add-a-ball", "Scoring", /\badd-a-balls?\b/i, "An award that puts another ball into a running multiball."],
+  ["hurry", "Hurry-up", "Scoring", /\bhurry[- ]ups?\b/i, "A value that counts down until you hit the lit shot. Hit it fast for more."],
+  ["wizard", "Wizard mode", "Scoring", /\bwizard modes?\b/i, "A special mode you reach by completing other goals in the game. The final one is the game's big finale."],
+  ["pfx", "Playfield multiplier", "Scoring", /\bplayfield (?:multipliers?|x)\b/i, "Multiplies every score on the playfield (2x, 3x and so on) for a while. Best saved for when you're about to score big."],
+  ["shotx", "Shot multiplier", "Scoring", /\bshot multipliers?\b/i, "Multiplies the value of one particular shot."],
+  ["bonus", "Bonus", "Scoring", /\bbonus(?:es)?\b/i, "Points totaled up and paid when a ball drains. A bonus multiplier (bonus X) raises it."],
+  ["mystery", "Mystery", "Scoring", /\bmystery\b/i, "A random award, usually from a scoop. Can be great, can be nothing."],
+  ["cradle", "Cradle (trap)", "Flipper skills", /\bcradl(?:e|es|ed|ing)\b|\btrap(?:s|ped|ping)?\b/i, "Catching the ball and holding it still on a raised flipper. The ball is under control, so you can aim your next shot. The most important skill in pinball."],
+  ["backhand", "Backhand", "Flipper skills", /\bbackhand(?:s|ed)?\b/i, "Shooting with the flipper on the same side as the target, so the ball crosses up the near side rather than across the playfield."],
+  ["nudge", "Nudging", "Flipper skills", /\bnudg(?:e|es|ed|ing)\b/i, "Moving the machine gently with your hands to change the ball's path, like keeping it out of an outlane. Too much and you tilt."],
+  ["tilt", "Tilt", "Flipper skills", /\btilt(?:s|ed)?\b/i, "What happens if you shake the machine too much: after warnings, your flippers go dead and you lose the ball and its bonus."],
+  ["postpass", "Post pass", "Flipper skills", null, "Moving the ball from one flipper to the other by bouncing it off the post or inlane rubber."],
+  ["livecatch", "Live catch", "Flipper skills", null, "Catching a moving ball on a raised flipper by dropping it just before impact, so the ball stops."],
+  ["deadbounce", "Dead bounce", "Flipper skills", /\bdead bounces?\b/i, "Letting a ball fall onto a held-up flipper and bounce over to the other flipper."],
+  ["drain", "Drain", "Flipper skills", /\bdrain(?:s|ed|ing)?\b/i, "Losing the ball down the middle or an outlane. A ball drained in the first seconds is a quick drain."]
+];
+const glById = new Map(GLOSSARY.map(g => [g[0], g]));
+const GL_ORDER = GLOSSARY.filter(g => g[3]).slice().sort((a, b) => b[1].length - a[1].length);
+
+/* Link the first mention of each term on a plan page. Only text inside the plan content is touched. */
+function linkGlossary(root) {
+  const used = new Set();
+  const scopes = root.querySelectorAll(".quick ol, .quick .warn-line, ol.plan, .sec ul.plain:not(.copy), ul.tips, p.rules:not(.nogl)");
+  for (const scope of scopes) {
+    const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => n.parentElement.closest("a, button, .tip-meta, b") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+    for (let node of nodes) {
+      for (const g of GL_ORDER) {
+        if (used.has(g[0])) continue;
+        const m = node.nodeValue.match(g[3]);
+        if (!m) continue;
+        used.add(g[0]);
+        const after = node.splitText(m.index);
+        after.nodeValue = after.nodeValue.slice(m[0].length);
+        const b = document.createElement("button");
+        b.type = "button"; b.className = "gl"; b.dataset.g = g[0]; b.textContent = m[0];
+        after.parentNode.insertBefore(b, after);
+        node = after;   // keep scanning the rest of this text for other terms
+      }
+    }
+  }
+}
+
+const glPop = document.getElementById("gl-pop");
+function showGl(id) {
+  const g = glById.get(id); if (!g) return;
+  glPop.innerHTML = `<div class="t">${esc(g[1])}</div><p>${esc(g[4])}</p>
+    <div class="row mono"><a href="#glossary" data-gl-all="${g[0]}">All terms →</a><button type="button" data-gl-close>Close ×</button></div>`;
+  glPop.hidden = false;
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("button.gl");
+  if (b) { e.preventDefault(); showGl(b.dataset.g); return; }
+  const all = e.target.closest("[data-gl-all]");
+  if (all) { glPop.hidden = true; glJump = all.dataset.glAll; return; }
+  if (e.target.closest("[data-gl-close]") || !e.target.closest("#gl-pop")) glPop.hidden = true;
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") glPop.hidden = true; });
+
+let glJump = "", glBack = "";
+function renderGlossary() {
+  const groups = [...new Set(GLOSSARY.map(g => g[2]))];
+  const back = glBack ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← PinPlan</a>`;
+  document.getElementById("glossary-body").innerHTML = `
+    <nav class="crumbs mono">${back}<span class="dim">${GLOSSARY.length} terms</span></nav>
+    <h2>Pinball terms</h2>
+    <p class="lede">The words that show up in PinPlan's game plans, in plain language. On any plan page, tap a dotted word to see its meaning without leaving the page.</p>
+    ${groups.map(gr => `<section class="gl-group">
+      <div class="sec-label mono"><span>${esc(gr)}</span></div>
+      <dl class="gl-list">${GLOSSARY.filter(g => g[2] === gr).map(g => `<div id="gl-${g[0]}"><dt>${esc(g[1])}</dt><dd>${esc(g[4])}</dd></div>`).join("")}</dl>
+    </section>`).join("")}`;
 }
 
 let homeScroll = 0;
@@ -2567,6 +2732,18 @@ function renderLanding() {
 
 function route(soft) {
   const landing = document.getElementById("landing");
+  const gloss = document.getElementById("glossary");
+  glPop.hidden = true;
+  if (location.hash === "#glossary") {
+    landing.hidden = true; document.getElementById("home").hidden = true; document.getElementById("detail").hidden = true;
+    renderGlossary(); gloss.hidden = false;
+    const t = glJump && document.getElementById("gl-" + glJump); glJump = "";
+    if (t) { t.scrollIntoView(); t.classList.add("hl"); } else window.scrollTo(0, 0);
+    document.title = "Pinball terms · PinPlan Albuquerque";
+    return;
+  }
+  if (!gloss.hidden) { gloss.hidden = true; }
+  glBack = location.hash;
   if (!location.hash.slice(1)) {
     document.getElementById("home").hidden = true;
     document.getElementById("detail").hidden = true;
