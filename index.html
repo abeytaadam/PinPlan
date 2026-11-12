@@ -260,18 +260,6 @@ ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: va
 .tip-meta { display: flex; gap: 10px; align-items: center; }
 .tip-meta .cat { display: inline-flex; gap: 6px; align-items: center; }
 .votes { color: var(--fg-dim); }
-/* Quick read */
-.quick { border: 1px solid color-mix(in srgb, var(--dmd) 55%, var(--line)); background: var(--bg-2); margin: 0 0 18px; }
-.quick-h { display: flex; justify-content: space-between; gap: 10px; padding: 10px 14px; border-bottom: 1px solid color-mix(in srgb, var(--dmd) 35%, var(--line)); color: var(--dmd); }
-.quick ol { list-style: none; margin: 0; padding: 16px 16px 6px; counter-reset: q; display: grid; gap: 14px; }
-.quick ol li { counter-increment: q; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 8px; font-size: clamp(18px, 2.4vw, 21px); line-height: 1.35; color: var(--fg-hi); }
-.quick ol li::before { content: counter(q, decimal-leading-zero); font-family: var(--f-mono); font-size: 13px; color: var(--dmd); padding-top: 5px; }
-.quick .warn-line { margin: 6px 16px 16px; padding: 10px 12px; border-left: 2px solid var(--warn); background: var(--warn-soft); font-size: 16px; color: var(--fg-hi); }
-.quick .warn-line b { font-family: var(--f-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warn); display: block; margin-bottom: 2px; }
-.full-tog { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 10px; background: transparent; color: var(--fg-hi); border: 1px solid var(--line-2); padding: 14px 16px; margin: 0 0 22px; cursor: pointer; font: inherit; text-align: left; }
-.full-tog:hover { border-color: var(--dmd); }
-.full-tog .dim { color: var(--fg-dim); }
-.full-tog .arr { color: var(--dmd); }
 /* Glossary */
 button.gl { all: unset; cursor: help; border-bottom: 1px dotted color-mix(in srgb, var(--dmd) 70%, transparent); }
 button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
@@ -2531,17 +2519,6 @@ function renderDetail(m) {
     : [];
   const srcs = [].concat(m.opdb ? [["PinTips on Match Play", PT(m.opdb)]] : [], m.sources, extra, [["Pinball Map: " + VENUE.name, VENUE.url]])
     .map(([l, u]) => `<li><a href="${u}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("");
-  const quick = !m.uncurated && m.plan.length > 0;
-  let full = !quick;
-  try { if (quick && localStorage.getItem("pinplan-full") === "1") full = true; } catch (e) {}
-  const quickSec = quick ? `<section class="quick" aria-label="Quick read">
-      <div class="quick-h mono"><span>Quick read</span><span>Top ${Math.min(3, m.plan.length)} shots</span></div>
-      <ol>${m.plan.slice(0, 3).map(p => `<li><span>${esc(p)}</span></li>`).join("")}</ol>
-      ${m.avoid.length ? `<div class="warn-line"><b>Watch out</b>${esc(m.avoid[0])}</div>` : `<div style="height:10px"></div>`}
-    </section>
-    <button type="button" class="full-tog mono" id="full-tog" aria-expanded="${full}" aria-controls="full-guide">
-      <span>${full ? "Hide full guide" : "Full guide"} <span class="dim">· plan, PinTips, this copy, rules</span></span><span class="arr" aria-hidden="true">${full ? "▴" : "▾"}</span>
-    </button>` : "";
   const banner = onFloor ? "" : `<div class="banner mono">Not in ${esc(VENUE.name)}’s current Pinball Map lineup. The plan stays here in case it shows up.</div>`;
 
   document.getElementById("detail-body").innerHTML = `
@@ -2558,8 +2535,7 @@ function renderDetail(m) {
       </div>
     </header>
     <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
-    ${quickSec}
-    <div class="d-grid" id="full-guide"${full ? "" : " hidden"}>
+    <div class="d-grid">
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
         <section class="sec">
@@ -2579,15 +2555,6 @@ function renderDetail(m) {
     </nav>`;
   const body = document.getElementById("detail-body");
   linkGlossary(body);
-  const tog = document.getElementById("full-tog");
-  if (tog) tog.addEventListener("click", () => {
-    const g = document.getElementById("full-guide"), open = g.hidden;
-    g.hidden = !open;
-    tog.setAttribute("aria-expanded", open);
-    tog.firstElementChild.firstChild.nodeValue = open ? "Hide full guide " : "Full guide ";
-    tog.lastElementChild.textContent = open ? "▴" : "▾";
-    try { localStorage.setItem("pinplan-full", open ? "1" : "0"); } catch (e) {}
-  });
 }
 
 /* ---------- Glossary ---------- */
@@ -2643,7 +2610,7 @@ const GL_ORDER = GLOSSARY.filter(g => g[3]).slice().sort((a, b) => b[1].length -
 /* Link the first mention of each term on a plan page. Only text inside the plan content is touched. */
 function linkGlossary(root) {
   const used = new Set();
-  const scopes = root.querySelectorAll(".quick ol, .quick .warn-line, ol.plan, .sec ul.plain:not(.copy), ul.tips, p.rules:not(.nogl)");
+  const scopes = root.querySelectorAll("ol.plan, .sec ul.plain:not(.copy), ul.tips, p.rules:not(.nogl)");
   for (const scope of scopes) {
     const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
       acceptNode: n => n.parentElement.closest("a, button, .tip-meta, b") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
