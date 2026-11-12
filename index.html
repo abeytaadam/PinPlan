@@ -349,7 +349,7 @@ body::after { content: ""; position: fixed; inset: 8px; border: 1.5px solid var(
 .fx::before, .fx::after { content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; }
 .fx::before { -webkit-text-stroke: 0.13em var(--cream); color: var(--cream); }
 .fx::after { -webkit-text-stroke: 0.075em var(--bg); color: var(--bg); }
-.fx > .fx-t { position: relative; color: transparent; background: linear-gradient(180deg, #1f2122 30%, #6d7656 62%, var(--lime) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-stroke: 0.025em var(--lime); }
+.fx > .fx-t { position: relative; color: var(--bg); -webkit-text-stroke: 0.025em var(--lime); }
 .fx-wrap { position: relative; z-index: 0; isolation: isolate; }
 
 /* hero: one sentence, with "with a plan." in the poster lettering */
