@@ -4,7 +4,8 @@
 //
 // Pinball Map asks apps to use bulk endpoints instead of looping over /locations/:id,
 // so each run makes two region-wide requests:
-//   1. /region/:region/locations.json?with_lmx=1   every location in the region, with machines and comments
+//   1. /region/:region/locations.json?with_lmx=1   every location in the region, with its machines
+// Pinball Map condition comments are deliberately not stored: machine reports come from PinPlan's own form.
 //   2. /machines.json?no_details=1                  machine names, manufacturers, years and OPDB ids
 // (plus two one-time lookups to find the region name if PBM_REGION isn't set).
 import { readFile, writeFile } from "node:fs/promises";
@@ -76,11 +77,6 @@ const venues = ours.map(loc => {
       manufacturer: pick(m.manufacturer, ""),
       year: Number(pick(m.year, 0)) || null,
       opdb_id: pick(m.opdb_id, null),
-      conditions: (x.machine_conditions || [])
-        .filter(c => c && c.comment)
-        .sort((a, b) => String(b.created_at).localeCompare(String(a.created_at)))
-        .slice(0, 3)
-        .map(c => ({ comment: String(c.comment).trim(), user: userOf(c), date: pick(c.created_at, c.updated_at, null) })),
       scores: scores
         .filter(s => Number(s.score) > 0)
         .sort((a, b) => Number(b.score) - Number(a.score))

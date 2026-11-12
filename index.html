@@ -91,6 +91,30 @@ a { color: inherit; }
 .venue-title { font-family: var(--f-mono); color: var(--fg-hi); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 10px; padding-left: 10px; border-left: 2px solid var(--dmd); }
 .venue a { color: var(--fg-hi); text-underline-offset: 3px; }
 
+/* ---------- player reports ---------- */
+.rep-sum { margin-bottom: 10px; }
+.rep-row { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.rep-row .mono { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
+.rep-row b { color: var(--fg-hi); font-weight: 600; }
+details.rep-form { margin: 12px 0 4px; border: 1px solid color-mix(in srgb, var(--dmd) 45%, var(--line)); background: var(--dmd-soft); }
+details.rep-form summary { cursor: pointer; padding: 10px 12px; color: var(--dmd); font-size: 12px; letter-spacing: .05em; text-transform: uppercase; }
+details.rep-form form { padding: 0 12px 12px; }
+.rep-hint { font-size: 13px; margin: 0 0 8px; }
+.rep-q { border: 0; padding: 0; margin: 0 0 10px; }
+.rep-q legend { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--fg-dim, #7d8296); margin-bottom: 6px; }
+.rchip { display: inline-block; margin: 0 6px 6px 0; }
+.rchip input { position: absolute; opacity: 0; pointer-events: none; }
+.rchip span { display: inline-block; padding: 6px 10px; border: 1px solid var(--line-2); font-size: 13px; cursor: pointer; }
+.rchip input:checked + span { border-color: var(--dmd); color: var(--fg-hi); background: color-mix(in srgb, var(--dmd) 22%, transparent); }
+.rchip input:focus-visible + span { outline: 2px solid var(--dmd); outline-offset: 2px; }
+.rep-text { display: block; margin: 0 0 10px; }
+.rep-text span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--fg-dim, #7d8296); margin-bottom: 6px; }
+.rep-text input, .rep-text textarea { width: 100%; box-sizing: border-box; background: var(--bg); border: 1px solid var(--line-2); color: var(--fg-hi); padding: 8px 10px; font: inherit; font-size: 14px; border-radius: 0; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.rep-send { background: var(--dmd); color: #120a05; border: 0; padding: 10px 14px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.rep-send[disabled] { background: var(--line-2); color: var(--fg); cursor: default; }
+.rep-done { color: var(--fg-hi); font-size: 12.5px; margin: 8px 0 0; }
+
 /* ---------- landing ---------- */
 .resume { display: inline-flex; gap: 12px; align-items: center; text-decoration: none; border: 1px solid color-mix(in srgb, var(--dmd) 55%, var(--line)); background: var(--dmd-soft); color: var(--fg-hi); padding: 10px 14px; margin-top: 6px; }
 .resume:hover { border-color: var(--dmd); }
@@ -347,7 +371,7 @@ img { max-width: 100%; }
 <footer>
   <div class="wrap">
     <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
-    <p>Machine conditions change between visits. Comments are as posted by players and may already be fixed. Not affiliated with any venue or operator.</p>
+    <p>Machine reports come from PinPlan players, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
   </div>
 </footer>
 
@@ -2144,6 +2168,27 @@ const venueBySlug = new Map(VENUES.map(v => [v.slug, v]));
 const venueById = new Map(VENUES.map(v => [v.id, v]));
 const LIVE = new Map();   // venue id -> { machines, date } from lineup.json
 
+/* ---------- player reports ----------
+   Reports are PinPlan's own (no Pinball Map condition notes). The form on each machine page posts to a
+   Google Form the owner controls; a GitHub Action turns the responses sheet into data/reports.json.
+   Fill in REPORT_FORM from the form's "Get pre-filled link" (see CLAUDE.md) to switch reporting on. */
+const REPORT_FORM = {
+  action: "https://docs.google.com/forms/d/e/1FAIpQLScVmh4MJ1RnS_Jy2OrNb-a3LjbeoBPeqBF6YmPRhAUHehrDPA/formResponse",
+  entries: { copy: "entry.1163997423", venue: "entry.1389641399", machine: "entry.647720431", flippers: "entry.445510707", tilt: "entry.1490836599", outlanes: "entry.751837775", note: "entry.1923933769" }
+};
+const REPORT_FIELDS = [
+  ["flippers", "Flippers", ["Strong", "Normal", "Left weak", "Right weak", "Both weak"]],
+  ["tilt", "Tilt", ["Loose", "Normal", "Tight"]],
+  ["outlanes", "Outlanes", ["Forgiving", "Normal", "Drain a lot"]]
+];
+const RECENT_DAYS = 60;
+let REPORTS = {};         // "venue-slug/machine-id" -> [{date, flippers, tilt, outlanes, note}]
+const copyKey = m => VENUE.slug + "/" + m.id;
+const recentReports = m => {
+  const cut = new Date(Date.now() - RECENT_DAYS * 864e5).toISOString().slice(0, 10);
+  return (REPORTS[copyKey(m)] || []).filter(r => r.date >= cut);
+};
+
 function fmtDate(v) {
   if (!v) return "";
   const s = String(v);
@@ -2181,8 +2226,7 @@ function fromLive(live, used, venue) {
   const found = (group && libByGroup.get(group)) || libByName.get(norm(live.name));
   const cur = found ? atVenue(found, venue) : null;
   const variant = variantOf(live.name);
-  const notes = (live.conditions || []).filter(c => c && c.comment)
-    .map(c => [String(c.comment), c.user || "Pinball Map user", fmtDate(c.date)]);
+  const notes = [];
   const scores = (live.scores || []).filter(s => s && Number(s.score) > 0)
     .map(s => [Number(s.score).toLocaleString("en-US"), s.user || "Anonymous", fmtDate(s.date)]);
   const hasLive = live.conditions !== undefined || live.scores !== undefined;
@@ -2241,12 +2285,9 @@ function lineupStatus() {
 }
 
 async function syncLineup() {
-  let data;
-  try {
-    const r = await fetch("lineup.json", { cache: "no-cache" });
-    if (!r.ok) return;
-    data = await r.json();
-  } catch (e) { return; }
+  const getJson = url => fetch(url, { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [data, reports] = await Promise.all([getJson("lineup.json"), getJson("data/reports.json")]);
+  if (reports && reports.copies) { REPORTS = reports.copies; if (!data) { refreshAll(true); return; } }
   if (!data) return;
   const list = Array.isArray(data.venues) ? data.venues
     : (Array.isArray(data.machines) ? [Object.assign({ id: SISTER_ID }, data.location || {}, { machines: data.machines })] : []);
@@ -2254,7 +2295,7 @@ async function syncLineup() {
     const id = Number(v.id);
     if (venueById.has(id) && Array.isArray(v.machines) && v.machines.length) LIVE.set(id, { machines: v.machines, date: v.date_last_updated });
   });
-  if (!LIVE.size) return;
+  if (!LIVE.size) { refreshAll(true); return; }
   setVenue(VENUE);
   refreshAll(true);
 }
@@ -2266,7 +2307,7 @@ const GROUPS = [
   ["classic", "Classics", m => m.group === "classic"],
   ["spooky", "Spooky", m => m.group === "spooky"],
   ["other", "Other", m => m.group === "other"],
-  ["notes", "Venue notes", m => m.venue.notes.length > 0]
+  ["notes", "Player reports", m => recentReports(m).length > 0]
 ];
 const CAT = { multiball: "Multiball", skillshot: "Skill shot", secret: "Secret", general: "General", wizard: "Wizard" };
 
@@ -2319,7 +2360,8 @@ function renderGrid() {
   grid.innerHTML = list.map(m => {
     const flags = [];
     if (m.uncurated) flags.push(`<span class="flag new"><span class="sq"></span>No plan yet</span>`);
-    if (m.venue.notes.length) flags.push(`<span class="flag warn"><span class="sq"></span>Venue note</span>`);
+    const nRep = recentReports(m).length;
+    if (nRep) flags.push(`<span class="flag warn"><span class="sq"></span>${nRep} ${nRep === 1 ? "report" : "reports"}</span>`);
     if (m.venue.scores.length) flags.push(`<span class="flag">Top score ${shortScore(m.venue.scores[0][0])}</span>`);
     if (m.tips.length) flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
     return `<a class="card" href="#${VENUE.slug}/${m.id}">
@@ -2332,6 +2374,67 @@ function renderGrid() {
   }).join("");
 }
 
+function reportSummary(reps) {
+  if (!reps.length) return `<p class="dim" style="margin:0 0 10px">No reports on this copy in the last ${RECENT_DAYS} days. Played it lately? Add one below.</p>`;
+  const rows = REPORT_FIELDS.map(([key, label]) => {
+    const counts = {};
+    reps.forEach(r => { if (r[key]) counts[r[key]] = (counts[r[key]] || 0) + 1; });
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    if (!total) return "";
+    const [top, n] = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+    return `<div class="rep-row"><span class="mono dim">${label}</span><span><b>${esc(top)}</b> <span class="dim">${n} of ${total}</span></span></div>`;
+  }).join("");
+  const said = reps.filter(r => r.note).slice(0, 3)
+    .map(r => `<div class="note"><q>${esc(r.note)}</q><span class="by mono">Player report · ${esc(fmtDate(r.date))}</span></div>`).join("");
+  return `<div class="rep-sum"><div class="sub mono">Last ${RECENT_DAYS} days · ${reps.length} ${reps.length === 1 ? "report" : "reports"}</div>${rows}</div>`
+    + said;
+}
+
+function reportForm(m) {
+  const on = !!REPORT_FORM.action;
+  const groups = REPORT_FIELDS.map(([key, label, opts]) => `<fieldset class="rep-q"><legend class="mono">${label}</legend>${
+    opts.map(o => `<label class="rchip"><input type="radio" name="${key}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("")}</fieldset>`).join("");
+  return `<details class="rep-form"${on ? "" : " data-off"}><summary class="mono">How’s it playing? Add a report</summary>
+    <form data-copy="${esc(copyKey(m))}" data-venue="${esc(VENUE.name)}" data-machine="${esc(m.name + (m.variant ? " (" + m.variant + ")" : ""))}">
+      <p class="dim rep-hint">Quick and anonymous. Pick what you noticed; skip anything you didn’t.</p>
+      ${groups}
+      <label class="rep-text"><span class="mono">Anything else</span><textarea name="note" maxlength="280" rows="3" placeholder="e.g. right ramp needs a perfect shot, left orbit is dead"></textarea></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="rep-send mono" type="submit"${on ? "" : " disabled"}>${on ? "Send report" : "Reporting opens soon"}</button>
+      <p class="rep-done mono" hidden></p>
+    </form></details>`;
+}
+
+async function sendReport(form) {
+  const done = form.querySelector(".rep-done"), btn = form.querySelector(".rep-send");
+  const fd = new FormData(form);
+  const val = k => String(fd.get(k) || "").trim();
+  if (!REPORT_FIELDS.some(([k]) => val(k)) && !val("note")) {
+    done.hidden = false; done.textContent = "Pick at least one thing first."; return;
+  }
+  const lockKey = "pinplan-report-" + form.dataset.copy;
+  try { if (Date.now() - Number(localStorage.getItem(lockKey) || 0) < 30 * 60e3) { done.hidden = false; done.textContent = "Thanks, you already reported this machine recently."; return; } } catch (e) {}
+  btn.disabled = true;
+  if (!val("website")) {   // bots fill the hidden field; skip sending for them
+    const E = REPORT_FORM.entries, body = new URLSearchParams();
+    const put = (k, v) => { if (E[k] && v) body.append(E[k], v); };
+    put("copy", form.dataset.copy); put("venue", form.dataset.venue); put("machine", form.dataset.machine);
+    ["flippers", "tilt", "outlanes", "note"].forEach(k => put(k, val(k)));
+    try { await fetch(REPORT_FORM.action, { method: "POST", mode: "no-cors", body }); }
+    catch (e) { btn.disabled = false; done.hidden = false; done.textContent = "Couldn’t send. Check your connection and try again."; return; }
+  }
+  try { localStorage.setItem(lockKey, String(Date.now())); } catch (e) {}
+  form.querySelectorAll("fieldset, .rep-text, .rep-hint, .rep-send").forEach(el => el.hidden = true);
+  done.hidden = false;
+  done.textContent = "Thanks! Your report will show here within a couple of hours.";
+}
+document.addEventListener("submit", e => {
+  const f = e.target.closest(".rep-form form");
+  if (!f) return;
+  e.preventDefault();
+  sendReport(f);
+});
+
 function renderDetail(m) {
   const n = LINEUP.length;
   const i = LINEUP.indexOf(m);
@@ -2339,11 +2442,11 @@ function renderDetail(m) {
   const prev = LINEUP[onFloor ? (i - 1 + n) % n : n - 1];
   const next = LINEUP[onFloor ? (i + 1) % n : 0];
   const v = m.venue;
-  const tied = (v.tied || []).filter(([k]) => v.notes.some(note => String(note[0]).toLowerCase().includes(k))).map(t => t[1]);
+  const reps = recentReports(m);
+  const repText = reps.map(r => [r.flippers, r.tilt, r.outlanes, r.note].join(" ").toLowerCase());
+  const tied = (v.tied || []).filter(([k]) => repText.some(t => t.includes(k))).map(t => t[1]);
   const copyLines = v.copy.concat(tied);
-  const notes = v.notes.length
-    ? v.notes.map(([t, by, d]) => `<div class="note"><q>${esc(t)}</q><span class="by mono">${esc(by)}${d ? " · " + esc(d) : ""} · Pinball Map</span></div>`).join("")
-    : `<p class="dim" style="margin:0 0 10px">No condition reports posted for this copy.</p>`;
+  const notes = reportSummary(reps) + reportForm(m);
   const copy = copyLines.length ? `<div class="sub mono">This copy</div><ul class="plain copy">${copyLines.map(c => `<li>${esc(c)}</li>`).join("")}</ul>` : "";
   const scores = v.scores.length
     ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${esc(s[0])}</td><td class="w">${esc(s[1])}${s[2] ? " · " + esc(s[2]) : ""}</td></tr>`).join("")}</tbody></table>`
@@ -2412,7 +2515,7 @@ function renderDetail(m) {
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
         <section class="sec">
-          <div class="sec-h mono"><span>At ${esc(VENUE.name)}</span><span class="dim">Pinball Map</span></div>
+          <div class="sec-h mono"><span>At ${esc(VENUE.name)}</span><span class="dim">How this copy plays</span></div>
           <div class="sec-b">${notes}${copy}${scores}</div>
         </section>
         ${m.tips.length ? "" : tipsSec}${rulesSec}
