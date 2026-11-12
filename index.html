@@ -382,6 +382,10 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .d-head { border-color: var(--line-2); }
 .d-head h2 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; color: var(--cream); font-size: clamp(38px, 5.8vw, 60px); line-height: 0.98; margin: 0 0 8px; }
 .d-head .code { fill: var(--lime); }
+/* plan page header: name on the left, dot code on the right */
+.d-head-body { grid-template-columns: minmax(0, 1fr) auto; }
+.d-head-body .code { order: 2; justify-self: end; }
+@media (max-width: 520px) { .d-head-body { grid-template-columns: minmax(0, 1fr); } .d-head-body .code { order: 0; justify-self: start; } }
 .thesis {
   font-family: "Boldonse", var(--f-display); font-style: normal; font-weight: 400; font-size: clamp(16px, 2vw, 22px); line-height: 1.7; color: var(--fg-hi);
   max-width: none; text-wrap: pretty; margin: 0 0 22px; padding: 20px 24px 22px;
