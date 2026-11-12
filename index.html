@@ -376,6 +376,8 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .venue-card .pins { margin-top: auto; padding-top: 10px; }
 .venue-card .pins .code { height: 14px; }
 .card .code { fill: var(--lime); filter: drop-shadow(0 0 6px rgba(201, 220, 139, 0.3)); }
+/* machine cards: year on the left, dot code on the right */
+#grid .card-top { flex-direction: row-reverse; align-items: center; }
 .card:hover::before, .card:hover::after { border-color: var(--lime); }
 .d-head { border-color: var(--line-2); }
 .d-head h2 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; color: var(--cream); font-size: clamp(38px, 5.8vw, 60px); line-height: 0.98; margin: 0 0 8px; }
