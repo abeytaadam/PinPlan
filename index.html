@@ -352,14 +352,9 @@ body::after { content: ""; position: fixed; inset: 8px; border: 1.5px solid var(
 .fx > .fx-t { position: relative; color: transparent; background: linear-gradient(180deg, #1f2122 30%, #6d7656 62%, var(--lime) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-stroke: 0.025em var(--lime); }
 .fx-wrap { position: relative; z-index: 0; isolation: isolate; }
 
-/* hero: small wide kicker over a big arched word */
-h1 { font-family: var(--f-display); margin: 22px 0 22px; line-height: 1; }
-h1 .kick { display: block; font-family: var(--f-mono); font-weight: 400; font-size: clamp(13px, 1.9vw, 19px); letter-spacing: 0.32em; text-transform: uppercase; color: var(--lime); margin-bottom: 18px; }
-h1 .arch { display: flex; flex-wrap: nowrap; align-items: flex-end; font-size: clamp(58px, 10.5vw, 120px); padding: 0.12em 0.1em 0.18em; }
-h1 .arch .fx { transform-origin: 50% 100%; }
-h1 .arch .gap { width: 0.28em; flex: none; }
-h1 .arch-in { display: flex; align-items: flex-end; }
-h1 .arch .fx { margin: 0 0.035em; }
+/* hero: one sentence, with "with a plan." in the poster lettering */
+h1 { font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; color: var(--cream); font-size: clamp(30px, 4.9vw, 62px); line-height: 1.25; letter-spacing: 0.005em; margin: 18px 0 22px; }
+h1 .fx { white-space: nowrap; margin-left: 0.06em; }
 .eyebrow { color: var(--lime); }
 .venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--lime); }
 
@@ -397,7 +392,6 @@ h1 .arch .fx { margin: 0 0.035em; }
 .card, .venue > div, details.basics, .sec, .d-head, .pager, .search input, .venue-pick select, .banner { background-color: var(--bg); }
 .card:hover, .pager a:hover { background-color: var(--panel); }
 .d-head { background-color: var(--bg-2); }
-h1 .arch { max-width: 100%; }
 </style>
 </head>
 <body>
@@ -415,7 +409,7 @@ h1 .arch { max-width: 100%; }
   <section class="hero">
     <div class="wrap">
       <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
-      <h1><span class="kick">Walk up to every game</span><span class="arch" data-arch="With a plan">With a plan.</span></h1>
+      <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
       <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
       <a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a>
     </div>
@@ -432,7 +426,7 @@ h1 .arch { max-width: 100%; }
       <div>
         <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
         <div class="venue-title" id="venue-title">Sister</div>
-        <h1><span class="kick">Walk up to every game</span><span class="arch" data-arch="With a plan">With a plan.</span></h1>
+        <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
         <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
@@ -2755,24 +2749,8 @@ function renderGlossary() {
 
 /* Poster lettering. fx() wraps text so CSS can stack the cream outline, dark gap and lime line behind it. */
 const fx = t => `<span class="fx" data-text="${esc(t)}"><span class="fx-t">${esc(t)}</span></span>`;
-function buildArch(el) {
-  const text = el.textContent.trim();
-  el.innerHTML = `<span class="sr">${esc(text)}</span><span class="arch-in" aria-hidden="true">${fx(text)}</span>`;
-  el.classList.add("fx-wrap");
-}
-document.querySelectorAll("h1 .arch").forEach(buildArch);
-/* Shrink the arched word until it fits its column. */
-function fitArch() {
-  document.querySelectorAll("h1 .arch").forEach(el => {
-    el.style.fontSize = "";
-    const inner = el.querySelector(".arch-in"); if (!inner || !el.clientWidth) return;
-    let size = parseFloat(getComputedStyle(el).fontSize), n = 0;
-    while (inner.scrollWidth > el.clientWidth - 8 && size > 28 && n++ < 40) { size -= 3; el.style.fontSize = size + "px"; }
-  });
-}
-window.addEventListener("resize", fitArch);
-window.addEventListener("hashchange", () => requestAnimationFrame(fitArch));
-if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitArch);
+/* The hero's emphasis gets the poster lettering; the rest of the sentence stays plain. */
+document.querySelectorAll("h1 .em-fx").forEach(el => { el.outerHTML = fx(el.textContent.trim()); });
 
 let homeScroll = 0;
 /* Hash routes: #venue-slug (venue home), #venue-slug/machine-id (plan), #machine-id (old Sister links). */
@@ -2875,7 +2853,6 @@ function renderHome() {
 function refreshAll(soft) {
   renderHome();
   route(soft);
-  fitArch();
 }
 
 /* ---------- DMD ---------- */
