@@ -382,6 +382,9 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .card h3, .pager .nm, .d-head h2 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; letter-spacing: -0.01em; }
 .card h3 { font-size: 28px; line-height: 1.02; }
 .venue-card h3 { font-size: 26px; }
+.venue-card h3 { margin-top: 0; }
+.venue-card .pins { margin-top: auto; padding-top: 10px; }
+.venue-card .pins .code { height: 14px; }
 .card .code { fill: var(--lime); filter: drop-shadow(0 0 6px rgba(201, 220, 139, 0.3)); }
 .card:hover::before, .card:hover::after { border-color: var(--lime); }
 .d-head { border-color: var(--line-2); }
@@ -2774,8 +2777,8 @@ function renderLanding() {
     grid.innerHTML = VENUES.map(v => {
       const n = (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length;
       return `<a class="card venue-card" href="#${v.slug}">
-        <div class="card-top">${dotSvg(n + (n === 1 ? " PIN" : " PINS"))}</div>
         <h3>${esc(v.name)}</h3>
+        <div class="card-top pins">${dotSvg(n + (n === 1 ? " PIN" : " PINS"))}</div>
       </a>`;
     }).join("");
   }
