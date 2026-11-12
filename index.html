@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#323A27">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Josefin+Sans:wght@600;700&family=DM+Sans:opsz,wght@9..40,400..600&family=Caveat:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gluten:wght@600..900&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Josefin+Sans:wght@600;700&family=DM+Sans:opsz,wght@9..40,400..600&family=Caveat:wght@500;600&display=swap">
 <style>
 /* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
 :root {
@@ -341,6 +341,7 @@ img { max-width: 100%; }
   --f-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
   --f-mono: "Josefin Sans", "Futura", "Century Gothic", system-ui, sans-serif;
   --f-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-funk: "Gluten", "Cooper Black", "Bagel Fat One", serif;
   --f-hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
 }
 body {
@@ -353,12 +354,12 @@ body {
 h1, .d-head h2, .card h3, .pager .nm, .gl-page h2, #gl-pop .t, .thesis {
   font-family: var(--f-display); font-style: normal;
 }
-h1 { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; letter-spacing: -0.035em; line-height: 0.9; text-transform: uppercase; font-size: clamp(48px, 8vw, 92px); }
+h1 { font-family: var(--f-funk); font-weight: 800; font-variation-settings: normal; letter-spacing: -0.01em; line-height: 0.92; text-transform: none; font-size: clamp(50px, 8.4vw, 96px); }
 h1 em { font-style: normal; color: var(--terra); }
 .card h3 { font-weight: 700; font-variation-settings: "wdth" 80, "opsz" 36; letter-spacing: -0.01em; font-size: 28px; }
-.d-head h2 { font-weight: 800; font-variation-settings: "wdth" 75, "opsz" 96; letter-spacing: -0.02em; text-transform: uppercase; }
+.d-head h2 { font-family: var(--f-funk); font-weight: 800; font-variation-settings: normal; letter-spacing: -0.005em; line-height: 0.98; }
 .pager .nm { font-weight: 700; font-variation-settings: "wdth" 80; }
-.gl-page h2 { font-weight: 800; font-variation-settings: "wdth" 75; text-transform: uppercase; }
+.gl-page h2 { font-family: var(--f-funk); font-weight: 800; font-variation-settings: normal; }
 #gl-pop .t { font-weight: 700; font-variation-settings: "wdth" 80; }
 .thesis { font-weight: 600; font-variation-settings: "wdth" 85, "opsz" 36; font-size: clamp(24px, 3.2vw, 34px); line-height: 1.12; color: var(--fg-hi); max-width: 30ch; }
 .thesis .tag { font-family: var(--f-hand); font-weight: 600; font-size: 28px; letter-spacing: 0; text-transform: none; color: var(--terra); margin-bottom: 4px; transform: rotate(-2deg); transform-origin: left; }
@@ -372,8 +373,6 @@ h1 em { font-style: normal; color: var(--terra); }
 .venue-pick select { background-image: linear-gradient(45deg, transparent 50%, var(--terra) 50%); }
 
 /* hero */
-.hero { padding-bottom: clamp(130px, 18vw, 190px); background: url("art/sandias-dark.svg") no-repeat center bottom 6px / max(100%, 820px) auto; }
-@media (max-width: 700px) { .hero { background-position: 80% calc(100% - 6px); } }
 .eyebrow { color: var(--terra); }
 .venue-title { border-left: 0; padding: 6px 14px; display: inline-block; background: var(--cream); color: var(--ink); border-radius: 999px; }
 .dmd-frame { background: var(--dmd-screen); border: 3px solid var(--cream); border-radius: 22px; box-shadow: 6px 7px 0 var(--terra); overflow: hidden; }
