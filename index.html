@@ -371,6 +371,11 @@ h1 .fx { white-space: nowrap; margin-left: 0.06em; }
 @media (prefers-reduced-motion: reduce) { .dmd-frame::after { animation: none; } }
 .hero { padding-bottom: clamp(60px, 9vw, 120px); }
 .hero-grid > div:last-child { position: relative; z-index: 0; }
+#landing .hero { padding-bottom: 36px; }
+#landing .lede { margin-bottom: 0; }
+.land-head { align-items: center; flex-wrap: wrap; gap: 10px 16px; padding-bottom: 14px; }
+.land-head > span .dim { margin-left: 10px; }
+.land-head .resume { margin-top: 0; padding: 8px 12px; }
 
 /* cards and panels: dark with thin cream lines, lime when active */
 .card h3, .pager .nm { font-family: var(--f-display); font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; line-height: 0.95; }
@@ -411,11 +416,10 @@ h1 .fx { white-space: nowrap; margin-left: 0.06em; }
       <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
       <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
       <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
-      <a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a>
     </div>
   </section>
   <div class="wrap">
-    <div class="sec-label mono"><span>Choose a venue</span><span class="dim" id="land-total"></span></div>
+    <div class="sec-label mono land-head"><span>Choose a venue <span class="dim" id="land-total"></span></span><a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a></div>
     <div class="grid venues-grid" id="venue-grid"></div>
   </div>
 </main>
