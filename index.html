@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#1b1c20">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Boldonse&family=Big+Shoulders+Display:wght@700..900&family=Michroma&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Boldonse&family=Instrument+Serif:ital@0;1&family=Big+Shoulders+Display:wght@700..900&family=Michroma&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
 :root {
@@ -353,8 +353,9 @@ body::after { content: ""; position: fixed; inset: 8px; border: 1.5px solid var(
 .fx-wrap { position: relative; z-index: 0; isolation: isolate; }
 
 /* hero: one sentence, with "with a plan." in the poster lettering */
-h1 { font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; color: var(--cream); font-size: clamp(30px, 4.9vw, 62px); line-height: 1.5; letter-spacing: 0.005em; margin: 18px 0 22px; }
-h1 .fx { white-space: nowrap; margin-left: 0.06em; }
+h1 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; color: var(--cream); font-size: clamp(44px, 7vw, 82px); line-height: 0.98; letter-spacing: -0.02em; margin: 16px 0 20px; text-wrap: balance; }
+h1 .fx { font-family: inherit; font-style: italic; text-transform: none; letter-spacing: inherit; white-space: nowrap; }
+h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .eyebrow { color: var(--lime); }
 .venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--lime); }
 
