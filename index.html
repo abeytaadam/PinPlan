@@ -9,10 +9,10 @@
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="icons/site.webmanifest">
-<meta name="theme-color" content="#08090c">
+<meta name="theme-color" content="#1b1c20">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700..900&family=Michroma&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
 :root {
@@ -306,6 +306,98 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
+
+/* ================= UFO theme =================
+   From the "Weekly Pinball Meetup" poster: night sky, thin lime frame,
+   wide spaced labels, lettering with a cream outline, a lime inner line and
+   a dark-to-lime fill, and a tractor beam fading from red-orange to olive. */
+:root {
+  --bg: #1b1c20;
+  --bg-2: #202126;
+  --panel: #25262c;
+  --line: rgba(236, 235, 230, 0.16);
+  --line-2: rgba(236, 235, 230, 0.34);
+  --fg: #cfd0c8;
+  --fg-hi: #ecebe6;
+  --fg-dim: #8d8f86;
+  --dmd: #c9dc8b;
+  --dmd-soft: rgba(201, 220, 139, 0.10);
+  --dmd-on: #c9dc8b;
+  --dmd-off: #23271c;
+  --dmd-screen: #121316;
+  --warn: #e0864f;
+  --warn-soft: rgba(224, 134, 79, 0.10);
+  --lime: #c9dc8b;
+  --cream: #ecebe6;
+  --beam-top: #c4513a;
+  --beam-bot: #5e6b48;
+  --f-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-mono: "Michroma", "Eurostile", "Arial", sans-serif;
+}
+.mono { font-size: 10px; letter-spacing: 0.2em; }
+body {
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cg fill='%23ecebe6'%3E%3Cpath d='M60 40l2.2 7.8L70 50l-7.8 2.2L60 60l-2.2-7.8L50 50l7.8-2.2z' opacity='.55'/%3E%3Cpath d='M300 120l1.5 5.5 5.5 1.5-5.5 1.5-1.5 5.5-1.5-5.5-5.5-1.5 5.5-1.5z' opacity='.45'/%3E%3Cpath d='M180 300l2.6 9.4 9.4 2.6-9.4 2.6-2.6 9.4-2.6-9.4-9.4-2.6 9.4-2.6z' opacity='.35'/%3E%3Cpath d='M380 330l1.4 4.6 4.6 1.4-4.6 1.4-1.4 4.6-1.4-4.6-4.6-1.4 4.6-1.4z' opacity='.5'/%3E%3Ccircle cx='140' cy='90' r='2.2' opacity='.5'/%3E%3Ccircle cx='250' cy='220' r='1.6' opacity='.4'/%3E%3Ccircle cx='40' cy='250' r='2' opacity='.45'/%3E%3Ccircle cx='350' cy='30' r='1.8' opacity='.4'/%3E%3Ccircle cx='90' cy='390' r='1.5' opacity='.35'/%3E%3Ccircle cx='310' cy='260' r='1.2' opacity='.3'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* thin lime frame around the page, like the poster border */
+body::after { content: ""; position: fixed; inset: 8px; border: 1.5px solid var(--lime); pointer-events: none; z-index: 40; opacity: 0.85; }
+@media (max-width: 520px) { body::after { inset: 4px; } }
+
+/* poster lettering: cream outline, dark gap, lime inner line, dark-to-lime fill */
+.fx { position: relative; display: inline-block; font-family: var(--f-display); font-weight: 900; text-transform: uppercase; letter-spacing: 0.01em; line-height: 0.9; }
+.fx::before, .fx::after { content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; }
+.fx::before { -webkit-text-stroke: 0.16em var(--cream); color: var(--cream); }
+.fx::after { -webkit-text-stroke: 0.09em var(--bg); color: var(--bg); }
+.fx > .fx-t { position: relative; color: transparent; background: linear-gradient(180deg, #1f2122 30%, #6d7656 62%, var(--lime) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-stroke: 0.025em var(--lime); }
+.fx-wrap { position: relative; z-index: 0; isolation: isolate; }
+
+/* hero: small wide kicker over a big arched word */
+h1 { font-family: var(--f-display); margin: 22px 0 22px; line-height: 1; }
+h1 .kick { display: block; font-family: var(--f-mono); font-weight: 400; font-size: clamp(13px, 1.9vw, 19px); letter-spacing: 0.32em; text-transform: uppercase; color: var(--lime); margin-bottom: 18px; }
+h1 .arch { display: flex; flex-wrap: nowrap; align-items: flex-end; font-size: clamp(58px, 10.5vw, 120px); padding: 0.12em 0.1em 0.18em; }
+h1 .arch .fx { transform-origin: 50% 100%; }
+h1 .arch .gap { width: 0.28em; flex: none; }
+h1 .arch-in { display: flex; align-items: flex-end; }
+h1 .arch .fx { margin: 0 0.035em; }
+.eyebrow { color: var(--lime); }
+.venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--lime); }
+
+/* the DMD hangs like the saucer, with a tractor beam under it */
+.dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
+.dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
+.dmd-frame::after {
+  content: ""; position: absolute; left: 22%; right: 22%; top: 100%; height: clamp(90px, 14vw, 160px); z-index: -1;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--beam-top) 85%, transparent), color-mix(in srgb, var(--beam-bot) 55%, transparent) 70%, transparent);
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+  animation: beam 4.5s ease-in-out infinite;
+}
+@keyframes beam { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .dmd-frame::after { animation: none; } }
+.hero { padding-bottom: clamp(60px, 9vw, 120px); }
+.hero-grid > div:last-child { position: relative; z-index: 0; }
+
+/* cards and panels: dark with thin cream lines, lime when active */
+.card h3, .pager .nm { font-family: var(--f-display); font-weight: 800; letter-spacing: 0.01em; text-transform: uppercase; line-height: 0.95; }
+.card h3 { font-size: 30px; }
+.card .code { fill: var(--lime); filter: drop-shadow(0 0 6px rgba(201, 220, 139, 0.3)); }
+.card:hover::before, .card:hover::after { border-color: var(--lime); }
+.d-head { border-color: var(--line-2); }
+.d-head h2 { font-size: clamp(44px, 7vw, 76px); line-height: 0.95; margin: 6px 0 12px; }
+.d-head .code { fill: var(--lime); }
+.thesis { font-family: var(--f-body); font-style: normal; font-weight: 500; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.3; color: var(--fg-hi); max-width: 38ch; }
+.thesis .tag { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.24em; color: var(--lime); }
+.sec.primary .sec-h { color: var(--lime); }
+.chip[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: #15160f; }
+.rep-send { background: var(--lime); color: #15160f; }
+.search::before { color: var(--lime); }
+.brand-dot { border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px rgba(201, 220, 139, 0.7); }
+.gl-page h2 { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; }
+/* panels sit on solid night so the stars stay in the sky */
+.card, .venue > div, details.basics, .sec, .d-head, .pager, .search input, .venue-pick select, .banner { background-color: var(--bg); }
+.card:hover, .pager a:hover { background-color: var(--panel); }
+.d-head { background-color: var(--bg-2); }
+h1 .arch { max-width: 100%; }
 </style>
 </head>
 <body>
@@ -323,7 +415,7 @@ img { max-width: 100%; }
   <section class="hero">
     <div class="wrap">
       <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
-      <h1>Walk up to every game <em>with a plan.</em></h1>
+      <h1><span class="kick">Walk up to every game</span><span class="arch" data-arch="With a plan">With a plan.</span></h1>
       <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
       <a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a>
     </div>
@@ -340,7 +432,7 @@ img { max-width: 100%; }
       <div>
         <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
         <div class="venue-title" id="venue-title">Sister</div>
-        <h1>Walk up to every game <em>with a plan.</em></h1>
+        <h1><span class="kick">Walk up to every game</span><span class="arch" data-arch="With a plan">With a plan.</span></h1>
         <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
@@ -2529,7 +2621,7 @@ function renderDetail(m) {
       <div class="d-title-bar mono"><span>[ ${esc(m.name)} ]</span><span>${esc(meta(m))}</span></div>
       <div class="d-head-body">
         ${dotSvg(m.code)}
-        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
+        <div><h2 class="fx-wrap">${fx(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
     <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
@@ -2661,6 +2753,38 @@ function renderGlossary() {
     </section>`).join("")}`;
 }
 
+/* Poster lettering. fx() wraps text so CSS can stack the cream outline, dark gap and lime line behind it. */
+const fx = t => `<span class="fx" data-text="${esc(t)}"><span class="fx-t">${esc(t)}</span></span>`;
+function buildArch(el) {
+  const words = el.dataset.arch.split(" ");
+  const letters = words.join(" ").length - (words.length - 1);
+  let i = 0, html = "";
+  words.forEach((w, wi) => {
+    if (wi) html += '<span class="gap"></span>';
+    for (const ch of w) {
+      const t = letters > 1 ? (i / (letters - 1)) * 2 - 1 : 0;   // -1 .. 1 across the word
+      const rot = t * 9, lift = (1 - t * t) * 0.28;               // fan out and rise in the middle
+      html += `<span class="fx" data-text="${esc(ch)}" style="transform: translateY(${-lift}em) rotate(${rot}deg)"><span class="fx-t">${esc(ch)}</span></span>`;
+      i++;
+    }
+  });
+  el.innerHTML = `<span class="sr">${esc(el.textContent)}</span><span class="arch-in" aria-hidden="true">${html}</span>`;
+  el.classList.add("fx-wrap");
+}
+document.querySelectorAll("h1 .arch").forEach(buildArch);
+/* Shrink the arched word until it fits its column. */
+function fitArch() {
+  document.querySelectorAll("h1 .arch").forEach(el => {
+    el.style.fontSize = "";
+    const inner = el.querySelector(".arch-in"); if (!inner || !el.clientWidth) return;
+    let size = parseFloat(getComputedStyle(el).fontSize), n = 0;
+    while (inner.scrollWidth > el.clientWidth - 8 && size > 28 && n++ < 40) { size -= 3; el.style.fontSize = size + "px"; }
+  });
+}
+window.addEventListener("resize", fitArch);
+window.addEventListener("hashchange", () => requestAnimationFrame(fitArch));
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitArch);
+
 let homeScroll = 0;
 /* Hash routes: #venue-slug (venue home), #venue-slug/machine-id (plan), #machine-id (old Sister links). */
 function parseHash() {
@@ -2762,6 +2886,7 @@ function renderHome() {
 function refreshAll(soft) {
   renderHome();
   route(soft);
+  fitArch();
 }
 
 /* ---------- DMD ---------- */
@@ -2828,7 +2953,8 @@ function dotSvg(t, cls) {
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css = getComputedStyle(document.documentElement);
-  const ON = css.getPropertyValue("--dmd").trim() || "#ff6b1f";
+  const ON = (css.getPropertyValue("--dmd-on") || css.getPropertyValue("--dmd")).trim() || "#ff6b1f";
+  const SCREEN = css.getPropertyValue("--dmd-screen").trim() || "#050506";
   const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
   const BIG = 2, BIG_GAP = 1, BIG_Y = 2, SMALL_Y = 21, GAP_TEXT = "   ";
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
@@ -2864,7 +2990,7 @@ function dotSvg(t, cls) {
     const t = lines[line] || "";
     draw(grid, t, Math.floor((COLS - width(t, 1, 1)) / 2), SMALL_Y, 1, 1);
     const cw = cv.width / COLS, rad = cw * 0.38;
-    ctx.fillStyle = "#050506";
+    ctx.fillStyle = SCREEN;
     ctx.fillRect(0, 0, cv.width, cv.height);
     for (const on of [0, 1]) {   // batch dots by color: one path per color
       ctx.fillStyle = on ? ON : OFF;
