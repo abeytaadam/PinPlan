@@ -359,36 +359,17 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .eyebrow { color: var(--lime); }
 .venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--lime); }
 
-/* the DMD is the window of a flying saucer, with a tractor beam under it */
-.ufo { position: relative; width: 92%; max-width: 540px; margin: 0 auto; padding-top: 4%; z-index: 0; }
-.ufo-dome { display: block; width: 44%; height: auto; aspect-ratio: 200 / 84; margin: 0 auto -4.5%; position: relative; z-index: 1; }
-.ufo-dome .wave { transform-origin: 109px 76px; animation: wave 1.6s ease-in-out infinite; }
-@keyframes wave { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-28deg); } }
-.ufo-hull {
-  position: relative; z-index: 2; aspect-ratio: 10 / 3.5; border-radius: 50%;
-  background: radial-gradient(120% 90% at 50% 100%, rgba(201, 220, 139, 0.55), transparent 55%), linear-gradient(180deg, #232327 0%, #2f3029 60%, #55603f 100%);
-  border: 2px solid var(--cream);
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime);
-  display: grid; place-items: center;
-}
-/* the thin swoosh rings either side of the hull, as on the poster */
-.ufo-hull::before {
-  content: ""; position: absolute; left: -5%; right: -5%; top: 22%; bottom: 14%; z-index: -1;
-  border-radius: 50%; border: 1.5px solid var(--lime); border-top-color: transparent;
-}
-.ufo .dmd-screen { width: 64%; padding: 0; border-radius: 10px; overflow: hidden; background: var(--dmd-screen); box-shadow: 0 0 0 1.5px var(--cream), inset 0 0 18px rgba(0,0,0,.6); }
-.ufo .lt { position: absolute; width: 4.2%; aspect-ratio: 2 / 1; border-radius: 50%; background: var(--cream); box-shadow: 0 0 8px rgba(236, 235, 230, 0.6); animation: blink 2.4s ease-in-out infinite; }
-.ufo .l1 { left: 5.5%; top: 46%; } .ufo .l2 { left: 11%; top: 70%; animation-delay: .6s; }
-.ufo .l3 { right: 11%; top: 70%; animation-delay: 1.2s; } .ufo .l4 { right: 5.5%; top: 46%; animation-delay: 1.8s; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-.ufo-hull::after {
-  content: ""; position: absolute; left: 30%; right: 30%; top: 86%; height: clamp(110px, 18vw, 190px); z-index: -2;
+/* the DMD hangs like the saucer, with a tractor beam under it */
+.dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
+.dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
+.dmd-frame::after {
+  content: ""; position: absolute; left: 22%; right: 22%; top: 100%; height: clamp(90px, 14vw, 160px); z-index: -1;
   background: linear-gradient(180deg, color-mix(in srgb, var(--beam-top) 85%, transparent), color-mix(in srgb, var(--beam-bot) 55%, transparent) 70%, transparent);
-  clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
   animation: beam 4.5s ease-in-out infinite;
 }
 @keyframes beam { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .ufo-hull::after, .ufo .lt, .ufo-dome .wave { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .dmd-frame::after { animation: none; } }
 .hero { padding-bottom: clamp(60px, 9vw, 120px); }
 .hero-grid > div:last-child { position: relative; z-index: 0; }
 #landing .hero { padding-bottom: 36px; }
@@ -458,24 +439,9 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
         <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
         <div class="tally mono dim" id="tally"></div>
       </div>
-      <div class="ufo" aria-hidden="true">
-        <span class="sr" id="dmd-venue">Sister</span>
-        <svg class="ufo-dome" viewBox="0 0 200 84" preserveAspectRatio="none">
-          <defs><linearGradient id="glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2c2d32"/><stop offset="1" stop-color="#4a4b50"/></linearGradient></defs>
-          <path d="M6 84 A94 80 0 0 1 194 84 Z" fill="url(#glass)" stroke="#ecebe6" stroke-width="2" vector-effect="non-scaling-stroke"/>
-          <path d="M40 34 Q70 14 104 13" fill="none" stroke="#ecebe6" stroke-opacity=".35" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-          <g class="alien" fill="#c9dc8b" transform="translate(0 -14)">
-            <ellipse cx="100" cy="62" rx="10" ry="12.5"/>
-            <path d="M93 72 Q100 86 107 72 Z"/>
-            <path class="wave" d="M109 76 q6 -2 8 -10" fill="none" stroke="#c9dc8b" stroke-width="2.6" stroke-linecap="round"/>
-            <ellipse cx="95.5" cy="61" rx="3.2" ry="4.6" fill="#1b1c20" transform="rotate(-25 95.5 61)"/>
-            <ellipse cx="104.5" cy="61" rx="3.2" ry="4.6" fill="#1b1c20" transform="rotate(25 104.5 61)"/>
-          </g>
-        </svg>
-        <div class="ufo-hull">
-          <i class="lt l1"></i><i class="lt l2"></i><i class="lt l3"></i><i class="lt l4"></i>
-          <div class="dmd-screen"><canvas id="dmd" width="512" height="128"></canvas></div>
-        </div>
+      <div class="dmd-frame" aria-hidden="true">
+        <div class="dmd-title mono"><span>■ DMD 128×32</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
+        <div class="dmd-screen"><canvas id="dmd" width="512" height="128"></canvas></div>
       </div>
     </div>
   </section>
