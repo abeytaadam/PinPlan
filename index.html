@@ -310,7 +310,7 @@ img { max-width: 100%; }
 /* ================= UFO theme =================
    From the "Weekly Pinball Meetup" poster: night sky, thin lime frame,
    wide spaced labels, lettering with a cream outline, a lime inner line and
-   a dark-to-lime fill, and a tractor beam fading from red-orange to olive. */
+   a dark-to-lime fill. */
 :root {
   --bg: #1b1c20;
   --bg-2: #202126;
@@ -329,8 +329,6 @@ img { max-width: 100%; }
   --warn-soft: rgba(224, 134, 79, 0.10);
   --lime: #c9dc8b;
   --cream: #ecebe6;
-  --beam-top: #c4513a;
-  --beam-bot: #5e6b48;
   --f-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
   --f-mono: "Michroma", "Eurostile", "Arial", sans-serif;
 }
@@ -359,18 +357,10 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .eyebrow { color: var(--lime); }
 .venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--lime); }
 
-/* the DMD hangs like the saucer, with a tractor beam under it */
+/* the DMD in a cream rim with a lime outer ring */
 .dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
 .dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
-.dmd-frame::after {
-  content: ""; position: absolute; left: 22%; right: 22%; top: 100%; height: clamp(90px, 14vw, 160px); z-index: -1;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--beam-top) 85%, transparent), color-mix(in srgb, var(--beam-bot) 55%, transparent) 70%, transparent);
-  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
-  animation: beam 4.5s ease-in-out infinite;
-}
-@keyframes beam { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .dmd-frame::after { animation: none; } }
-.hero { padding-bottom: clamp(60px, 9vw, 120px); }
+
 .hero-grid > div:last-child { position: relative; z-index: 0; }
 #landing .hero { padding-bottom: 36px; }
 #landing .lede { margin-bottom: 0; }
