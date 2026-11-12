@@ -277,16 +277,8 @@
       "id": 27112,
       "name": "La Cumbre Brewing Co. Westside",
       "url": "https://pinballmap.com/map/?by_location_id=27112",
-      "date_last_updated": "2026-08-19",
+      "date_last_updated": "2026-11-11",
       "machines": [
-        {
-          "name": "Avengers: Infinity Quest (Pro)",
-          "manufacturer": "Stern",
-          "year": 2020,
-          "opdb_id": "Gj66P-M3dxn",
-          "conditions": [],
-          "scores": []
-        },
         {
           "name": "Jurassic Park (Premium)",
           "manufacturer": "Stern",
@@ -308,6 +300,14 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gxv81-Mo1rp-A9vrL",
+          "conditions": [],
+          "scores": []
+        },
+        {
+          "name": "Super Mario Bros.",
+          "manufacturer": "Gottlieb",
+          "year": 1992,
+          "opdb_id": "GRBzQ-MLO1j",
           "conditions": [],
           "scores": []
         }
@@ -1099,5 +1099,5 @@
       ]
     }
   ],
-  "synced_at": "2026-11-11T18:33:46.146Z"
+  "synced_at": "2026-11-12T07:12:31.889Z"
 }
