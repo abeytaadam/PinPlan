@@ -3,7 +3,7 @@
 Read this first. It replaces the original conversation, which isn't available to you.
 
 ## What this is
-**Renamed 2026-11-12: the site is now "Garbo's Guide to ABQ Pinball"** (repo and URL still say PinPlan). Garbo is the owner's alien character; the theme is a field guide he left behind near Roswell. Night-sky look, Instrument Serif titles, dot-matrix accents. Lime is reserved for Garbo, the onboard display and tappable things. `garbo-says.md` holds the owner's own one-thing line per game (overrides `thesis`); `art/garbo.png` is his drawing used as a mask.
+**Renamed 2026-11-12: the site is now "Garbo's Guide to ABQ Pinball"** (repo and URL still say PinPlan). Garbo is the owner's alien character; the theme is a field guide he left behind in Albuquerque (no Roswell references: the owner didn't want the app to seem based there). Night-sky look, Instrument Serif titles, dot-matrix accents. Lime is reserved for Garbo, the onboard display and tappable things. `garbo-says.md` holds the owner's own one-thing line per game (overrides `thesis`); `art/garbo.png` is his drawing used as a mask.
 PinPlan is a free tournament strategy guide for pinball venues, starting in Albuquerque, NM.
 - Live site: https://abeytaadam.github.io/PinPlan/ (GitHub Pages, served from `main`, root folder)
 - Players reach it from a QR code posted at the venue.
