@@ -459,7 +459,15 @@ h1.venue-h1 { font-size: clamp(46px, 7vw, 84px); line-height: 0.95; margin: 10px
 /* plan page header: name on the left, dot code on the right */
 .d-head-body { grid-template-columns: minmax(0, 1fr) auto; }
 .d-head-body .code { order: 2; justify-self: end; }
-@media (max-width: 520px) { .d-head-body { grid-template-columns: minmax(0, 1fr); } .d-head-body .code { order: 0; justify-self: start; } }
+/* Phones: the code tucks into the top-right corner so the name can be bigger without a taller card */
+@media (max-width: 520px) {
+  .d-head-body { display: block; padding: 14px 18px; }
+  .d-head-body::after { content: ""; display: table; clear: both; }
+  .d-head-body .code { float: right; height: 22px; width: auto; margin: 4px 0 2px 12px; }
+  .d-head h2 { font-size: 50px; line-height: 0.95; text-wrap: balance; margin: 0 0 8px; }
+  .d-head h2.long { font-size: 42px; }
+  .d-head .d-title-bar { display: none; }   /* repeats the name and meta shown below */
+}
 .thesis {
   font-family: "Boldonse", var(--f-display); font-style: normal; font-weight: 400; font-size: clamp(16px, 2vw, 22px); line-height: 1.7; color: var(--fg-hi);
   max-width: none; text-wrap: pretty; margin: 0 0 22px; padding: 20px 24px 22px;
@@ -2727,7 +2735,7 @@ function renderDetail(m) {
       <div class="d-title-bar mono"><span>[ ${esc(m.name)} ]</span><span>${esc(meta(m))}</span></div>
       <div class="d-head-body">
         ${dotSvg(m.code)}
-        <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
+        <div><h2${m.name.length > 24 ? ' class="long"' : ""}>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
     ${m.uncurated ? `<p class="thesis"><span class="tag">Damaged in the crash · No plan yet</span>${esc(m.thesis)}</p>`
