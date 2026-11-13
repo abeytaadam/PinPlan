@@ -368,6 +368,9 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
   100% { transform: none; opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .dmd-frame.abduct { animation: none; } }
+/* Garbo's signature in the footer: the owner's drawing, recoloured through a mask */
+.garbo-sig { display: flex; align-items: center; gap: 16px; }
+.garbo-art { flex: none; width: 92px; aspect-ratio: 754 / 562; background: var(--lime); -webkit-mask: url("art/garbo.png") center / contain no-repeat; mask: url("art/garbo.png") center / contain no-repeat; }
 /* the DMD in a cream rim with a lime outer ring */
 .dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
 .dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
@@ -431,7 +434,7 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="mono eyebrow">[ Recovered document · Roswell, NM · 1947 ]</div>
+        <div class="mono eyebrow">[ Garbo’s guides · Recovered near Roswell, NM ]</div>
         <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
         <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
       </div>
@@ -451,7 +454,7 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="mono eyebrow">[ Recovered document · Roswell, NM · 1947 ]</div>
+        <div class="mono eyebrow">[ Garbo’s guides · Recovered near Roswell, NM ]</div>
         <div class="venue-title" id="venue-title">Sister</div>
         <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
         <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
@@ -507,7 +510,7 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
   <div class="wrap">
     <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
     <p><a href="#glossary">Earthling terms</a>: what a VUK, a cradle or a playfield multiplier is.</p>
-    <p>Recovered near Roswell, NM. Translated for earthlings by <b>SAPO Studios</b>.</p>
+    <p class="garbo-sig"><span class="garbo-art" role="img" aria-label="Garbo, winking"></span><span>Field notes of <b>Garbo</b>, a visitor who fell for pinball. Recovered near Roswell, NM, and translated for earthlings by <b>SAPO Studios</b>.</span></p>
     <p>Machine reports come from PinPlan players, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
   </div>
 </footer>
@@ -2917,6 +2920,9 @@ const F = {
   "\uE008":"00000 10001 00000 11111 00000 10101 00000", "\uE009":"00110 01000 10000 10010 10000 01000 00110",
   "\uE00A":"00100 01010 00100 01110 10101 00100 01010", "\uE00B":"11011 10001 00100 01110 00100 10001 11011"
 };
+/* Garbo, from the owner's drawing, redrawn dot by dot (56 x 30) with an open-eye and a wink frame. */
+const GARBO = {"open":["00000001110000000000000000000000000000000000000000000000","00000011111001110000000000010000000000000000000000000000","00000011111111110000000010100000000000000000000000000000","00000011111111100000000111000000000011111110000000000000","00000011111100000000011010000000011100000001110000000000","00001111110000000000111000000001100000000000001000000000","00111111000000000000110000000010000000000000000100000000","00111100000000000001000000000100000000000000000011100000","00000000000000000000000000000100000000000000000100010000","00000000000000000000000000001000000000000000000100010000","00000000000000000000000000000000000000000000000100010000","00000000001111111100000000000000000111111110000011100000","00000000011111111110000000000000001111111111000000000000","00000000111110011111000000000000011111001111100000000000","00000001111000000111100001000000111100000011110000000000","00000001110000000011100000100000111000000001110000000000","00000001110000000011100001000000111000000001110000000000","00000001100000000001100000100000110000000000110000000000","00000000000000000000000001000000000000000000000000000000","00000000000000000000000000000000000000000000000000000000","00000000111110000000000000000000000000000011110000000000","00000001000001111111111000000000111111111100001000000000","00000010000000000000000111111111000000000000000100000000","00000010001100111100000000000000000001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000001001100111100000000000001111001111001101000000000","00000000100000000000000000000000000000000000010000000000","00000000011111111111111111111111111111111111100000000000","00000000000000000000000000000000000000000000000000000000"],
+  "wink":["00000001110000000000000000000000000000000000000000000000","00000011111001110000000000010000000000000000000000000000","00000011111111110000000010100000000000000000000000000000","00000011111111100000000111000000000011111110000000000000","00000011111100000000011010000000011100000001110000000000","00001111110000000000111000000001100000000000001000000000","00111111000000000000110000000010000000000000000100000000","00111100000000000001000000000100000000000000000011100000","00000000000000000000000000000100000000000000000100010000","00000000000000000000000000001000000000000000000100010000","00000000000000000000000000000000000000000000111100010000","00000000001111111100000000000000000000000011110011100000","00000000011111111110000000000000000000001111000000000000","00000000111110011111000000000000000000011100000000000000","00000001111000000111100001000000000001111000111000000000","00000001110000000011100000100000000011111111111000000000","00000001110000000011100001000000001111111111000000000000","00000001100000000001100000100000111111111111100000000000","00000000000000000000000001000001110111111111110000000000","00000000000000000000000000000000000000000000000000000000","00000000111110000000000000000000000000000011110000000000","00000001000001111111111000000000111111111100001000000000","00000010000000000000000111111111000000000000000100000000","00000010001100111100000000000000000001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000001001100111100000000000001111001111001101000000000","00000000100000000000000000000000000000000000010000000000","00000000011111111111111111111111111111111111100000000000","00000000000000000000000000000000000000000000000000000000"]};
 const ALIEN = Array.from({ length: 12 }, (_, i) => String.fromCharCode(0xE000 + i));
 const glyph = ch => (F[ch] || F[" "]).split(" ");
 /* Width in dots of text drawn at scale s with a gap of g dots between letters. */
@@ -3007,6 +3013,13 @@ function startDmd(cv, content, refreshName, opts) {
   }
   function frame() {
     const grid = new Uint8Array(COLS * ROWS);
+    if (lines[line] === "@GARBO") {   // Garbo frame: his face, winking partway through
+      const t = performance.now() - lineAt, rows = GARBO[t > 1100 && t < 2100 ? "wink" : "open"];
+      const x0 = Math.floor((COLS - rows[0].length) / 2);
+      rows.forEach((r, y) => { for (let c = 0; c < r.length; c++) if (r[c] === "1") grid[(y + 1) * COLS + x0 + c] = 1; });
+      paint(grid);
+      return;
+    }
     if (!introDone && introStart !== null) {
       if (introFrame(grid, performance.now() - introStart)) { introDone = true; line = 0; lineAt = performance.now(); }
       paint(grid);
@@ -3042,7 +3055,7 @@ function startDmd(cv, content, refreshName, opts) {
     raf = requestAnimationFrame(loop);
     if (!visible || t - last < 45) return;
     last = t;
-    let changed = !introDone && introStart !== null;
+    let changed = (!introDone && introStart !== null) || lines[line] === "@GARBO";
     if (scroll && introDone) { x = (x + 1) % (width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP); changed = true; }
     if (introDone && lines.length > 1 && t - lineAt > 3500) { line = (line + 1) % lines.length; lineAt = t; changed = true; }
     if (changed) frame();
@@ -3089,7 +3102,7 @@ startDmd(document.getElementById("dmd"), () => {
 }, "dmdRefresh");
 startDmd(document.getElementById("dmd-land"), () => {
   const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
-  return { name: "WELCOME", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW"] };
+  return { name: "WELCOME", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW", "@GARBO"] };
 }, "dmdLandRefresh", { intro: true });
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
