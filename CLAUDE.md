@@ -5,7 +5,9 @@ Read this first. It replaces the original conversation, which isn't available to
 ## What this is
 **Renamed 2026-11-12: the site is now "Garbo's Guide to ABQ Pinball"** (repo and URL still say PinPlan). Garbo is the owner's alien character; the theme is a field guide he left behind in Albuquerque (no Roswell references: the owner didn't want the app to seem based there). Night-sky look, Instrument Serif titles, dot-matrix accents. Lime is reserved for Garbo, the onboard display and tappable things. `garbo-says.md` holds the owner's own one-thing line per game (overrides `thesis`); `art/garbo.png` is his drawing used as a mask (three-eyed version, refined by the owner 2026-11-13; the pre-2026-11-12 drawing must not come back). The DMD version is the hand-drawn 40×30 `GARBO` bitmap in `index.html`; he winks his left eye (the viewer's right).
 PinPlan is a free tournament strategy guide for pinball venues, starting in Albuquerque, NM.
-- Live site: https://abeytaadam.github.io/PinPlan/ (GitHub Pages, served from `main`, root folder)
+- Live site: https://www.garbosguide.lol/ (custom domain set 2026-11-13; GitHub Pages, served from `main`, root folder; the `CNAME` file holds the domain). The old https://abeytaadam.github.io/PinPlan/ links, including printed QR codes, redirect there with their `#venue` hash intact.
+- Domains (GoDaddy): garbosguide.lol has GitHub's four A and four AAAA records on `@` and `www` CNAME → abeytaadam.github.io. garbosguide.com is a GoDaddy 301 forward to https://www.garbosguide.lol. GoDaddy asks for an emailed one-time code on every DNS save; the owner enters it.
+- New QR codes should point at `https://www.garbosguide.lol/#<venue-slug>`.
 - Players reach it from a QR code posted at the venue.
 - The current version covers one venue: **Sister**, 407 Central Ave NW (Pinball Map location 6422), with 16 machines.
 
