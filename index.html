@@ -3068,18 +3068,17 @@ function startDmd(cv, content, refreshName, opts) {
     const rows = GARBO[t > 900 && t < 1900 ? "wink" : "open"], x0 = Math.floor((COLS - rows[0].length) / 2);
     rows.forEach((r, y) => { for (let c = 0; c < r.length; c++) if (r[c] === "1") grid[(y + 1) * COLS + x0 + c] = 1; });
   }
-  /* Intro: glyphs → SIGNAL RECOVERED → TRANSLATING... → Garbo winks → the name and first line decode. */
+  /* Intro: glyphs → SIGNAL RECOVERED → TRANSLATING... → the name and first line decode. The rotation then takes over. */
   function introFrame(grid, e) {
-    const sig = "SIGNAL RECOVERED", tr = "TRANSLATING...", first = lines[0] || "";
-    const T1 = 1100, T2 = T1 + sig.length * 55 + 1300, T3 = T2 + tr.length * 40 + 1300, T4 = T3 + 2600;
-    if (e >= T3 && e < T4) { drawGarbo(grid, e - T3); return false; }
+    const sig = "SIGNAL RECOVERED", tr = "TRANSLATING...", first = typeof lines[0] === "string" ? lines[0] : "";
+    const T1 = 1100, T2 = T1 + sig.length * 55 + 1300, T3 = T2 + tr.length * 40 + 1300;
     let small, smallStart, smallStep;
     if (e < T2) { small = sig; smallStart = T1; smallStep = 55; }
     else if (e < T3) { small = tr; smallStart = T2; smallStep = 40; }
-    else { small = first; smallStart = T4 + 400; smallStep = 55; }
-    draw(grid, decode(name, e, e < T4 ? Infinity : T4, 80), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
+    else { small = first; smallStart = T3 + 300; smallStep = 55; }
+    draw(grid, decode(name, e, e < T3 ? Infinity : T3, 80), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
     draw(grid, decode(small, e, smallStart, smallStep), Math.floor((COLS - width(small, 1, 1)) / 2), SMALL_Y, 1, 1);
-    return e > T4 + 400 + first.length * 55 + 800;
+    return e > T3 + 300 + first.length * 55 + 200;
   }
 
   function setup() {
@@ -3093,7 +3092,7 @@ function startDmd(cv, content, refreshName, opts) {
       while (words.length > 1 && width(words.join(" "), BIG, BIG_GAP) > COLS) words.pop();
       name = words.join(" "); nameW = width(name, BIG, BIG_GAP); scroll = nameW > COLS;
     }
-    lines = c.lines.filter(t => width(t, 1, 1) <= COLS);
+    lines = c.lines.filter(t => typeof t === "object" || width(t, 1, 1) <= COLS);
     x = 0; line = 0; lineAt = performance.now();
   }
   function size() {
@@ -3113,6 +3112,13 @@ function startDmd(cv, content, refreshName, opts) {
       return;
     }
     if (lines[line] === "@GARBO") { drawGarbo(grid, performance.now() - lineAt); paint(grid); return; }
+    if (lines[line] && typeof lines[line] === "object") {   // a screen with its own top and bottom lines
+      const sc = lines[line], tw = width(sc.top, BIG, BIG_GAP);
+      draw(grid, sc.top, Math.floor((COLS - tw) / 2), BIG_Y, BIG, BIG_GAP);
+      draw(grid, sc.bottom, Math.floor((COLS - width(sc.bottom, 1, 1)) / 2), SMALL_Y, 1, 1);
+      paint(grid);
+      return;
+    }
     if (!introDone && introStart !== null) {
       if (introFrame(grid, performance.now() - introStart)) { introDone = true; line = 0; lineAt = performance.now(); }
       paint(grid);
@@ -3204,7 +3210,7 @@ startDmd(document.getElementById("dmd"), () => {
 }, "dmdRefresh");
 startDmd(document.getElementById("dmd-land"), () => {
   const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
-  return { name: "GARBO'S GUIDE", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW", "@GARBO"] };
+  return { name: "GARBO'S GUIDE", lines: ["TO ALBUQUERQUE PINBALL", "@GARBO", { top: "ALBUQUERQUE", bottom: VENUES.length + " VENUES · " + pins + " PINS" }] };
 }, "dmdLandRefresh", { intro: true });
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
