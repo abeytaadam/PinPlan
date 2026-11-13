@@ -20,7 +20,7 @@ Each machine page leads with **tournament** strategy, not general play:
 6. Rules in brief, then sources (every page links its sources)
 
 ## Files
-- `icons/`: the owner's "pp" mark (two interlocking Instrument Serif p's, white and orange, with a ball). `favicon.svg` is the original artboard; `favicon-32.png`, `apple-touch-icon.png` (180), `icon-192.png` and `icon-512.png` are rendered from it (home-screen sizes use a full-bleed square background). `site.webmanifest` names the app for "Add to Home Screen".
+- `icons/`: Garbo's face in lime on night (#1b1c20), rendered from the owner's drawing (2026-11-12). `favicon-32.png` and `favicon-64.png` use a face-only crop (eyes, nose, grin) so it reads at tab size; `apple-touch-icon.png` (180), `icon-192.png` and `icon-512.png` show the whole drawing. `favicon.svg` is the old "pp" mark, no longer linked. `site.webmanifest` names the app for "Add to Home Screen".
 - `index.html`: the whole site in one file. The curated plans are the `MACHINES` array in the script near the bottom. Each entry has: id, code (DMD-style 2–4 letters), name, sort, mfr, year, variant, group (stern/chicago/classic/spooky/other), opdb (OPDB group id, e.g. G4do5), thesis, plan[], avoid[], venue {notes, copy, tied, scores}, tips [[category, votes, text]], tourney [] (tournament-only notes), rules, sources [[label, url]].
   - `venue.tied` holds [keyword, line] pairs. Each line only shows while a live Pinball Map condition note contains that keyword.
 - `index.html` also loads `lineup.json` if it exists. Live machines are matched to plans by OPDB group id, then by name. New machines get a basic "No plan yet" page. Curated machines that leave the floor stay reachable by link.
