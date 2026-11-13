@@ -13,18 +13,6 @@
           "manufacturer": "Williams",
           "year": 1993,
           "opdb_id": "GR6d8-M1rZd",
-          "conditions": [
-            {
-              "comment": "Off",
-              "user": "zmoney69",
-              "date": "2024-10-18T20:49:28.915-07:00"
-            },
-            {
-              "comment": "Runs great! But eats quarters.  Coin drop registration needs to be checked!",
-              "user": "mattybu",
-              "date": "2024-01-03T21:59:16.161-08:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -32,13 +20,6 @@
           "manufacturer": "Bally",
           "year": 1992,
           "opdb_id": "G4ODR-MDXEy",
-          "conditions": [
-            {
-              "comment": "Off",
-              "user": "zmoney69",
-              "date": "2024-10-18T20:49:16.974-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -46,13 +27,6 @@
           "manufacturer": "Bally",
           "year": 1993,
           "opdb_id": "GrXzD-MjBPX",
-          "conditions": [
-            {
-              "comment": "Dollar bills only.",
-              "user": "mattybu",
-              "date": "2024-01-03T21:59:47.425-08:00"
-            }
-          ],
           "scores": []
         }
       ]
@@ -68,13 +42,6 @@
           "manufacturer": "Stern",
           "year": 2018,
           "opdb_id": "G6lnq-Mq1kv",
-          "conditions": [
-            {
-              "comment": "left flipper very weak.\r\n\r\nalso, bartenders aren't happy if you ask for dollar bills to play. no coin machine.",
-              "user": "abq505",
-              "date": "2026-08-31T19:03:25.292-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -82,7 +49,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "GLWll-MXr4N",
-          "conditions": [],
           "scores": []
         },
         {
@@ -90,13 +56,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "GK17D-MdEqz",
-          "conditions": [
-            {
-              "comment": "Bill reader is turned off. Must have quarters",
-              "user": "thekid",
-              "date": "2026-10-11T13:38:32.571-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -104,7 +63,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gxv81-M610r",
-          "conditions": [],
           "scores": []
         },
         {
@@ -112,7 +70,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "Gzy89-MNEeO",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -128,7 +85,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "GK1Ej-MwNZr",
-          "conditions": [],
           "scores": []
         },
         {
@@ -136,7 +92,6 @@
           "manufacturer": "Stern",
           "year": 2023,
           "opdb_id": "GpeoL-MyNPq",
-          "conditions": [],
           "scores": []
         },
         {
@@ -144,7 +99,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "GQK1P-MW9pj",
-          "conditions": [],
           "scores": []
         },
         {
@@ -152,7 +106,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "GK17D-MKNKd-A15Yn",
-          "conditions": [],
           "scores": []
         },
         {
@@ -160,13 +113,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "GEL0V-MBRyb",
-          "conditions": [
-            {
-              "comment": "Broken",
-              "user": "Cindo",
-              "date": "2025-12-27T16:21:19.219-08:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -174,7 +120,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gxv81-M610r",
-          "conditions": [],
           "scores": []
         },
         {
@@ -182,7 +127,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "GbPde-M5Rkv",
-          "conditions": [],
           "scores": []
         },
         {
@@ -190,7 +134,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "G7ZEz-MBRYn",
-          "conditions": [],
           "scores": []
         },
         {
@@ -198,7 +141,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GBLzz-M4ok4-AO2XW",
-          "conditions": [],
           "scores": []
         },
         {
@@ -206,7 +148,6 @@
           "manufacturer": "Stern",
           "year": 2023,
           "opdb_id": "G3EBl-Mq1zy",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -222,13 +163,6 @@
           "manufacturer": "Williams",
           "year": 1972,
           "opdb_id": "GRV2y-M0ozp",
-          "conditions": [
-            {
-              "comment": "Machine is on site, but was not plugged in.",
-              "user": "l3n3tt3",
-              "date": "2026-08-16T22:42:57.423-07:00"
-            }
-          ],
           "scores": []
         }
       ]
@@ -244,7 +178,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GELVv-Mx0dl-A9jbv",
-          "conditions": [],
           "scores": []
         },
         {
@@ -252,7 +185,6 @@
           "manufacturer": "Chicago Gaming",
           "year": 2023,
           "opdb_id": "GoEkx-MdEzN-ARJQz",
-          "conditions": [],
           "scores": []
         },
         {
@@ -260,7 +192,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "Gzy89-MNEeO",
-          "conditions": [],
           "scores": []
         },
         {
@@ -268,7 +199,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GBLzz-M4ok4-AO2XW",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -284,7 +214,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "GK17D-MKNKd-A15Yn",
-          "conditions": [],
           "scores": []
         },
         {
@@ -292,7 +221,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GV8wB-MRjKd-AOVy7",
-          "conditions": [],
           "scores": []
         },
         {
@@ -300,7 +228,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gxv81-Mo1rp-A9vrL",
-          "conditions": [],
           "scores": []
         },
         {
@@ -308,7 +235,6 @@
           "manufacturer": "Gottlieb",
           "year": 1992,
           "opdb_id": "GRBzQ-MLO1j",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -324,7 +250,6 @@
           "manufacturer": "Jersey Jack",
           "year": 2020,
           "opdb_id": "GqZZ1-M85y9",
-          "conditions": [],
           "scores": []
         },
         {
@@ -332,7 +257,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "GK17D-MdEqz",
-          "conditions": [],
           "scores": []
         },
         {
@@ -340,7 +264,6 @@
           "manufacturer": "Chicago Gaming",
           "year": 2018,
           "opdb_id": "Gr3EW-M3dBn",
-          "conditions": [],
           "scores": []
         },
         {
@@ -348,7 +271,6 @@
           "manufacturer": "Stern",
           "year": 2012,
           "opdb_id": "Grj6X-MJwj5",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -364,13 +286,6 @@
           "manufacturer": "Williams",
           "year": 1992,
           "opdb_id": "G5Wxd-MLxl3",
-          "conditions": [
-            {
-              "comment": "Currently out of order",
-              "user": "lifewithcozmo",
-              "date": "2026-08-30T14:09:52.445-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -378,7 +293,6 @@
           "manufacturer": "Data East",
           "year": 1993,
           "opdb_id": "GRwyq-MW9lN",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -394,18 +308,6 @@
           "manufacturer": "Williams",
           "year": 1993,
           "opdb_id": "G4xZy-MLno6",
-          "conditions": [
-            {
-              "comment": "Not working. Ball got stuck upon launch in upper playfield. My ball became stuck ball #3. Looked like the machine had been inoperable for awhile.  On site owner gave me a refund on my quarters, but made no attempt to fix the issue while I was there.",
-              "user": "tonipeterson1",
-              "date": "2026-08-05T13:06:24.355-07:00"
-            },
-            {
-              "comment": "Not working",
-              "user": "noah",
-              "date": "2022-11-26T16:12:03.584-08:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -413,13 +315,6 @@
           "manufacturer": "Bally",
           "year": 1995,
           "opdb_id": "G5BLE-MQ75Y",
-          "conditions": [
-            {
-              "comment": "Missing pinball, won’t play",
-              "user": "deadydoc",
-              "date": "2026-07-01T13:25:43.921-07:00"
-            }
-          ],
           "scores": []
         }
       ]
@@ -435,7 +330,6 @@
           "manufacturer": "Sega",
           "year": 1997,
           "opdb_id": "GrybN-MLl5X",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -451,7 +345,6 @@
           "manufacturer": "Stern",
           "year": 2015,
           "opdb_id": "G41d5-MKNwX",
-          "conditions": [],
           "scores": []
         },
         {
@@ -459,7 +352,6 @@
           "manufacturer": "Stern",
           "year": 2018,
           "opdb_id": "G4dOQ-MkPxr",
-          "conditions": [],
           "scores": []
         },
         {
@@ -467,7 +359,6 @@
           "manufacturer": "Stern",
           "year": 2015,
           "opdb_id": "G4qX5-Mz2Pp",
-          "conditions": [],
           "scores": []
         },
         {
@@ -475,7 +366,6 @@
           "manufacturer": "Stern",
           "year": 2014,
           "opdb_id": "GrPOR-MJK2k",
-          "conditions": [],
           "scores": []
         },
         {
@@ -483,7 +373,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GV8wB-Mq12N",
-          "conditions": [],
           "scores": []
         },
         {
@@ -491,13 +380,6 @@
           "manufacturer": "Stern",
           "year": 2007,
           "opdb_id": "G5D94-MLnXq",
-          "conditions": [
-            {
-              "comment": "Plunger doesn't fully plunge during multiball.",
-              "user": "abq505",
-              "date": "2026-09-11T10:32:38.354-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -505,7 +387,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "G5vLR-MwNwy-A9Vob",
-          "conditions": [],
           "scores": []
         },
         {
@@ -513,7 +394,6 @@
           "manufacturer": "Stern",
           "year": 2012,
           "opdb_id": "GRzNR-MLlEj",
-          "conditions": [],
           "scores": []
         },
         {
@@ -521,7 +401,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GBLzz-M7Zd5",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -537,7 +416,6 @@
           "manufacturer": "Stern",
           "year": 2020,
           "opdb_id": "Gweel-M9Rk0",
-          "conditions": [],
           "scores": []
         },
         {
@@ -545,7 +423,6 @@
           "manufacturer": "Stern",
           "year": 2022,
           "opdb_id": "G2Lkd-MNEdK",
-          "conditions": [],
           "scores": []
         },
         {
@@ -553,7 +430,6 @@
           "manufacturer": "Stern",
           "year": 2013,
           "opdb_id": "Gryw4-MwNky",
-          "conditions": [],
           "scores": []
         },
         {
@@ -561,7 +437,6 @@
           "manufacturer": "Stern",
           "year": 2020,
           "opdb_id": "Gd2Xb-Mq1qv",
-          "conditions": [],
           "scores": []
         },
         {
@@ -569,7 +444,6 @@
           "manufacturer": "Stern",
           "year": 2021,
           "opdb_id": "GBLLP-MkPpr",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -585,7 +459,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GELVv-Mp4Pq",
-          "conditions": [],
           "scores": []
         },
         {
@@ -593,7 +466,6 @@
           "manufacturer": "Stern",
           "year": 2021,
           "opdb_id": "GweeP-MW95j",
-          "conditions": [],
           "scores": []
         },
         {
@@ -601,7 +473,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GV8wB-Mq12N",
-          "conditions": [],
           "scores": []
         },
         {
@@ -609,13 +480,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gxv81-M610r",
-          "conditions": [
-            {
-              "comment": "Only. 50 cents per play from now to the end of November",
-              "user": "bbking",
-              "date": "2025-10-23T11:32:45.313-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -623,13 +487,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "Gzy89-MNEeO",
-          "conditions": [
-            {
-              "comment": "Flippers and lights died mid-game.",
-              "user": "abq505",
-              "date": "2026-06-05T11:51:51.032-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -637,7 +494,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GBLzz-M7Zd5",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -653,7 +509,6 @@
           "manufacturer": "Stern",
           "year": 2016,
           "opdb_id": "GR9Nr-Mz2dY",
-          "conditions": [],
           "scores": []
         },
         {
@@ -661,18 +516,6 @@
           "manufacturer": "Stern",
           "year": 2017,
           "opdb_id": "GRWvz-Mp4yl",
-          "conditions": [
-            {
-              "comment": "This is not tired as of today, but the left game Groot is stuck open, and right won't open. Games need cleaning, too.",
-              "user": "maz",
-              "date": "2019-02-13T20:34:27.244-08:00"
-            },
-            {
-              "comment": "Machine on the Left has a drop target issue that automatically picks mode for you when starting a game. \r\nMachine on the Right does not have the updated code. Code update would be great!",
-              "user": "nts",
-              "date": "2018-09-25T08:26:04.344-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -680,13 +523,6 @@
           "manufacturer": "Stern",
           "year": 2013,
           "opdb_id": "GRBE4-MQK1Z",
-          "conditions": [
-            {
-              "comment": "The left Metallica gets balls stuck on the Sparky magnet randomly. Right one has super tight Tilt but works great.",
-              "user": "maz",
-              "date": "2019-02-13T20:36:04.363-08:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -694,13 +530,6 @@
           "manufacturer": "Stern",
           "year": 2017,
           "opdb_id": "G5vLR-MwNwy",
-          "conditions": [
-            {
-              "comment": "Leftmost game was down with a sign. Rightmost one played well, but the force targets were being weird. Played about 20 games and never got Lightsaber duel. Only topped out around 835mil.",
-              "user": "maz",
-              "date": "2019-02-13T20:37:19.191-08:00"
-            }
-          ],
           "scores": []
         }
       ]
@@ -716,13 +545,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "GbPde-M5Rkv",
-          "conditions": [
-            {
-              "comment": "Coin recognition is awful. It took nearly $6 to register $2 worth of credits. They know about the problem and apparently aren't in a hurry to fix it.",
-              "user": "thekid",
-              "date": "2020-03-13T12:57:07.318-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -730,7 +552,6 @@
           "manufacturer": "Stern",
           "year": 2003,
           "opdb_id": "GRvBL-MP3Ev",
-          "conditions": [],
           "scores": []
         },
         {
@@ -738,7 +559,6 @@
           "manufacturer": "Bally",
           "year": 1993,
           "opdb_id": "GrXzD-MjBPX",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -754,7 +574,6 @@
           "manufacturer": "Chicago Gaming",
           "year": 2017,
           "opdb_id": "G4do5-MW9z8",
-          "conditions": [],
           "scores": []
         },
         {
@@ -762,7 +581,6 @@
           "manufacturer": "Data East",
           "year": 1990,
           "opdb_id": "GRpbW-MLXq2",
-          "conditions": [],
           "scores": []
         },
         {
@@ -770,13 +588,6 @@
           "manufacturer": "Chicago Gaming",
           "year": 2021,
           "opdb_id": "G4835-M2YPK-A9ylv",
-          "conditions": [
-            {
-              "comment": "Right flipper sometimes fails to stay up",
-              "user": "macgruber007",
-              "date": "2026-05-07T20:44:54.937-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -784,7 +595,6 @@
           "manufacturer": "Bally",
           "year": 1981,
           "opdb_id": "GrX7q-MLWkn",
-          "conditions": [],
           "scores": []
         },
         {
@@ -792,7 +602,6 @@
           "manufacturer": "Bally",
           "year": 1989,
           "opdb_id": "Grlxp-MVKBW",
-          "conditions": [],
           "scores": []
         },
         {
@@ -800,18 +609,6 @@
           "manufacturer": "Spooky",
           "year": 2024,
           "opdb_id": "GYWvw-MKNP4",
-          "conditions": [
-            {
-              "comment": "Ball gets stuck on switches in outlanes. Shotgun shells reject.",
-              "user": "abq505",
-              "date": "2026-09-11T10:31:55.843-07:00"
-            },
-            {
-              "comment": "Pin not working.",
-              "user": "tonipeterson1",
-              "date": "2026-08-05T10:45:52.918-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -819,7 +616,6 @@
           "manufacturer": "Stern",
           "year": 2015,
           "opdb_id": "G41d5-M0ovk",
-          "conditions": [],
           "scores": []
         },
         {
@@ -827,13 +623,6 @@
           "manufacturer": "Stern",
           "year": 2021,
           "opdb_id": "GweeP-Ml9pZ-ARZoY",
-          "conditions": [
-            {
-              "comment": "Left lower flipper weak.",
-              "user": "tinygiant",
-              "date": "2025-03-18T16:03:35.297-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -841,7 +630,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "GQK1P-Ml95Z-A9bjw",
-          "conditions": [],
           "scores": []
         },
         {
@@ -849,7 +637,6 @@
           "manufacturer": "Stern",
           "year": 2003,
           "opdb_id": "GrqZX-MD15w",
-          "conditions": [],
           "scores": []
         },
         {
@@ -857,7 +644,6 @@
           "manufacturer": "Chicago Gaming",
           "year": 2015,
           "opdb_id": "G5pe4-M61y6",
-          "conditions": [],
           "scores": []
         },
         {
@@ -865,7 +651,6 @@
           "manufacturer": "Stern",
           "year": 2022,
           "opdb_id": "G2Lkd-M0ope-A97xV",
-          "conditions": [],
           "scores": []
         },
         {
@@ -873,7 +658,6 @@
           "manufacturer": "Stern",
           "year": 2008,
           "opdb_id": "G5LW9-ML371",
-          "conditions": [],
           "scores": []
         },
         {
@@ -881,7 +665,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "Gzy89-M0oPy-A1zrL",
-          "conditions": [],
           "scores": []
         },
         {
@@ -889,13 +672,6 @@
           "manufacturer": "Stern",
           "year": 2005,
           "opdb_id": "G5WoB-MDyNZ",
-          "conditions": [
-            {
-              "comment": "Safe shot doesn’t register except for a hard hit on the left side",
-              "user": "macgruber007",
-              "date": "2026-05-07T20:46:00.388-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -903,7 +679,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "G7ZEz-MyN3K-ARl3o",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -919,7 +694,6 @@
           "manufacturer": "Stern",
           "year": 2019,
           "opdb_id": "Gzy89-MNEeO",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -935,7 +709,6 @@
           "manufacturer": "Stern",
           "year": 2021,
           "opdb_id": "GweeP-MW95j",
-          "conditions": [],
           "scores": []
         },
         {
@@ -943,7 +716,6 @@
           "manufacturer": "Stern",
           "year": 2022,
           "opdb_id": "GQKyP-Mx0O4",
-          "conditions": [],
           "scores": []
         },
         {
@@ -951,7 +723,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "GEL0V-MBRyb",
-          "conditions": [],
           "scores": []
         },
         {
@@ -959,7 +730,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GV8wB-Mq12N",
-          "conditions": [],
           "scores": []
         },
         {
@@ -967,7 +737,6 @@
           "manufacturer": "Chicago Gaming",
           "year": 2023,
           "opdb_id": "GoEkx-MdEzN-AR50E",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -983,7 +752,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "GK1Ej-MwNZr",
-          "conditions": [],
           "scores": []
         },
         {
@@ -991,7 +759,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GELVv-Mp4Pq",
-          "conditions": [],
           "scores": []
         },
         {
@@ -999,7 +766,6 @@
           "manufacturer": "Stern",
           "year": 2022,
           "opdb_id": "GQKyP-Mx0O4",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1007,7 +773,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "GLWll-MXr4N",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1015,7 +780,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GV8wB-MRjKd-AOVy7",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1023,13 +787,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gxv81-Mo1rp-A9vrL",
-          "conditions": [
-            {
-              "comment": "Wow a new premium for .50 a play. Crazy\nFrom now until Nov 12th",
-              "user": "bbking",
-              "date": "2025-10-23T12:21:44.912-07:00"
-            }
-          ],
           "scores": []
         },
         {
@@ -1037,7 +794,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "G7ZEz-MBRYn",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1045,7 +801,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "Gj6DE-MePEz-ARJ35",
-          "conditions": [],
           "scores": []
         }
       ]
@@ -1061,7 +816,6 @@
           "manufacturer": "Stern",
           "year": 2025,
           "opdb_id": "GK1Ej-MwNZr",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1069,7 +823,6 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GELVv-Mp4Pq",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1077,7 +830,6 @@
           "manufacturer": "Stern",
           "year": 2017,
           "opdb_id": "GRWvz-Mp4yl",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1085,7 +837,6 @@
           "manufacturer": "Stern",
           "year": 2024,
           "opdb_id": "GLWll-MXr4N",
-          "conditions": [],
           "scores": []
         },
         {
@@ -1093,11 +844,10 @@
           "manufacturer": "Stern",
           "year": 2026,
           "opdb_id": "GBLzz-M7Zd5",
-          "conditions": [],
           "scores": []
         }
       ]
     }
   ],
-  "synced_at": "2026-11-12T07:12:31.889Z"
+  "synced_at": "2026-11-12T19:55:04.702Z"
 }
