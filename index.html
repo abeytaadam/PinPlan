@@ -371,8 +371,19 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 /* Garbo's signature in the footer: the owner's drawing, recoloured through a mask */
 .garbo-sig { display: flex; align-items: center; gap: 16px; }
 .garbo-art { flex: none; width: 92px; aspect-ratio: 754 / 562; background: currentColor; -webkit-mask: url("art/garbo.png") center / contain no-repeat; mask: url("art/garbo.png") center / contain no-repeat; }
-.thesis .tag { display: flex; align-items: center; gap: 12px; }
-.thesis .tag .garbo-art { width: 46px; color: var(--lime); }
+/* Garbo says: his drawing on the left, the line in a speech bubble pointing at him */
+.says { display: flex; align-items: center; gap: 26px; margin: 0 0 22px; }
+.says > .garbo-art { width: clamp(84px, 11vw, 130px); color: var(--lime); flex: none; }
+.thesis.bubble { position: relative; flex: 1; margin: 0; border-width: 1.5px; border-radius: 26px; }
+.thesis.bubble::before, .thesis.bubble::after { content: ""; position: absolute; top: 50%; width: 0; height: 0; border-style: solid; }
+.thesis.bubble::before { left: -19px; margin-top: -14px; border-width: 14px 19px 14px 0; border-color: transparent var(--lime) transparent transparent; }
+.thesis.bubble::after { left: -16px; margin-top: -12px; border-width: 12px 17px 12px 0; border-color: transparent color-mix(in srgb, var(--lime) 9%, var(--bg)) transparent transparent; }
+@media (max-width: 600px) {
+  .says { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .says > .garbo-art { width: 86px; margin-left: 18px; }
+  .thesis.bubble::before { top: -19px; left: 44px; margin-top: 0; border-width: 0 14px 19px 14px; border-color: transparent transparent var(--lime) transparent; }
+  .thesis.bubble::after { top: -16px; left: 46px; margin-top: 0; border-width: 0 12px 17px 12px; border-color: transparent transparent color-mix(in srgb, var(--lime) 9%, var(--bg)) transparent; }
+}
 /* the DMD in a cream rim with a lime outer ring */
 .dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
 .dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
@@ -2673,7 +2684,8 @@ function renderDetail(m) {
         <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
-    <p class="thesis"><span class="tag">${m.uncurated ? "Damaged in the crash · No plan yet" : `<span class="garbo-art" aria-hidden="true"></span>Garbo says`}</span>${garboSays(m)}</p>
+    ${m.uncurated ? `<p class="thesis"><span class="tag">Damaged in the crash · No plan yet</span>${esc(m.thesis)}</p>`
+      : `<div class="says"><span class="garbo-art" role="img" aria-label="Garbo"></span><p class="thesis bubble"><span class="tag">Garbo says</span>${garboSays(m)}</p></div>`}
     <div class="d-grid">
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
