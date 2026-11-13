@@ -521,7 +521,7 @@ ol.plan li::before { color: var(--fg-dim); }
         <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
         <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
         <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
-        <li>New to the lingo? <a href="#glossary">Earthling terms</a> explains it.</li>
+        <li>New to the lingo? See the <a href="#glossary">pinball glossary</a>.</li>
       </ul>
     </details>
   </div>
@@ -539,7 +539,7 @@ ol.plan li::before { color: var(--fg-dim); }
 <footer>
   <div class="wrap">
     <p>Venue lineups come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
-    <p><a href="#glossary">Earthling terms</a>: what a VUK, a cradle or a playfield multiplier is.</p>
+    <p><a href="#glossary">Pinball glossary</a>: what a VUK, a cradle or a playfield multiplier is.</p>
     <p class="garbo-sig"><span class="garbo-art" role="img" aria-label="Garbo, winking"></span><span>Field notes of <b>Garbo</b>, a visitor who fell for pinball. Recovered near Roswell, NM, and translated for earthlings by <b>SAPO Studios</b>.</span></p>
     <p>Machine reports come from players using the guide, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
   </div>
@@ -2823,7 +2823,7 @@ function renderGlossary() {
   const back = glBack ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← Garbo’s Guide</a>`;
   document.getElementById("glossary-body").innerHTML = `
     <nav class="crumbs mono">${back}<span class="dim">${GLOSSARY.length} terms</span></nav>
-    <h2>Earthling terms</h2>
+    <h2>Pinball glossary</h2>
     <p class="lede">The words that show up in Garbo’s game plans, in plain language. On any plan page, tap a dotted word to see its meaning without leaving the page.</p>
     ${groups.map(gr => `<section class="gl-group">
       <div class="sec-label mono"><span>${esc(gr)}</span></div>
@@ -2879,7 +2879,7 @@ function route(soft) {
     renderGlossary(); gloss.hidden = false;
     const t = glJump && document.getElementById("gl-" + glJump); glJump = "";
     if (t) { t.scrollIntoView(); t.classList.add("hl"); } else window.scrollTo(0, 0);
-    document.title = "Earthling terms · Garbo’s Guide to ABQ Pinball";
+    document.title = "Pinball glossary · Garbo’s Guide to ABQ Pinball";
     return;
   }
   if (!gloss.hidden) { gloss.hidden = true; }
