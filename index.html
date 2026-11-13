@@ -280,11 +280,18 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 .gl-list dd { margin: 0; }
 .gl-list > div.hl { background: var(--dmd-soft); }
 @media (max-width: 560px) { .gl-list > div { grid-template-columns: 1fr; } }
-.fm-list dt .aka { display: block; margin-top: 4px; font-family: var(--f-mono, inherit); font-weight: 400; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-dim, inherit); }
-.fm-list dd p { margin: 0 0 8px; }
-.fm-list dd p:last-child { margin-bottom: 0; }
-.fm-list dd b { color: var(--fg-hi); font-weight: 600; }
-.fm-list dd .tip b { color: var(--lime); }
+.fm-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); margin-bottom: 0; }
+.fm-card { cursor: default; }
+.fm-card:hover { background: var(--bg); }
+.fm-card .card-top { flex-direction: row-reverse; align-items: center; }
+.fm-card .aka { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-dim); }
+.fm-card h3 { margin: 2px 0 2px; }
+.fm-card p { margin: 0; font-size: 14.5px; }
+.fm-card p b { color: var(--fg-hi); font-weight: 600; }
+.fm-card p.tip { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--line); }
+.fm-card p.tip b { color: var(--lime); }
+.fm-basics { margin-top: 26px; border: 1px solid var(--line); padding: 14px 18px 16px; }
+.fm-basics ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 8px; max-width: 80ch; }
 .fm-src { margin-top: 32px; }
 .fm-src .srcs { margin-top: 10px; }
 .rules { margin: 0; }
@@ -558,17 +565,6 @@ ol.plan li::before { color: var(--fg-dim); }
       <div><div class="k mono">Hours, location, events</div><p><a id="venue-pm" href="#" target="_blank" rel="noopener"></a></p></div>
       <div id="sister-extra"><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC. Quarters only; the bill changer takes $1–$20.</p></div>
     </div>
-
-    <details class="basics" id="basics">
-      <summary class="mono"><span>Match play basics</span><span class="tog" aria-hidden="true"></span></summary>
-      <ul>
-        <li>You only need to beat the other players in your group on this game. On your last ball, know the number you need and take the lowest-risk route to it.</li>
-        <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
-        <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
-        <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
-        <li>New to the lingo? See the <a href="#glossary">pinball glossary</a>. Not sure how tonight’s format works? See <a href="#formats">tournament formats</a>.</li>
-      </ul>
-    </details>
   </div>
 </main>
 
@@ -2905,6 +2901,7 @@ const FORMATS = [
   ["split-flipper", "Split-flipper", "Just for fun", "", "Partners share one game, each controlling one flipper button. It can be added to almost any format, usually for fun.", "Whatever the main format uses.", "Call your shots out loud and agree who takes which ball when it heads down the middle."],
   ["stall-ball", "Stall ball", "Just for fun", "", "Players line up at one machine. Whoever's playing tries to stop the ball in a scoop, saucer or lock, shouts “stall!”, and goes to the back of the line while the next player takes over. Drain and you're out. Score doesn't matter, and it isn't an IFPA-ranked format.", "Last player in wins.", "Know where the holds are on the machine before you step up."]
 ];
+const FM_CODE = { "group-match-play": "GMP", "head-to-head": "H2H", "target-match-play": "TMP", "max-match-play": "MMP", "flip-frenzy": "FF", "standard-strikes": "KO", "fair-strikes": "FAIR", "progressive-strikes": "PROG", "amazing-race": "RACE", "pingolf": "GOLF", "best-game": "HERB", "card-qualifying": "CARD", "brackets": "BRKT", "ladder": "LADR", "split-flipper": "SPLT", "stall-ball": "STAL" };
 const FM_SOURCES = [
   ["Kineticist: Pinball tournament formats", "https://www.kineticist.com/post/pinball-tournament-formats"],
   ["IFPA: approved qualifying and finals formats (TGP guide)", "https://www.ifpapinball.com/tgpguide/"],
@@ -2919,12 +2916,25 @@ function renderFormats() {
     <nav class="crumbs mono">${back}<span class="dim">${FORMATS.length} formats</span></nav>
     <h2>Tournament formats</h2>
     <p class="lede">How the common pinball tournament formats work and how they're scored, with a tip from Garbo for each. Every event can tweak the details, so check with the tournament director before you start.</p>
+    <section class="fm-basics">
+      <div class="sec-label mono"><span>Match play basics</span></div>
+      <ul>
+        <li>You only need to beat the other players in your group on this game. On your last ball, know the number you need and take the lowest-risk route to it.</li>
+        <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
+        <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
+        <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
+        <li>New to the lingo? See the <a href="#glossary">pinball glossary</a>.</li>
+      </ul>
+    </section>
     ${groups.map(gr => `<section class="gl-group">
       <div class="sec-label mono"><span>${esc(gr)}</span></div>
-      <dl class="gl-list fm-list">${FORMATS.filter(f => f[2] === gr).map(f => `<div id="fm-${f[0]}"><dt>${esc(f[1])}${f[3] ? `<span class="aka">Also: ${esc(f[3])}</span>` : ""}</dt><dd>
+      <div class="grid fm-grid">${FORMATS.filter(f => f[2] === gr).map(f => `<article class="card fm-card" id="fm-${f[0]}">
+        <div class="card-top">${dotSvg(FM_CODE[f[0]])}<span class="aka mono">${f[3] ? "Also: " + esc(f[3]) : ""}</span></div>
+        <h3>${esc(f[1])}</h3>
         <p>${esc(f[4])}</p>
         <p><b>Scoring.</b> ${esc(f[5])}</p>
-        <p class="tip"><b>Garbo’s tip.</b> ${esc(f[6])}</p></dd></div>`).join("")}</dl>
+        <p class="tip"><b>Garbo’s tip.</b> ${esc(f[6])}</p>
+      </article>`).join("")}</div>
     </section>`).join("")}
     <section class="fm-src">
       <div class="sec-label mono"><span>Sources</span></div>
