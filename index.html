@@ -291,7 +291,6 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 .banner { border: 1px dashed var(--line-2); color: var(--fg); padding: 10px 14px; margin-bottom: 18px; }
 @media (max-width: 860px) {
   .hero-grid, .d-grid { grid-template-columns: minmax(0, 1fr); }
-  .col > .sec.primary { order: -1; }
   .hero { padding-block: 28px 20px; }
 }
 @media (max-width: 520px) {
@@ -385,8 +384,8 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .bub-a, .bub-b { fill: color-mix(in srgb, var(--lime) 12%, var(--bg)); stroke: var(--lime); stroke-width: 2.4px; }
 .bub-b { visibility: hidden; }
 @media (prefers-reduced-motion: no-preference) {
-  .bub-a { animation: boil-a 0.5s steps(1) 6; }
-  .bub-b { animation: boil-b 0.5s steps(1) 6; }
+  .says.boil .bub-a { animation: boil-a 0.5s steps(1) 6; }
+  .says.boil .bub-b { animation: boil-b 0.5s steps(1) 6; }
 }
 @keyframes boil-a { 0% { visibility: visible; } 50% { visibility: hidden; } }
 @keyframes boil-b { 0% { visibility: hidden; } 50% { visibility: visible; } }
@@ -2734,6 +2733,11 @@ function renderDetail(m) {
       <a href="#${VENUE.slug}/${next.id}"><span class="mono dim">Next →</span><span class="nm">${esc(next.name)}</span></a>
     </nav>`;
   const body = document.getElementById("detail-body");
+  const says = body.querySelector(".says");
+  if (says && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting) { says.classList.add("boil"); io.disconnect(); } }, { threshold: 0.6 });
+    io.observe(says);
+  } else if (says) says.classList.add("boil");
   linkGlossary(body);
 }
 
@@ -3034,7 +3038,7 @@ function startDmd(cv, content, refreshName, opts) {
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
   /* Intro: everything starts in flickering alien glyphs. The small line decodes to SIGNAL RECOVERED,
      then TRANSLATING..., and only then does the big line decode into the welcome text. */
-  let introStart = null, introDone = !opts.intro || reduce;
+  let introStart = null, introDone = !opts.intro;
   function decode(text, elapsed, start, step) {
     let out = "";
     for (let i = 0; i < text.length; i++) {
@@ -3127,7 +3131,7 @@ function startDmd(cv, content, refreshName, opts) {
   function start() {
     size(); setup(); frame();
     cancelAnimationFrame(raf);
-    if (!reduce) raf = requestAnimationFrame(loop);
+    raf = requestAnimationFrame(loop);
   }
   start();
   window[refreshName] = () => { setup(); frame(); };
