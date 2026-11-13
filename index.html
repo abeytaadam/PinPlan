@@ -401,6 +401,14 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .gl-cta .mono { color: var(--lime); }
 .gl-cta .arr { margin-left: auto; color: var(--lime); }
 .gl-cta:hover { border-color: var(--lime); }
+/* Venue pages: the venue is the headline and the machines start on the first screen */
+.venue-hero { padding-block: 28px 18px; }
+.venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 32px; }
+h1.venue-h1 { font-size: clamp(46px, 7vw, 84px); line-height: 0.95; margin: 10px 0 10px; }
+.venue-lede { margin: 0; color: var(--fg-dim); }
+.venue-lede em { font-family: "Instrument Serif", serif; font-size: 1.2em; color: var(--lime); }
+#home .venue { margin: 30px 0 0; }
+@media (max-width: 860px) { .venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr); } .venue-hero .dmd-frame { display: none; } .venue-hero { padding-block: 18px 6px; } }
 /* the DMD in a cream rim with a lime outer ring */
 .dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
 .dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
@@ -485,14 +493,13 @@ ol.plan li::before { color: var(--fg-dim); }
 </main>
 
 <main id="home" hidden>
-  <section class="hero">
+  <section class="hero venue-hero">
     <div class="wrap hero-grid">
       <div>
         <div class="mono eyebrow">[ Recovered field guide · Albuquerque, NM ]</div>
-        <div class="venue-title" id="venue-title">Sister</div>
-        <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
-        <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
-        <div class="tally mono dim" id="tally"></div>
+        <h1 class="venue-h1" id="venue-title">Sister</h1>
+        <p class="lede venue-lede"><span id="lede-count">every machine</span> on the floor. Pick one for <em>Garbo’s plan</em>.</p>
+        <div class="tally mono dim" id="tally" hidden></div>
       </div>
       <div class="dmd-frame" aria-hidden="true">
         <div class="dmd-title mono"><span>■ Onboard display</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
@@ -502,11 +509,6 @@ ol.plan li::before { color: var(--fg-dim); }
   </section>
 
   <div class="wrap">
-    <div class="venue" aria-label="Venue details">
-      <div><div class="k mono">Lineup checked</div><p id="lineup-status"></p></div>
-      <div><div class="k mono">Hours, location, events</div><p><a id="venue-pm" href="#" target="_blank" rel="noopener"></a></p></div>
-      <div id="sister-extra"><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC. Quarters only; the bill changer takes $1–$20.</p></div>
-    </div>
 
 
     <div class="controls">
@@ -517,6 +519,12 @@ ol.plan li::before { color: var(--fg-dim); }
     </div>
 
     <div class="grid" id="grid"></div>
+
+    <div class="venue" aria-label="Venue details">
+      <div><div class="k mono">Lineup checked</div><p id="lineup-status"></p></div>
+      <div><div class="k mono">Hours, location, events</div><p><a id="venue-pm" href="#" target="_blank" rel="noopener"></a></p></div>
+      <div id="sister-extra"><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC. Quarters only; the bill changer takes $1–$20.</p></div>
+    </div>
 
     <details class="basics" id="basics">
       <summary class="mono"><span>Match play basics</span><span class="tog" aria-hidden="true"></span></summary>
@@ -2525,7 +2533,7 @@ function renderTally() {
   document.getElementById("tally").innerHTML =
     `<span><b>${LINEUP.length}</b> machines</span>` + parts.map(([c, l]) => `<span><b>${c}</b> ${l}</span>`).join("");
   document.getElementById("bar-count").textContent = LINEUP.length + (LINEUP.length === 1 ? " machine" : " machines");
-  document.getElementById("lede-count").textContent = LINEUP.length === 1 ? "the one machine" : "all " + LINEUP.length + " machines";
+  document.getElementById("lede-count").textContent = LINEUP.length === 1 ? "The one machine" : "All " + LINEUP.length + " machines";
 }
 
 function renderChips() {
