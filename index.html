@@ -371,7 +371,7 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 }
 @media (prefers-reduced-motion: reduce) { .dmd-frame.abduct { animation: none; } }
 /* Garbo's signature in the footer: the owner's drawing, recoloured through a mask */
-.garbo-sig { display: flex; align-items: center; gap: 16px; }
+.garbo-sig { display: flex; width: fit-content; align-items: center; gap: 16px; background: var(--bg); padding: 6px 10px 6px 0; }
 .garbo-art { flex: none; width: 92px; aspect-ratio: 754 / 562; background: currentColor; -webkit-mask: url("art/garbo.png") center / contain no-repeat; mask: url("art/garbo.png") center / contain no-repeat; }
 /* Garbo says: his drawing on the left, the line in a speech bubble pointing at him */
 .says { display: flex; align-items: center; gap: 44px; margin: 0 0 34px; }
