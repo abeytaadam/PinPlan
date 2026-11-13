@@ -2962,17 +2962,28 @@ function startDmd(cv, content, refreshName, opts) {
   const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
   const BIG = 2, BIG_GAP = 1, BIG_Y = 2, SMALL_Y = 21, GAP_TEXT = "   ";
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
-  /* Intro: the text first appears in alien glyphs, flickers, then decodes letter by letter into English. */
-  const SCRAMBLE = 1500, STEP = 75, SMALL_DELAY = 350;
+  /* Intro: everything starts in flickering alien glyphs. The small line decodes to SIGNAL RECOVERED,
+     then TRANSLATING..., and only then does the big line decode into the welcome text. */
   let introStart = null, introDone = !opts.intro || reduce;
-  function decode(text, elapsed, delay) {
+  function decode(text, elapsed, start, step) {
     let out = "";
     for (let i = 0; i < text.length; i++) {
       const ch = text[i];
-      if (ch === " " || elapsed >= SCRAMBLE + delay + i * STEP) { out += ch; continue; }
+      if (ch === " " || elapsed >= start + i * step) { out += ch; continue; }
       out += ALIEN[(i * 7 + Math.floor(elapsed / 110) * 5 + text.length) % ALIEN.length];
     }
     return out;
+  }
+  function introFrame(grid, e) {
+    const sig = "SIGNAL RECOVERED", tr = "TRANSLATING...", first = lines[0] || "";
+    const T1 = 1100, T2 = T1 + sig.length * 55 + 1300, T3 = T2 + tr.length * 40 + 1300;
+    let small, smallStart, smallStep;
+    if (e < T2) { small = sig; smallStart = T1; smallStep = 55; }
+    else if (e < T3) { small = tr; smallStart = T2; smallStep = 40; }
+    else { small = first; smallStart = T3 + 250; smallStep = 55; }
+    draw(grid, decode(name, e, e < T3 ? Infinity : T3, 80), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
+    draw(grid, decode(small, e, smallStart, smallStep), Math.floor((COLS - width(small, 1, 1)) / 2), SMALL_Y, 1, 1);
+    return e > T3 + 250 + first.length * 55 + 300;
   }
 
   function setup() {
@@ -2997,10 +3008,7 @@ function startDmd(cv, content, refreshName, opts) {
   function frame() {
     const grid = new Uint8Array(COLS * ROWS);
     if (!introDone && introStart !== null) {
-      const elapsed = performance.now() - introStart, small = lines[0] || "";
-      draw(grid, decode(name, elapsed, 0), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
-      draw(grid, decode(small, elapsed, SMALL_DELAY), Math.floor((COLS - width(small, 1, 1)) / 2), SMALL_Y, 1, 1);
-      if (elapsed > SCRAMBLE + SMALL_DELAY + Math.max(name.length, small.length) * STEP + 200) { introDone = true; lineAt = performance.now(); }
+      if (introFrame(grid, performance.now() - introStart)) { introDone = true; line = 0; lineAt = performance.now(); }
       paint(grid);
       return;
     }
@@ -3081,7 +3089,7 @@ startDmd(document.getElementById("dmd"), () => {
 }, "dmdRefresh");
 startDmd(document.getElementById("dmd-land"), () => {
   const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
-  return { name: "WELCOME", lines: ["SIGNAL RECOVERED", "TRANSLATING...", "TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW"] };
+  return { name: "WELCOME", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW"] };
 }, "dmdLandRefresh", { intro: true });
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
