@@ -431,10 +431,10 @@ h1.venue-h1 { font-size: clamp(46px, 7vw, 84px); line-height: 0.95; margin: 10px
 #landing .lede { margin-bottom: 0; }
 /* Landing: the display is the title card; the sentence is the tagline under it */
 .land-stack { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.land-stack .dmd-frame { width: min(100%, 760px); margin: 18px 0 34px; }
+.land-stack .dmd-frame { width: min(100%, 760px); margin: 6px 0 34px; }
 #landing h1 { font-size: clamp(42px, 6.8vw, 76px); margin: 0 0 16px; }
 #landing .lede { margin-inline: auto; max-width: 58ch; text-wrap: balance; }
-@media (max-width: 600px) { .land-stack .dmd-frame { margin: 14px 0 26px; } }
+@media (max-width: 600px) { .land-stack .dmd-frame { margin: 4px 0 26px; } }
 .land-head { align-items: center; flex-wrap: wrap; gap: 10px 16px; padding-bottom: 14px; }
 .land-head > span .dim { margin-left: 10px; }
 .land-head .resume { margin-top: 0; padding: 8px 12px; }
@@ -494,9 +494,8 @@ ol.plan li::before { color: var(--fg-dim); }
 <main id="landing" hidden>
   <section class="hero land-hero">
     <div class="wrap land-stack">
-      <div class="mono eyebrow">[ Recovered field guide · Albuquerque, NM ]</div>
       <div class="dmd-frame" aria-hidden="true">
-        <div class="dmd-title mono"><span>■ Onboard display</span><span>Albuquerque, NM</span></div>
+        <div class="dmd-title mono"><span>■ Field display</span><span>Rx · EN</span></div>
         <div class="dmd-screen"><canvas id="dmd-land" width="512" height="128"></canvas></div>
       </div>
       <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
