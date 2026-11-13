@@ -350,7 +350,13 @@ body::after { content: ""; position: fixed; inset: 8px; border: 1px solid rgba(2
   body::after { display: none; }
   .search input, .venue-pick select, .rep-text input, .rep-text textarea { font-size: 16px; }
   .search input::placeholder { font-size: 13px; }
+  /* keep "Choose a venue" readable in full next to the name */
+  .bar .wrap { gap: 10px; }
+  .bar-right { gap: 10px; }
+  .brand { letter-spacing: 0.1em; gap: 8px; }
+  .venue-pick select { letter-spacing: 0.01em; padding: 8px 24px 8px 9px; background-position: right 9px center; }
 }
+@media (max-width: 359px) { .brand .brand-dot { display: none; } }
 
 /* poster lettering: cream outline, dark gap, lime inner line, dark-to-lime fill */
 .fx { position: relative; display: inline-block; font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: inherit; }
