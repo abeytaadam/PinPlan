@@ -77,7 +77,10 @@ a { color: inherit; }
 .bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
 .brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg-hi); }
 .brand-dot { width: 10px; height: 10px; background: var(--dmd); box-shadow: 0 0 10px var(--dmd); }
-.bar-right { display: flex; gap: 16px; align-items: center; }
+.bar-right { display: flex; gap: 16px; align-items: center; justify-content: flex-end; flex: 1 1 auto; min-width: 0; }
+.brand { flex: none; }
+.venue-pick { min-width: 0; flex: 0 1 300px; }
+.venue-pick select { width: 100%; }
 
 /* ---------- venue picker ---------- */
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -342,7 +345,12 @@ body {
 }
 /* thin lime frame around the page, like the poster border */
 body::after { content: ""; position: fixed; inset: 8px; border: 1px solid rgba(236, 235, 230, 0.22); pointer-events: none; z-index: 40; }
-@media (max-width: 520px) { body::after { inset: 4px; } }
+/* Phones: no page frame (it sat over content while scrolling), and form fields at 16px so iOS doesn't zoom the page when one is tapped */
+@media (max-width: 600px) {
+  body::after { display: none; }
+  .search input, .venue-pick select, .rep-text input, .rep-text textarea { font-size: 16px; }
+  .search input::placeholder { font-size: 13px; }
+}
 
 /* poster lettering: cream outline, dark gap, lime inner line, dark-to-lime fill */
 .fx { position: relative; display: inline-block; font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: inherit; }
