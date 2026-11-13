@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PinPlan Albuquerque</title>
-<meta name="description" content="Pinball strategy, community tips and tournament notes for the machines at Albuquerque venues.">
-<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<title>Garbo’s Guide to ABQ Pinball</title>
+<meta name="description" content="Garbo’s Guide to ABQ Pinball: strategy, community tips and tournament notes for the machines at Albuquerque venues.">
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="icons/favicon-64.png" sizes="64x64" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="icons/site.webmanifest">
-<meta name="theme-color" content="#08090c">
+<meta name="theme-color" content="#1b1c20">
+<meta name="apple-mobile-web-app-title" content="Garbo’s Guide">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Boldonse&family=Instrument+Serif:ital@0;1&family=Big+Shoulders+Display:wght@700..900&family=Michroma&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: dark "arcade terminal" — a DMD dot-matrix hero, then a crosshair-ticked grid of machine cards; each card opens a hash-routed detail page that leads with the tournament plan. */
 :root {
@@ -141,7 +142,7 @@ h1 em { font-style: italic; color: var(--fg); }
 .dmd-frame { border: 1px solid var(--line-2); background: #050506; }
 .dmd-title { display: flex; justify-content: space-between; gap: 8px; padding: 7px 10px; border-bottom: 1px solid var(--line-2); color: var(--fg-dim); }
 .dmd-screen { padding: 12px; }
-#dmd { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; max-width: 100%; }
+#dmd, #dmd-land { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; max-width: 100%; }
 
 /* ---------- venue strip ---------- */
 .venue { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-block: 8px 18px; }
@@ -150,6 +151,7 @@ h1 em { font-style: italic; color: var(--fg); }
 .venue p { margin: 0; font-size: 14px; line-height: 1.45; }
 
 details.basics { border: 1px solid var(--line); background: var(--bg-2); margin-bottom: 26px; }
+#home details.basics { margin: 36px 0 0; }
 details.basics summary { cursor: pointer; padding: 12px 16px; list-style: none; display: flex; justify-content: space-between; gap: 12px; color: var(--fg-hi); }
 details.basics summary::-webkit-details-marker { display: none; }
 details.basics summary .tog::before { content: "[+]"; color: var(--dmd); }
@@ -289,6 +291,7 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 .banner { border: 1px dashed var(--line-2); color: var(--fg); padding: 10px 14px; margin-bottom: 18px; }
 @media (max-width: 860px) {
   .hero-grid, .d-grid { grid-template-columns: minmax(0, 1fr); }
+  .col > .sec.primary { order: -1; }
   .hero { padding-block: 28px 20px; }
 }
 @media (max-width: 520px) {
@@ -306,12 +309,162 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 body { margin: 0; }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
+
+/* ================= UFO theme =================
+   From the "Weekly Pinball Meetup" poster: night sky, thin lime frame,
+   wide spaced labels, lettering with a cream outline, a lime inner line and
+   a dark-to-lime fill. */
+:root {
+  --bg: #1b1c20;
+  --bg-2: #202126;
+  --panel: #25262c;
+  --line: rgba(236, 235, 230, 0.16);
+  --line-2: rgba(236, 235, 230, 0.34);
+  --fg: #cfd0c8;
+  --fg-hi: #ecebe6;
+  --fg-dim: #8d8f86;
+  --dmd: #c9dc8b;
+  --dmd-soft: rgba(201, 220, 139, 0.10);
+  --dmd-on: #c9dc8b;
+  --dmd-off: #23271c;
+  --dmd-screen: #121316;
+  --warn: #e0864f;
+  --warn-soft: rgba(224, 134, 79, 0.10);
+  --lime: #c9dc8b;
+  --cream: #ecebe6;
+  --f-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-mono: "Michroma", "Eurostile", "Arial", sans-serif;
+}
+.mono { font-size: 10px; letter-spacing: 0.2em; }
+body {
+  background-color: var(--bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cg fill='%23ecebe6' opacity='.55'%3E%3Cpath d='M60 40l2.2 7.8L70 50l-7.8 2.2L60 60l-2.2-7.8L50 50l7.8-2.2z' opacity='.55'/%3E%3Cpath d='M300 120l1.5 5.5 5.5 1.5-5.5 1.5-1.5 5.5-1.5-5.5-5.5-1.5 5.5-1.5z' opacity='.45'/%3E%3Cpath d='M180 300l2.6 9.4 9.4 2.6-9.4 2.6-2.6 9.4-2.6-9.4-9.4-2.6 9.4-2.6z' opacity='.35'/%3E%3Cpath d='M380 330l1.4 4.6 4.6 1.4-4.6 1.4-1.4 4.6-1.4-4.6-4.6-1.4 4.6-1.4z' opacity='.5'/%3E%3Ccircle cx='140' cy='90' r='2.2' opacity='.5'/%3E%3Ccircle cx='250' cy='220' r='1.6' opacity='.4'/%3E%3Ccircle cx='40' cy='250' r='2' opacity='.45'/%3E%3Ccircle cx='350' cy='30' r='1.8' opacity='.4'/%3E%3Ccircle cx='90' cy='390' r='1.5' opacity='.35'/%3E%3Ccircle cx='310' cy='260' r='1.2' opacity='.3'/%3E%3C/g%3E%3C/svg%3E");
+}
+/* thin lime frame around the page, like the poster border */
+body::after { content: ""; position: fixed; inset: 8px; border: 1px solid rgba(236, 235, 230, 0.22); pointer-events: none; z-index: 40; }
+@media (max-width: 520px) { body::after { inset: 4px; } }
+
+/* poster lettering: cream outline, dark gap, lime inner line, dark-to-lime fill */
+.fx { position: relative; display: inline-block; font-family: "Boldonse", var(--f-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.01em; line-height: inherit; }
+.fx::before, .fx::after { content: none; }
+.fx::before { -webkit-text-stroke: 0.13em var(--cream); color: var(--cream); }
+.fx::after { -webkit-text-stroke: 0.075em var(--bg); color: var(--bg); }
+.fx > .fx-t { position: relative; color: transparent; -webkit-text-stroke: 0.03em var(--lime); }
+.fx-wrap { position: relative; z-index: 0; isolation: isolate; }
+
+/* hero: one sentence, with "with a plan." in the poster lettering */
+h1 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; color: var(--cream); font-size: clamp(44px, 7vw, 82px); line-height: 0.98; letter-spacing: -0.02em; margin: 16px 0 20px; text-wrap: balance; }
+h1 .fx { font-family: inherit; font-style: italic; text-transform: none; letter-spacing: inherit; white-space: nowrap; }
+h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
+.eyebrow { color: var(--fg-dim); }
+.venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--line-2); }
+
+/* Easter egg: the display floats up and away, then drifts back */
+.dmd-frame.abduct { animation: abduct 6s ease-in-out both; }
+@keyframes abduct {
+  0% { transform: none; opacity: 1; }
+  12% { transform: translateY(6px) rotate(-1deg); }
+  45% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
+  60% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .dmd-frame.abduct { animation: none; } }
+/* Garbo's signature in the footer: the owner's drawing, recoloured through a mask */
+.garbo-sig { display: flex; width: fit-content; align-items: center; gap: 16px; background: var(--bg); padding: 6px 10px 6px 0; }
+.garbo-art { flex: none; width: 92px; aspect-ratio: 754 / 562; background: currentColor; -webkit-mask: url("art/garbo.png") center / contain no-repeat; mask: url("art/garbo.png") center / contain no-repeat; }
+/* Garbo says: his drawing on the left, the line in a speech bubble pointing at him */
+.says { display: flex; align-items: center; gap: 44px; margin: 0 0 34px; }
+.says > .garbo-art { width: clamp(84px, 11vw, 130px); color: var(--lime); flex: none; }
+.thesis.bubble { position: relative; flex: 1; margin: 0; border: 0; background: none; padding: 26px 34px 30px; transform: rotate(-0.6deg); z-index: 0; }
+/* hand-drawn bubble: a wobbly outline with a cut-paper shadow that "boils" between two drawings */
+.bub { position: absolute; z-index: -1; overflow: visible; pointer-events: none; filter: drop-shadow(6px 7px 0 #4d5a34); }
+.bub-left { left: -24px; top: -6px; width: calc(100% + 32px); height: calc(100% + 14px); }
+.bub-bottom { left: -6px; top: -6px; width: calc(100% + 14px); height: calc(100% + 18px); display: none; }
+.bub path { stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.bub-a, .bub-b { fill: color-mix(in srgb, var(--lime) 12%, var(--bg)); stroke: var(--lime); stroke-width: 2.4px; }
+.bub-b { visibility: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .bub-a { animation: boil-a 0.5s steps(1) 6; }
+  .bub-b { animation: boil-b 0.5s steps(1) 6; }
+}
+@keyframes boil-a { 0% { visibility: visible; } 50% { visibility: hidden; } }
+@keyframes boil-b { 0% { visibility: hidden; } 50% { visibility: visible; } }
+@media (max-width: 600px) {
+  .says { flex-direction: column-reverse; align-items: flex-start; gap: 30px; }
+  .says > .garbo-art { width: 86px; margin-left: 18px; }
+  .bub-left { display: none; } .bub-bottom { display: block; }
+  .bub path { stroke-width: 2px; }
+  .thesis.bubble { padding: 24px 24px 28px; transform: none; }
+}
+.gl-cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 0 0 22px; padding: 14px 18px; border: 1px solid var(--line-2); color: var(--fg); text-decoration: none; transition: border-color 0.15s; background: var(--bg); }
+.gl-cta .mono { color: var(--lime); }
+.gl-cta .arr { margin-left: auto; color: var(--lime); }
+.gl-cta:hover { border-color: var(--lime); }
+/* Venue pages: the venue is the headline and the machines start on the first screen */
+.venue-hero { padding-block: 28px 18px; }
+.venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 32px; }
+h1.venue-h1 { font-size: clamp(46px, 7vw, 84px); line-height: 0.95; margin: 10px 0 10px; }
+.venue-lede { margin: 0; color: var(--fg-dim); }
+.venue-lede em { font-family: "Instrument Serif", serif; font-size: 1.2em; color: var(--lime); }
+#home .venue { margin: 30px 0 0; }
+@media (max-width: 860px) { .venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr); } .venue-hero .dmd-frame { display: none; } .venue-hero { padding-block: 18px 6px; } }
+/* the DMD in a cream rim with a lime outer ring */
+.dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
+.dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
+
+.hero-grid > div:last-child { position: relative; z-index: 0; }
+#landing .hero { padding-bottom: 36px; }
+#landing .lede { margin-bottom: 0; }
+.land-head { align-items: center; flex-wrap: wrap; gap: 10px 16px; padding-bottom: 14px; }
+.land-head > span .dim { margin-left: 10px; }
+.land-head .resume { margin-top: 0; padding: 8px 12px; }
+
+/* cards and panels: dark with thin cream lines, lime when active */
+.card h3, .pager .nm, .d-head h2 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; letter-spacing: -0.01em; }
+.card h3 { font-size: 28px; line-height: 1.02; }
+.venue-card h3 { font-size: 26px; }
+.venue-card h3 { margin-top: 0; }
+.venue-card .pins { margin-top: auto; padding-top: 10px; }
+.venue-card .pins .code { height: 14px; }
+/* Lime is kept for Garbo, the onboard display and things you can tap; the dot codes are cream until hovered. */
+.card .code { fill: var(--cream); opacity: 0.8; filter: none; transition: fill 0.15s, opacity 0.15s; }
+.card:hover .code { fill: var(--lime); opacity: 1; }
+/* machine cards: year on the left, dot code on the right */
+#grid .card-top { flex-direction: row-reverse; align-items: center; }
+.card:hover::before, .card:hover::after { border-color: var(--line-2); }
+.d-head { border-color: var(--line-2); }
+.d-head h2 { font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; text-transform: none; color: var(--cream); font-size: clamp(38px, 5.8vw, 60px); line-height: 0.98; margin: 0 0 8px; }
+.d-head .code { fill: var(--cream); }
+/* plan page header: name on the left, dot code on the right */
+.d-head-body { grid-template-columns: minmax(0, 1fr) auto; }
+.d-head-body .code { order: 2; justify-self: end; }
+@media (max-width: 520px) { .d-head-body { grid-template-columns: minmax(0, 1fr); } .d-head-body .code { order: 0; justify-self: start; } }
+.thesis {
+  font-family: "Boldonse", var(--f-display); font-style: normal; font-weight: 400; font-size: clamp(16px, 2vw, 22px); line-height: 1.7; color: var(--fg-hi);
+  max-width: none; text-wrap: pretty; margin: 0 0 22px; padding: 20px 24px 22px;
+  background: color-mix(in srgb, var(--lime) 9%, var(--bg)); border: 1.5px solid var(--lime); border-left-width: 6px;
+}
+.thesis .tag { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.24em; color: var(--lime); margin-bottom: 10px; }
+@media (max-width: 520px) { .thesis { padding: 16px 16px 18px; } }
+.sec.primary { border-color: var(--line-2); }
+.sec.primary .sec-h { color: var(--fg-hi); border-bottom-color: var(--line); }
+ol.plan li::before { color: var(--fg-dim); }
+.chip[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: #15160f; }
+.rep-send { background: var(--lime); color: #15160f; }
+.search::before { color: var(--lime); }
+.brand-dot { border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px rgba(201, 220, 139, 0.7); }
+.gl-page h2 { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; }
+/* panels sit on solid night so the stars stay in the sky */
+.card, .venue > div, details.basics, .sec, .d-head, .pager, .search input, .venue-pick select, .banner { background-color: var(--bg); }
+.card:hover, .pager a:hover { background-color: var(--panel); }
+.d-head { background-color: var(--bg-2); }
 </style>
 </head>
 <body>
 <header class="bar">
   <div class="wrap">
-    <a class="brand mono" href="#" id="brand"><span class="brand-dot" aria-hidden="true"></span>PinPlan<span class="hide-sm">&nbsp;/ ABQ</span></a>
+    <a class="brand mono" href="#" id="brand"><span class="brand-dot" aria-hidden="true"></span>Garbo’s Guide<span class="hide-sm">&nbsp;/ ABQ Pinball</span></a>
     <div class="bar-right mono dim">
       <label class="venue-pick"><span class="sr">Venue</span><select id="venue-select" aria-label="Choose a venue"></select></label>
       <span id="bar-count" class="hide-sm"></span>
@@ -321,37 +474,52 @@ img { max-width: 100%; }
 
 <main id="landing" hidden>
   <section class="hero">
-    <div class="wrap">
-      <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
-      <h1>Walk up to every game <em>with a plan.</em></h1>
-      <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
-      <a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="mono eyebrow">[ Recovered field guide · Albuquerque, NM ]</div>
+        <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
+        <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
+      </div>
+      <div class="dmd-frame" aria-hidden="true">
+        <div class="dmd-title mono"><span>■ Onboard display</span><span>Albuquerque, NM</span></div>
+        <div class="dmd-screen"><canvas id="dmd-land" width="512" height="128"></canvas></div>
+      </div>
     </div>
   </section>
   <div class="wrap">
-    <div class="sec-label mono"><span>Choose a venue</span><span class="dim" id="land-total"></span></div>
+    <div class="sec-label mono land-head"><span>Choose a venue <span class="dim" id="land-total"></span></span><a class="resume mono" id="resume" href="#" hidden><span class="dim">Last visited</span><span id="resume-name"></span><span aria-hidden="true">→</span></a></div>
     <div class="grid venues-grid" id="venue-grid"></div>
   </div>
 </main>
 
 <main id="home" hidden>
-  <section class="hero">
+  <section class="hero venue-hero">
     <div class="wrap hero-grid">
       <div>
-        <div class="mono eyebrow">[ Pinball strategy · Albuquerque, NM ]</div>
-        <div class="venue-title" id="venue-title">Sister</div>
-        <h1>Walk up to every game <em>with a plan.</em></h1>
-        <p class="lede">Strategy for <span id="lede-count">every machine</span> on the floor here, with community tips, tournament notes and how each copy is playing. Switch venues from the menu at the top.</p>
-        <div class="tally mono dim" id="tally"></div>
+        <div class="mono eyebrow">[ Recovered field guide · Albuquerque, NM ]</div>
+        <h1 class="venue-h1" id="venue-title">Sister</h1>
+        <p class="lede venue-lede"><span id="lede-count">every machine</span> on the floor. Pick one for <em>Garbo’s plan</em>.</p>
+        <div class="tally mono dim" id="tally" hidden></div>
       </div>
       <div class="dmd-frame" aria-hidden="true">
-        <div class="dmd-title mono"><span>■ DMD 128×32</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
+        <div class="dmd-title mono"><span>■ Onboard display</span><span><span id="dmd-venue">Sister</span> · ABQ</span></div>
         <div class="dmd-screen"><canvas id="dmd" width="512" height="128"></canvas></div>
       </div>
     </div>
   </section>
 
   <div class="wrap">
+
+
+    <div class="controls">
+      <label class="search" for="q"><span class="mono" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search machines</span>
+        <input id="q" type="search" placeholder="Search by name or code" autocomplete="off">
+      </label>
+      <div class="chips" id="chips" role="group" aria-label="Filter machines"></div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
     <div class="venue" aria-label="Venue details">
       <div><div class="k mono">Lineup checked</div><p id="lineup-status"></p></div>
       <div><div class="k mono">Hours, location, events</div><p><a id="venue-pm" href="#" target="_blank" rel="noopener"></a></p></div>
@@ -365,18 +533,9 @@ img { max-width: 100%; }
         <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
         <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
         <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
-        <li>New to the lingo? <a href="#glossary">Pinball terms explained</a>.</li>
+        <li>New to the lingo? See the <a href="#glossary">pinball glossary</a>.</li>
       </ul>
     </details>
-
-    <div class="controls">
-      <label class="search" for="q"><span class="mono" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search machines</span>
-        <input id="q" type="search" placeholder="Search by name or code" autocomplete="off">
-      </label>
-      <div class="chips" id="chips" role="group" aria-label="Filter machines"></div>
-    </div>
-
-    <div class="grid" id="grid"></div>
   </div>
 </main>
 
@@ -391,9 +550,10 @@ img { max-width: 100%; }
 
 <footer>
   <div class="wrap">
-    <p>Lineup, machine comments and high scores come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
-    <p><a href="#glossary">Pinball terms explained</a>: what a VUK, a cradle or a playfield multiplier is.</p>
-    <p>Machine reports come from PinPlan players, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
+    <a class="gl-cta" href="#glossary"><span class="mono">Pinball glossary</span><span>What a VUK, a cradle or a playfield multiplier is, in plain language.</span><span class="arr" aria-hidden="true">→</span></a>
+    <p>Venue lineups come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
+    <p>Machine reports come from players using the guide, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
+    <p class="garbo-sig"><span class="garbo-art" role="img" aria-label="Garbo, winking"></span><span>Field notes of <b>Garbo</b>, a visitor who fell for pinball. Translated by <b>SAPO Studios</b>.</span></p>
   </div>
 </footer>
 
@@ -2204,7 +2364,23 @@ const REPORT_FIELDS = [
   ["outlanes", "Outlanes", ["Forgiving", "Normal", "Drain a lot"]]
 ];
 const RECENT_DAYS = 60;
-let REPORTS = {};         // "venue-slug/machine-id" -> [{date, flippers, tilt, outlanes, note}]
+let REPORTS = {};
+/* Garbo says: the owner's own one-thing line per game, written in garbo-says.md under "## machine-id" headings.
+   Where there is one, it replaces the researched thesis on that game's page and card. */
+let GARBO_NOTES = {};     // machine-id -> [line, …]; the first line is used
+function parseGarboNotes(md) {
+  const out = {}; let id = null;
+  md.replace(/<!--[\s\S]*?-->/g, "").split(/\r?\n/).forEach(raw => {
+    const h = raw.match(/^##\s+([a-z0-9-]+)/);
+    if (h) { id = h[1]; return; }
+    if (!id || /^#/.test(raw)) return;
+    const t = raw.replace(/^\s*[-*]\s+/, "").trim();
+    if (t) (out[id] = out[id] || []).push(t);
+  });
+  return out;
+}
+const garboSays = m => (GARBO_NOTES[m.id] || [])[0] ? noteHtml(GARBO_NOTES[m.id][0]) : esc(m.thesis);
+const noteHtml = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>");         // "venue-slug/machine-id" -> [{date, flippers, tilt, outlanes, note}]
 const copyKey = m => VENUE.slug + "/" + m.id;
 const recentReports = m => {
   const cut = new Date(Date.now() - RECENT_DAYS * 864e5).toISOString().slice(0, 10);
@@ -2308,8 +2484,13 @@ function lineupStatus() {
 
 async function syncLineup() {
   const getJson = url => fetch(url, { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null);
-  const [data, reports] = await Promise.all([getJson("lineup.json"), getJson("data/reports.json")]);
-  if (reports && reports.copies) { REPORTS = reports.copies; if (!data) { refreshAll(true); return; } }
+  const getText = url => fetch(url, { cache: "no-cache" }).then(r => r.ok ? r.text() : null).catch(() => null);
+  const [data, reports, notes] = await Promise.all([getJson("lineup.json"), getJson("data/reports.json"), getText("garbo-says.md")]);
+  if (notes) GARBO_NOTES = parseGarboNotes(notes);
+  if ((reports && reports.copies) || notes) {
+    if (reports && reports.copies) REPORTS = reports.copies;
+    if (!data) { refreshAll(true); return; }
+  }
   if (!data) return;
   const list = Array.isArray(data.venues) ? data.venues
     : (Array.isArray(data.machines) ? [Object.assign({ id: SISTER_ID }, data.location || {}, { machines: data.machines })] : []);
@@ -2352,7 +2533,7 @@ function renderTally() {
   document.getElementById("tally").innerHTML =
     `<span><b>${LINEUP.length}</b> machines</span>` + parts.map(([c, l]) => `<span><b>${c}</b> ${l}</span>`).join("");
   document.getElementById("bar-count").textContent = LINEUP.length + (LINEUP.length === 1 ? " machine" : " machines");
-  document.getElementById("lede-count").textContent = LINEUP.length === 1 ? "the one machine" : "all " + LINEUP.length + " machines";
+  document.getElementById("lede-count").textContent = LINEUP.length === 1 ? "The one machine" : "All " + LINEUP.length + " machines";
 }
 
 function renderChips() {
@@ -2376,7 +2557,7 @@ function renderGrid() {
   const list = LINEUP.filter(fn).filter(m => !q || (m.name + " " + m.code + " " + m.mfr).toLowerCase().includes(q));
   const grid = document.getElementById("grid");
   if (!list.length) {
-    grid.innerHTML = `<div class="empty mono">No machines match “${esc(state.q)}”. Try a code like AFM or MM.</div>`;
+    grid.innerHTML = `<div class="empty mono">Nothing in the wreckage matches “${esc(state.q)}”. Try a code like AFM or MM.</div>`;
     return;
   }
   grid.innerHTML = list.map(m => {
@@ -2390,7 +2571,7 @@ function renderGrid() {
       <div class="card-top">${dotSvg(m.code)}<span class="mono dim">${esc(m.year)}</span></div>
       <h3>${esc(m.name)}</h3>
       <div class="meta mono">${esc([m.mfr, m.variant].filter(Boolean).join(" · "))}</div>
-      <p class="line">${esc(m.thesis)}</p>
+      <p class="line">${garboSays(m)}</p>
       <div class="flags">${flags.join("")}</div>
     </a>`;
   }).join("");
@@ -2480,7 +2661,7 @@ function renderDetail(m) {
       </section>`
     : `<section class="sec primary">
         <div class="sec-h mono"><span>Game plan</span><span>Not written yet</span></div>
-        <div class="sec-b"><p class="rules nogl">No plan has been written for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
+        <div class="sec-b"><p class="rules nogl">This page was damaged in the crash, so there’s no plan for this game yet. A rulesheet and its PinTips page are the best places to start. The ${esc("At " + VENUE.name)} panel still updates from Pinball Map.</p></div>
       </section>`;
   const avoidSec = m.avoid.length
     ? `<section class="sec">
@@ -2522,7 +2703,7 @@ function renderDetail(m) {
   document.getElementById("detail-body").innerHTML = `
     <nav class="crumbs mono" aria-label="Machine navigation">
       <a href="#${VENUE.slug}">← ${esc(VENUE.name)}</a>
-      <span class="dim">${onFloor ? (i + 1) + " / " + n : "Off the floor"}</span>
+      <span class="dim">${onFloor ? "File " + String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0") : "File not on this floor"}</span>
     </nav>
     ${banner}
     <header class="d-head">
@@ -2532,7 +2713,8 @@ function renderDetail(m) {
         <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
-    <p class="thesis"><span class="tag">${m.uncurated ? "No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
+    ${m.uncurated ? `<p class="thesis"><span class="tag">Damaged in the crash · No plan yet</span>${esc(m.thesis)}</p>`
+      : `<div class="says"><span class="garbo-art" role="img" aria-label="Garbo"></span><p class="thesis bubble"><svg class="bub bub-left" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"><path class="bub-a" d="M13.6 57.0 Q12.3 48.2 13.3 44.1 Q14.3 40.1 16.8 35.0 Q19.4 29.9 20.1 28.3 Q20.8 26.6 25.2 22.8 Q29.5 18.9 35.9 17.8 Q42.4 16.7 46.3 16.1 Q50.2 15.6 81.8 14.0 Q113.5 12.5 145.7 14.0 Q178.0 15.6 209.9 15.3 Q241.9 15.1 274.6 13.6 Q307.4 12.1 339.9 13.2 Q372.5 14.4 403.3 13.2 Q434.2 11.9 468.2 12.9 Q502.3 13.9 534.2 14.8 Q566.0 15.7 598.2 15.8 Q630.5 15.9 661.8 15.6 Q693.0 15.3 725.5 15.6 Q757.9 15.9 791.6 14.1 Q825.3 12.2 855.2 12.5 Q885.1 12.8 920.0 14.1 Q955.0 15.4 958.3 15.7 Q961.6 15.9 965.3 17.7 Q969.0 19.5 972.1 22.5 Q975.1 25.5 978.5 29.6 Q982.0 33.6 984.0 37.6 Q986.0 41.5 987.1 45.8 Q988.3 50.2 987.7 65.7 Q987.1 81.2 987.7 100.3 Q988.3 119.4 988.4 135.8 Q988.6 152.3 987.4 155.7 Q986.2 159.1 984.9 163.8 Q983.6 168.5 979.1 170.7 Q974.7 172.9 973.0 177.5 Q971.3 182.1 964.7 183.3 Q958.2 184.5 954.8 183.6 Q951.4 182.8 918.8 185.0 Q886.1 187.2 855.7 185.6 Q825.2 184.0 792.1 184.0 Q759.0 184.0 727.1 184.6 Q695.1 185.3 663.3 186.7 Q631.6 188.1 598.1 188.2 Q564.6 188.2 531.7 186.2 Q498.8 184.1 467.4 184.0 Q436.1 183.9 402.5 184.8 Q368.9 185.6 338.0 185.0 Q307.0 184.5 272.9 186.1 Q238.8 187.6 207.4 187.8 Q176.0 188.0 145.5 186.7 Q115.1 185.5 81.4 184.9 Q47.7 184.4 43.9 184.0 Q40.1 183.6 35.8 182.1 Q31.4 180.5 29.1 177.7 Q26.8 174.9 22.4 172.0 Q18.1 169.1 15.8 164.3 Q13.5 159.5 15.3 155.8 Q17.1 152.1 15.7 145.5 Q14.3 138.9 13.9 134.6 Q13.5 130.4 -13.8 122.4 Q-41.1 114.5 -13.1 97.3 Q14.8 80.1 14.8 73.0 Q14.8 65.9 13.6 57.0 Z"/><path class="bub-b" d="M12.4 58.1 Q13.7 48.3 15.8 43.9 Q17.9 39.5 18.2 35.9 Q18.6 32.2 20.3 28.7 Q21.9 25.2 26.9 23.3 Q31.8 21.3 34.2 18.6 Q36.6 15.9 41.0 16.5 Q45.4 17.1 79.6 14.5 Q113.8 12.0 147.0 14.0 Q180.2 16.0 211.5 15.3 Q242.7 14.5 273.4 13.2 Q304.1 11.9 337.6 12.0 Q371.0 12.1 402.2 12.5 Q433.4 12.9 465.2 13.4 Q497.0 13.8 530.6 14.7 Q564.2 15.5 596.7 15.1 Q629.3 14.6 661.5 14.7 Q693.7 14.7 725.9 13.9 Q758.0 13.0 792.0 14.6 Q826.0 16.2 857.8 15.5 Q889.6 14.9 920.2 14.7 Q950.8 14.5 955.1 14.7 Q959.4 14.9 965.1 17.2 Q970.7 19.6 974.5 22.1 Q978.3 24.7 981.3 29.0 Q984.4 33.4 983.0 35.9 Q981.6 38.4 985.1 43.1 Q988.6 47.9 988.9 65.0 Q989.1 82.2 986.2 100.1 Q983.3 117.9 985.5 134.4 Q987.8 151.0 985.0 155.3 Q982.2 159.6 983.3 164.5 Q984.4 169.3 979.0 171.5 Q973.6 173.7 970.0 175.9 Q966.4 178.0 964.6 179.9 Q962.7 181.8 957.5 182.9 Q952.4 184.1 918.9 185.5 Q885.4 187.0 853.0 186.8 Q820.5 186.6 788.2 186.1 Q755.8 185.7 723.9 185.3 Q691.9 185.0 662.0 186.2 Q632.2 187.3 597.7 187.5 Q563.3 187.7 530.7 186.6 Q498.1 185.5 467.9 186.1 Q437.7 186.6 403.0 187.4 Q368.3 188.2 336.4 186.5 Q304.5 184.9 274.0 185.1 Q243.5 185.2 209.6 184.7 Q175.8 184.1 142.9 185.2 Q109.9 186.4 78.2 185.6 Q46.4 184.7 42.4 183.9 Q38.4 183.0 36.2 181.4 Q33.9 179.9 29.2 178.2 Q24.4 176.5 20.5 171.5 Q16.5 166.6 17.1 164.2 Q17.8 161.8 15.1 156.2 Q12.4 150.6 14.0 146.8 Q15.5 142.9 13.8 137.5 Q12.1 132.0 -11.7 123.2 Q-35.6 114.5 -11.0 97.4 Q13.5 80.3 12.3 74.1 Q11.0 68.0 12.4 58.1 Z"/></svg><svg class="bub bub-bottom" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"><path class="bub-a" d="M13.6 65.4 Q12.3 48.2 13.3 44.1 Q14.3 40.1 16.8 35.0 Q19.4 29.9 20.1 28.3 Q20.8 26.6 25.2 22.8 Q29.5 18.9 35.9 17.8 Q42.4 16.7 46.3 16.1 Q50.2 15.6 81.8 14.0 Q113.5 12.5 145.7 14.0 Q178.0 15.6 209.9 15.3 Q241.9 15.1 274.6 13.6 Q307.4 12.1 339.9 13.2 Q372.5 14.4 403.3 13.2 Q434.2 11.9 468.2 12.9 Q502.3 13.9 534.2 14.8 Q566.0 15.7 598.2 15.8 Q630.5 15.9 661.8 15.6 Q693.0 15.3 725.5 15.6 Q757.9 15.9 791.6 14.1 Q825.3 12.2 855.2 12.5 Q885.1 12.8 920.0 14.1 Q955.0 15.4 958.3 15.7 Q961.6 15.9 965.3 17.7 Q969.0 19.5 972.1 22.5 Q975.1 25.5 978.5 29.6 Q982.0 33.6 984.0 37.6 Q986.0 41.5 987.1 45.8 Q988.3 50.2 987.7 65.7 Q987.1 81.2 987.7 100.3 Q988.3 119.4 988.4 135.8 Q988.6 152.3 987.4 155.7 Q986.2 159.1 984.9 163.8 Q983.6 168.5 979.1 170.7 Q974.7 172.9 973.0 177.5 Q971.3 182.1 964.7 183.3 Q958.2 184.5 954.8 183.6 Q951.4 182.8 917.4 185.0 Q883.4 187.2 851.6 185.6 Q819.8 184.0 785.4 184.0 Q750.9 184.0 717.6 184.6 Q684.3 185.3 651.2 186.7 Q618.1 188.1 583.2 188.2 Q548.4 188.2 514.1 186.2 Q479.9 184.1 447.2 184.0 Q414.5 183.9 379.5 184.8 Q344.6 185.6 312.3 185.0 Q280.0 184.5 244.5 186.1 Q209.1 187.6 192.9 205.8 Q176.8 224.0 171.7 204.7 Q166.5 185.5 150.6 185.8 Q134.7 186.1 120.8 186.3 Q106.9 186.4 92.2 186.5 Q77.4 186.5 64.1 185.4 Q50.8 184.3 44.8 184.2 Q38.8 184.2 34.0 181.6 Q29.3 179.1 28.2 177.0 Q27.0 174.9 22.9 170.5 Q18.9 166.0 16.7 163.4 Q14.6 160.7 12.8 156.6 Q10.9 152.5 12.9 134.0 Q14.8 115.4 14.8 99.0 Q14.8 82.5 13.6 65.4 Z"/><path class="bub-b" d="M12.4 66.5 Q13.7 48.3 15.8 43.9 Q17.9 39.5 18.2 35.9 Q18.6 32.2 20.3 28.7 Q21.9 25.2 26.9 23.3 Q31.8 21.3 34.2 18.6 Q36.6 15.9 41.0 16.5 Q45.4 17.1 79.6 14.5 Q113.8 12.0 147.0 14.0 Q180.2 16.0 211.5 15.3 Q242.7 14.5 273.4 13.2 Q304.1 11.9 337.6 12.0 Q371.0 12.1 402.2 12.5 Q433.4 12.9 465.2 13.4 Q497.0 13.8 530.6 14.7 Q564.2 15.5 596.7 15.1 Q629.3 14.6 661.5 14.7 Q693.7 14.7 725.9 13.9 Q758.0 13.0 792.0 14.6 Q826.0 16.2 857.8 15.5 Q889.6 14.9 920.2 14.7 Q950.8 14.5 955.1 14.7 Q959.4 14.9 965.1 17.2 Q970.7 19.6 974.5 22.1 Q978.3 24.7 981.3 29.0 Q984.4 33.4 983.0 35.9 Q981.6 38.4 985.1 43.1 Q988.6 47.9 988.9 65.0 Q989.1 82.2 986.2 100.1 Q983.3 117.9 985.5 134.4 Q987.8 151.0 985.0 155.3 Q982.2 159.6 983.3 164.5 Q984.4 169.3 979.0 171.5 Q973.6 173.7 970.0 175.9 Q966.4 178.0 964.6 179.9 Q962.7 181.8 957.5 182.9 Q952.4 184.1 917.6 185.5 Q882.7 187.0 848.9 186.8 Q815.1 186.6 781.4 186.1 Q747.7 185.7 714.4 185.3 Q681.1 185.0 649.9 186.2 Q618.7 187.3 582.9 187.5 Q547.1 187.7 513.2 186.6 Q479.2 185.5 447.7 186.1 Q416.1 186.6 380.0 187.4 Q344.0 188.2 310.7 186.5 Q277.4 184.9 245.6 185.1 Q213.7 185.2 195.2 202.7 Q176.7 220.1 169.0 203.2 Q161.4 186.4 147.4 186.4 Q133.4 186.4 119.3 186.1 Q105.2 185.8 92.6 185.9 Q79.9 185.9 64.2 185.9 Q48.5 185.9 42.8 183.8 Q37.2 181.7 35.4 181.5 Q33.6 181.4 28.0 177.4 Q22.4 173.5 21.2 171.8 Q20.1 170.1 16.7 166.2 Q13.2 162.3 14.8 157.4 Q16.4 152.5 15.0 134.0 Q13.5 115.6 12.3 100.1 Q11.0 84.7 12.4 66.5 Z"/></svg><span class="tag">Garbo says</span>${garboSays(m)}</p></div>`}
     <div class="d-grid">
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
@@ -2650,16 +2832,21 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") glPop.hidden
 let glJump = "", glBack = "";
 function renderGlossary() {
   const groups = [...new Set(GLOSSARY.map(g => g[2]))];
-  const back = glBack ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← PinPlan</a>`;
+  const back = glBack ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← Garbo’s Guide</a>`;
   document.getElementById("glossary-body").innerHTML = `
     <nav class="crumbs mono">${back}<span class="dim">${GLOSSARY.length} terms</span></nav>
-    <h2>Pinball terms</h2>
-    <p class="lede">The words that show up in PinPlan's game plans, in plain language. On any plan page, tap a dotted word to see its meaning without leaving the page.</p>
+    <h2>Pinball glossary</h2>
+    <p class="lede">The words that show up in Garbo’s game plans, in plain language. On any plan page, tap a dotted word to see its meaning without leaving the page.</p>
     ${groups.map(gr => `<section class="gl-group">
       <div class="sec-label mono"><span>${esc(gr)}</span></div>
       <dl class="gl-list">${GLOSSARY.filter(g => g[2] === gr).map(g => `<div id="gl-${g[0]}"><dt>${esc(g[1])}</dt><dd>${esc(g[4])}</dd></div>`).join("")}</dl>
     </section>`).join("")}`;
 }
+
+/* Poster lettering. fx() wraps text so CSS can stack the cream outline, dark gap and lime line behind it. */
+const fx = t => `<span class="fx" data-text="${esc(t)}"><span class="fx-t">${esc(t)}</span></span>`;
+/* The hero's emphasis gets the poster lettering; the rest of the sentence stays plain. */
+document.querySelectorAll("h1 .em-fx").forEach(el => { el.outerHTML = fx(el.textContent.trim()); });
 
 let homeScroll = 0;
 /* Hash routes: #venue-slug (venue home), #venue-slug/machine-id (plan), #machine-id (old Sister links). */
@@ -2677,13 +2864,13 @@ function renderLanding() {
     grid.innerHTML = VENUES.map(v => {
       const n = (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length;
       return `<a class="card venue-card" href="#${v.slug}">
-        <div class="card-top">${dotSvg(v.dmd)}</div>
         <h3>${esc(v.name)}</h3>
-        <div class="meta mono">${n} ${n === 1 ? "machine" : "machines"}</div>
+        <div class="card-top pins">${dotSvg(n + (n === 1 ? " PIN" : " PINS"))}</div>
       </a>`;
     }).join("");
   }
   document.getElementById("land-count").textContent = VENUES.length;
+  if (window.dmdLandRefresh) window.dmdLandRefresh();
   document.getElementById("land-total").textContent = VENUES.length + " venues";
   let saved = null;
   try { saved = venueBySlug.get(localStorage.getItem("pinplan-venue")); } catch (e) {}
@@ -2704,7 +2891,7 @@ function route(soft) {
     renderGlossary(); gloss.hidden = false;
     const t = glJump && document.getElementById("gl-" + glJump); glJump = "";
     if (t) { t.scrollIntoView(); t.classList.add("hl"); } else window.scrollTo(0, 0);
-    document.title = "Pinball terms · PinPlan Albuquerque";
+    document.title = "Pinball glossary · Garbo’s Guide to ABQ Pinball";
     return;
   }
   if (!gloss.hidden) { gloss.hidden = true; }
@@ -2715,7 +2902,7 @@ function route(soft) {
     renderLanding();
     landing.hidden = false;
     document.getElementById("bar-count").textContent = VENUES.length + " venues";
-    document.title = "PinPlan Albuquerque";
+    document.title = "Garbo’s Guide to ABQ Pinball";
     return;
   }
   if (!landing.hidden) { landing.hidden = true; window.scrollTo(0, 0); renderHome(); }
@@ -2735,7 +2922,7 @@ function route(soft) {
     detail.hidden = true; home.hidden = false;
     if (wasDetail) window.scrollTo(0, homeScroll);
   }
-  document.title = (m ? m.name + " · " : "") + VENUE.name + " · PinPlan Albuquerque";
+  document.title = (m ? m.name + " · " : "") + VENUE.name + " · Garbo’s Guide";
 }
 
 function renderVenue() {
@@ -2788,8 +2975,19 @@ const F = {
   " ":"00 00 00 00 00 00 00", "-":"000 000 000 111 000 000 000", "·":"0 0 0 1 0 0 0",
   ".":"0 0 0 0 0 0 1", "'":"1 1 0 0 0 0 0", "!":"1 1 1 1 1 0 1", ":":"0 0 1 0 1 0 0",
   "&":"01100 10010 10100 01000 10101 10010 01101", "?":"01110 10001 00001 00010 00100 00000 00100",
-  "/":"00001 00010 00010 00100 01000 01000 10000"
+  "/":"00001 00010 00010 00100 01000 01000 10000",
+  /* Alien script: an original set of glyphs used only for the "translating" intro. */
+  "\uE000":"01110 10001 10101 10001 01110 00100 01110", "\uE001":"10101 10101 01110 00100 00100 00100 00100",
+  "\uE002":"00000 01000 10101 00010 00000 11111 00000", "\uE003":"00100 00000 00100 01010 10001 00000 11111",
+  "\uE004":"01110 10001 00001 00110 00100 00100 00110", "\uE005":"00100 00100 00100 01110 10101 10101 10001",
+  "\uE006":"00010 00100 01000 11110 00100 01000 10000", "\uE007":"00000 10101 01110 11011 01110 10101 00000",
+  "\uE008":"00000 10001 00000 11111 00000 10101 00000", "\uE009":"00110 01000 10000 10010 10000 01000 00110",
+  "\uE00A":"00100 01010 00100 01110 10101 00100 01010", "\uE00B":"11011 10001 00100 01110 00100 10001 11011"
 };
+/* Garbo, from the owner's drawing, redrawn dot by dot (56 x 30) with an open-eye and a wink frame. */
+const GARBO = {"open":["00000001110000000000000000000000000000000000000000000000","00000011111001110000000000010000000000000000000000000000","00000011111111110000000010100000000000000000000000000000","00000011111111100000000111000000000011111110000000000000","00000011111100000000011010000000011100000001110000000000","00001111110000000000111000000001100000000000001000000000","00111111000000000000110000000010000000000000000100000000","00111100000000000001000000000100000000000000000011100000","00000000000000000000000000000100000000000000000100010000","00000000000000000000000000001000000000000000000100010000","00000000000000000000000000000000000000000000000100010000","00000000001111111100000000000000000111111110000011100000","00000000011111111110000000000000001111111111000000000000","00000000111110011111000000000000011111001111100000000000","00000001111000000111100001000000111100000011110000000000","00000001110000000011100000100000111000000001110000000000","00000001110000000011100001000000111000000001110000000000","00000001100000000001100000100000110000000000110000000000","00000000000000000000000001000000000000000000000000000000","00000000000000000000000000000000000000000000000000000000","00000000111110000000000000000000000000000011110000000000","00000001000001111111111000000000111111111100001000000000","00000010000000000000000111111111000000000000000100000000","00000010001100111100000000000000000001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000001001100111100000000000001111001111001101000000000","00000000100000000000000000000000000000000000010000000000","00000000011111111111111111111111111111111111100000000000","00000000000000000000000000000000000000000000000000000000"],
+  "wink":["00000001110000000000000000000000000000000000000000000000","00000011111001110000000000010000000000000000000000000000","00000011111111110000000010100000000000000000000000000000","00000011111111100000000111000000000011111110000000000000","00000011111100000000011010000000011100000001110000000000","00001111110000000000111000000001100000000000001000000000","00111111000000000000110000000010000000000000000100000000","00111100000000000001000000000100000000000000000011100000","00000000000000000000000000000100000000000000000100010000","00000000000000000000000000001000000000000000000100010000","00000000000000000000000000000000000000000000111100010000","00000000001111111100000000000000000000000011110011100000","00000000011111111110000000000000000000001111000000000000","00000000111110011111000000000000000000011100000000000000","00000001111000000111100001000000000001111000111000000000","00000001110000000011100000100000000011111111111000000000","00000001110000000011100001000000001111111111000000000000","00000001100000000001100000100000111111111111100000000000","00000000000000000000000001000001110111111111110000000000","00000000000000000000000000000000000000000000000000000000","00000000111110000000000000000000000000000011110000000000","00000001000001111111111000000000111111111100001000000000","00000010000000000000000111111111000000000000000100000000","00000010001100111100000000000000000001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000010001100111100000000000001111001111001100100000000","00000001001100111100000000000001111001111001101000000000","00000000100000000000000000000000000000000000010000000000","00000000011111111111111111111111111111111111100000000000","00000000000000000000000000000000000000000000000000000000"]};
+const ALIEN = Array.from({ length: 12 }, (_, i) => String.fromCharCode(0xE000 + i));
 const glyph = ch => (F[ch] || F[" "]).split(" ");
 /* Width in dots of text drawn at scale s with a gap of g dots between letters. */
 const width = (t, s, g) => [...t].reduce((w, ch, i) => w + glyph(ch)[0].length * s + (i ? g : 0), 0);
@@ -2807,8 +3005,9 @@ function dotSvg(t, cls) {
   return `<svg class="${cls || "code"}" viewBox="0 0 ${w} 7" preserveAspectRatio="xMinYMid meet" aria-hidden="true" focusable="false"><path d="${d}"/></svg>`;
 }
 
-(function dmd() {
-  const cv = document.getElementById("dmd");
+/* One DMD per canvas. content() returns { name, lines }: the big top line and the small lines that rotate under it. */
+function startDmd(cv, content, refreshName, opts) {
+  opts = opts || {};
   const ctx = cv.getContext("2d");
   const COLS = 128, ROWS = 32;
   function draw(grid, t, x0, y0, s, g) {
@@ -2828,13 +3027,38 @@ function dotSvg(t, cls) {
 
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css = getComputedStyle(document.documentElement);
-  const ON = css.getPropertyValue("--dmd").trim() || "#ff6b1f";
+  const ON = (css.getPropertyValue("--dmd-on") || css.getPropertyValue("--dmd")).trim() || "#ff6b1f";
+  const SCREEN = css.getPropertyValue("--dmd-screen").trim() || "#050506";
   const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
   const BIG = 2, BIG_GAP = 1, BIG_Y = 2, SMALL_Y = 21, GAP_TEXT = "   ";
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
+  /* Intro: everything starts in flickering alien glyphs. The small line decodes to SIGNAL RECOVERED,
+     then TRANSLATING..., and only then does the big line decode into the welcome text. */
+  let introStart = null, introDone = !opts.intro || reduce;
+  function decode(text, elapsed, start, step) {
+    let out = "";
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (ch === " " || elapsed >= start + i * step) { out += ch; continue; }
+      out += ALIEN[(i * 7 + Math.floor(elapsed / 110) * 5 + text.length) % ALIEN.length];
+    }
+    return out;
+  }
+  function introFrame(grid, e) {
+    const sig = "SIGNAL RECOVERED", tr = "TRANSLATING...", first = lines[0] || "";
+    const T1 = 1100, T2 = T1 + sig.length * 55 + 1300, T3 = T2 + tr.length * 40 + 1300;
+    let small, smallStart, smallStep;
+    if (e < T2) { small = sig; smallStart = T1; smallStep = 55; }
+    else if (e < T3) { small = tr; smallStart = T2; smallStep = 40; }
+    else { small = first; smallStart = T3 + 250; smallStep = 55; }
+    draw(grid, decode(name, e, e < T3 ? Infinity : T3, 80), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
+    draw(grid, decode(small, e, smallStart, smallStep), Math.floor((COLS - width(small, 1, 1)) / 2), SMALL_Y, 1, 1);
+    return e > T3 + 250 + first.length * 55 + 300;
+  }
 
   function setup() {
-    name = VENUE.dmd.toUpperCase();
+    const c = (window.dmdOverride && Date.now() < window.dmdOverride.until) ? window.dmdOverride : content();
+    name = c.name.toUpperCase();
     nameW = width(name, BIG, BIG_GAP);
     scroll = nameW > COLS;
     if (scroll && reduce) {   // no marquee: show as many whole words as fit
@@ -2842,8 +3066,7 @@ function dotSvg(t, cls) {
       while (words.length > 1 && width(words.join(" "), BIG, BIG_GAP) > COLS) words.pop();
       name = words.join(" "); nameW = width(name, BIG, BIG_GAP); scroll = nameW > COLS;
     }
-    const n = LINEUP.length;
-    lines = [n + (n === 1 ? " PIN" : " PINS") + " ON THE FLOOR", "WALK UP WITH A PLAN"].filter(t => width(t, 1, 1) <= COLS);
+    lines = c.lines.filter(t => width(t, 1, 1) <= COLS);
     x = 0; line = 0; lineAt = performance.now();
   }
   function size() {
@@ -2854,6 +3077,18 @@ function dotSvg(t, cls) {
   }
   function frame() {
     const grid = new Uint8Array(COLS * ROWS);
+    if (lines[line] === "@GARBO") {   // Garbo frame: his face, winking partway through
+      const t = performance.now() - lineAt, rows = GARBO[t > 1100 && t < 2100 ? "wink" : "open"];
+      const x0 = Math.floor((COLS - rows[0].length) / 2);
+      rows.forEach((r, y) => { for (let c = 0; c < r.length; c++) if (r[c] === "1") grid[(y + 1) * COLS + x0 + c] = 1; });
+      paint(grid);
+      return;
+    }
+    if (!introDone && introStart !== null) {
+      if (introFrame(grid, performance.now() - introStart)) { introDone = true; line = 0; lineAt = performance.now(); }
+      paint(grid);
+      return;
+    }
     if (scroll) {
       const loopW = width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP;
       draw(grid, name + GAP_TEXT, -x, BIG_Y, BIG, BIG_GAP);
@@ -2863,8 +3098,11 @@ function dotSvg(t, cls) {
     }
     const t = lines[line] || "";
     draw(grid, t, Math.floor((COLS - width(t, 1, 1)) / 2), SMALL_Y, 1, 1);
+    paint(grid);
+  }
+  function paint(grid) {
     const cw = cv.width / COLS, rad = cw * 0.38;
-    ctx.fillStyle = "#050506";
+    ctx.fillStyle = SCREEN;
     ctx.fillRect(0, 0, cv.width, cv.height);
     for (const on of [0, 1]) {   // batch dots by color: one path per color
       ctx.fillStyle = on ? ON : OFF;
@@ -2881,9 +3119,9 @@ function dotSvg(t, cls) {
     raf = requestAnimationFrame(loop);
     if (!visible || t - last < 45) return;
     last = t;
-    let changed = false;
-    if (scroll) { x = (x + 1) % (width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP); changed = true; }
-    if (lines.length > 1 && t - lineAt > 3500) { line = (line + 1) % lines.length; lineAt = t; changed = true; }
+    let changed = (!introDone && introStart !== null) || lines[line] === "@GARBO";
+    if (scroll && introDone) { x = (x + 1) % (width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP); changed = true; }
+    if (introDone && lines.length > 1 && t - lineAt > 3500) { line = (line + 1) % lines.length; lineAt = t; changed = true; }
     if (changed) frame();
   }
   function start() {
@@ -2892,13 +3130,44 @@ function dotSvg(t, cls) {
     if (!reduce) raf = requestAnimationFrame(loop);
   }
   start();
-  window.dmdRefresh = () => { setup(); frame(); };
+  window[refreshName] = () => { setup(); frame(); };
   if ("ResizeObserver" in window) new ResizeObserver(() => { size(); frame(); }).observe(cv);
   else window.addEventListener("resize", () => { size(); frame(); });
   if ("IntersectionObserver" in window) {
-    new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+    new IntersectionObserver(es => {
+      visible = es[0].isIntersecting;
+      if (visible && !introDone && introStart === null) introStart = performance.now();
+    }).observe(cv);
   }
-})();
+}
+/* Easter egg: tap a display five times quickly and it gets beamed up. */
+document.querySelectorAll(".dmd-frame").forEach(frame => {
+  let taps = [];
+  frame.addEventListener("click", () => {
+    const now = Date.now();
+    taps = taps.filter(t => now - t < 1500).concat(now);
+    if (taps.length < 5 || frame.classList.contains("abduct")) return;
+    taps = [];
+    window.dmdOverride = { name: "BEAM ME UP", lines: ["TAKE ME TO YOUR", "WIZARD MODE"], until: now + 6000 };
+    if (window.dmdRefresh) window.dmdRefresh();
+    if (window.dmdLandRefresh) window.dmdLandRefresh();
+    frame.classList.add("abduct");
+    setTimeout(() => {
+      frame.classList.remove("abduct");
+      window.dmdOverride = null;
+      if (window.dmdRefresh) window.dmdRefresh();
+      if (window.dmdLandRefresh) window.dmdLandRefresh();
+    }, 6000);
+  });
+});
+startDmd(document.getElementById("dmd"), () => {
+  const n = LINEUP.length;
+  return { name: VENUE.dmd, lines: [n + (n === 1 ? " PIN" : " PINS") + " ON THE FLOOR", "WALK UP WITH A PLAN"] };
+}, "dmdRefresh");
+startDmd(document.getElementById("dmd-land"), () => {
+  const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
+  return { name: "WELCOME", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW", "@GARBO"] };
+}, "dmdLandRefresh", { intro: true });
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
 window.addEventListener("hashchange", () => route(false));

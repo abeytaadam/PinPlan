@@ -3,6 +3,7 @@
 Read this first. It replaces the original conversation, which isn't available to you.
 
 ## What this is
+**Renamed 2026-11-12: the site is now "Garbo's Guide to ABQ Pinball"** (repo and URL still say PinPlan). Garbo is the owner's alien character; the theme is a field guide he left behind in Albuquerque (no Roswell references: the owner didn't want the app to seem based there). Night-sky look, Instrument Serif titles, dot-matrix accents. Lime is reserved for Garbo, the onboard display and tappable things. `garbo-says.md` holds the owner's own one-thing line per game (overrides `thesis`); `art/garbo.png` is his drawing used as a mask.
 PinPlan is a free tournament strategy guide for pinball venues, starting in Albuquerque, NM.
 - Live site: https://abeytaadam.github.io/PinPlan/ (GitHub Pages, served from `main`, root folder)
 - Players reach it from a QR code posted at the venue.
@@ -19,7 +20,7 @@ Each machine page leads with **tournament** strategy, not general play:
 6. Rules in brief, then sources (every page links its sources)
 
 ## Files
-- `icons/`: the owner's "pp" mark (two interlocking Instrument Serif p's, white and orange, with a ball). `favicon.svg` is the original artboard; `favicon-32.png`, `apple-touch-icon.png` (180), `icon-192.png` and `icon-512.png` are rendered from it (home-screen sizes use a full-bleed square background). `site.webmanifest` names the app for "Add to Home Screen".
+- `icons/`: Garbo's face in lime on night (#1b1c20), rendered from the owner's drawing (2026-11-12). `favicon-32.png` and `favicon-64.png` use a face-only crop (eyes, nose, grin) so it reads at tab size; `apple-touch-icon.png` (180), `icon-192.png` and `icon-512.png` show the whole drawing. `favicon.svg` is the old "pp" mark, no longer linked. `site.webmanifest` names the app for "Add to Home Screen".
 - `index.html`: the whole site in one file. The curated plans are the `MACHINES` array in the script near the bottom. Each entry has: id, code (DMD-style 2–4 letters), name, sort, mfr, year, variant, group (stern/chicago/classic/spooky/other), opdb (OPDB group id, e.g. G4do5), thesis, plan[], avoid[], venue {notes, copy, tied, scores}, tips [[category, votes, text]], tourney [] (tournament-only notes), rules, sources [[label, url]].
   - `venue.tied` holds [keyword, line] pairs. Each line only shows while a live Pinball Map condition note contains that keyword.
 - `index.html` also loads `lineup.json` if it exists. Live machines are matched to plans by OPDB group id, then by name. New machines get a basic "No plan yet" page. Curated machines that leave the floor stay reachable by link.
