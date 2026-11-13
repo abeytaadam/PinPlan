@@ -280,6 +280,31 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 .gl-list dd { margin: 0; }
 .gl-list > div.hl { background: var(--dmd-soft); }
 @media (max-width: 560px) { .gl-list > div { grid-template-columns: 1fr; } }
+.fm-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); margin-bottom: 0; }
+.fm-card { display: block; padding: 0; }
+.fm-card:hover { background: var(--panel); }
+.fm-card summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 18px 18px 16px; }
+.fm-card summary::-webkit-details-marker { display: none; }
+.fm-card .card-top { flex-direction: row-reverse; align-items: center; }
+.fm-card .tog::before { content: "[+]"; color: var(--lime); font-size: 12px; }
+.fm-card[open] .tog::before { content: "[–]"; }
+.fm-card summary:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
+.fm-card .aka { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-dim); }
+.fm-card h3 { margin: 2px 0 0; }
+.fm-card p { margin: 0; font-size: 14.5px; }
+.fm-card .teaser { color: var(--fg-dim); }
+.fm-card[open] { grid-column: 1 / -1; background: var(--panel); }
+.fm-card[open] .teaser { display: none; }
+.fm-body { padding: 0 18px 18px; display: grid; gap: 10px; max-width: 78ch; }
+.fm-body p b { color: var(--fg-hi); font-weight: 600; }
+.fm-body p.tip { padding-top: 10px; border-top: 1px dashed var(--line); }
+.fm-body p.tip b { color: var(--lime); }
+.fm-all { background: none; border: 1px solid var(--line-2); color: var(--lime); padding: 4px 10px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.fm-all:hover { border-color: var(--lime); }
+.fm-basics { margin-top: 26px; border: 1px solid var(--line); padding: 14px 18px 16px; }
+.fm-basics ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 8px; max-width: 80ch; }
+.fm-src { margin-top: 32px; }
+.fm-src .srcs { margin-top: 10px; }
 .rules { margin: 0; }
 .srcs { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .srcs a { color: var(--fg); text-decoration-color: var(--line-2); text-underline-offset: 3px; }
@@ -415,6 +440,7 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .gl-cta .mono { color: var(--lime); }
 .gl-cta .arr { margin-left: auto; color: var(--lime); }
 .gl-cta:hover { border-color: var(--lime); }
+.gl-cta + .gl-cta { margin-top: -12px; }
 /* Venue pages: the venue is the headline and the machines start on the first screen */
 .venue-hero { padding-block: 28px 18px; }
 .venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 32px; }
@@ -550,17 +576,6 @@ ol.plan li::before { color: var(--fg-dim); }
       <div><div class="k mono">Hours, location, events</div><p><a id="venue-pm" href="#" target="_blank" rel="noopener"></a></p></div>
       <div id="sister-extra"><div class="k mono">Operator</div><p>Rotating lineup maintained by Geekon LLC. Quarters only; the bill changer takes $1–$20.</p></div>
     </div>
-
-    <details class="basics" id="basics">
-      <summary class="mono"><span>Match play basics</span><span class="tog" aria-hidden="true"></span></summary>
-      <ul>
-        <li>You only need to beat the other players in your group on this game. On your last ball, know the number you need and take the lowest-risk route to it.</li>
-        <li>Spend ball one learning the copy: flipper strength, outlane posts, which shots come back safely. Known issues for each machine are listed in its venue panel.</li>
-        <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
-        <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
-        <li>New to the lingo? See the <a href="#glossary">pinball glossary</a>.</li>
-      </ul>
-    </details>
   </div>
 </main>
 
@@ -571,11 +586,16 @@ ol.plan li::before { color: var(--fg-dim); }
 <main id="glossary" class="detail" hidden>
   <div class="wrap gl-page" id="glossary-body"></div>
 </main>
+
+<main id="formats" class="detail" hidden>
+  <div class="wrap gl-page" id="formats-body"></div>
+</main>
 <div id="gl-pop" role="dialog" aria-live="polite" hidden></div>
 
 <footer>
   <div class="wrap">
     <a class="gl-cta" href="#glossary"><span class="mono">Pinball glossary</span><span>What a VUK, a cradle or a playfield multiplier is, in plain language.</span><span class="arr" aria-hidden="true">→</span></a>
+    <a class="gl-cta" href="#formats"><span class="mono">Tournament formats</span><span>Strikes, target match play, Amazing Race, pingolf and more, broken down.</span><span class="arr" aria-hidden="true">→</span></a>
     <p>Venue lineups come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
     <p>Machine reports come from players using the guide, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
     <p class="garbo-sig"><span class="garbo-art" role="img" aria-label="Garbo"></span><span>Field notes of <b>Garbo</b>, a visitor who fell for pinball. Translated by <b>SAPO Studios</b>.</span></p>
@@ -2873,6 +2893,80 @@ function renderGlossary() {
     </section>`).join("")}`;
 }
 
+/* Tournament formats page (#formats). [id, name, group, also known as, how it works, scoring, Garbo's tip] */
+const FORMATS = [
+  ["group-match-play", "Group match play", "Points and groups", "", "Players are drawn into groups of four (some groups may be three) and play one game together each round. After a set number of rounds or a time limit, everyone is ranked by total points. Later rounds often group players with similar totals.", "Points by finish in each game; 7/5/3/1 for first through fourth is common. Some events use 1/0/0/0, where only the winner scores. The final standings either decide the event or seed a finals bracket.", "Every finishing position is worth something, so a solid second beats a wild swing for first that ends in fourth."],
+  ["head-to-head", "Head-to-head match play", "Points and groups", "", "The same as group match play, but players are paired one against one each round instead of in fours.", "A point (or more) for the win each round; standings by total points.", "With only one opponent, you just need to beat one score. Once you're ahead and they've drained, play safe."],
+  ["target-match-play", "Target match play", "Points and groups", "", "Played like group match play, but instead of a set number of rounds, rounds keep going until enough players reach a points target. For example, the first eight players to reach 30 points qualify for finals. Some events end the whole tournament the moment one player hits the target.", "Usual match play points per game; your total races toward the target.", "Know your total and how many points the leaders need. Near the target, every point counts, so a safe second place is often the smart play."],
+  ["max-match-play", "Max match play", "Head-to-head queues", "", "Head-to-head matches are created as soon as two players and a machine are free, so nobody waits for a full round to finish. It ends after a set number of matches, not a time limit, so everyone plays the same number of games, and the software avoids repeat opponents where it can.", "Ranked by wins.", "Games start as soon as you're free, so stay close to the queue screen and get to your machine quickly."],
+  ["flip-frenzy", "Flip Frenzy", "Head-to-head queues", "Pinball! Pinball! Pinball!", "Players join a queue and play one-game, head-to-head matches against whoever is free, with no rounds. After the time limit, no new games start.", "A point for each win; ties are broken by fewer losses. Players won't all play the same number of games.", "Fast and hectic. Short, quick games matter, and so does getting back into the queue right away."],
+  ["standard-strikes", "Strikes knockout", "Knockouts", "Strike knockout, group knockout", "Players play in groups (usually four), and the lowest finishers each round get a strike. Collect the set number of strikes, often three, and you're out. Players are regrouped each round with others who have similar strikes. The last player left wins.", "Standard strikes in a four-player group: 0/0/1/1, so the bottom two each take a strike. In smaller groups only last place takes one.", "Avoiding last is what matters. Late in a game, if you're clear of the strike positions, protect it."],
+  ["fair-strikes", "Fair strikes", "Knockouts", "", "A strikes knockout where every finishing position except first is penalized, and the elimination number is higher, often five or six.", "Four-player group: 0/1/1/2. Three-player group: 0/1/2. Head-to-head: 0/2.", "Second and third take the same single strike, so once first is out of reach, just stay out of last."],
+  ["progressive-strikes", "Progressive strikes", "Knockouts", "", "A strikes knockout where each finishing position gets one more strike than the one above it. Because strikes come quickly, events set a high limit, often around nine.", "Four-player group: 0/1/2/3. Three-player group: 0/1/2. Head-to-head: 0/1.", "Every position counts here: third instead of fourth saves you a whole strike."],
+  ["amazing-race", "Amazing Race", "Knockouts", "", "Everyone plays the same machine. The lowest score is eliminated, and everyone left moves on to the next machine. This repeats until one player remains. Whoever currently has the lowest score on a machine is in the “hot seat” until someone scores below them.", "No points: just don't be last on each machine.", "You don't need a big score, only to beat the hot seat. Once you're past it, play it safe."],
+  ["pingolf", "Pingolf", "Score targets", "Pin-golf", "A course of machines, each a “hole” with a posted target score called par. Machines are usually set to five balls, and every ball you use is a stroke. Reach par on your first ball and it's a hole in one.", "Strokes per hole; fewest total strokes wins. Missing par on all five balls usually costs six strokes, and some events add more for falling far short. Scoring is normally posted on each machine. Finals often switch to match play, where you need par and to beat your group.", "Go for points that get you to par now, not long setups like multiball that pay off later. Pingolf changes strategy more than any other format."],
+  ["best-game", "Best game qualifying", "Qualifying", "Herb", "Players play single-player games on a bank of machines, as many entries as they like during the qualifying window. Only your best score on each machine counts. Leagues sometimes run a casual version where players submit photos of their scores.", "Your best score on each machine is ranked against everyone else's for points (one example: 100 for first, 90 for second, 85 for third, then fewer down the list). Your total decides who makes finals.", "One great game is all that counts on each machine, so a bad start is a reason to restart (where the rules allow it), not to grind it out."],
+  ["card-qualifying", "Card qualifying", "Qualifying", "PAPA-style", "Players buy a “card” with a set number of games and play them as single-player games. Every score on the card counts, not just your best.", "Each score is compared only with other players' scores on the same game in that qualifying, and your card's total decides qualifying. Later entries from others can push your score down.", "One strong card can outweigh several weak ones. Beating your own earlier score lowers its value, so spread entries across different games."],
+  ["brackets", "Elimination brackets", "Finals", "Single or double elimination", "Seeded finals where you're out after one loss (single) or two (double). Head-to-head matches are often best of five or seven; four-player brackets use match play scoring with the top two advancing.", "The higher seed usually picks the game or the play order, and the lower seed picks the rest. In four-player groups, seeds choose in order.", "A high seed buys you choices: spend qualifying earning it, and know which game you'd pick before finals start."],
+  ["ladder", "Ladder", "Finals", "", "After seeding, the four lowest seeds play a game and the lowest score is eliminated. The next seed up joins, and this repeats until the top seed is in and a winner is decided.", "Just don't be last in each game.", "You only need to beat one player each game. Watch the scores and stop taking risks once you're clear of last."],
+  ["split-flipper", "Split-flipper", "Just for fun", "", "Partners share one game, each controlling one flipper button. It can be added to almost any format, usually for fun.", "Whatever the main format uses.", "Call your shots out loud and agree who takes which ball when it heads down the middle."],
+  ["stall-ball", "Stall ball", "Just for fun", "", "Players line up at one machine. Whoever's playing tries to stop the ball in a scoop, saucer or lock, shouts “stall!”, and goes to the back of the line while the next player takes over. Drain and you're out. Score doesn't matter, and it isn't an IFPA-ranked format.", "Last player in wins.", "Know where the holds are on the machine before you step up."]
+];
+const FM_CODE = { "group-match-play": "GMP", "head-to-head": "H2H", "target-match-play": "TMP", "max-match-play": "MMP", "flip-frenzy": "FF", "standard-strikes": "KO", "fair-strikes": "FAIR", "progressive-strikes": "PROG", "amazing-race": "RACE", "pingolf": "GOLF", "best-game": "HERB", "card-qualifying": "CARD", "brackets": "BRKT", "ladder": "LADR", "split-flipper": "SPLT", "stall-ball": "STAL" };
+const FM_SOURCES = [
+  ["Kineticist: Pinball tournament formats", "https://www.kineticist.com/post/pinball-tournament-formats"],
+  ["IFPA: approved qualifying and finals formats (TGP guide)", "https://www.ifpapinball.com/tgpguide/"],
+  ["Tilt Forums: summary of the strikes formats", "https://tiltforums.com/t/summary-of-the-different-strikes-formats/4624"],
+  ["Tilt Forums: Amazing Race in Match Play Events", "https://tiltforums.com/t/match-play-events-the-next-generation/6921?page=5"],
+  ["Tilt Forums: Max Match Play discussion", "https://tiltforums.com/t/max-match-play-discussion/8270"]
+];
+function renderFormats() {
+  const groups = [...new Set(FORMATS.map(f => f[2]))];
+  const back = glBack && glBack !== "#formats" ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← Garbo’s Guide</a>`;
+  document.getElementById("formats-body").innerHTML = `
+    <nav class="crumbs mono">${back}<button type="button" class="fm-all mono" data-fm-all>Open all</button></nav>
+    <h2>Tournament formats</h2>
+    <p class="lede">How the common pinball tournament formats work and how they're scored, with a tip from Garbo for each. Every event can tweak the details, so check with the tournament director before you start.</p>
+    <section class="fm-basics">
+      <div class="sec-label mono"><span>Match play basics</span></div>
+      <ul>
+        <li>Remember to have fun! Pinball is all about building community, making friends, and having a good time.</li>
+        <li>Questions? Ask your group mates! Most people are here for the love of the game and will be more than happy to help with anything pinball related.</li>
+        <li>Call the tournament director for a stuck ball, a flipper that won’t hold, or a shot that doesn’t register. Rulings come before you play through it, not after.</li>
+        <li>Bring quarters or small bills. Most venues are coin-op, and many events add a coin drop to the entry fee.</li>
+        <li>New to the lingo? See the <a href="#glossary">pinball glossary</a>.</li>
+      </ul>
+    </section>
+    ${groups.map(gr => `<section class="gl-group">
+      <div class="sec-label mono"><span>${esc(gr)}</span></div>
+      <div class="grid fm-grid">${FORMATS.filter(f => f[2] === gr).map(f => `<details class="card fm-card" id="fm-${f[0]}">
+        <summary>
+          <div class="card-top">${dotSvg(FM_CODE[f[0]])}<span class="tog mono" aria-hidden="true"></span></div>
+          <h3>${esc(f[1])}</h3>
+          ${f[3] ? `<span class="aka mono">Also: ${esc(f[3])}</span>` : ""}
+          <p class="teaser">${esc(f[4].split(/(?<=\.)\s/)[0])}</p>
+        </summary>
+        <div class="fm-body">
+          <p>${esc(f[4])}</p>
+          <p><b>Scoring.</b> ${esc(f[5])}</p>
+          <p class="tip"><b>Garbo’s tip.</b> ${esc(f[6])}</p>
+        </div>
+      </details>`).join("")}</div>
+    </section>`).join("")}
+    <section class="fm-src">
+      <div class="sec-label mono"><span>Sources</span></div>
+      <ul class="srcs">${FM_SOURCES.map(([l, u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("")}</ul>
+    </section>`;
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest("[data-fm-all]");
+  if (!btn) return;
+  const cards = [...document.querySelectorAll(".fm-card")], open = !cards.every(c => c.open);
+  cards.forEach(c => { c.open = open; });
+  btn.textContent = open ? "Close all" : "Open all";
+});
+
 /* Poster lettering. fx() wraps text so CSS can stack the cream outline, dark gap and lime line behind it. */
 const fx = t => `<span class="fx" data-text="${esc(t)}"><span class="fx-t">${esc(t)}</span></span>`;
 /* The hero's emphasis gets the poster lettering; the rest of the sentence stays plain. */
@@ -2914,10 +3008,17 @@ function renderLanding() {
 
 function route(soft) {
   const landing = document.getElementById("landing");
-  const gloss = document.getElementById("glossary");
+  const gloss = document.getElementById("glossary"), fmts = document.getElementById("formats");
   glPop.hidden = true;
+  if (location.hash === "#formats") {
+    landing.hidden = true; document.getElementById("home").hidden = true; document.getElementById("detail").hidden = true; gloss.hidden = true;
+    renderFormats(); fmts.hidden = false; window.scrollTo(0, 0);
+    document.title = "Tournament formats · Garbo’s Guide to ABQ Pinball";
+    return;
+  }
+  if (!fmts.hidden) { fmts.hidden = true; }
   if (location.hash === "#glossary") {
-    landing.hidden = true; document.getElementById("home").hidden = true; document.getElementById("detail").hidden = true;
+    landing.hidden = true; document.getElementById("home").hidden = true; document.getElementById("detail").hidden = true; fmts.hidden = true;
     renderGlossary(); gloss.hidden = false;
     const t = glJump && document.getElementById("gl-" + glJump); glJump = "";
     if (t) { t.scrollIntoView(); t.classList.add("hl"); } else window.scrollTo(0, 0);
