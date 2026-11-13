@@ -1,20 +1,18 @@
-# Garbo's notes
+# Garbo says
 
-Your own strategy for each game. Anything you write under a game's heading shows on that game's
-page in a "Garbo's notes" box, at every venue that has it. Games with nothing under them show no box.
+The one thing to remember for each game, in your own words. Write a single line under a game's
+heading and it replaces the "Garbo says" line on that game's page and its card, at every venue.
+Leave a game empty to keep the researched line.
 
-How to write them:
-- Start each note with "- " (one note per line). Plain lines without a dash work too.
-- **Double asterisks** make text bold, *single asterisks* make it italic.
-- Keep the "## game-id" lines exactly as they are. The game's name after them is just a reminder.
-- Edit this file right on GitHub (open it, press the pencil, then "Commit changes"). The site picks it up
-  within a minute or two.
+- One line per game. **Double asterisks** make text bold, *single asterisks* italic.
+- Keep the "## game-id" lines exactly as they are. The name in brackets is only a reminder.
+- Edit this file right on GitHub (open it, press the pencil, then "Commit changes").
+  The site picks it up within a minute or two.
 
-Example (this one is commented out, so it doesn't show anywhere):
+Example (commented out, so it doesn't show anywhere):
 <!--
 ## attack-from-mars  (Attack From Mars)
-- Super skill shot first ball, every time.
-- If the saucer's been rejecting shots tonight, go **ramps only**.
+Super skill shot on ball one, then saucers until the saucer bites back.
 -->
 
 ## attack-from-mars  (Attack From Mars)

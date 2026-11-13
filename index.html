@@ -371,15 +371,8 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 /* Garbo's signature in the footer: the owner's drawing, recoloured through a mask */
 .garbo-sig { display: flex; align-items: center; gap: 16px; }
 .garbo-art { flex: none; width: 92px; aspect-ratio: 754 / 562; background: currentColor; -webkit-mask: url("art/garbo.png") center / contain no-repeat; mask: url("art/garbo.png") center / contain no-repeat; }
-/* Garbo's notes: the owner's own strategy, set apart from the researched plan */
-.garbo-notes { margin: 0 0 22px; padding: 16px 24px 18px; border: 1.5px dashed var(--lime); background: var(--bg); }
-.gn-h { display: flex; align-items: center; gap: 12px; color: var(--lime); margin-bottom: 8px; }
-.gn-h .garbo-art { width: 52px; }
-.flag.garbo { color: var(--lime); border-color: color-mix(in srgb, var(--lime) 60%, transparent); }
-.gn-h .dim { margin-left: auto; color: var(--fg-dim); }
-.garbo-notes ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-.garbo-notes li { position: relative; padding-left: 22px; font-family: "Instrument Serif", Georgia, serif; font-style: italic; font-size: clamp(20px, 2.2vw, 24px); line-height: 1.3; color: var(--fg-hi); }
-.garbo-notes li::before { content: "✳"; position: absolute; left: 0; top: 0.1em; font-style: normal; font-size: 0.7em; color: var(--lime); }
+.thesis .tag { display: flex; align-items: center; gap: 12px; }
+.thesis .tag .garbo-art { width: 46px; color: var(--lime); }
 /* the DMD in a cream rim with a lime outer ring */
 .dmd-frame { position: relative; background: var(--dmd-screen); border: 1.5px solid var(--cream); border-radius: 14px; box-shadow: 0 0 0 4px var(--bg), 0 0 0 5.5px var(--lime); overflow: visible; }
 .dmd-title { color: var(--fg-dim); border-bottom-color: var(--line); }
@@ -2332,8 +2325,9 @@ const REPORT_FIELDS = [
 ];
 const RECENT_DAYS = 60;
 let REPORTS = {};
-/* Garbo's notes: the owner's personal strategy, written in garbo-notes.md under "## machine-id" headings. */
-let GARBO_NOTES = {};     // machine-id -> [note, …]
+/* Garbo says: the owner's own one-thing line per game, written in garbo-says.md under "## machine-id" headings.
+   Where there is one, it replaces the researched thesis on that game's page and card. */
+let GARBO_NOTES = {};     // machine-id -> [line, …]; the first line is used
 function parseGarboNotes(md) {
   const out = {}; let id = null;
   md.replace(/<!--[\s\S]*?-->/g, "").split(/\r?\n/).forEach(raw => {
@@ -2345,6 +2339,7 @@ function parseGarboNotes(md) {
   });
   return out;
 }
+const garboSays = m => (GARBO_NOTES[m.id] || [])[0] ? noteHtml(GARBO_NOTES[m.id][0]) : esc(m.thesis);
 const noteHtml = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>");         // "venue-slug/machine-id" -> [{date, flippers, tilt, outlanes, note}]
 const copyKey = m => VENUE.slug + "/" + m.id;
 const recentReports = m => {
@@ -2450,7 +2445,7 @@ function lineupStatus() {
 async function syncLineup() {
   const getJson = url => fetch(url, { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null);
   const getText = url => fetch(url, { cache: "no-cache" }).then(r => r.ok ? r.text() : null).catch(() => null);
-  const [data, reports, notes] = await Promise.all([getJson("lineup.json"), getJson("data/reports.json"), getText("garbo-notes.md")]);
+  const [data, reports, notes] = await Promise.all([getJson("lineup.json"), getJson("data/reports.json"), getText("garbo-says.md")]);
   if (notes) GARBO_NOTES = parseGarboNotes(notes);
   if ((reports && reports.copies) || notes) {
     if (reports && reports.copies) REPORTS = reports.copies;
@@ -2531,13 +2526,12 @@ function renderGrid() {
     const nRep = recentReports(m).length;
     if (nRep) flags.push(`<span class="flag warn"><span class="sq"></span>${nRep} ${nRep === 1 ? "report" : "reports"}</span>`);
     if (m.venue.scores.length) flags.push(`<span class="flag">Top score ${shortScore(m.venue.scores[0][0])}</span>`);
-    if ((GARBO_NOTES[m.id] || []).length) flags.push(`<span class="flag garbo">Garbo’s notes</span>`);
     if (m.tips.length) flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
     return `<a class="card" href="#${VENUE.slug}/${m.id}">
       <div class="card-top">${dotSvg(m.code)}<span class="mono dim">${esc(m.year)}</span></div>
       <h3>${esc(m.name)}</h3>
       <div class="meta mono">${esc([m.mfr, m.variant].filter(Boolean).join(" · "))}</div>
-      <p class="line">${esc(m.thesis)}</p>
+      <p class="line">${garboSays(m)}</p>
       <div class="flags">${flags.join("")}</div>
     </a>`;
   }).join("");
@@ -2679,11 +2673,7 @@ function renderDetail(m) {
         <div><h2>${esc(m.name)}</h2><div class="mono dim">${esc(meta(m))}${onFloor ? " · At " + esc(VENUE.name) + " now" : ""}</div></div>
       </div>
     </header>
-    <p class="thesis"><span class="tag">${m.uncurated ? "Damaged in the crash · No plan yet" : "If you remember one thing"}</span>${esc(m.thesis)}</p>
-    ${(GARBO_NOTES[m.id] || []).length ? `<section class="garbo-notes" aria-label="Garbo’s notes">
-      <div class="gn-h"><span class="garbo-art" role="img" aria-label="Garbo"></span><span class="mono">Garbo’s notes</span><span class="mono dim">Personal strategy</span></div>
-      <ul>${GARBO_NOTES[m.id].map(t => `<li>${noteHtml(t)}</li>`).join("")}</ul>
-    </section>` : ""}
+    <p class="thesis"><span class="tag">${m.uncurated ? "Damaged in the crash · No plan yet" : `<span class="garbo-art" aria-hidden="true"></span>Garbo says`}</span>${garboSays(m)}</p>
     <div class="d-grid">
       <div class="col">${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
