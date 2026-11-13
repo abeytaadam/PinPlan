@@ -376,11 +376,11 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .says > .garbo-art { width: clamp(84px, 11vw, 130px); color: var(--lime); flex: none; }
 .thesis.bubble { position: relative; flex: 1; margin: 0; border: 0; background: none; padding: 26px 34px 30px; transform: rotate(-0.6deg); z-index: 0; }
 /* hand-drawn bubble: a wobbly outline with a cut-paper shadow that "boils" between two drawings */
-.bub { position: absolute; z-index: -1; overflow: visible; pointer-events: none; filter: drop-shadow(7px 8px 0 #4d5a34); }
+.bub { position: absolute; z-index: -1; overflow: visible; pointer-events: none; filter: drop-shadow(6px 7px 0 #4d5a34); }
 .bub-left { left: -24px; top: -6px; width: calc(100% + 32px); height: calc(100% + 14px); }
 .bub-top { left: -6px; top: -10px; width: calc(100% + 14px); height: calc(100% + 18px); display: none; }
 .bub path { stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.bub-a, .bub-b { fill: color-mix(in srgb, var(--lime) 12%, var(--bg)); stroke: var(--lime); stroke-width: 3.5px; }
+.bub-a, .bub-b { fill: color-mix(in srgb, var(--lime) 12%, var(--bg)); stroke: var(--lime); stroke-width: 2.4px; }
 .bub-b { visibility: hidden; }
 @media (prefers-reduced-motion: no-preference) {
   .bub-a { animation: boil-a 0.5s steps(1) infinite; }
@@ -389,9 +389,10 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 @keyframes boil-a { 0% { visibility: visible; } 50% { visibility: hidden; } }
 @keyframes boil-b { 0% { visibility: hidden; } 50% { visibility: visible; } }
 @media (max-width: 600px) {
-  .says { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .says { flex-direction: column; align-items: flex-start; gap: 34px; }
   .says > .garbo-art { width: 86px; margin-left: 18px; }
   .bub-left { display: none; } .bub-top { display: block; }
+  .bub path { stroke-width: 2px; }
   .thesis.bubble { padding: 24px 24px 28px; transform: none; }
 }
 /* the DMD in a cream rim with a lime outer ring */
