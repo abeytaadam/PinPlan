@@ -281,15 +281,26 @@ button.gl:hover, button.gl:focus-visible { color: var(--dmd); outline: none; }
 .gl-list > div.hl { background: var(--dmd-soft); }
 @media (max-width: 560px) { .gl-list > div { grid-template-columns: 1fr; } }
 .fm-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); margin-bottom: 0; }
-.fm-card { cursor: default; }
-.fm-card:hover { background: var(--bg); }
+.fm-card { display: block; padding: 0; }
+.fm-card:hover { background: var(--panel); }
+.fm-card summary { list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 18px 18px 16px; }
+.fm-card summary::-webkit-details-marker { display: none; }
 .fm-card .card-top { flex-direction: row-reverse; align-items: center; }
+.fm-card .tog::before { content: "[+]"; color: var(--lime); font-size: 12px; }
+.fm-card[open] .tog::before { content: "[–]"; }
+.fm-card summary:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
 .fm-card .aka { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-dim); }
-.fm-card h3 { margin: 2px 0 2px; }
+.fm-card h3 { margin: 2px 0 0; }
 .fm-card p { margin: 0; font-size: 14.5px; }
-.fm-card p b { color: var(--fg-hi); font-weight: 600; }
-.fm-card p.tip { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--line); }
-.fm-card p.tip b { color: var(--lime); }
+.fm-card .teaser { color: var(--fg-dim); }
+.fm-card[open] { grid-column: 1 / -1; background: var(--panel); }
+.fm-card[open] .teaser { display: none; }
+.fm-body { padding: 0 18px 18px; display: grid; gap: 10px; max-width: 78ch; }
+.fm-body p b { color: var(--fg-hi); font-weight: 600; }
+.fm-body p.tip { padding-top: 10px; border-top: 1px dashed var(--line); }
+.fm-body p.tip b { color: var(--lime); }
+.fm-all { background: none; border: 1px solid var(--line-2); color: var(--lime); padding: 4px 10px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; }
+.fm-all:hover { border-color: var(--lime); }
 .fm-basics { margin-top: 26px; border: 1px solid var(--line); padding: 14px 18px 16px; }
 .fm-basics ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 8px; max-width: 80ch; }
 .fm-src { margin-top: 32px; }
@@ -2913,7 +2924,7 @@ function renderFormats() {
   const groups = [...new Set(FORMATS.map(f => f[2]))];
   const back = glBack && glBack !== "#formats" ? `<a href="${esc(glBack)}">← Back</a>` : `<a href="#">← Garbo’s Guide</a>`;
   document.getElementById("formats-body").innerHTML = `
-    <nav class="crumbs mono">${back}<span class="dim">${FORMATS.length} formats</span></nav>
+    <nav class="crumbs mono">${back}<button type="button" class="fm-all mono" data-fm-all>Open all</button></nav>
     <h2>Tournament formats</h2>
     <p class="lede">How the common pinball tournament formats work and how they're scored, with a tip from Garbo for each. Every event can tweak the details, so check with the tournament director before you start.</p>
     <section class="fm-basics">
@@ -2928,19 +2939,33 @@ function renderFormats() {
     </section>
     ${groups.map(gr => `<section class="gl-group">
       <div class="sec-label mono"><span>${esc(gr)}</span></div>
-      <div class="grid fm-grid">${FORMATS.filter(f => f[2] === gr).map(f => `<article class="card fm-card" id="fm-${f[0]}">
-        <div class="card-top">${dotSvg(FM_CODE[f[0]])}<span class="aka mono">${f[3] ? "Also: " + esc(f[3]) : ""}</span></div>
-        <h3>${esc(f[1])}</h3>
-        <p>${esc(f[4])}</p>
-        <p><b>Scoring.</b> ${esc(f[5])}</p>
-        <p class="tip"><b>Garbo’s tip.</b> ${esc(f[6])}</p>
-      </article>`).join("")}</div>
+      <div class="grid fm-grid">${FORMATS.filter(f => f[2] === gr).map(f => `<details class="card fm-card" id="fm-${f[0]}">
+        <summary>
+          <div class="card-top">${dotSvg(FM_CODE[f[0]])}<span class="tog mono" aria-hidden="true"></span></div>
+          <h3>${esc(f[1])}</h3>
+          ${f[3] ? `<span class="aka mono">Also: ${esc(f[3])}</span>` : ""}
+          <p class="teaser">${esc(f[4].split(/(?<=\.)\s/)[0])}</p>
+        </summary>
+        <div class="fm-body">
+          <p>${esc(f[4])}</p>
+          <p><b>Scoring.</b> ${esc(f[5])}</p>
+          <p class="tip"><b>Garbo’s tip.</b> ${esc(f[6])}</p>
+        </div>
+      </details>`).join("")}</div>
     </section>`).join("")}
     <section class="fm-src">
       <div class="sec-label mono"><span>Sources</span></div>
       <ul class="srcs">${FM_SOURCES.map(([l, u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a></li>`).join("")}</ul>
     </section>`;
 }
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest("[data-fm-all]");
+  if (!btn) return;
+  const cards = [...document.querySelectorAll(".fm-card")], open = !cards.every(c => c.open);
+  cards.forEach(c => { c.open = open; });
+  btn.textContent = open ? "Close all" : "Open all";
+});
 
 /* Poster lettering. fx() wraps text so CSS can stack the cream outline, dark gap and lime line behind it. */
 const fx = t => `<span class="fx" data-text="${esc(t)}"><span class="fx-t">${esc(t)}</span></span>`;
