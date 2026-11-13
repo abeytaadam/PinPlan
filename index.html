@@ -2908,8 +2908,16 @@ const F = {
   " ":"00 00 00 00 00 00 00", "-":"000 000 000 111 000 000 000", "·":"0 0 0 1 0 0 0",
   ".":"0 0 0 0 0 0 1", "'":"1 1 0 0 0 0 0", "!":"1 1 1 1 1 0 1", ":":"0 0 1 0 1 0 0",
   "&":"01100 10010 10100 01000 10101 10010 01101", "?":"01110 10001 00001 00010 00100 00000 00100",
-  "/":"00001 00010 00010 00100 01000 01000 10000"
+  "/":"00001 00010 00010 00100 01000 01000 10000",
+  /* Alien script: an original set of glyphs used only for the "translating" intro. */
+  "\uE000":"01110 10001 10101 10001 01110 00100 01110", "\uE001":"10101 10101 01110 00100 00100 00100 00100",
+  "\uE002":"00000 01000 10101 00010 00000 11111 00000", "\uE003":"00100 00000 00100 01010 10001 00000 11111",
+  "\uE004":"01110 10001 00001 00110 00100 00100 00110", "\uE005":"00100 00100 00100 01110 10101 10101 10001",
+  "\uE006":"00010 00100 01000 11110 00100 01000 10000", "\uE007":"00000 10101 01110 11011 01110 10101 00000",
+  "\uE008":"00000 10001 00000 11111 00000 10101 00000", "\uE009":"00110 01000 10000 10010 10000 01000 00110",
+  "\uE00A":"00100 01010 00100 01110 10101 00100 01010", "\uE00B":"11011 10001 00100 01110 00100 10001 11011"
 };
+const ALIEN = Array.from({ length: 12 }, (_, i) => String.fromCharCode(0xE000 + i));
 const glyph = ch => (F[ch] || F[" "]).split(" ");
 /* Width in dots of text drawn at scale s with a gap of g dots between letters. */
 const width = (t, s, g) => [...t].reduce((w, ch, i) => w + glyph(ch)[0].length * s + (i ? g : 0), 0);
@@ -2928,7 +2936,8 @@ function dotSvg(t, cls) {
 }
 
 /* One DMD per canvas. content() returns { name, lines }: the big top line and the small lines that rotate under it. */
-function startDmd(cv, content, refreshName) {
+function startDmd(cv, content, refreshName, opts) {
+  opts = opts || {};
   const ctx = cv.getContext("2d");
   const COLS = 128, ROWS = 32;
   function draw(grid, t, x0, y0, s, g) {
@@ -2953,6 +2962,18 @@ function startDmd(cv, content, refreshName) {
   const OFF = css.getPropertyValue("--dmd-off").trim() || "#24150e";
   const BIG = 2, BIG_GAP = 1, BIG_Y = 2, SMALL_Y = 21, GAP_TEXT = "   ";
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
+  /* Intro: the text first appears in alien glyphs, flickers, then decodes letter by letter into English. */
+  const SCRAMBLE = 1500, STEP = 75, SMALL_DELAY = 350;
+  let introStart = null, introDone = !opts.intro || reduce;
+  function decode(text, elapsed, delay) {
+    let out = "";
+    for (let i = 0; i < text.length; i++) {
+      const ch = text[i];
+      if (ch === " " || elapsed >= SCRAMBLE + delay + i * STEP) { out += ch; continue; }
+      out += ALIEN[(i * 7 + Math.floor(elapsed / 110) * 5 + text.length) % ALIEN.length];
+    }
+    return out;
+  }
 
   function setup() {
     const c = (window.dmdOverride && Date.now() < window.dmdOverride.until) ? window.dmdOverride : content();
@@ -2975,6 +2996,14 @@ function startDmd(cv, content, refreshName) {
   }
   function frame() {
     const grid = new Uint8Array(COLS * ROWS);
+    if (!introDone && introStart !== null) {
+      const elapsed = performance.now() - introStart, small = lines[0] || "";
+      draw(grid, decode(name, elapsed, 0), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
+      draw(grid, decode(small, elapsed, SMALL_DELAY), Math.floor((COLS - width(small, 1, 1)) / 2), SMALL_Y, 1, 1);
+      if (elapsed > SCRAMBLE + SMALL_DELAY + Math.max(name.length, small.length) * STEP + 200) { introDone = true; lineAt = performance.now(); }
+      paint(grid);
+      return;
+    }
     if (scroll) {
       const loopW = width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP;
       draw(grid, name + GAP_TEXT, -x, BIG_Y, BIG, BIG_GAP);
@@ -2984,6 +3013,9 @@ function startDmd(cv, content, refreshName) {
     }
     const t = lines[line] || "";
     draw(grid, t, Math.floor((COLS - width(t, 1, 1)) / 2), SMALL_Y, 1, 1);
+    paint(grid);
+  }
+  function paint(grid) {
     const cw = cv.width / COLS, rad = cw * 0.38;
     ctx.fillStyle = SCREEN;
     ctx.fillRect(0, 0, cv.width, cv.height);
@@ -3002,9 +3034,9 @@ function startDmd(cv, content, refreshName) {
     raf = requestAnimationFrame(loop);
     if (!visible || t - last < 45) return;
     last = t;
-    let changed = false;
-    if (scroll) { x = (x + 1) % (width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP); changed = true; }
-    if (lines.length > 1 && t - lineAt > 3500) { line = (line + 1) % lines.length; lineAt = t; changed = true; }
+    let changed = !introDone && introStart !== null;
+    if (scroll && introDone) { x = (x + 1) % (width(name + GAP_TEXT, BIG, BIG_GAP) + BIG_GAP); changed = true; }
+    if (introDone && lines.length > 1 && t - lineAt > 3500) { line = (line + 1) % lines.length; lineAt = t; changed = true; }
     if (changed) frame();
   }
   function start() {
@@ -3017,7 +3049,10 @@ function startDmd(cv, content, refreshName) {
   if ("ResizeObserver" in window) new ResizeObserver(() => { size(); frame(); }).observe(cv);
   else window.addEventListener("resize", () => { size(); frame(); });
   if ("IntersectionObserver" in window) {
-    new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+    new IntersectionObserver(es => {
+      visible = es[0].isIntersecting;
+      if (visible && !introDone && introStart === null) introStart = performance.now();
+    }).observe(cv);
   }
 }
 /* Easter egg: tap a display five times quickly and it gets beamed up. */
@@ -3047,7 +3082,7 @@ startDmd(document.getElementById("dmd"), () => {
 startDmd(document.getElementById("dmd-land"), () => {
   const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
   return { name: "WELCOME", lines: ["SIGNAL RECOVERED", "TRANSLATING...", "TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW"] };
-}, "dmdLandRefresh");
+}, "dmdLandRefresh", { intro: true });
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
 window.addEventListener("hashchange", () => route(false));
