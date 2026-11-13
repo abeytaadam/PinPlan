@@ -374,13 +374,13 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .venue-title { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.28em; color: var(--cream); border-left-color: var(--line-2); }
 
 /* Easter egg: the display floats up and away, then drifts back */
-.dmd-frame.abduct { animation: abduct 6s ease-in-out both; }
+.dmd-frame.abduct { animation: abduct 8s ease-in-out both; }
 @keyframes abduct {
-  0% { transform: none; opacity: 1; }
-  12% { transform: translateY(6px) rotate(-1deg); }
-  45% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
-  60% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
-  100% { transform: none; opacity: 1; }
+  0%, 32% { transform: none; opacity: 1; }
+  38% { transform: translateY(6px) rotate(-1deg); }
+  58% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
+  68% { transform: translateY(-110vh) rotate(8deg) scale(0.5); opacity: 0; }
+  86%, 100% { transform: none; opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) { .dmd-frame.abduct { animation: none; } }
 /* Garbo's signature in the footer: the owner's drawing, recoloured through a mask */
@@ -2994,6 +2994,8 @@ const F = {
   ".":"0 0 0 0 0 0 1", "'":"1 1 0 0 0 0 0", "!":"1 1 1 1 1 0 1", ":":"0 0 1 0 1 0 0",
   "&":"01100 10010 10100 01000 10101 10010 01101", "?":"01110 10001 00001 00010 00100 00000 00100",
   "/":"00001 00010 00010 00100 01000 01000 10000",
+  ",":"00 00 00 00 00 01 10", "#":"01010 01010 11111 01010 11111 01010 01010",
+  "(":"001 010 100 100 100 010 001", ")":"100 010 001 001 001 010 100",
   /* Alien script: an original set of glyphs used only for the "translating" intro. */
   "\uE000":"01110 10001 10101 10001 01110 00100 01110", "\uE001":"10101 10101 01110 00100 00100 00100 00100",
   "\uE002":"00000 01000 10101 00010 00000 11111 00000", "\uE003":"00100 00000 00100 01010 10001 00000 11111",
@@ -3052,7 +3054,7 @@ function startDmd(cv, content, refreshName, opts) {
   let name = "", nameW = 0, scroll = false, lines = [], x = 0, line = 0, lineAt = 0, raf = 0, last = 0, visible = true;
   /* Intro: everything starts in flickering alien glyphs. The small line decodes to SIGNAL RECOVERED,
      then TRANSLATING..., and only then does the big line decode into the welcome text. */
-  let introStart = null, introDone = !opts.intro;
+  let introStart = null, introDone = !opts.intro, egg = null;
   function decode(text, elapsed, start, step) {
     let out = "";
     for (let i = 0; i < text.length; i++) {
@@ -3062,20 +3064,27 @@ function startDmd(cv, content, refreshName, opts) {
     }
     return out;
   }
+  function drawGarbo(grid, t) {   // his face; winks between 0.9s and 1.9s
+    const rows = GARBO[t > 900 && t < 1900 ? "wink" : "open"], x0 = Math.floor((COLS - rows[0].length) / 2);
+    rows.forEach((r, y) => { for (let c = 0; c < r.length; c++) if (r[c] === "1") grid[(y + 1) * COLS + x0 + c] = 1; });
+  }
+  /* Intro: glyphs → SIGNAL RECOVERED → TRANSLATING... → Garbo winks → the name and first line decode. */
   function introFrame(grid, e) {
     const sig = "SIGNAL RECOVERED", tr = "TRANSLATING...", first = lines[0] || "";
-    const T1 = 1100, T2 = T1 + sig.length * 55 + 1300, T3 = T2 + tr.length * 40 + 1300;
+    const T1 = 1100, T2 = T1 + sig.length * 55 + 1300, T3 = T2 + tr.length * 40 + 1300, T4 = T3 + 2600;
+    if (e >= T3 && e < T4) { drawGarbo(grid, e - T3); return false; }
     let small, smallStart, smallStep;
     if (e < T2) { small = sig; smallStart = T1; smallStep = 55; }
     else if (e < T3) { small = tr; smallStart = T2; smallStep = 40; }
-    else { small = first; smallStart = T3 + 250; smallStep = 55; }
-    draw(grid, decode(name, e, e < T3 ? Infinity : T3, 80), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
+    else { small = first; smallStart = T4 + 400; smallStep = 55; }
+    draw(grid, decode(name, e, e < T4 ? Infinity : T4, 80), Math.floor((COLS - nameW) / 2), BIG_Y, BIG, BIG_GAP);
     draw(grid, decode(small, e, smallStart, smallStep), Math.floor((COLS - width(small, 1, 1)) / 2), SMALL_Y, 1, 1);
-    return e > T3 + 250 + first.length * 55 + 300;
+    return e > T4 + 400 + first.length * 55 + 800;
   }
 
   function setup() {
-    const c = (window.dmdOverride && Date.now() < window.dmdOverride.until) ? window.dmdOverride : content();
+    egg = (window.dmdOverride && Date.now() < window.dmdOverride.until) ? window.dmdOverride : null;
+    const c = content();
     name = c.name.toUpperCase();
     nameW = width(name, BIG, BIG_GAP);
     scroll = nameW > COLS;
@@ -3095,13 +3104,15 @@ function startDmd(cv, content, refreshName, opts) {
   }
   function frame() {
     const grid = new Uint8Array(COLS * ROWS);
-    if (lines[line] === "@GARBO") {   // Garbo frame: his face, winking partway through
-      const t = performance.now() - lineAt, rows = GARBO[t > 1100 && t < 2100 ? "wink" : "open"];
-      const x0 = Math.floor((COLS - rows[0].length) / 2);
-      rows.forEach((r, y) => { for (let c = 0; c < r.length; c++) if (r[c] === "1") grid[(y + 1) * COLS + x0 + c] = 1; });
+    if (egg) {   // Easter egg message: big top line when it fits, otherwise two small lines
+      const bigTop = width(egg.top, BIG, BIG_GAP) <= COLS;
+      if (bigTop) draw(grid, egg.top, Math.floor((COLS - width(egg.top, BIG, BIG_GAP)) / 2), egg.bottom ? BIG_Y : 9, BIG, BIG_GAP);
+      else draw(grid, egg.top, Math.floor((COLS - width(egg.top, 1, 1)) / 2), 7, 1, 1);
+      if (egg.bottom) draw(grid, egg.bottom, Math.floor((COLS - width(egg.bottom, 1, 1)) / 2), bigTop ? SMALL_Y : 18, 1, 1);
       paint(grid);
       return;
     }
+    if (lines[line] === "@GARBO") { drawGarbo(grid, performance.now() - lineAt); paint(grid); return; }
     if (!introDone && introStart !== null) {
       if (introFrame(grid, performance.now() - introStart)) { introDone = true; line = 0; lineAt = performance.now(); }
       paint(grid);
@@ -3158,7 +3169,15 @@ function startDmd(cv, content, refreshName, opts) {
     }).observe(cv);
   }
 }
-/* Easter egg: tap a display five times quickly and it gets beamed up. */
+/* Easter eggs: every five quick taps on a display shows the next message, then the display gets beamed up. */
+const EGGS = [
+  ["PINBALL", "PURR VIDA"],
+  ["IF YOU AIN'T TILTING,", "YOU AIN'T TRYING"],
+  ["EVERY GAME ENDS", "IN FAILURE :)"],
+  ["RULE #1,", "DON'T BE A DICK"],
+  ["BOOMBAH!", ""]
+];
+let eggIndex = 0;
 document.querySelectorAll(".dmd-frame").forEach(frame => {
   let taps = [];
   frame.addEventListener("click", () => {
@@ -3166,7 +3185,8 @@ document.querySelectorAll(".dmd-frame").forEach(frame => {
     taps = taps.filter(t => now - t < 1500).concat(now);
     if (taps.length < 5 || frame.classList.contains("abduct")) return;
     taps = [];
-    window.dmdOverride = { name: "BEAM ME UP", lines: ["TAKE ME TO YOUR", "WIZARD MODE"], until: now + 6000 };
+    const msg = EGGS[eggIndex++ % EGGS.length];
+    window.dmdOverride = { top: msg[0], bottom: msg[1], until: now + 8000 };
     if (window.dmdRefresh) window.dmdRefresh();
     if (window.dmdLandRefresh) window.dmdLandRefresh();
     frame.classList.add("abduct");
@@ -3175,7 +3195,7 @@ document.querySelectorAll(".dmd-frame").forEach(frame => {
       window.dmdOverride = null;
       if (window.dmdRefresh) window.dmdRefresh();
       if (window.dmdLandRefresh) window.dmdLandRefresh();
-    }, 6000);
+    }, 8000);
   });
 });
 startDmd(document.getElementById("dmd"), () => {
@@ -3184,7 +3204,7 @@ startDmd(document.getElementById("dmd"), () => {
 }, "dmdRefresh");
 startDmd(document.getElementById("dmd-land"), () => {
   const pins = VENUES.reduce((t, v) => t + (LIVE.get(v.id) ? LIVE.get(v.id).machines : v.machines).length, 0);
-  return { name: "WELCOME", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW", "@GARBO"] };
+  return { name: "GARBO'S GUIDE", lines: ["TO ALBUQUERQUE PINBALL", VENUES.length + " VENUES · " + pins + " PINS", "PICK A VENUE BELOW", "@GARBO"] };
 }, "dmdLandRefresh", { intro: true });
 
 document.getElementById("q").addEventListener("input", e => { state.q = e.target.value; renderGrid(); });
