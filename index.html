@@ -1148,6 +1148,241 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "cirqus-voltaire", code: "CV", name: "Cirqus Voltaire", sort: "Cirqus Voltaire",
+  mfr: "Bally", year: 1997, variant: "", group: "classic", opdb: "GRVjJ",
+  thesis: "Beat the Ringmaster over and over. If you can control the return, it's a whole tournament plan by itself, and the later Ringmasters start multiballs.",
+  plan: [
+    "Plunge just short of full strength for the skill shot. A full plunge can bounce off the skill target straight down the middle.",
+    "Hit the yellow W-O-W targets at the back to raise the Ringmaster, hit him five times so he rises, then shoot him once more to sink him. Each one is worth 1M times the number you've beaten, and from the second one on, defeating him starts a multiball.",
+    "Raise the Ringmaster before you start another multiball, then finish him during it, so the two stack.",
+    "Shoot the left orbit six times for Juggler Multiball, the most valuable of the regular multiballs.",
+    "Hit the posts on either side of the left ramp to light locks, then lock three balls on the left ramp for Highwire Multiball. Jackpots are on the loops.",
+    "Collect the nine Marvels (they carry over between balls) to reach the Join the Cirqus wizard mode. If one is giving you trouble, hit the Menagerie captive ball in the lower left to light Spot Marvel at the left ramp."
+  ],
+  avoid: [
+    "Full plunges. If the ball is saved, the game autoplunges the next one hard, which can send it straight down the middle again.",
+    "Letting a stacked multiball end quietly. When you drop to one ball, shoot the left ramp right away for extra jackpots."
+  ],
+  tourney: [
+    "If the Ringmaster's return comes back to a flipper you can control, playing only the Ringmaster is a solid tournament plan."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 5, "From the second Ringmaster on, raise him before starting a multiball, then finish him during the multiball."],
+    ["general", 4, "Juggler Multiball, six shots to the left orbit, is the most valuable multiball in the game."],
+    ["general", 3, "In a tournament, if the Ringmaster's return feed is controllable, consider playing nothing else."],
+    ["multiball", 3, "The yellow standups beside the left ramp light lock. Lock three on the ramp for Highwire Multiball, with 1M jackpots on the left loop, inner left loop and right loop."],
+    ["general", 3, "With two or more multiballs stacked, shoot the left ramp within a few seconds of dropping to one ball to collect extra jackpots."]
+  ],
+  rules: "Nine Marvels around the playfield (multiballs, the Side Show, Acrobats, Menagerie, Boom and Spin among them) light Join the Cirqus, the wizard mode. The Ringmaster rises from the back of the playfield; beating him scores more each time and starts a multiball from the second one on. Juggler and Highwire are the other main multiballs.",
+  sources: [["Pinball Primer: Cirqus Voltaire", "https://pinballprimer.github.io/cirqusvoltaire_GRVjJ.html"], ["PinTips: Cirqus Voltaire", "https://app.matchplay.events/opdb/entries/GRVjJ/pintips"]]
+},
+{
+  id: "scared-stiff", code: "SS", name: "Scared Stiff", sort: "Scared Stiff",
+  mfr: "Bally", year: 1996, variant: "", group: "classic", opdb: "G4xbP",
+  thesis: "Pick one multiball and milk it: bash the Crate for Crate Multiball, or lock three at the left orbit for Coffin Multiball.",
+  plan: [
+    "Skip the skill shot and soft plunge into the Spider hole for a free Spider Wheel award. If the ball comes back without hitting a switch, you can drain it and plunge again.",
+    "Crate Multiball: hit the Crate until its four lights are lit, then shoot it once more to start. Every Crate shot during the multiball is a jackpot, and it isn't timed.",
+    "Coffin Multiball: the left ramp lights lock at the left orbit. Lock three balls, then shoot the ramps for jackpots, which alternate between them after the first.",
+    "Take Double Trouble from the Spider Wheel just before Coffin Multiball or the wizard mode: everything scores double for 20 seconds.",
+    "For progress, finish the six Tales of Terror to light the Scared Stiff wizard mode, and collect Spider awards from the right ramp, the Spider hole and the wheel toward Spider Mania."
+  ],
+  avoid: [
+    "Missing the skill shot short and then flipping at it. Let it drain untouched if no switch was hit, and you get it back.",
+    "Spreading yourself across every Tale on a tough machine. One multiball, played well, is usually worth more."
+  ],
+  tourney: [
+    "On a hard copy, choose one multiball and repeat it. If the left orbit and extra ball lane are easy shots, collecting Dead Heads from the top lanes is another option."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 7, "Skip the skill shot and soft plunge into the Spider hole. If you miss and the ball hits no switch, you get it back."],
+    ["multiball", 4, "The left ramp lights lock at the left orbit. Three locks start Coffin Multiball, with jackpots on alternating ramps."],
+    ["general", 3, "Take Double Trouble from the Spider Wheel right before Coffin Multiball or the wizard mode. Everything scores double for 20 seconds."],
+    ["wizard", 3, "Crate Multiball is a good time to build toward the Stiff-o-Meter, especially if you've extended it."],
+    ["multiball", 2, "Four Crate hits start Crate Multiball, with 250K jackpots at the Crate. Each later Crate Multiball takes more hits."],
+    ["general", 2, "The left ramp scores 50K, rising 50K each time up to 450K."]
+  ],
+  rules: "Six Tales of Terror (Crate Multiball, Coffin Multiball, the pop bumpers, the left ramp and others) light the Scared Stiff wizard mode. The Spider Wheel gives awards from the soft plunge, the Spider hole and the right ramp; collecting all 16 starts Spider Mania.",
+  sources: [["Pinball Primer: Scared Stiff", "https://pinballprimer.github.io/scaredstiff_G4xbP.html"], ["PinTips: Scared Stiff", "https://app.matchplay.events/opdb/entries/G4xbP/pintips"]]
+},
+{
+  id: "bram-stokers-dracula", code: "BSD", name: "Bram Stoker's Dracula", sort: "Bram Stokers Dracula",
+  mfr: "Williams", year: 1993, variant: "", group: "classic", opdb: "G41do",
+  thesis: "Lock in a Bats bonus early, then always be in multiball. Two or three multiballs at once double or triple every jackpot.",
+  plan: [
+    "Time the plunge button so the ball hits the back-left target while Dracula's center face is lit. The skill shot climbs to 5M and also advances toward video mode and Coffin Multiball.",
+    "Early in the game, shoot the left ramp three times to start Bats, then make 15 switch hits before it times out. That locks in a bonus that stays for the rest of the game. Looping the left ramp is a safe way to rack up hits.",
+    "Coffin Multiball: shoot the right ramp eight times (five to finish the coffin, three to lock). In the multiball, keep shooting the right ramp to spell DRACULA for jackpots.",
+    "Castle Multiball: light lock with the standup banks or every sixth left ramp, then lock three at the left ramp. Jackpots come from the Tunnel saucer just right of the left ramp.",
+    "Mist Multiball: after five left ramps, shoot the Tunnel, then hit the ball the magnet drags across the playfield to knock it free. Every major shot scores 10M.",
+    "Stack them. With two multiballs running every jackpot is doubled, and with three it's tripled."
+  ],
+  avoid: [
+    "Tilt warnings while a ball drains. On many copies a warning at that moment wipes your bonus.",
+    "Starting a lone multiball when a second one is one or two shots away."
+  ],
+  tourney: [
+    "Ask whether the copy has the fixed ROM for the tilt-warning bonus bug, and play it safe on drains if it doesn't."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 8, "Three left ramps start Bats. Make 15 switch hits fast to lock in a big bonus value for the rest of the game."],
+    ["general", 8, "During Bats, looping the left ramp gives three switch hits per shot, which is safer than lobbing the ball into the pops."],
+    ["general", 8, "In the video mode, wolves are worth more the closer they get."],
+    ["secret", 9, "When Dracula crosses his eyes on the display, press the launch button for a silly easter egg."],
+    ["general", 4, "A tilt warning while a ball drains often costs you your bonus. A ROM fixes it, so check with the tournament director."],
+    ["general", 3, "Locking a ball in the coffin during Bats or Rats sends it to the pop bumpers, which score well then, even more in multiball."]
+  ],
+  rules: "Three multiballs: Coffin (right ramp), Castle (lock at the left ramp, jackpots at the Tunnel) and Mist (the magnet-held ball). Running two or three at once doubles or triples every jackpot. Bats, Rats, the video mode and other awards come from the left ramp, the Tunnel and the skill shot.",
+  sources: [["Pinball Primer: Bram Stoker's Dracula", "https://pinballprimer.github.io/bsd_G41do.html"], ["PinTips: Bram Stoker's Dracula", "https://app.matchplay.events/opdb/entries/G41do/pintips"]]
+},
+{
+  id: "pirates-of-the-caribbean", code: "POTC", name: "Pirates of the Caribbean", sort: "Pirates of the Caribbean",
+  mfr: "Stern", year: 2006, variant: "", group: "stern", opdb: "GR7ZX",
+  thesis: "Loop the left ramp into Tortuga Multiball, then keep shooting the left ramp in it to raise the playfield multiplier. Stack that with ship and chest awards for the big points.",
+  plan: [
+    "A full plunge goes to the upper right. Aim for the Parlay hole above the top lanes: it adds bonus X, and spelling P-A-R-L-A-Y lights an outlane ball save (both outlanes if you spell it twice).",
+    "Repeated left ramp shots start Tortuga Multiball almost any time. During it, every left ramp temporarily raises the playfield multiplier for all scoring.",
+    "When you add balls for Tortuga, short plunge by hand so the ball comes to the flippers instead of firing into the top lanes.",
+    "Bash the Ship to sink it for bonuses, and shoot the treasure chest on the right for the Heart sequence and its jackpots. Run these during a raised playfield multiplier.",
+    "Hit the green standups to light a compass award at the center shot. The compass is the game's progression: North and South happen on their own, while East needs super jackpots from the long ship and chest multiballs."
+  ],
+  avoid: [
+    "Letting the autoplunger add Tortuga balls into the top lanes when you can plunge them yourself.",
+    "Breaking a ship's sails without a Broadside lined up. Broadside, from the right top lane, finishes a ship whose sails are already down."
+  ],
+  tourney: [
+    "Stack Tortuga Multiball with the chest (Heart) multiball and a maxed jackpot compass award for your biggest scores."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 3, "Shoot the green standups to light a compass award at the center shot."],
+    ["multiball", 3, "Stack Tortuga Multiball with the chest (Heart) multiball and a max jackpot compass award for big scores."],
+    ["multiball", 2, "When adding balls for Tortuga, short plunge by hand to get a good feed instead of letting the autoplunger fire into the top lanes."],
+    ["skillshot", 1, "Super skill shot: plunge softly and hit the left Treasure lane. It's a super duper skill shot if the ball then rolls through the right lane."],
+    ["general", 1, "Finish a ship with a Broadside, and the next ship's sails come down in one shot."],
+    ["general", 1, "Spell PARLAY (the upper-right hole when you plunge) for an outlane ball save; spell it again to cover both outlanes."]
+  ],
+  rules: "Sink ships, collect treasure from the chest and complete the compass in the center of the playfield to progress. Tortuga Multiball comes from repeated left ramps and raises the playfield multiplier with each left ramp. A full plunge reaches an upper area with the Parlay hole and three top lanes, each starting something different.",
+  sources: [["Pinball Primer: Pirates of the Caribbean", "https://pinballprimer.github.io/pirates_GR7ZX.html"], ["PinTips: Pirates of the Caribbean", "https://app.matchplay.events/opdb/entries/GR7ZX/pintips"]]
+},
+{
+  id: "white-water", code: "WW", name: "White Water", sort: "White Water",
+  mfr: "Williams", year: 1993, variant: "", group: "classic", opdb: "GRQKz",
+  thesis: "Soft plunge to the upper flipper, shoot the orange-lit hazards to advance the raft, and save the 5X playfield award from the pops for multiball.",
+  plan: [
+    "Soft plunge so the ball stops on the upper playfield, then shoot Insanity Falls on the left with the upper flipper for the skill shot (up to 5M). A full plunge sends the ball screaming back down to the flippers.",
+    "Shoot whichever major shots are lit orange to advance the raft. Each raft is worth more, building toward Wet Willie's.",
+    "On the upper playfield, the yellow-lit shot lights the red one, and the red one starts a Whirlpool mode.",
+    "Hit the green standups on either side of No Way Out to light locks, then lock balls in No Way Out for multiball.",
+    "Watch the award lit in the pop bumpers. Stacking the 5X playfield with multiball is where the big points are.",
+    "Use the flipper buttons to move the lit inlane so the ball rolls through it. Each lit inlane spots a R-I-V-E-R letter and 250K."
+  ],
+  avoid: [
+    "Full plunges. They skip the skill shot and come straight back at the flippers.",
+    "Chasing the third Insanity Falls shot in multiball after missing the first two. Advance rafts instead and take the multiball restart."
+  ],
+  tourney: [
+    "Starting a multiball after finishing all rafts, reaching Class 6 river once and playing every Whirlpool mode earns the 200M Vacation Bonus. It's a long road, so in a short game focus on rafts and multiball."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 8, "Don't full plunge: the ball comes screaming down at the flippers. Soft plunge to the upper flipper for an easy side shot."],
+    ["general", 7, "Use the flippers to move the lit inlane so the ball rolls through a lit one. That's a RIVER letter and 250K."],
+    ["multiball", 7, "Keep track of the award lit in the pops. Stacking 5X playfield with multiball is where big points come from."],
+    ["multiball", 5, "The green standups on either side of No Way Out light locks. Lock balls in No Way Out once it's lit."],
+    ["general", 4, "If you miss the first two Insanity Falls shots in multiball, skip the third. Advance rafts where you can and take the multiball restart."],
+    ["multiball", 2, "After 5X playfield ends, a double or triple super jackpot keeps every later jackpot doubled or tripled for the rest of that multiball."]
+  ],
+  rules: "Advance the raft by completing the orange-lit hazard shots, building toward Wet Willie's. Whirlpool modes start from the upper playfield, multiball starts from locks in No Way Out, and the pops award extras including 5X playfield. All rafts, Class 6 river, every Whirlpool and a multiball light the 200M Vacation Bonus.",
+  sources: [["Pinball Primer: White Water", "https://pinballprimer.github.io/whitewater_GRQKz.html"], ["PinTips: White Water", "https://app.matchplay.events/opdb/entries/GRQKz/pintips"]]
+},
+{
+  id: "revenge-from-mars", code: "RFM", name: "Revenge From Mars", sort: "Revenge From Mars",
+  mfr: "Bally", year: 1999, variant: "", group: "classic", opdb: "G50Wr",
+  thesis: "The center lock (capture) shot is your friend: it's safe, it feeds Capture Multiball, and in multiball it collects jackpots. Shoot it all day if you have to.",
+  plan: [
+    "For the super skill shot, hold the left flipper while you plunge. The ball circles the left orbit to the left flipper; shoot an orbit or ramp right away for 1M and three missiles.",
+    "Use the big buttons beside the flipper buttons to pick which wave (scene) to play. Finishing a wave with a Flawless rating lights one of the nine saucer lights.",
+    "Each completed group of waves (Fuel, Weapons, then Saucer) starts a four-ball Bonus Wave Multiball. Move the 2X marker with the buttons onto the shots you're hitting. Items count across all three, and 40 items start Mothership Multiball.",
+    "Three captures, or a Stroke of Luck award, start Capture Multiball. Shoot the saucers on screen, then hit the big saucer five times for a super jackpot and a saucer light.",
+    "Martian Attack lights at the Stroke of Luck scoop: kill the martians, then shoot the center mini ramp for Martian Multiball, where every shot kills a martian for 1M.",
+    "Attack Mars needs all nine saucer lights, all three Bonus Wave Multiballs and Mothership Multiball."
+  ],
+  avoid: [
+    "Expecting a ball save at the start of each ball. There isn't one by default.",
+    "Wasting Bonus Wave Multiball. It's the game's main source of big points and extra balls, so set the 2X on shots you can hit."
+  ],
+  tourney: [
+    "The top half of the playfield is hard to see through the glass display. If you're practicing, a phone flashlight on the glass helps you learn the upper shots."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 2, "Shooting the lock (capture) shot all day is valid: it gets you into multiball, can award jackpots and supers, and has a safe return."],
+    ["general", 3, "Pick modes with the large buttons next to the flipper buttons."],
+    ["general", 2, "In Bonus Wave Multiball, collect 40 items to start Mothership Multiball, which can score a lot."],
+    ["general", 1, "On some copies the left orbit return dead bounces safely to the right flipper, which makes the game much easier to control."],
+    ["general", 3, "When practicing, a phone flashlight placed on the glass lights up the upper half of the playfield."]
+  ],
+  rules: "A Pinball 2000 game: video projected over the playfield. Pick waves with the action buttons and finish them Flawlessly for saucer lights. Each group of waves leads to a Bonus Wave Multiball, 40 items there start Mothership Multiball, and nine saucer lights plus all of those light Attack Mars. Capture, Martian and Hypno are the other multiballs.",
+  sources: [["Revenge From Mars rulesheet (Roya Naini)", "https://www.bmigaming.com/Games/Rulesheets/revenge_from_mars.txt"], ["PinTips: Revenge From Mars", "https://app.matchplay.events/opdb/entries/G50Wr/pintips"]]
+},
+{
+  id: "the-godfather", code: "GF", name: "The Godfather", sort: "Godfather",
+  mfr: "Jersey Jack", year: 2023, variant: "", group: "other", opdb: "Gd2ox",
+  thesis: "Run jobs from the Don's office and cash them out while a weapon has the playfield multiplied. Everything you cash out is multiplied by both playfield and shot X.",
+  plan: [
+    "At the start of the game, pick your family, then press the action button again to choose your super skill shot. Some of them make it easier to start multiballs.",
+    "Collect soldiers by hitting targets (3 each), shots (2) and slingshots (1). Enough soldiers light the Don's office to start a job, and they're also the job's timer.",
+    "Finish the shots a job asks for, then shoot the Don's office to cash out. Flip both flippers to keep going for a bigger value, or press the action button to cash out now.",
+    "Shoot the spinners to upgrade your weapon, then press the action button to use it. Each weapon is a playfield multiplier, up to 10x, and tapping the button again extends it.",
+    "The right inlane target sets up shot X. An alley pass from the left flipper into that target lights 10x for your next shot.",
+    "Multiballs: defeat four bad guys at the center for Five Families, lock at the Compound for Compound, collect ventures then shoot a lit orbit for Turf War, and the 1-2-3 targets light Sicily at the left ramp."
+  ],
+  avoid: [
+    "Cashing out a job with no multiplier running when a weapon is ready. The multiplied value is only shown after you cash out.",
+    "Letting your soldiers run out mid-job. They're the timer."
+  ],
+  tourney: [
+    "This is a new game with little tournament-specific writing yet, so check the rulesheet and watch how the copy plays before you commit to a plan."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 3, "After you pick your family, press the action button again to choose your super skill shot."]
+  ],
+  rules: "Jobs from the Don's office are the main modes, timed by soldiers you collect; cashing them out earns Rings toward award modes and the Kiss the Ring wizard mode. Weapons give playfield multipliers up to 10x, the right inlane target sets up shot X, and influence from return lanes and combos adds perks. Five Families, Compound, Turf War and Sicily are the multiballs.",
+  sources: [["Pinball Rulesheets: The Godfather", "https://pinballrulesheets.com/jersey-jack/the-godfather-rulesheet"], ["PinTips: The Godfather", "https://app.matchplay.events/opdb/entries/Gd2ox/pintips"]]
+},
+{
+  id: "bad-cats", code: "BC", name: "Bad Cats", sort: "Bad Cats",
+  mfr: "Williams", year: 1989, variant: "", group: "classic", opdb: "GrEBz",
+  thesis: "Find the left (Tiger) ramp and shoot nothing else. Looping it climbs to unlimited millions.",
+  plan: [
+    "Make the lit T-O-Y lane on the plunge for the skill shot: 2X bonus, the barbecue (pops worth 5,000) and 500K added to the jackpot.",
+    "Loop the left Tiger ramp. It pays 50K, 100K, 200K, then a million on every further shot, and the value only resets when you hit another switch (inlanes and slings don't count). If it feeds to a trap on the right flipper, take your time.",
+    "If the Tiger ramp isn't working, hit the vari-target at the back until the Fish Bone-us reaches 500K, then roll through the right inlane so the saucer next to it collects it at 10X.",
+    "The center Fishbowl ramp is worth an extra ball on the fourth shot in a row. Take it when extra balls are on.",
+    "Completing the drop target banks seven times (spelling B-A-D C-A-T-S), or a lucky wheel spin, lights the jackpot at the Fishbowl ramp."
+  ],
+  avoid: [
+    "Breaking a Tiger ramp streak by hitting something else when the ramp is working."
+  ],
+  tourney: [
+    "Bad Cats is weak under factory rules, so many tournament copies run a fan-made ruleset called Cat's Meow. Ask which code the game has before you play.",
+    "On the last ball of a three-ball game, five Tiger ramps in a row is worth a 20M shot."
+  ],
+  venue: blank(),
+  tips: [
+    ["secret", 8, "On the last ball of a three-ball game, shoot the left Tiger ramp five times in a row for a 20M shot."],
+    ["general", 4, "Hit the vari-target at the back until the Fish Bone-us maxes at 500K. The right inlane then makes the saucer collect it at 10X (5M). Repeat."],
+    ["general", 4, "Repeated Fishbowl shots are doable on many copies and lead to an extra ball."]
+  ],
+  rules: "Looping the left Tiger ramp builds to a million a shot. The center Fishbowl ramp leads to an extra ball and collects the jackpot, which lights after seven drop-target banks or from the wheel. The vari-target and saucer give 10X Fish Bone-us collects, and T-O-Y lanes raise the bonus multiplier to 7X.",
+  sources: [["Pinball Primer: Bad Cats", "https://pinballprimer.github.io/badcats_GrEBz.html"], ["PinTips: Bad Cats", "https://app.matchplay.events/opdb/entries/GrEBz/pintips"]]
+},
+{
   id: "junk-yard", code: "JY", name: "Junk Yard", sort: "Junk Yard",
   mfr: "Williams", year: 1996, variant: "", group: "classic", opdb: "GRLlj",
   thesis: "Find out on ball one whether the Dog lane is an easy, safe shot. If it is, shoot it all day: it collects Junk, bonus multipliers and video modes.",
@@ -2722,7 +2957,7 @@ function renderGrid() {
 /* Era by display type: electromechanical, solid state (numeric or alphanumeric displays), dot-matrix, LCD.
    Remakes count as the original game's era. ERA_SET covers games the year rule gets wrong. */
 const ERA_NAME = { EM: "Electromechanical", SS: "Solid state", DMD: "Dot-matrix display", LCD: "LCD screen" };
-const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS" };
+const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS", "revenge-from-mars": "LCD", "star-wars-episode-i": "LCD" };  // Pinball 2000 games use a video monitor
 function eraOf(m) {
   if (ERA_SET[m.id]) return ERA_SET[m.id];
   if (/remake/i.test(m.variant || "")) return "DMD";
