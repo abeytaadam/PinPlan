@@ -75,6 +75,49 @@
       ]
     },
     {
+      "id": 27728,
+      "name": "Brew Lab 101 Beer & Cider Co.",
+      "url": "https://pinballmap.com/map/?by_location_id=27728",
+      "date_last_updated": "2026-08-26",
+      "machines": [
+        {
+          "name": "JAWS (Pro)",
+          "manufacturer": "Stern",
+          "year": 2024,
+          "opdb_id": "GLWll-MXr4N",
+          "scores": []
+        },
+        {
+          "name": "King Kong: Myth of Terror Island (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "GEL0V-MBRyb",
+          "scores": []
+        },
+        {
+          "name": "Pokémon (Pro)",
+          "manufacturer": "Stern",
+          "year": 2026,
+          "opdb_id": "GV8wB-Mq12N",
+          "scores": []
+        },
+        {
+          "name": "Star Wars: Fall of the Empire (Pro)",
+          "manufacturer": "Stern",
+          "year": 2025,
+          "opdb_id": "Gxv81-M610r",
+          "scores": []
+        },
+        {
+          "name": "Stranger Things (Pro)",
+          "manufacturer": "Stern",
+          "year": 2019,
+          "opdb_id": "Gzy89-MNEeO",
+          "scores": []
+        }
+      ]
+    },
+    {
       "id": 27915,
       "name": "Calavida Cantina Corrales",
       "url": "https://pinballmap.com/map/?by_location_id=27915",
@@ -749,6 +792,21 @@
       ]
     },
     {
+      "id": 30944,
+      "name": "Turquoise Desert Taproom",
+      "url": "https://pinballmap.com/map/?by_location_id=30944",
+      "date_last_updated": "2026-11-11",
+      "machines": [
+        {
+          "name": "Junk Yard",
+          "manufacturer": "Williams",
+          "year": 1996,
+          "opdb_id": "GRLlj-MQZN8",
+          "scores": []
+        }
+      ]
+    },
+    {
       "id": 27473,
       "name": "Unhinged Brewing Co",
       "url": "https://pinballmap.com/map/?by_location_id=27473",
@@ -856,5 +914,5 @@
       ]
     }
   ],
-  "synced_at": "2026-11-14T01:58:34.085Z"
+  "synced_at": "2026-11-14T06:25:09.836Z"
 }
