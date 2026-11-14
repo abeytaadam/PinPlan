@@ -1148,6 +1148,229 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "toy-story-4", code: "TS4", name: "Toy Story 4", sort: "Toy Story 4",
+  mfr: "Jersey Jack", year: 2022, variant: "", group: "other", opdb: "GJ2o0",
+  thesis: "Use all three skill shot tries: the Woody saucer adds 5x to your bonus each time. Then start the seven scenes to reach the wizard mode.",
+  plan: [
+    "Plunge into the Woody saucer for the skill shot: tickets, points and +5x bonus multiplier. You get three tries per ball, and three skill shots in a game light an extra ball.",
+    "If a plunge misses, try to get the ball to the flippers without three switch hits. The playfield isn't validated, so you get a free shot at anything; the Road Trip lock or the captive ball are good picks. You can also let it drain for another try.",
+    "Hit the drop target to light the locks, then lock three balls behind it for Road Trip Multiball. Lit shots build toward a super jackpot at the drop target and a Mega Jackpot hurry-up.",
+    "Shoot the Buzz saucer for Buzz Quick Multiball, and collect tickets at both ramps, then lock at the scoop for Carnival Multiball.",
+    "Spell FORKY, then shoot the left ramp for Forky Rescue. You must collect it to reach the wizard mode.",
+    "Hit the captive ball to spell ALIEN and light the Take a Chance wheel. Each award is collected at a specific shot shown on the wheel; all eight start Take a Chance Multiball."
+  ],
+  avoid: [
+    "Draining a missed skill shot after the ball has hit three switches. By then the playfield is validated and the ball is gone."
+  ],
+  tourney: [
+    "Starting all seven scenes lights Meet Me at the Carousel. Finishing tasks within each scene raises the wizard mode's multipliers, so don't just tick them off."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 2, "Spell ALIEN at the captive ball to light the Take a Chance wheel. The wheel shows which shot collects each award, and the loop or captive ball spins it for a different one."],
+    ["general", 2, "You get three skill shot attempts, so don't give up after the first."],
+    ["general", 1, "If you miss the skill shot plunge, try to reach the flippers without three switch hits. The playfield isn't validated and you get a free shot at anything; Road Trip locks or the captive ball are good choices."],
+    ["general", 1, "If the ball enters play after a missed skill shot, you can let it drain for another try, but only before three switch hits validate the playfield."]
+  ],
+  rules: "Seven scenes (Road Trip, Buzz, Forky Rescue, Carnival, Super Spinners, the jump ramp and Bo Peep) light Meet Me at the Carousel, the wizard mode, which you can play for both Woody's and Buzz's paths. Road Trip, Buzz, Carnival and Take a Chance are the multiballs.",
+  sources: [["Pinball Rulesheets: Toy Story 4", "https://pinballrulesheets.com/jersey-jack/toy-story-4-rulesheet"], ["PinTips: Toy Story 4", "https://app.matchplay.events/opdb/entries/GJ2o0/pintips"]]
+},
+{
+  id: "austin-powers", code: "AP", name: "Austin Powers", sort: "Austin Powers",
+  mfr: "Stern", year: 2001, variant: "", group: "stern", opdb: "G43BW",
+  thesis: "Hit any major shot four times to start its mode. Fat Bastard Multiball on the near left ramp is usually the easiest and most valuable one.",
+  plan: [
+    "Full plunge to the top lanes and use the flippers to move the flashing lane where the ball will go. The skill shot is 5M and +5 bonus X.",
+    "Each of the six major shots (both orbits, three ramps and the center Time Machine) starts its own mode after four hits.",
+    "Fat Bastard Multiball, on the near left ramp, is the easiest start and a fine early-game plan on its own. Its multiball takes 24 shots to win.",
+    "Time Machine, the center shot, is also a multiball. Make all the shots, then the center, for its super jackpot.",
+    "Bring the single-ball modes (except Big Frickin' Laser) into a multiball to stack them.",
+    "Finished modes can't be replayed. After that, complete the lower left standups to light Mojo Multiball at the saucer, which you can play again and again."
+  ],
+  avoid: [
+    "Finishing a mode in single-ball play when you could carry it into a multiball."
+  ],
+  tourney: [
+    "The first time you start each mode, and each time you win one, there's a hidden 15M-plus bonus. Starting several modes early adds up."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 3, "Hit each main shot four times to start its mode or multiball."],
+    ["multiball", 3, "The toilet ramp and the center shot both start multiballs."],
+    ["multiball", 2, "The center multiball is available until you win it: make all the shots, then the center for the super jackpot. The toilet multiball needs 24 shots to win."],
+    ["secret", 2, "Starting a mode for the first time scores a hidden 15M-plus bonus, and so does winning one."],
+    ["secret", 1, "If you're one SHAG completion from the scoop hurry-up and collect the final letter through an outlane, you get a ball save."]
+  ],
+  rules: "Six major shots each start a mode after four hits; two of them, the toilet ramp and the Time Machine, are multiballs. Modes can't be replayed once won. Mojo Multiball, lit at the lower left standups, is repeatable, and finishing everything leads to Virtucon Multiball.",
+  sources: [["Pinball Primer: Austin Powers", "https://pinballprimer.github.io/austinpowers_G43BW.html"], ["PinTips: Austin Powers", "https://app.matchplay.events/opdb/entries/G43BW/pintips"]]
+},
+{
+  id: "dr-dude", code: "DUDE", name: "Dr. Dude and His Excellent Ray", sort: "Dr Dude",
+  mfr: "Bally", year: 1990, variant: "", group: "classic", opdb: "GRVEJ",
+  thesis: "Complete the green, red and yellow shots, power up the Mixmaster at the ramp, and lock in the left lane for multiball. After a multiball, scoring is doubled for the rest of the ball.",
+  plan: [
+    "Full plunge and release while the exam chart on the display moves from Geek to OK, for a good chance at the Way Cool 100K skill shot.",
+    "Hit each colored shot three times: the green magnet lane in the lower left (best from the right flipper), the red standup right of the ramp (a backhand), and the yellow present-box saucer on the right.",
+    "With all three complete, shoot the ramp to light the lock, then the left lane to lock and start multiball.",
+    "In multiball, complete the right drop targets to double the jackpot, then shoot the ramp over and over so balls hit the Mixmaster targets enough to score it.",
+    "If the jackpot won't come, trap one ball and shoot the other into the Mixmaster."
+  ],
+  avoid: [
+    "Draining right after a multiball. Scoring stays doubled for the rest of that ball, including a second multiball."
+  ],
+  tourney: [
+    "Once all the white targets are done, the Reflex combo (left saucer, right saucer, right magnet) is worth 1M."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 7, "After completing all the white targets, shoot the Reflex 1-2-3 combo (left saucer, right saucer, right magnet) for 1M."],
+    ["multiball", 5, "In the Mixmaster, every ten hits on each target bank earns an Element of Coolness toward multiball."],
+    ["multiball", 4, "Collect three of each Element of Coolness (Magnetic Personality, Heart of Rock, Gift of Gab) to light the Excellent Ray for multiball."],
+    ["skillshot", 2, "Full plunge and release while the exam chart changes from Geek (25K) to OK (50K) for a good chance at Way Cool (100K)."],
+    ["general", 2, "Get into multiball, double the jackpot with the right drop targets, shoot the ramp over and over for jackpots, and repeat."],
+    ["multiball", 1, "If the jackpot won't come, cradle one ball and shoot the other into the Mixmaster."]
+  ],
+  rules: "Three colored shots (Magnetic Personality, Heart of Rock 'n' Roll, Gift of Gab) each need three hits. Completing them powers the Mixmaster at the ramp, which lights the lock in the left lane for multiball. The right drop targets double the jackpot, and after any multiball the playfield scores double for the rest of the ball.",
+  sources: [["Pinball Primer: Dr. Dude", "https://pinballprimer.github.io/drdude_GRVEJ.html"], ["PinTips: Dr. Dude", "https://app.matchplay.events/opdb/entries/GRVEJ/pintips"]]
+},
+{
+  id: "genesis", code: "GEN", name: "Genesis", sort: "Genesis",
+  mfr: "Gottlieb", year: 1986, variant: "", group: "classic", opdb: "Gr2wz",
+  thesis: "Spell body parts you don't have yet to raise the playfield multiplier, then play multiball: it doubles whatever multiplier you've built.",
+  plan: [
+    "Each new body part you complete (Body, Arms, Legs, Head) raises the playfield multiplier by 1x. Arms and Legs come quickest, from the left and right ramps.",
+    "Clear the A-B-C top lanes for Body letters. Lane change works with either flipper, but only moves forward.",
+    "After you collect a body part, a ramp flashes: shoot it for multiball, where all scoring is doubled on top of the playfield multiplier.",
+    "With all four parts, hit the vari-target all the way back to build the robot. That lets you collect parts and multipliers again.",
+    "The 1-2-3 drop targets in order add a letter to every part, but they sit near the outlanes."
+  ],
+  avoid: [
+    "Ignoring the pop bumpers when the ball gets there. They pay 1,000 times the playfield multiplier per hit."
+  ],
+  tourney: [
+    "With four parts collected the playfield is 5x, and multiball doubles that to 10x. Time multiball for after you've built parts."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 4, "Each new body part raises the playfield multiplier by 1x. Once a part is complete, a ramp flashes to start multiball."],
+    ["general", 3, "The 1-2-3 drops in order add a letter to each part, but watch for outlane drains. With all parts collected, the vari-target is worth 500K."],
+    ["multiball", 3, "Multiball doubles the current multiplier: four parts means 5x in single-ball play and 10x in multiball."],
+    ["general", 2, "Complete all four parts to light the Life Force Generator on the vari-target. Hit it all the way back, and you can earn more multipliers."],
+    ["general", 1, "Get Arms and Legs first for quick multipliers."],
+    ["general", 1, "During multiball, nail the vari-target for big points."]
+  ],
+  rules: "Spell four body parts (Body from the top lanes, Arms and Legs from the ramps, Head elsewhere); each new part raises the playfield multiplier. A flashing ramp after each part starts multiball, which doubles scoring. A full vari-target hit builds the robot and resets the parts.",
+  sources: [["Pinball Primer: Genesis", "https://pinballprimer.github.io/genesis_Gr2wz.html"], ["PinTips: Genesis", "https://app.matchplay.events/opdb/entries/Gr2wz/pintips"]]
+},
+{
+  id: "rock", code: "ROCK", name: "Rock", sort: "Rock",
+  mfr: "Gottlieb", year: 1985, variant: "", group: "classic", opdb: "Grk62",
+  thesis: "Shoot the lit spinners all day for 10,000 a spin. Nothing else on the table comes close.",
+  plan: [
+    "Find which spinner is lit (the slingshots change it) and pass the ball to the flipper that can shoot it. Alley passes and tap passes work here; post passes mostly don't.",
+    "Shoot the center turnaround loop to light double scoring for 8 seconds, then hit a lit spinner.",
+    "Even an unlit spinner sends the ball up to the upper playfield, where you can pick off the flashing drop targets for bonus multiplier.",
+    "Clear the A-B-C top lanes to raise the bonus multiplier, up to 5x.",
+    "Max out the base bonus to collect it and light the extra ball at the center loop."
+  ],
+  avoid: [
+    "Spending shots on anything but spinners when one is lit."
+  ],
+  tourney: [
+    "Rock is a great table for practicing alley and tap passes, because getting the ball to the right flipper is the whole game."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 1, "Spinners all day: the slings change which spinner is lit, and a lit spin is worth 10K."],
+    ["general", 1, "Even unlit spinners get you up top, where you can pick off drops to raise the bonus multiplier."],
+    ["general", 1, "Shoot the double scoring shot, then a lit spinner."],
+    ["general", 1, "If extra balls are turned off, they score 500K instead."]
+  ],
+  rules: "Lit spinners score 10,000 a spin, and the slingshots move which one is lit. The center turnaround loop lights double scoring and, with a maxed bonus, an extra ball. The upper playfield has its own flippers and drop targets; completing them in order four times scores a special. The same guide covers Rock Encore.",
+  sources: [["Pinball Primer: Rock", "https://pinballprimer.github.io/rock_Grk62.html"], ["PinTips: Rock", "https://app.matchplay.events/opdb/entries/Grk62/pintips"]]
+},
+{
+  id: "harley-davidson", code: "HD", name: "Harley-Davidson", sort: "Harley-Davidson",
+  mfr: "Stern", year: 2002, variant: "", group: "stern", opdb: "G56lO",
+  thesis: "If you can clear the video mode perfectly, the 35M Perfect bonus beats everything else. Otherwise, rack up miles toward cities and play the Speedometer and Red Light multiballs.",
+  plan: [
+    "The skill shot lets you choose an award: 10M, Speed Pops, Next City or a HARLEY letter. Later in the game, when cities take longer, Next City is a good pick.",
+    "Every switch earns miles toward the next city, and completing the drop targets lights the scoop for Next City straight away. Sixteen cities start Milwaukee Multiball, the wizard mode.",
+    "Speedometer Multiball: shoot the right ramp until fifth gear. Playfield switches light the jackpot, and the ramp collects it (10M) and adds a ball.",
+    "Red Light Multiball: complete the five major shots, then shoot the Stoplight. Turn all the jackpot lights red, then hit the Stoplight for a 20M super jackpot.",
+    "Harley Multiball: shoot the motorcycle to spell HARLEY. It's worth less than the other two."
+  ],
+  avoid: [
+    "Making Harley Multiball your main plan. Speedometer and Red Light pay better."
+  ],
+  tourney: [
+    "The video mode's Perfect bonus (hitting all 16 pedestrians) is badly unbalanced at 35M. If you've learned it, chase it every time."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 1, "Complete the five major shots, then shoot the Stoplight for four-ball Red Light Multiball. Turn all jackpot lights red, then the Stoplight for a 20M super."],
+    ["multiball", 1, "Shoot the ramp until fifth gear for Speedometer Multiball. Playfield switches light the jackpot, then the ramp scores 10M and adds a ball."],
+    ["general", 1, "Later in the game, when cities get harder to reach, choose Light Next City from the skill shot."],
+    ["multiball", 1, "Shoot the motorcycle to spell HARLEY for four-ball Harley Multiball: hit the same shot for 2M jackpots, then again for a 12M super."]
+  ],
+  rules: "Collect miles from switches to visit 16 cities; the drop targets light Next City at the scoop, and the sixteenth city starts Milwaukee Multiball. Speedometer, Red Light and Harley are the regular multiballs, and the video mode pays a big Perfect bonus. Stern's 2002 editions use the same rules as Sega's 1999 original.",
+  sources: [["Pinball Primer: Harley-Davidson (Sega/Stern)", "https://pinballprimer.github.io/harleystern_G56lO.html"], ["PinTips: Harley-Davidson", "https://app.matchplay.events/opdb/entries/G56lO/pintips"]]
+},
+{
+  id: "black-hole", code: "BH", name: "Black Hole", sort: "Black Hole",
+  mfr: "Gottlieb", year: 1981, variant: "", group: "classic", opdb: "G41yq",
+  thesis: "Use both playfields. On the lower one, complete a drop target bank to open the reentry gate so a drain down there sends you back upstairs instead of ending your ball.",
+  plan: [
+    "Reach the lower playfield through the Gravity Tunnel spinner lane.",
+    "Downstairs, complete either drop target bank to open the reentry gate. When you come back up, send the ball straight back down on your first shot to keep the gate open.",
+    "Upstairs, complete the B-L-A-C-K and H-O-L-E drop targets in order to raise the lower playfield multiplier (2x for one bank, 3x for both).",
+    "The top lanes raise the bonus multiplier up to 5x, and everything on the lower playfield adds bonus.",
+    "If you go for locks, start with the lower playfield lock: if that ball drains, the locked ball isn't lost."
+  ],
+  avoid: [
+    "Chasing multiball. It's fun and chaotic, but rarely worth the trouble."
+  ],
+  tourney: [
+    "The lower lock can be stolen by other players, while the upper one ejects after each ball. Keep that in mind in multiplayer games."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 4, "Complete either drop bank on the lower playfield to open the reentry gate."],
+    ["general", 4, "Complete B-L-A-C-K and H-O-L-E in order for the G-Force Accelerator lower playfield multiplier: 2x for one bank, 3x for both."],
+    ["general", 4, "The upper capture ejects after each ball; the lower one doesn't, but other players can steal it."],
+    ["general", 3, "Go for the lower playfield lock first. If your ball drains, that locked ball isn't lost."],
+    ["general", 2, "After reentering from the lower level, send the ball back down on your first shot to keep the reentry gate open."]
+  ],
+  rules: "Two playfields: the Gravity Tunnel spinner leads below, where drop target banks open a reentry gate back to the main playfield. The BLACK and HOLE banks upstairs raise the lower playfield multiplier, the top lanes raise bonus X, and two captive locks lead to a two- or three-ball multiball.",
+  sources: [["Pinball Primer: Black Hole", "https://pinballprimer.github.io/blackhole_G41yq.html"], ["PinTips: Black Hole", "https://app.matchplay.events/opdb/entries/G41yq/pintips"]]
+},
+{
+  id: "hardbody", code: "HB", name: "Hardbody", sort: "Hardbody",
+  mfr: "Bally", year: 1987, variant: "", group: "classic", opdb: "GRbX3",
+  thesis: "Stay on the upper playfield as long as you can and loop around the red targets. The lower playfield is where balls drain.",
+  plan: [
+    "On the plunge, and whenever you make one of the tight, steep ramps, keep the ball up top for as long as possible.",
+    "Loop around the red targets to raise their value.",
+    "Shoot above the green targets to clear the inline drop targets for bonus multiplier and the extra ball.",
+    "If the ball drops to the lower playfield, complete the colored target banks for more bonus, and shoot up the center when it's lit to raise the ramps and open the Power Loops.",
+    "Hit the two standups on the far left of the lower playfield for 2x playfield scoring."
+  ],
+  avoid: [
+    "The blue targets on the lower playfield. They're drain magnets.",
+    "Relaxing on a trap. If the ball runs up the flipper, be ready to flex it back before it drops off the end."
+  ],
+  tourney: [
+    "Both ramps are tight and steep. Test them early; if they won't go, settle for target banks and 2x playfield on the lower level."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 2, "Stay on the upper playfield as long as you can and do loops. The blue targets downstairs are drain monsters; the far-left target lights double scoring."],
+    ["general", 1, "If you trap and the ball runs up the flipper, be ready to flex it back. It can be saved if it hasn't dropped too far."]
+  ],
+  rules: "Four Stations (red, green, blue and orange target banks) light numbers on a Circuit grid of inserts. The upper playfield's loops raise the red targets' value, the inline drops give bonus X and the extra ball, and the lower playfield has Power Loops and 2x playfield scoring.",
+  sources: [["Pinball Primer: Hardbody", "https://pinballprimer.github.io/hardbody_GRbX3.html"], ["PinTips: Hardbody", "https://app.matchplay.events/opdb/entries/GRbX3/pintips"]]
+},
+{
   id: "xenon", code: "XEN", name: "Xenon", sort: "Xenon",
   mfr: "Bally", year: 1980, variant: "", group: "classic", opdb: "G42Pk",
   thesis: "If the left flipper makes the tube ramp and the left saucer kicks out cleanly, shoot the ramp all day. If not, play for multiball and then the spinner.",
