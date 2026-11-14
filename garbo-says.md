@@ -119,7 +119,7 @@ Begrudgingly, I start with Han since he is the easiest path to mode multiballs. 
 ## star-wars-trilogy  (Star Wars Trilogy)
 
 ## star-wars-fall-of-the-empire  (Star Wars: Fall of the Empire)
-To start your game: skill shot to the droids qualifies 2 locks at the hot VUK. Then start an easy mode and bring Hoth Multiball into it.
+A skill shot to the droids qualifies 2 locks at the Hoth VUK. Starting an easy mode and bringing Hoth Multiball into it is a solid start to the game.
 
 ## stranger-things  (Stranger Things)
 DO NOT TILT THIS GAME. FOR THE LOVE OF GOD.
