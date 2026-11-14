@@ -1146,6 +1146,68 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "dune", code: "DUNE", name: "Dune", sort: "Dune",
+  mfr: "Barrels of Fun", year: 2025, variant: "", group: "other", opdb: "Gd266",
+  thesis: "Gather spice by day and spend it at night: every Prophecy jackpot is worth 1M per spice you bring, so never start one with an empty tank.",
+  plan: [
+    "Plunge for a skill shot. The secret Tunnel shot (10M) makes your spinners drop more resources for the rest of the ball; the rear-scoop Sneak is 5M, or 10M if you don’t flip first.",
+    "Hit the left inlane to light the spinners, spin them to drop resource dots, then shoot the shots with dots on them. Spice is made by day and water by night, so you’re always stocking up for the next mode.",
+    "Each night, start a Prophecy mode at the scoop with as much spice as you can carry. At the halfway point, cash out for the safe jackpot or continue for a 5x hurry-up. Continuing earns a D-U-N-E letter and a perk for the rest of the game.",
+    "Each day, fight a Harvester Battle. Water is the timer, so bring plenty. Kill the red soldiers and yellow thopters, then finish it with the jump shot under the Harvester or a Lasgun at a blue shot. The second Harvester you destroy is usually an extra ball.",
+    "Keep a Sand Snork loaded. Collect it from the three drop targets by the upper flipper, then load it at the yellow left ramp; it saves a left outlane drain.",
+    "For Desert Power Multiball, hit the Thumper bumper to light locks at the orbits, lock two, then send a ball into the Desert Power field to build the jackpot before starting at the Worm. Tap the switch in front of the Worm to slide jackpots outward for 2x, 3x and 5x.",
+    "Save Thumpers (action button) for a Harvester Battle or multiball: one is 2x playfield, three are 4x. They can’t be used during Prophecy modes."
+  ],
+  avoid: [
+    "Starting a Harvester Battle with little water. The battle ends when water runs out and has to be resumed the next day.",
+    "Tilting. It wipes out all your water and spice.",
+    "Flipping both flippers at once in the Pain Box. The game reads it as cheating and you fail instantly."
+  ],
+  tourney: [],
+  venue: blank(["Dune came out in 2025 in a single edition. Many rules are operator settings (how hard the Lasgun and Prophecy scoop shots are, how many extra balls), so watch a game first or ask the TD."]),
+  tips: [
+    ["skillshot", 3, "Choose the rear-scoop arrow with the right flipper, hold the upper left flipper and soft-plunge about a third of the way into the back of the scoop. It’s 10M and starts your first mode."],
+    ["skillshot", 3, "The left outlane is a secret skill shot that loads a Sand Snork and launches another ball. Select the spinner skill shot first so a near miss still pays something."]
+  ],
+  rules: "Day and night alternate every 200 or so switch hits. By day you fight Harvesters, with water as the timer; by night you play Prophecy modes powered by the spice you gathered. D-U-N-E letters from battles, prophecies, multiball jackpots and side quests light four mini-wizard modes, ending in Voice From the Outer World. Newer game: rules are still being updated and there’s little tournament-specific writing yet.",
+  sources: [["Pinball Rulesheets: Dune", RB("barrels-of-fun/dune-rulesheet.html")]]
+},
+{
+  id: "super-mario-bros", code: "SMB", name: "Super Mario Bros.", sort: "Super Mario Bros.",
+  mfr: "Gottlieb", year: 1992, variant: "", group: "classic", opdb: "GRBzQ",
+  thesis: "Loop the Quick Shot: right inlane, left ramp, around the upper playfield and down the green slide, again and again.",
+  plan: [
+    "Plunge to the upper playfield and hit the Yoshi target for the skill shot (three hits in one trip is 3M). Every Yoshi hit also adds 500K to Yoshi’s Bonus, which never resets during the game.",
+    "After the right inlane, shoot the left ramp within about three seconds for Quick Shot: 1M, 2M, 5M, an extra ball, then 7M, 10M, 15M and 20M (the top value depends on settings). The ramp feeds the upper playfield and the green slide drops you back to the right inlane, so you can loop it.",
+    "Become Super before starting modes: the green slide spots S-U-P-E and either lower saucer gives the R. Modes started while Super score double, multiball gets a third ball, and you get the left kickback and center shield.",
+    "Light three turtle shells (left ramp, center target, right target, right orbit) for a Key, then enter any saucer to pick a mode. Bomb and Exclamation are the best picks.",
+    "For multiball, hit 1-2-3-4 in order (left ramp, Yoshi target, right orbit, green slide), then the left saucer within about 20 seconds. The castle is the jackpot: 5M, then 10M. There’s no ball save.",
+    "Four shots to the cave light a timed extra ball there."
+  ],
+  avoid: [
+    "Smashing castles just because they’re spinning. A castle ends your Super; in a tournament a Super mode start is usually worth more.",
+    "Taking the instant 3M when it’s offered in place of your last mode. It’s never worth it.",
+    "Tilting after a big Yoshi’s Bonus. It can pass 100M."
+  ],
+  tourney: [
+    "In tournament mode the slot machine (Bonus Chance) always pays 1M and the ? Block always gives a turtle shell, so don’t go out of your way for either.",
+    "Tournament mode scores 10M for each castle destroyed, and the seventh castle gives nothing extra."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 2, "The left inlane lights a Bullet Bill. Light all four and shoot the castle for video mode; finishing it is worth 30M."],
+    ["multiball", 2, "In multiball, every castle shot is a jackpot. The first is 5M and each one after doubles."],
+    ["general", 1, "Being Super doubles any mode you start, which is often worth more than destroying a castle."],
+    ["general", 1, "If you haven’t played multiball by your third ball, the game lights it for you."],
+    ["skillshot", 1, "After the plunge, keep hitting the Yoshi target on the upper playfield. The skill shot goes up 500K with each hit."]
+  ],
+  rules: "Become Super to double mode scoring and destroy Bowser’s castles. Light 1-2-3-4 for multiball with castle jackpots, collect turtle shells to start six modes, and loop Quick Shot for steady points.",
+  sources: [
+    ["Pinball Primer: Super Mario Bros.", "https://pinballprimer.github.io/supermario_GRBzQ.html"],
+    ["Rod Cooper’s Super Mario Bros. rulesheet", "https://www.bmigaming.com/Games/Rulesheets/super_mario_brothers.txt"]
+  ]
+},
+{
   id: "avengers-infinity-quest", code: "AIQ", name: "Avengers: Infinity Quest", sort: "Avengers: Infinity Quest",
   mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gj66P",
   thesis: "Light a Portal Lock with combos before your first Gem Quest, then bring Thor Multiball into the Quest.",
@@ -2362,7 +2424,7 @@ const VENUES = [
   { id: 27915, name: "Calavida Cantina Corrales", dmd: "CALAVIDA", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "Foo Fighters (Pro) (Stern, 2023)", "John Wick (Pro) (Stern, 2024)", "Jurassic Park (Premium) (Stern, 2019)", "King Kong: Myth of Terror Island (Pro) (Stern, 2025)", "The Munsters (Pro) (Stern, 2019)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Transformers: More Than Meets the Eye (Premium) (Stern, 2026)", "The Uncanny X-Men (Pro) (Stern, 2024)", "Venom (Pro) (Stern, 2023)"] },
   { id: 29637, name: "Enchanted Trails RV Park & Trading Post", dmd: "ENCHANTED TRAILS", machines: ["Super Star (Williams, 1972)"] },
   { id: 27108, name: "La Cumbre Brewing Co", dmd: "LA CUMBRE", machines: ["Stranger Things (Pro) (Stern, 2019)", "Transformers: More Than Meets the Eye (Premium) (Stern, 2026)", "Pulp Fiction (SE) (Chicago Gaming, 2023)", "Fallout (Premium) (Stern, 2026)"] },
-  { id: 27112, name: "La Cumbre Brewing Co. Westside", dmd: "LA CUMBRE WEST", machines: ["Avengers: Infinity Quest (Pro) (Stern, 2020)", "Jurassic Park (Premium) (Stern, 2019)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "Pokémon (Premium) (Stern, 2026)"] },
+  { id: 27112, name: "La Cumbre Brewing Co. Westside", dmd: "LA CUMBRE WEST", machines: ["Super Mario Bros. (Gottlieb, 1992)", "Jurassic Park (Premium) (Stern, 2019)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "Pokémon (Premium) (Stern, 2026)"] },
   { id: 2788, name: "Launchpad", dmd: "LAUNCHPAD", machines: ["Monster Bash (Remake) (Chicago Gaming, 2018)", "X-Men (Pro) (Stern, 2012)", "Guns N' Roses (LE) (Jersey Jack, 2020)", "Jurassic Park (Pro) (Stern, 2019)"] },
   { id: 19721, name: "Old Town Pizza Parlor", dmd: "OLD TOWN PIZZA", machines: ["Fish Tales (Williams, 1992)", "Last Action Hero (Data East, 1993)"] },
   { id: 5132, name: "Pizza Castle", dmd: "PIZZA CASTLE", machines: ["Theatre of Magic (Bally, 1995)", "Indiana Jones: The Pinball Adventure (Williams, 1993)"] },
