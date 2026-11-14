@@ -443,6 +443,11 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .gl-cta .arr { margin-left: auto; color: var(--lime); }
 .gl-cta:hover { border-color: var(--lime); }
 .gl-cta + .gl-cta { margin-top: -12px; }
+/* NM Pinball logo (used with permission): inline beside the arrow on wide screens, top-right corner on phones */
+.gl-ext .arr { margin-left: 0; }
+.gl-logo { order: 2; margin-left: auto; height: 46px; width: auto; }
+.gl-ext .arr { order: 3; }
+@media (max-width:600px) { .gl-ext { position: relative; padding-right: 82px; } .gl-logo { position: absolute; top: 10px; right: 14px; width: 60px; height: auto; } .gl-ext .arr { margin-left: auto; } }
 /* Venue pages: the venue is the headline and the machines start on the first screen */
 .venue-hero { padding-block: 28px 18px; }
 .venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 32px; }
@@ -598,7 +603,7 @@ ol.plan li::before { color: var(--fg-dim); }
   <div class="wrap">
     <a class="gl-cta" href="#glossary"><span class="mono">Pinball glossary</span><span>What a VUK, a cradle or a playfield multiplier is, in plain language.</span><span class="arr" aria-hidden="true">→</span></a>
     <a class="gl-cta" href="#formats"><span class="mono">Tournament formats</span><span>Strikes, target match play, Amazing Race, pingolf and more, broken down.</span><span class="arr" aria-hidden="true">→</span></a>
-    <a class="gl-cta" href="https://www.newmexicopinball.com/" target="_blank" rel="noopener"><span class="mono">New Mexico Pinball</span><span>Visit newmexicopinball.com for tournament schedules and other event information!</span><span class="arr" aria-hidden="true">↗</span></a>
+    <a class="gl-cta gl-ext" href="https://www.newmexicopinball.com/" target="_blank" rel="noopener"><img class="gl-logo" src="art/nm-pinball.png" alt="New Mexico Pinball logo" width="240" height="199" loading="lazy"><span class="mono">New Mexico Pinball</span><span>Visit newmexicopinball.com for tournament schedules and other event information!</span><span class="arr" aria-hidden="true">↗</span></a>
     <p>Venue lineups come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
     <p>Machine reports come from players using the guide, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
     <p class="garbo-sig"><span class="garbo-art" role="img" aria-label="Garbo"></span><span>Field notes of <b>Garbo</b>, a visitor who fell for pinball. Translated by <b>SAPO Studios</b>.</span></p>
