@@ -1148,6 +1148,237 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "total-nuclear-annihilation", code: "TNA", name: "Total Nuclear Annihilation", sort: "Total Nuclear Annihilation",
+  mfr: "Spooky", year: 2017, variant: "", group: "spooky", opdb: "GRD79",
+  thesis: "Take the risky shots only while a ball save or multiball is running. TNA hands out ball saves often, so wait for them.",
+  plan: [
+    "For a long ball save, short plunge to a live catch on the right flipper and backhand the lock. Don't flip the left flipper.",
+    "Or plunge softly into the CORE lanes, which feed the upper playfield. If you leave the lane change alone after the plunge, the Hands-Free Skill Shot also lights the left scoop to start a Reactor.",
+    "Lock balls in the backhandable standup lane on the right. With two locked, hit the front standup to start multiball.",
+    "In multiball, everything scores times the number of balls in play, so keep as many alive as you can.",
+    "To destroy a Reactor, complete the center three-bank until the grid lights, hit switches on the upper half until the upper display reaches 100%, then hit every lit target on the lower playfield."
+  ],
+  avoid: [
+    "Shooting the center three-bank or the lit Reactor targets with no ball save running. Those are the drain shots."
+  ],
+  tourney: [
+    "Ball saves come at the start of each ball, at the start of multiball and after each destroyed Reactor. Use each one to knock out grid targets or plunge into the CORE lanes. Using a ball save during multiball also restarts the multiball timer."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 7, "In multiball, playfield values are multiplied by the number of balls in play; the inserts show 2x or 3x."],
+    ["skillshot", 5, "Short plunge to a live catch on the right flipper and backhand the lock for a long ball save. Don't flip left!"],
+    ["general", 5, "Soft plunge into the CORE lanes to feed the upper playfield. Lock a ball or use a ball save to get another one to plunge."],
+    ["multiball", 3, "Shoot the backhandable standup lane on the right to lock balls. With two locked, hit the front standup to start multiball."],
+    ["multiball", 2, "Using up a ball save during multiball restarts the multiball timer."],
+    ["general", 2, "Use the frequent ball saves to plunge into the CORE lanes or knock out grid targets."]
+  ],
+  rules: "Destroy Reactors in three steps (light the grid with the center three-bank, power the upper display to 100%, then clear the lit lower targets). Multiball comes from two locks in the right lane, with scoring multiplied by the balls in play. Ball saves come often: each new ball, each multiball and each destroyed Reactor.",
+  sources: [["Pinball Primer: Total Nuclear Annihilation", "https://pinballprimer.github.io/tna_GRD79.html"], ["PinTips: Total Nuclear Annihilation", "https://app.matchplay.events/opdb/entries/GRD79/pintips"]]
+},
+{
+  id: "eight-ball-champ", code: "8BC", name: "Eight Ball Champ", sort: "Eight Ball Champ",
+  mfr: "Bally", year: 1985, variant: "", group: "classic", opdb: "G439V",
+  thesis: "Spell CHAMP twice for triple playfield scoring, then shoot the left orbit all day.",
+  plan: [
+    "C-H-A-M-P is spelled by the three top lanes and the two inlanes. Lane change on the right flipper moves the lit lanes; remember you're putting lights out, not turning them on.",
+    "Spell CHAMP once for 2x playfield for the rest of the ball, twice for 3x. Each time also raises the spinner value.",
+    "Shoot the left orbit: it climbs to 100,000, sends the ball through the 8 ball saucer for bonus X, and drops into the top lanes to keep spelling CHAMP. At 3x, one shot can be worth 600,000.",
+    "Knock down the upper left and upper right drop targets early. They reset when you drain, and you need them twice.",
+    "Collecting pool balls and finishing racks mostly builds bonus, which carries over between balls."
+  ],
+  avoid: [
+    "Working pool ball racks when the left orbit is working. The orbit pays far more."
+  ],
+  tourney: [
+    "The 2x and 3x playfield last only for the current ball, so spell CHAMP early in each ball."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 3, "The left orbit can be huge: 100K at the orbit and 100K at the saucer, so at 3x playfield it's 600K a shot."],
+    ["general", 2, "Shoot the left orbit almost all day. It feeds the top lanes, which build toward the playfield multiplier."],
+    ["general", 2, "Knock down the upper left and upper right drops first. They reset on a drain, and you need them twice."],
+    ["general", 2, "Drops reset when your ball drains, but during play they stay down until you hit the standup behind them."],
+    ["general", 2, "Work the top lanes, and remember you're putting the lights out, not lighting them."],
+    ["general", 1, "The upper hole raises the bonus multiplier up to 5x. It's easier from the upper flipper than the lower right one."]
+  ],
+  rules: "Spell CHAMP with the top lanes and inlanes: once for 2x playfield, twice for 3x, more for spinner value and outlane specials. The left orbit builds toward 100,000 and passes the 8 ball saucer for bonus X. Pool balls and racks build bonus, which carries over between balls.",
+  sources: [["Pinball Primer: Eight Ball Champ", "https://pinballprimer.github.io/ebc_G439V.html"], ["PinTips: Eight Ball Champ", "https://app.matchplay.events/opdb/entries/G439V/pintips"]]
+},
+{
+  id: "black-knight-sword-of-rage", code: "BKSR", name: "Black Knight: Sword of Rage", sort: "Black Knight Sword of Rage",
+  mfr: "Stern", year: 2019, variant: "", group: "stern", opdb: "GD7Ld",
+  thesis: "Backhand everything you can, and choose shots that feed back to your flipper. Then stack a mode with Triple Knights Challenge.",
+  plan: [
+    "Most shots on this game can be backhanded. Use that to keep control.",
+    "Shoot any of the three center shots enough to light the ramp, then the ramp to light a mode at the saucer behind the shield. In a mode, shoot the flashing arrows, or charge the Sword of Rage at the targets and use it at the center target.",
+    "Hit the Light Lock target to light locks at the saucer behind the shield. Lock two balls, get a mode ready, then make the third lock so Triple Knights Challenge starts on top of the mode.",
+    "Complete the W-A-R top lanes to start hurry-ups on the flail, knight and shield. Hit all three, then cash out the last one at the center target, for a KNIGHT letter.",
+    "Spell KNIGHT by playing well, then shoot the left spinner for KNIGHT Multiball.",
+    "Press the action button as a ball heads down the right outlane to use the Magna-Save; the drop targets relight it."
+  ],
+  avoid: [
+    "Shots that don't come back to a flipper when a safer one (the center ramp or a scoop) is open."
+  ],
+  tourney: [
+    "On a Premium or LE, the upper playfield's light lock spots mode shots and the upper loop raises mode value, so the left ramp is a strong all-day shot."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 10, "Most shots can be backhanded. Use that to your advantage."],
+    ["general", 9, "Get locks like on Spider-Man: backhand the lock target, then the lock shot, post catch and repeat. On default settings it's one lock target per lock."],
+    ["general", 7, "Completing the WAR top lanes starts hurry-ups on the flail, knight and shield. Hitting all three scores a KNIGHT letter."],
+    ["general", 7, "Choose shots that feed back to your flipper, like the center ramp and scoops, when the Knight isn't blocking them."],
+    ["general", 7, "Lock two balls, get a mode ready, then make the final lock at the center scoop to stack Triple Knights with the mode."],
+    ["general", 5, "Premium/LE: the upper playfield's light lock spots mode shots and the upper loop raises mode value, so it's left ramp all day."]
+  ],
+  rules: "Monster battles start at the saucer behind the shield after the center shots and the ramp. Triple Knights Challenge comes from three locks there; KNIGHT Multiball is started at the left spinner after spelling KNIGHT. Premium and LE add an upper playfield with Catapult Multiball. The action button fires the Sword of Rage and the Magna-Save.",
+  sources: [["Pinball Rulesheets: Black Knight: Sword of Rage", "https://pinballrulesheets.com/stern/black-knight-sword-of-rage-rulesheet"], ["PinTips: Black Knight: Sword of Rage", "https://app.matchplay.events/opdb/entries/GD7Ld/pintips"]]
+},
+{
+  id: "elviras-house-of-horrors", code: "EHOH", name: "Elvira's House of Horrors", sort: "Elviras House of Horrors",
+  mfr: "Stern", year: 2019, variant: "", group: "stern", opdb: "GZVOd",
+  thesis: "Start Haunts at the House Entrance, stack them with multiball, and cash the 2x hurry-up after each mode at the house.",
+  plan: [
+    "Plunge into the Back Door for the better skill shot: 1M and a Haunt qualified at the house entrance (or started, if one is already lit). The Dead End lanes give +5 bonus X instead.",
+    "Shoot the House Entrance (the center ramp or orbit) to start a 45-second Haunt, a movie mode. Haunts stack with multiballs.",
+    "Mode timers reset to 15 seconds after each mode shot, so you can keep a mode going and keep raising its shot value.",
+    "After a mode, hit both ramps to start a hurry-up worth twice what the mode scored, and collect it at the house.",
+    "After the third Haunt, House Party Multiball is qualified: every shot is a jackpot, and the super jackpot is at the house.",
+    "Finish the right standup targets to light the wheel at the left outlane."
+  ],
+  avoid: [
+    "Skipping the hurry-up after a mode. It's double the mode's points for two ramp shots and the house."
+  ],
+  tourney: [
+    "Stack a Haunt with a multiball whenever you can. The modes run on short timers that each shot resets, so extra balls mean more shots."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 7, "The House Entrance (center ramp or orbit) starts 45-second Haunts, the movie modes. They stack with multiballs."],
+    ["general", 6, "After a mode, hit both ramps to start a hurry-up worth twice the mode's points. Collect it at the house."],
+    ["general", 5, "Mode timers reset to 15 seconds after each mode shot, so you can play a mode for a while and keep raising its value."],
+    ["general", 4, "Main modes and side modes like Happy Hour are timed, and a shot usually resets the timer to at least 15 seconds."],
+    ["multiball", 4, "House Party Multiball is qualified after the third Haunt. Every shot is a jackpot, and the super is at the house."],
+    ["general", 3, "Finish the right standup targets to light the wheel at the left outlane."]
+  ],
+  rules: "Haunts, movie modes started at the House Entrance, are the core; finishing them plus other tasks leads toward the wizard mode. Each finished mode offers a 2x hurry-up. House Party Multiball lights after three Haunts. Two skill shots: the Dead End lanes for bonus X, or the Back Door for points and a Haunt.",
+  sources: [["Pinball Rulesheets: Elvira's House of Horrors", "https://pinballrulesheets.com/stern/elvira-s-house-of-horrors-rulesheet"], ["PinTips: Elvira's House of Horrors", "https://app.matchplay.events/opdb/entries/GZVOd/pintips"]]
+},
+{
+  id: "halloween", code: "HALO", name: "Halloween", sort: "Halloween",
+  mfr: "Spooky", year: 2021, variant: "", group: "spooky", opdb: "Gj66Z",
+  thesis: "Shoot Judith's tombstone right off the plunge. The secret skill shot locks a ball there, which works as a ball save or a multiball start.",
+  plan: [
+    "Use the flippers to pick which shot is lit for the skill shot before plunging; harder shots score more. Better yet, shoot Judith's tombstone for the secret skill shot, which locks the ball behind its drop target.",
+    "Complete the center drop targets, then shoot the Jack-O-Lantern scoop to pick and start a main mode. Each completed drop bank also lights blood drops at three shots for about 20 seconds.",
+    "Cash blood drops for 1M each. Clearing the drops lights three of them; finishing a mode lights six.",
+    "Lock a ball in each hedge scoop for multiball. The left ramps qualify jackpots, and collecting all of them lights a super jackpot at a random hedge scoop.",
+    "Play any three modes, finished or not, to qualify the Jack-O-Lantern mini-wizard multiball at the pumpkin scoop. Winning two modes in a game lights the extra ball."
+  ],
+  avoid: [
+    "Starting Stalker unprepared. It's single-ball with no ball save."
+  ],
+  tourney: [
+    "Stalker, mode seven, is a mini-wizard mode and the most valuable in the game (15–25M if you finish it). Learn its patterns."
+  ],
+  venue: blank(),
+  tips: [
+    ["secret", 4, "Shoot Judith's tombstone for the secret skill shot."],
+    ["multiball", 2, "The Jack-O-Lantern mini-wizard multiball lights at the pumpkin scoop after any three modes, finished or not."],
+    ["multiball", 2, "Lock a ball in each hedge scoop to start multiball. Left ramps qualify jackpots, and collecting all of them lights a super at a random hedge scoop."],
+    ["general", 1, "Stalker (mode seven) is by far the most lucrative mode: a single-ball mini-wizard mode with no ball save. Learn the patterns; it's worth 15–25M if completed."],
+    ["general", 1, "Blood drops cash in for 1M each. Clearing the three-bank lights three for 20 seconds, and finishing a mode lights six."],
+    ["skillshot", 1, "Use the flippers to choose which skill shot to go for."]
+  ],
+  rules: "Main modes start at the Jack-O-Lantern scoop after the center drop targets; later modes need orbit shots to raise the drops. Blood drops are worth 1M each. Tombstone Multiball comes from the Judith lock, the hedge scoops start another multiball, and three modes light the Jack-O-Lantern mini-wizard multiball.",
+  sources: [["Pinball Rulesheets: Halloween", "https://pinballrulesheets.com/spooky/halloween-rulesheet"], ["PinTips: Halloween", "https://app.matchplay.events/opdb/entries/Gj66Z/pintips"]]
+},
+{
+  id: "rick-and-morty", code: "RM", name: "Rick and Morty", sort: "Rick and Morty",
+  mfr: "Spooky", year: 2019, variant: "", group: "spooky", opdb: "GQKb2",
+  thesis: "Lock two at the Flooble Crank, start Gromflomite Battle Multiball with an Adventure on top, and grab Megaseeds in other dimensions to grow your bonus.",
+  plan: [
+    "The plunger fires the ball to the upper flipper. Hit the Noob Noob target (200K) or the Garage (400K); going around the side loop first multiplies the value.",
+    "Shoot either ramp early to qualify the first Adventure at the center scoop. Later Adventures need both ramps.",
+    "Hit the Flooble Crank to light a lock, lock a ball, hit it again for the second lock, then shoot the center scoop for Gromflomite Battle Multiball. Stack an Adventure start with it.",
+    "In multiball, hit the Flooble Crank three times to add a ball and get a 10-second ball save, once per multiball.",
+    "Charge the portal gun with spinner hits, then shoot a Garage entrance to jump dimensions. Each Megaseed you collect there adds 5% to your end-of-ball bonus, and three dimensions light an extra ball.",
+    "Shoot the Meeseeks Box to spawn Meeseeks on blue-lit shots; with several out, each one you collect is multiplied."
+  ],
+  avoid: [
+    "The Slam bumper where the left slingshot would be. It throws the ball around; spell SLAM in the lower lanes to light the Slam Save."
+  ],
+  tourney: [
+    "Bonus is based on what you scored that ball, so Megaseeds pay off most on a ball where you've already scored a lot."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 3, "On the plunge, hit the Noob Noob target for 200K or the Garage for 400K. Shooting the inner orbit first multiplies the value."],
+    ["multiball", 3, "Hitting the Flooble Crank three times during multiball adds a ball and a 10-second ball save, once per multiball."],
+    ["multiball", 2, "Shoot the Flooble Crank to light lock, lock balls in the horseshoe, then shoot the center scoop with two locked for multiball."]
+  ],
+  rules: "Adventures, started at the center scoop after the ramps, fill the Morty Adventure Card. Gromflomite Battle Multiball comes from two locks at the Flooble Crank, with super jackpots at the Garage. Dimensions, reached through the Garage, hold Megaseeds that raise your bonus. Meeseeks multiply shots, and SLAM lights a save for the Slam bumper.",
+  sources: [["Pinball Rulesheets: Rick and Morty", "https://pinballrulesheets.com/spooky/rick-morty-rulesheet"], ["PinTips: Rick and Morty", "https://app.matchplay.events/opdb/entries/GQKb2/pintips"]]
+},
+{
+  id: "big-game", code: "BIG", name: "Big Game", sort: "Big Game",
+  mfr: "Stern", year: 1980, variant: "", group: "classic", opdb: "G4jQw",
+  thesis: "Early, collect drop targets on the bingo cards for bonus that carries over between balls. Later, hammer the far left spinner.",
+  plan: [
+    "Each drop target lights its number on the lit bingo card (X, Y or Z). Pop bumpers and the center star rollover change which card is lit.",
+    "Lit numbers, bingo lines and full cards build bonus and bonus multiplier, and all of it carries over from ball to ball. One full card, or one line on each card, is 2x; two full cards, or two lines on each, is 3x.",
+    "Spell BIG in the top lanes to light the inner spinner at 1,000 a spin. The X card lights the far left spinner for 1,000 a spin too.",
+    "Later in the game, shoot the spinners: the outer one when it's lit, for more points and a collect of the Big Game letters.",
+    "Shoot the far left spinner with the lower right flipper; the upper right flipper is harder and hits it weaker."
+  ],
+  avoid: [
+    "Hitting the drop targets straight on when you can backhand them. Backhands are safer."
+  ],
+  tourney: [
+    "Bonus and multipliers carry between balls, so early drop target work pays off on every later ball."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 6, "Complete BIG at the top lanes to light the spinner to the right of the BIG GAME lane spinner."],
+    ["general", 5, "Switch hits like the pops and the center star rollover move the lit bingo card. The X card lights the far left spinner for 1,000 a shot."],
+    ["general", 5, "Hit the far left spinner over and over, and try to complete the top lanes. An unusual post pass can move the ball to the right flipper."],
+    ["general", 4, "Shoot the left spinner with the lower right flipper. The upper right flipper is harder and doesn't hit it as hard."],
+    ["general", 2, "One full card or one line on each card is 2x bonus; two full cards or two lines on each is 3x. Bonus holds from ball to ball."],
+    ["general", 1, "It's safer to backhand the drops than hit them straight on."]
+  ],
+  rules: "Drop targets light numbers on three bingo cards; lines and full cards build bonus and bonus multipliers that carry over between balls. The BIG GAME letters come from the top lanes, the left standups and the inlanes, and the spinners collect them. Completing BIG GAME lights the extra ball, then a special.",
+  sources: [["Pinball Primer: Big Game", "https://pinballprimer.github.io/biggame_G4jQw.html"], ["PinTips: Big Game", "https://app.matchplay.events/opdb/entries/G4jQw/pintips"]]
+},
+{
+  id: "monopoly", code: "MON", name: "Monopoly", sort: "Monopoly",
+  mfr: "Stern", year: 2001, variant: "", group: "stern", opdb: "G48w3",
+  thesis: "Center ramp all day to move around the board and light locks. Multiball, stacked with Cash Grab, is where the points are.",
+  plan: [
+    "Skip the Water Works skill shot and plunge so the ball lands in the roll-and-collect saucer, which advances you around the board.",
+    "The center ramp moves you one space, the right ramp two and the side ramp three; the railroad ramp moves up to eight. Landing on an unlit color group starts its mode.",
+    "Lock two balls through the center ramp, then shoot the right ramp for Monopoly Multiball. The left ramp is a 1M jackpot, the Electric Company below it a 2M double jackpot, and the railroad ramp relights them.",
+    "Five railroad ramp shots start a two-ball multiball. It's easy to backhand from the left flipper, and the ball often settles if you hold the flipper up on the return.",
+    "Spell BANK at the Bank Vault to start Cash Grab, the one mode that stacks with multiball. Start it when multiball is lit."
+  ],
+  avoid: [
+    "Free Money. It can pay as little as 1,000 if time runs out, so it's usually better to skip it."
+  ],
+  tourney: [
+    "Owning all eight property groups and the railroads starts Land Grab, the wizard mode and the game's biggest scorer. Finish it with three balls in play if you can; its ball save is short."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 9, "Instead of the Water Works skill shot, plunge so the ball lands in the roll-and-collect saucer to advance around the board."],
+    ["multiball", 8, "Five railroad ramp shots start a two-ball multiball. It's easy to backhand from the left flipper; hold the flipper on the return and the ball may settle. Repeat."],
+    ["multiball", 4, "In multiball, the left ramp is 1M and the Electric Company below it is 2M. The railroad ramp relights the jackpots."],
+    ["general", 4, "Center ramp all day to go around the board and light locks. It's safe and repeatable, and multiball is where the points are."],
+    ["multiball", 4, "If you can, start Cash Grab while multiball is lit. It's the only mode that stacks with multiball."]
+  ],
+  rules: "Move around the Monopoly board with ramp shots; landing on property scores and starts color-group modes. Monopoly Multiball comes from two center ramp locks, Railroad Multiball from the railroad ramp, and Cash Grab from BANK at the vault. Collecting every property group starts Land Grab, a timed multiball where you build houses and hotels.",
+  sources: [["Monopoly strategy guide (Bowen Kerins), Pinball Rebel", "https://pinballrebel.com/pinball/monopoly_pinball_owners_list/monopoly_pinball_information.html"], ["PinTips: Monopoly", "https://app.matchplay.events/opdb/entries/G48w3/pintips"]]
+},
+{
   id: "toy-story-4", code: "TS4", name: "Toy Story 4", sort: "Toy Story 4",
   mfr: "Jersey Jack", year: 2022, variant: "", group: "other", opdb: "GJ2o0",
   thesis: "Use all three skill shot tries: the Woody saucer adds 5x to your bonus each time. Then start the seven scenes to reach the wizard mode.",
