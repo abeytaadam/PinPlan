@@ -379,7 +379,8 @@ body::after { content: ""; position: fixed; inset: 8px; border: 1px solid rgba(2
   .bar .wrap { gap: 10px; }
   .bar-right { gap: 10px; }
   .brand { letter-spacing: 0.1em; gap: 8px; }
-  .venue-pick select { letter-spacing: 0.01em; padding: 8px 24px 8px 9px; background-position: right 9px center; }
+  .venue-pick select { letter-spacing: 0.06em; padding: 8px 24px 8px 9px; background-position: right 9px center;
+    font-family: "Big Shoulders Display", "Arial Narrow", sans-serif; font-weight: 700; font-size: 17px; }
 }
 @media (max-width: 359px) { .brand .brand-dot { display: none; } }
 
@@ -3151,11 +3152,20 @@ function route(soft) {
   document.title = (m ? m.name + " · " : "") + VENUE.name + " · Garbo’s Guide";
 }
 
+/* Phones show each venue's short name in the top-bar picker so the selected name isn't cut off. */
+const PHONE_MQ = window.matchMedia ? window.matchMedia("(max-width: 600px)") : null;
+function labelVenueOptions() {
+  const sel = document.getElementById("venue-select"), phone = !!(PHONE_MQ && PHONE_MQ.matches);
+  [...sel.options].forEach(o => { const v = venueBySlug.get(o.value); if (v) o.textContent = phone ? v.dmd : v.name; });
+}
+if (PHONE_MQ) (PHONE_MQ.addEventListener ? PHONE_MQ.addEventListener("change", labelVenueOptions) : PHONE_MQ.addListener(labelVenueOptions));
+
 function renderVenue() {
   const sel = document.getElementById("venue-select");
   if (!sel.options.length) {
     sel.innerHTML = VENUES.map(v => `<option value="${v.slug}">${esc(v.name)}</option>`).join("");
     sel.addEventListener("change", () => { location.hash = sel.value; });
+    labelVenueOptions();
   }
   sel.value = VENUE.slug;
   document.getElementById("venue-title").textContent = VENUE.name;
