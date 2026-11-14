@@ -210,6 +210,7 @@ details.basics ul { margin: 0; padding: 0 16px 16px 34px; display: grid; gap: 8p
 .card .line { margin: 2px 0 0; font-size: 14px; color: var(--fg); }
 .flags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
 .flag { font-family: var(--f-mono); text-transform: uppercase; letter-spacing: 0.05em; font-size: 10.5px; padding: 3px 6px; border: 1px solid var(--line-2); color: var(--fg-dim); display: inline-flex; gap: 6px; align-items: center; }
+.flags .era { margin-left: auto; align-self: flex-end; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.08em; color: var(--fg-dim); opacity: 0.75; }
 .flag.warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, transparent); background: var(--warn-soft); }
 .sq { width: 7px; height: 7px; display: inline-block; flex: none; background: currentColor; }
 .empty { padding: 30px 18px; color: var(--fg-dim); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); grid-column: 1 / -1; }
@@ -2713,9 +2714,21 @@ function renderGrid() {
       <h3>${esc(m.name)}</h3>
       <div class="meta mono">${esc([m.mfr, m.variant].filter(Boolean).join(" · "))}</div>
       <p class="line">${garboSays(m)}</p>
-      <div class="flags">${flags.join("")}</div>
+      <div class="flags">${flags.join("")}${eraOf(m) ? `<span class="era" title="${ERA_NAME[eraOf(m)]}">${eraOf(m)}</span>` : ""}</div>
     </a>`;
   }).join("");
+}
+
+/* Era by display type: electromechanical, solid state (numeric or alphanumeric displays), dot-matrix, LCD.
+   Remakes count as the original game's era. ERA_SET covers games the year rule gets wrong. */
+const ERA_NAME = { EM: "Electromechanical", SS: "Solid state", DMD: "Dot-matrix display", LCD: "LCD screen" };
+const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS" };
+function eraOf(m) {
+  if (ERA_SET[m.id]) return ERA_SET[m.id];
+  if (/remake/i.test(m.variant || "")) return "DMD";
+  const y = +m.year;
+  if (!y) return "";
+  return y < 1977 ? "EM" : y < 1991 ? "SS" : y < 2017 ? "DMD" : "LCD";
 }
 
 function reportSummary(reps) {
