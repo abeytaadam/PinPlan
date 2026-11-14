@@ -11,7 +11,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 // The venues PinPlan covers (Pinball Map location ids). Keep in sync with VENUES in index.html.
-const VENUE_IDS = [2789, 27749, 27915, 29637, 27108, 27112, 2788, 19721, 5132, 29052, 30149, 28857, 27114, 10449, 2775, 6422, 23079, 28980, 27473, 28937];
+const VENUE_IDS = [2789, 27749, 27728, 30944, 27915, 29637, 27108, 27112, 2788, 19721, 5132, 29052, 30149, 28857, 27114, 10449, 2775, 6422, 23079, 28980, 27473, 28937];
 const HOME_ID = 6422; // Sister: used to look up the region when PBM_REGION isn't set
 const TOKEN = process.env.PINBALLMAP_API_TOKEN;
 const MOCK = process.env.PBM_MOCK_DIR; // local testing: read <dir>/<path with / replaced by _>.json instead of calling the API

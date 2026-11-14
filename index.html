@@ -534,7 +534,7 @@ ol.plan li::before { color: var(--fg-dim); }
         <div class="dmd-screen"><canvas id="dmd-land" width="512" height="128"></canvas></div>
       </div>
       <h1 class="fx-wrap">Walk up to every game <span class="em-fx">with a plan.</span></h1>
-      <p class="lede">Strategy for every pinball machine at <span id="land-count">20</span> Albuquerque venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
+      <p class="lede">Strategy for every pinball machine at <span id="land-count">22</span> Albuquerque-area venues, with community tips and notes for tournament play. Pick where you’re playing.</p>
     </div>
   </section>
   <div class="wrap">
@@ -1145,6 +1145,99 @@ const KN = s => "https://www.kineticist.com/news/" + s;
 const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
+{
+  id: "junk-yard", code: "JY", name: "Junk Yard", sort: "Junk Yard",
+  mfr: "Williams", year: 1996, variant: "", group: "classic", opdb: "GRLlj",
+  thesis: "Find out on ball one whether the Dog lane is an easy, safe shot. If it is, shoot it all day: it collects Junk, bonus multipliers and video modes.",
+  plan: [
+    "Use the flippers before you plunge to choose which Junk the skill shot gives you. The plunger spinner then picks the award, and most games start with three of the five options set to Collect Junk.",
+    "Shoot the Dog lane on the right to spell D-O-G and light a video mode at the same lane. Run From Spike is the easy one (tap the flippers fast); finishing it earns a piece of Junk, and each repeat is worth more.",
+    "Collect the right Junk combinations to light the four Adventures at the Sewer scoop on the far right: Radar, the Great Jalopy Race, the Great Toilet Adventure and Air Tactical Combat. Each earns Fireworks, which feed bonus and the wizard mode.",
+    "Use the Toilet ramp’s Choose Junk to pick up the piece you’re missing for an invention.",
+    "Spell M-U-L-T-I-B-A-L-L on the crane ball and the targets around it (sneaking into the hole behind the crane gives three letters), then shoot the crane hole to start. The first crane-hole shot is the jackpot; then knock the crane ball aside and shoot behind it for a 3M super jackpot.",
+    "Light the lower standup banks for Recycle, which saves an outlane drain and gives you another skill shot."
+  ],
+  avoid: [
+    "Ignoring the Dog shot. It’s the safest scoring shot on most copies, and it builds your bonus multiplier toward 6x.",
+    "Tilting late. Bonus, including the multiplier and your Fireworks, carries over from ball to ball."
+  ],
+  tourney: [
+    "Bonus carries over between balls, so a high multiplier and lots of Fireworks pay again at the end of every ball you play after that."
+  ],
+  venue: blank(),
+  tips: [
+    ["secret", 6, "If the clock shows 3:33 after you shoot the Time Machine, flip both flippers three times for Secret Mania."],
+    ["secret", 3, "If the Time Machine lands on the Attack from Mars saucer mode, the start button works as a smart bomb that clears the saucers."],
+    ["skillshot", 3, "Running from Spike is easier than shooting him. Before you plunge, and after each successful run, use the flippers to move the Junk selection off the hair dryer so you keep the easier video mode."],
+    ["multiball", 3, "Bash the crane, the standups around it, or sneak in behind it to spell MULTIBALL. In multiball, shoot the crane for the jackpot, then the hole behind the wrecking ball for the super jackpot."],
+    ["general", 3, "Shooting the video mode over and over is a solid plan: the Dog lane is safe, it collects Junk, and each round is worth 500K more."],
+    ["general", 2, "Hold Toilet Adventure until multiball is ready. Start Toilet, then multiball: every switch scores the Toilet value, so it adds up fast with several balls."]
+  ],
+  rules: "Collect 10 pieces of Junk to build Crazy Bob’s inventions. They light the Time Machine, two dog video modes and four Adventures; the Adventures earn Fireworks, and finishing all four with every piece of Junk opens Outer Space, a four-ball wizard mode. Crane Multiball and the main multiball come from the crane at the back.",
+  sources: [["Pinball Primer: Junk Yard", "https://pinballprimer.github.io/junkyard_GRLlj.html"]]
+},
+{
+  id: "dune", code: "DUNE", name: "Dune", sort: "Dune",
+  mfr: "Barrels of Fun", year: 2025, variant: "", group: "other", opdb: "Gd266",
+  thesis: "Gather spice by day and spend it at night: every Prophecy jackpot is worth 1M per spice you bring, so never start one with an empty tank.",
+  plan: [
+    "Plunge for a skill shot. The secret Tunnel shot (10M) makes your spinners drop more resources for the rest of the ball; the rear-scoop Sneak is 5M, or 10M if you don’t flip first.",
+    "Hit the left inlane to light the spinners, spin them to drop resource dots, then shoot the shots with dots on them. Spice is made by day and water by night, so you’re always stocking up for the next mode.",
+    "Each night, start a Prophecy mode at the scoop with as much spice as you can carry. At the halfway point, cash out for the safe jackpot or continue for a 5x hurry-up. Continuing earns a D-U-N-E letter and a perk for the rest of the game.",
+    "Each day, fight a Harvester Battle. Water is the timer, so bring plenty. Kill the red soldiers and yellow thopters, then finish it with the jump shot under the Harvester or a Lasgun at a blue shot. The second Harvester you destroy is usually an extra ball.",
+    "Keep a Sand Snork loaded. Collect it from the three drop targets by the upper flipper, then load it at the yellow left ramp; it saves a left outlane drain.",
+    "For Desert Power Multiball, hit the Thumper bumper to light locks at the orbits, lock two, then send a ball into the Desert Power field to build the jackpot before starting at the Worm. Tap the switch in front of the Worm to slide jackpots outward for 2x, 3x and 5x.",
+    "Save Thumpers (action button) for a Harvester Battle or multiball: one is 2x playfield, three are 4x. They can’t be used during Prophecy modes."
+  ],
+  avoid: [
+    "Starting a Harvester Battle with little water. The battle ends when water runs out and has to be resumed the next day.",
+    "Tilting. It wipes out all your water and spice.",
+    "Flipping both flippers at once in the Pain Box. The game reads it as cheating and you fail instantly."
+  ],
+  tourney: [],
+  venue: blank(["Dune came out in 2025 in a single edition. Many rules are operator settings (how hard the Lasgun and Prophecy scoop shots are, how many extra balls), so watch a game first or ask the TD."]),
+  tips: [
+    ["skillshot", 3, "Choose the rear-scoop arrow with the right flipper, hold the upper left flipper and soft-plunge about a third of the way into the back of the scoop. It’s 10M and starts your first mode."],
+    ["skillshot", 3, "The left outlane is a secret skill shot that loads a Sand Snork and launches another ball. Select the spinner skill shot first so a near miss still pays something."]
+  ],
+  rules: "Day and night alternate every 200 or so switch hits. By day you fight Harvesters, with water as the timer; by night you play Prophecy modes powered by the spice you gathered. D-U-N-E letters from battles, prophecies, multiball jackpots and side quests light four mini-wizard modes, ending in Voice From the Outer World. Newer game: rules are still being updated and there’s little tournament-specific writing yet.",
+  sources: [["Pinball Rulesheets: Dune", RB("barrels-of-fun/dune-rulesheet.html")]]
+},
+{
+  id: "super-mario-bros", code: "SMB", name: "Super Mario Bros.", sort: "Super Mario Bros.",
+  mfr: "Gottlieb", year: 1992, variant: "", group: "classic", opdb: "GRBzQ",
+  thesis: "Loop the Quick Shot: right inlane, left ramp, around the upper playfield and down the green slide, again and again.",
+  plan: [
+    "Plunge to the upper playfield and hit the Yoshi target for the skill shot (three hits in one trip is 3M). Every Yoshi hit also adds 500K to Yoshi’s Bonus, which never resets during the game.",
+    "After the right inlane, shoot the left ramp within about three seconds for Quick Shot: 1M, 2M, 5M, an extra ball, then 7M, 10M, 15M and 20M (the top value depends on settings). The ramp feeds the upper playfield and the green slide drops you back to the right inlane, so you can loop it.",
+    "Become Super before starting modes: the green slide spots S-U-P-E and either lower saucer gives the R. Modes started while Super score double, multiball gets a third ball, and you get the left kickback and center shield.",
+    "Light three turtle shells (left ramp, center target, right target, right orbit) for a Key, then enter any saucer to pick a mode. Bomb and Exclamation are the best picks.",
+    "For multiball, hit 1-2-3-4 in order (left ramp, Yoshi target, right orbit, green slide), then the left saucer within about 20 seconds. The castle is the jackpot: 5M, then 10M. There’s no ball save.",
+    "Four shots to the cave light a timed extra ball there."
+  ],
+  avoid: [
+    "Smashing castles just because they’re spinning. A castle ends your Super; in a tournament a Super mode start is usually worth more.",
+    "Taking the instant 3M when it’s offered in place of your last mode. It’s never worth it.",
+    "Tilting after a big Yoshi’s Bonus. It can pass 100M."
+  ],
+  tourney: [
+    "In tournament mode the slot machine (Bonus Chance) always pays 1M and the ? Block always gives a turtle shell, so don’t go out of your way for either.",
+    "Tournament mode scores 10M for each castle destroyed, and the seventh castle gives nothing extra."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 2, "The left inlane lights a Bullet Bill. Light all four and shoot the castle for video mode; finishing it is worth 30M."],
+    ["multiball", 2, "In multiball, every castle shot is a jackpot. The first is 5M and each one after doubles."],
+    ["general", 1, "Being Super doubles any mode you start, which is often worth more than destroying a castle."],
+    ["general", 1, "If you haven’t played multiball by your third ball, the game lights it for you."],
+    ["skillshot", 1, "After the plunge, keep hitting the Yoshi target on the upper playfield. The skill shot goes up 500K with each hit."]
+  ],
+  rules: "Become Super to double mode scoring and destroy Bowser’s castles. Light 1-2-3-4 for multiball with castle jackpots, collect turtle shells to start six modes, and loop Quick Shot for steady points.",
+  sources: [
+    ["Pinball Primer: Super Mario Bros.", "https://pinballprimer.github.io/supermario_GRBzQ.html"],
+    ["Rod Cooper’s Super Mario Bros. rulesheet", "https://www.bmigaming.com/Games/Rulesheets/super_mario_brothers.txt"]
+  ]
+},
 {
   id: "avengers-infinity-quest", code: "AIQ", name: "Avengers: Infinity Quest", sort: "Avengers: Infinity Quest",
   mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gj66P",
@@ -2358,11 +2451,12 @@ MORE_PLANS.forEach(m => { m.elsewhere = true; });
 const SNAPSHOT_DATE = "2026-11-11";
 const VENUES = [
   { id: 2789, name: "Anodyne Pool Hall & Cocktails", dmd: "ANODYNE", machines: ["The Addams Family (Bally, 1992)", "Star Trek: The Next Generation (Williams, 1993)", "Twilight Zone (Bally, 1993)"] },
-  { id: 27749, name: "Brew Lab 101 Beer & Cider Co.", dmd: "BREW LAB 101", machines: ["Deadpool (Pro) (Stern, 2018)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Jurassic Park (Pro) (Stern, 2019)", "Stranger Things (Pro) (Stern, 2019)", "JAWS (Pro) (Stern, 2024)"] },
+  { id: 27749, name: "Brew Lab 101 Beer & Cider Co. Albuquerque", slug: "brew-lab-101-beer-and-cider-co", dmd: "BREW LAB ABQ", machines: ["Deadpool (Pro) (Stern, 2018)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Jurassic Park (Pro) (Stern, 2019)", "Stranger Things (Pro) (Stern, 2019)", "JAWS (Pro) (Stern, 2024)"] },
+  { id: 27728, name: "Brew Lab 101 Beer & Cider Co. Rio Rancho", dmd: "BREW LAB RR", machines: ["King Kong: Myth of Terror Island (Pro) (Stern, 2025)", "JAWS (Pro) (Stern, 2024)", "Stranger Things (Pro) (Stern, 2019)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Pokémon (Pro) (Stern, 2026)"] },
   { id: 27915, name: "Calavida Cantina Corrales", dmd: "CALAVIDA", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "Foo Fighters (Pro) (Stern, 2023)", "John Wick (Pro) (Stern, 2024)", "Jurassic Park (Premium) (Stern, 2019)", "King Kong: Myth of Terror Island (Pro) (Stern, 2025)", "The Munsters (Pro) (Stern, 2019)", "Star Wars: Fall of the Empire (Pro) (Stern, 2025)", "Transformers: More Than Meets the Eye (Premium) (Stern, 2026)", "The Uncanny X-Men (Pro) (Stern, 2024)", "Venom (Pro) (Stern, 2023)"] },
   { id: 29637, name: "Enchanted Trails RV Park & Trading Post", dmd: "ENCHANTED TRAILS", machines: ["Super Star (Williams, 1972)"] },
   { id: 27108, name: "La Cumbre Brewing Co", dmd: "LA CUMBRE", machines: ["Stranger Things (Pro) (Stern, 2019)", "Transformers: More Than Meets the Eye (Premium) (Stern, 2026)", "Pulp Fiction (SE) (Chicago Gaming, 2023)", "Fallout (Premium) (Stern, 2026)"] },
-  { id: 27112, name: "La Cumbre Brewing Co. Westside", dmd: "LA CUMBRE WEST", machines: ["Avengers: Infinity Quest (Pro) (Stern, 2020)", "Jurassic Park (Premium) (Stern, 2019)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "Pokémon (Premium) (Stern, 2026)"] },
+  { id: 27112, name: "La Cumbre Brewing Co. Westside", dmd: "LA CUMBRE WEST", machines: ["Super Mario Bros. (Gottlieb, 1992)", "Jurassic Park (Premium) (Stern, 2019)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "Pokémon (Premium) (Stern, 2026)"] },
   { id: 2788, name: "Launchpad", dmd: "LAUNCHPAD", machines: ["Monster Bash (Remake) (Chicago Gaming, 2018)", "X-Men (Pro) (Stern, 2012)", "Guns N' Roses (LE) (Jersey Jack, 2020)", "Jurassic Park (Pro) (Stern, 2019)"] },
   { id: 19721, name: "Old Town Pizza Parlor", dmd: "OLD TOWN PIZZA", machines: ["Fish Tales (Williams, 1992)", "Last Action Hero (Data East, 1993)"] },
   { id: 5132, name: "Pizza Castle", dmd: "PIZZA CASTLE", machines: ["Theatre of Magic (Bally, 1995)", "Indiana Jones: The Pinball Adventure (Williams, 1993)"] },
@@ -2375,6 +2469,7 @@ const VENUES = [
   { id: 6422, name: "Sister", dmd: "SISTER", machines: null },
   { id: 23079, name: "Skate-O-Mania", dmd: "SKATE-O-MANIA", machines: ["Stranger Things (Pro) (Stern, 2019)"] },
   { id: 28980, name: "Stone Face Tavern", dmd: "STONE FACE", machines: ["James Bond 007 (Pro) (Stern, 2022)", "King Kong: Myth of Terror Island (Pro) (Stern, 2025)", "Godzilla (Pro) (Stern, 2021)", "Pokémon (Pro) (Stern, 2026)", "Pulp Fiction (LE) (Chicago Gaming, 2023)"] },
+  { id: 30944, name: "Turquoise Desert Taproom", dmd: "TURQUOISE", machines: ["Junk Yard (Williams, 1996)"] },
   { id: 27473, name: "Unhinged Brewing Co", dmd: "UNHINGED", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "Fallout (Pro) (Stern, 2026)", "JAWS (Pro) (Stern, 2024)", "James Bond 007 (Pro) (Stern, 2022)", "Pokémon (Premium) (Stern, 2026)", "Star Wars: Fall of the Empire (Premium) (Stern, 2025)", "The Uncanny X-Men (Pro) (Stern, 2024)", "The Walking Dead Remastered (Premium) (Stern, 2025)"] },
   { id: 28937, name: "Uptown Sports Bar", dmd: "UPTOWN", machines: ["Dungeons & Dragons: The Tyrant's Eye (Pro) (Stern, 2025)", "JAWS (Pro) (Stern, 2024)", "Transformers: More Than Meets the Eye (Pro) (Stern, 2026)", "Guardians of the Galaxy (Pro) (Stern, 2017)", "Fallout (Pro) (Stern, 2026)"] }
 ];
@@ -2388,7 +2483,7 @@ const slug = s => norm(s).replace(/\s+/g, "-") || "machine";
 const libByGroup = new Map(LIBRARY.filter(m => m.opdb).map(m => [m.opdb, m]));
 const libByName = new Map(LIBRARY.map(m => [norm(m.name), m]));
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-VENUES.forEach(v => { v.slug = slug(v.name); v.url = "https://pinballmap.com/map/?by_location_id=" + v.id; });
+VENUES.forEach(v => { v.slug = v.slug || slug(v.name); v.url = "https://pinballmap.com/map/?by_location_id=" + v.id; });
 // Sister's snapshot lineup is the curated MACHINES list itself.
 VENUES.find(v => v.id === SISTER_ID).machines = MACHINES.map(m => m.name + (m.variant ? " (" + m.variant + ")" : ""));
 const venueBySlug = new Map(VENUES.map(v => [v.slug, v]));
