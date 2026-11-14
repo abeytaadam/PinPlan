@@ -567,7 +567,7 @@
       "id": 6422,
       "name": "Sister",
       "url": "https://pinballmap.com/map/?by_location_id=6422",
-      "date_last_updated": "2026-11-04",
+      "date_last_updated": "2026-11-13",
       "machines": [
         {
           "name": "Attack From Mars (Remake LE)",
@@ -595,6 +595,13 @@
           "manufacturer": "Bally",
           "year": 1981,
           "opdb_id": "GrX7q-MLWkn",
+          "scores": []
+        },
+        {
+          "name": "Dune",
+          "manufacturer": "Barrels of Fun",
+          "year": 2025,
+          "opdb_id": "Gd266-ME0l7",
           "scores": []
         },
         {
@@ -849,5 +856,5 @@
       ]
     }
   ],
-  "synced_at": "2026-11-12T19:55:04.702Z"
+  "synced_at": "2026-11-14T01:58:34.085Z"
 }
