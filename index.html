@@ -1148,6 +1148,234 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "taxi", code: "TAXI", name: "Taxi", sort: "Taxi",
+  mfr: "Williams", year: 1988, variant: "", group: "classic", opdb: "GrN90",
+  thesis: "Always be in multiball: pick up a lit passenger, lock at the right scoop, and shoot the left loop to start it.",
+  plan: [
+    "The Spinout skill shot advances its award with each spin of the ball in the cup, and the value is multiplied by the ball number (a 100K skill shot is 300K on ball three).",
+    "Collect any lit passenger to light the lock at the right scoop, lock a ball there, then shoot the left loop for multiball.",
+    "In multiball, shoot Express Lane 1 at the right scoop, then Express Lane 2 on the left, for 300,000 and 100,000 ramps for the rest of the multiball.",
+    "Collect all the lit passengers (Drac at the left scoop, Santa left of the bumpers, Lola or Marilyn at the center drops, Gorbie right of the bumpers, Pinbot at the far right drops) to light the jackpot at the Gorbie shot. It only stays lit for a few seconds.",
+    "After multiball ends, pick up a passenger to relight the lock and go again."
+  ],
+  avoid: [
+    "Letting the jackpot time out. When it lights, shoot Gorbie right away; in multiball you can also go Santa, then the Gorbie gate."
+  ],
+  tourney: [
+    "Light CAB three times on one ball to light the extra ball at the Drac shot."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 9, "After multiball ends, pick up a passenger to relight the right saucer lock. Keep always being in multiball."],
+    ["skillshot", 5, "The skill shot is multiplied by the ball number on normal settings, so 100K is 300K on ball three."],
+    ["general", 5, "Light CAB three times on one ball to light the extra ball at the Drac shot."],
+    ["general", 4, "In multiball, the jackpot shot (Gorbie gate, then the saucer) also works in reverse: Santa, then the Gorbie gate."],
+    ["multiball", 3, "The right saucer locks a ball and the left ramp releases it. Always be in multiball."],
+    ["general", 2, "The Carry Passenger target lights after the Marilyn or Pinbot targets. Hit it before time runs out to carry your passengers to the next ball."]
+  ],
+  rules: "Pick up passengers around the playfield to light the lock and the jackpot. Multiball starts from a lock at the right scoop and the left loop. Express Lanes in multiball raise the ramp values, and CAB lights an extra ball.",
+  sources: [["Pinball Primer: Taxi", "https://pinballprimer.github.io/taxi_GrN90.html"], ["PinTips: Taxi", "https://app.matchplay.events/opdb/entries/GrN90/pintips"]]
+},
+{
+  id: "harlem-globetrotters", code: "HGT", name: "Harlem Globetrotters On Tour", sort: "Harlem Globetrotters On Tour",
+  mfr: "Bally", year: 1979, variant: "", group: "classic", opdb: "GRnwQ",
+  thesis: "Complete the inlane drop targets for 5X bonus, then milk the spinner at 2,000 a spin. Bonus carries over, so build it early.",
+  plan: [
+    "Complete the inline drop targets to score 5X bonus and raise the left orbit spinner to 2,000 a spin.",
+    "Shoot that spinner over and over.",
+    "Collect G-L-O-B-E letters at the top saucer (the inline drops also spot them). Each GLOBE is 50,000; the first lights the outlane for 25,000 for the rest of the game, and later ones score specials.",
+    "Get the bonus to 20,000 on ball one if you can. It carries over from ball to ball, and 30,000 or 40,000 isn't hard to reach after that.",
+    "If extra balls are on, complete the five standups on the left below the spinner, then collect the extra ball at the lower right standup."
+  ],
+  avoid: [
+    "The gap between the two left scissor flippers. A ball that slips between them drains."
+  ],
+  tourney: [
+    "If the super bonus carries over on this copy, it can be worth a lot. The lit center spinner raises it."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 8, "The key to a big score is getting 20K bonus on ball one. It carries over between balls, and 30K or 40K isn't hard after that."],
+    ["general", 5, "Shoot the inline drops to raise the left orbit spinner's value. Milk that spinner and collect letters in the center saucer."],
+    ["general", 3, "Beware the gap between the two left scissor flippers. A ball that passes between them drains in the most embarrassing way."],
+    ["general", 2, "The inline drops light GLOBE letters for big points."],
+    ["general", 2, "If Super Bonus carries over, it can be very valuable; the lit center spinner raises it."],
+    ["general", 2, "Complete the five standups on the left below the spinner to light the extra ball, then collect it at the lower right standup."]
+  ],
+  rules: "The inline drop targets give bonus X, spot GLOBE letters and raise the spinner value. The top saucer awards GLOBE letters; each completed GLOBE scores 50,000, then outlane points and specials. Bonus carries over between balls. The same guide covers Space Rider.",
+  sources: [["Pinball Primer: Harlem Globetrotters", "https://pinballprimer.github.io/harlem_GRnwQ.html"], ["PinTips: Harlem Globetrotters", "https://app.matchplay.events/opdb/entries/GRnwQ/pintips"]]
+},
+{
+  id: "simpsons-data-east", code: "SIMP", name: "The Simpsons", sort: "Simpsons",
+  mfr: "Data East", year: 1990, variant: "", group: "classic", opdb: "G5VBJ",
+  thesis: "Always be shooting the left ramp or playing multiball. The ramp spells MILLIONS for an unlimited-millions round.",
+  plan: [
+    "Plunge to the top lanes (there's no skill shot). Complete them, using either flipper to rotate the lit lanes, to raise the bonus multiplier up to 6x.",
+    "Shoot the left ramp for M-I-L-L-I-O-N-S letters. Spelling it starts a timed round of million-point shots.",
+    "A second ramp shot right after the first one of a ball, or right after multiball, gives a mystery award.",
+    "Knock down the center bowling pin drop targets to light locks, then shoot a lock for two-ball multiball. Relock both balls within a few seconds of each other for three-ball multiball.",
+    "In three-ball multiball, clear the bowling pins to light the jackpot on the left ramp. The longer you keep the multiball going, the more it's worth."
+  ],
+  avoid: [
+    "Rushing the three-ball jackpot. It grows the longer multiball runs."
+  ],
+  tourney: [
+    "The lock location changes in later multiballs, so check which shot is lit before you aim."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 1, "The center drops light locks; the lock moves in later multiballs. Relock for the jackpot, and MILLIONS keeps advancing on the ramp during multiball."],
+    ["general", 1, "The left ramp adds a MILLIONS letter. Spelling it lights million-point ramp shots, either one or unlimited depending on settings."]
+  ],
+  rules: "The left ramp spells MILLIONS for a timed million-point round and gives mystery awards on quick repeats. The bowling pin drops light locks for two-ball, then three-ball multiball, with a growing jackpot at the left ramp. The top lanes raise bonus X up to 6x.",
+  sources: [["Pinball Primer: The Simpsons", "https://pinballprimer.github.io/simpsons_G5VBJ.html"], ["PinTips: The Simpsons", "https://app.matchplay.events/opdb/entries/G5VBJ/pintips"]]
+},
+{
+  id: "whirlwind", code: "WHRL", name: "Whirlwind", sort: "Whirlwind",
+  mfr: "Williams", year: 1990, variant: "", group: "classic", opdb: "GrE7e",
+  thesis: "Skip the dangerous skill shot, light locks at the flashing direction targets, and in multiball shoot the side ramp for Millions-Plus.",
+  plan: [
+    "Skip the drop target skill shot: it often bounces straight down the middle, and there's no ball save. Full plunge to the upper loop, or soft plunge to a flipper. If you drain without scoring, you get the ball back.",
+    "Learn both upper flipper shots, the side ramp and the upper loop, and how to tame the ball out of the Cellar Door kickout.",
+    "Complete the flashing direction targets to light locks, then lock two balls at or under the ramp for multiball.",
+    "In multiball, always shoot the side ramp: the jackpot is the Millions-Plus shot there. Either cellar scoop restarts multiball, not just the blinking one.",
+    "The side ramp or the right inlane, then the cellar door, gives the award lit at the back. The right orbit spinner changes that award; quick multiball and light extra ball are worth taking."
+  ],
+  avoid: [
+    "The northwest direction target, which tends to drain balls. The left ramp spots a target, so use it for that one."
+  ],
+  tourney: [
+    "The right inlane briefly lights the yellow right cellar scoop for a cellar award. Watch for it."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 9, "Shoot the lit standups to light lock, then lock two balls at or under the ramp. The jackpot is the Million Plus shot on the side ramp."],
+    ["multiball", 5, "Either cellar scoop restarts multiball. You don't have to hit the blinking one."],
+    ["general", 5, "The right inlane briefly lights the yellow right cellar scoop for a cellar award."],
+    ["general", 4, "The left ramp spots a target, which is handy for the northwest target that's often deadly."],
+    ["skillshot", 3, "The skill shot is plunging into the drops, but it's dangerous. Soft plunge to a flipper instead; if you drain with no score, you get the ball back."],
+    ["general", 2, "The right orbit spinner changes the cellar award. Some, like quick multiball and light extra ball, are very valuable."]
+  ],
+  rules: "Direction targets light locks for two-ball multiball, with Millions-Plus jackpots on the side ramp and restarts at the cellar scoops. The Cellar Door gives awards chosen by the right orbit spinner. A spinning disc under the playfield, upper flippers and the skill shot drops round out the game.",
+  sources: [["Pinball Primer: Whirlwind", "https://pinballprimer.github.io/whirlwind_GrE7e.html"], ["PinTips: Whirlwind", "https://app.matchplay.events/opdb/entries/GrE7e/pintips"]]
+},
+{
+  id: "no-good-gofers", code: "NGG", name: "No Good Gofers", sort: "No Good Gofers",
+  mfr: "Williams", year: 1997, variant: "", group: "classic", opdb: "G57X4",
+  thesis: "Multiball is the big points. Learn to backhand the right ramp early and it becomes easy to repeat.",
+  plan: [
+    "Try the standard skill shot: it's easy millions. But the ball save usually isn't on after a ball lock. On some copies, a full plunge sends the ball up the side ramp for an immediate Hole in One shot.",
+    "Shoot the center ramp to raise Bud, then hit him twice for a lock. Raise Buzz the same way and lock again. Then shoot the Putting Green center lane for multiball.",
+    "In multiball, the side ramp scores jackpots, and the right ramp relights them. A jackpot lights Hole in One for the super jackpot.",
+    "For game progress, shoot the shots lit for Drive until Putt Out lights at the center lane. Putting out awards the value showing on the wheel.",
+    "Or shoot the side ramp to drop the silver slam ramp, then use it to shoot the Hole in One for at least 1M. A lit Hole in One also starts multiball."
+  ],
+  avoid: [
+    "A fourth center ramp in a row. After three or four, the gofer pops up and blocks it, so hit something else."
+  ],
+  tourney: [
+    "Each multiball after the first gets harder to start, so make the first one count."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 5, "On some copies, a full plunge sends the ball up the side ramp for a Hole in One shot right away."],
+    ["general", 3, "Learn to backhand the right ramp early, and multiball becomes easy to repeat all game."],
+    ["skillshot", 3, "Go for the standard skill shot: it's easy millions. But the ball save usually isn't on after a ball lock."],
+    ["multiball", 3, "The center ramp raises Bud; shoot him twice to lock. It raises Buzz next; twice more to lock. The putting green starts multiball, side ramp jackpots, right ramp relights."],
+    ["secret", 2, "The Hole in One shot also starts multiball if it's lit at the putting green."],
+    ["general", 1, "After three or four center ramps in a row, a gofer rises to block more. Hit something else after three."]
+  ],
+  rules: "Play golf holes by shooting Drive shots, then Putt Out at the center lane for the wheel's value, or ace a hole with the slam ramp. Raise and hit the gofers (Bud and Buzz) to lock balls, then the putting green starts multiball, with jackpots on the side ramp and a Hole in One super jackpot.",
+  sources: [["Pinball Primer: No Good Gofers", "https://pinballprimer.github.io/nogoodgofers_G57X4.html"], ["PinTips: No Good Gofers", "https://app.matchplay.events/opdb/entries/G57X4/pintips"]]
+},
+{
+  id: "tron-legacy", code: "TRON", name: "TRON: Legacy", sort: "TRON Legacy",
+  mfr: "Stern", year: 2011, variant: "", group: "stern", opdb: "GrkL5",
+  thesis: "Run Light Cycle and Quorra Multiball together. If you can make the side ramp, End of Line jackpots beat almost everything else.",
+  plan: [
+    "Short plunge so the ball enters the Flynn's Arcade scoop from behind for a 500K skill shot and a mystery award.",
+    "Shoot the lit orange and yellow inserts to light Light Cycle Multiball at the near right scoop. If you need just one more, a hard plunge can make the light cycle shot behind the pops.",
+    "Shoot the turnaround lane just right of the left ramp to light Quorra Multiball at the same scoop. The two multiballs can run at once and help progress most other modes.",
+    "In Quorra Multiball, hit the center standups three times to add a ball, up to twice. The grace period is long, so if you're down to one ball with an add-a-ball left, hit the center bank fast.",
+    "Any combo that ends with the upper ramp to the left flipper lights an End of Line jackpot at the scoop, which grows with every combo."
+  ],
+  avoid: [
+    "Starting one multiball alone when the other is close. They stack."
+  ],
+  tourney: [
+    "In Sea of Simulation, shoot the right orbit to light the Flynn's Arcade scoop, which awards the next shot you need."
+  ],
+  venue: blank(),
+  tips: [
+    ["wizard", 16, "During Sea of Simulation, shoot the right orbit to light the Flynn's Arcade scoop. It awards the next shot you need."],
+    ["multiball", 7, "If you need just one more shot to light Light Cycle Multiball, plunge hard to hit the light cycle shot behind the pop bumpers."],
+    ["general", 6, "During Quorra Multiball, hit the center standups three times to add a ball. You can do it twice per multiball."],
+    ["general", 6, "Any combo ending with the upper ramp to the left flipper lights an End of Line jackpot at the scoop. Big points."],
+    ["multiball", 5, "Quorra's add-a-ball grace period is long. With one add-a-ball left and all but one ball drained, shoot the center bank fast to keep multiball going."],
+    ["general", 5, "Lit yellow inserts light Light Cycle Multiball at the scoop, and the Quorra shot left of the disc lights Quorra Multiball there."]
+  ],
+  rules: "Light Cycle and Quorra multiballs both start at the near right scoop and can run together. Modes on the center ladder flash when started and stay lit when completed. Combos build End of Line jackpots collected at the scoop after the side ramp.",
+  sources: [["Pinball Primer: TRON: Legacy", "https://pinballprimer.github.io/tron_GrkL5.html"], ["PinTips: TRON: Legacy", "https://app.matchplay.events/opdb/entries/GrkL5/pintips"]]
+},
+{
+  id: "guns-n-roses-data-east", code: "GNRS", name: "Guns N' Roses", sort: "Guns N Roses Data East",
+  mfr: "Data East", year: 1994, variant: "", group: "classic", opdb: "GrPKV",
+  thesis: "Choose Super Pops on the plunge, then shoot the Add Band Member scoop all day. Backhanding it from the right flipper is safest.",
+  plan: [
+    "The skill shot is a free award you pick with the flippers. Super Pops is the usual choice; Add Member can start multiball right away if you're one band member short.",
+    "Find out which shots you can backhand. If it's the left Guitar scoop, focus there: it starts the modes, which are all valuable, and leads to Riot.",
+    "If you can backhand the up-kicker just right of the R ramp entrance (Add Band Member), use it to qualify multiball quickly.",
+    "In multiball, shoot both ramps, then the up-kicker, then both ramps again, the up-kicker again, then the side loop from the upper left flipper.",
+    "Dizzy, Axl and Coma are extra multiball modes started at the left saucer; Coma needs one more Add Band Member shot first."
+  ],
+  avoid: [
+    "Dodging the pedestrians in the Gilby Rolls video mode. Avoid the cars (1M), but hit the pedestrians (5M)."
+  ],
+  tourney: [
+    "Playing through all the Guitar scoop modes leads to Riot, which can score huge and run a long time."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 3, "Quick strategy: choose Super Pops on the plunge, then shoot Add Band Member all day. Backhanding it is safer."],
+    ["general", 2, "Backhanding the Add Band Member scoop from the right flipper is much easier and safer. Use the right flipper whenever you can."],
+    ["general", 1, "In the Gilby Rolls video mode, avoid the cars (1M) and hit the pedestrians (5M). Many new players try to avoid everything."],
+    ["multiball", 1, "Dizzy Ball and Axl 3-ball are multiball modes. Coma is one too, but needs an extra shot to the Add Band Member hole to start."],
+    ["general", 1, "Choose Super Pops and start multiballs for big points: the main multiball at the right hole, plus three multiball modes from the left saucer."],
+    ["wizard", 1, "Play through all your scoop modes to reach Riot. It can be huge and seems to go on forever."]
+  ],
+  rules: "Modes start at the left Guitar scoop and lead to Riot, the wizard mode. Band members added at the up-kicker qualify the main multiball, and Dizzy, Axl and Coma are extra multiball modes. The skill shot is a chosen award. Not to be confused with Jersey Jack's 2020 Guns N' Roses.",
+  sources: [["Pinball Primer: Guns 'n Roses (Data East)", "https://pinballprimer.github.io/gnr_GrPKV.html"], ["PinTips: Guns N' Roses (Data East)", "https://app.matchplay.events/opdb/entries/GrPKV/pintips"]]
+},
+{
+  id: "bride-of-pinbot", code: "BOP", name: "The Machine: Bride of Pin-Bot", sort: "Machine Bride of Pin-Bot",
+  mfr: "Williams", year: 1991, variant: "", group: "classic", opdb: "GRpee",
+  thesis: "Shoot the left ramp, always. It advances the Machine's face toward the Big Wheel and its 50M and Billionaire's Club spins.",
+  plan: [
+    "Plunge for the 200,000 skill shot hole every time. Every skill shot hole leads to the pops anyway.",
+    "Shoot the left ramp over and over to advance through the Machine's faces and eventually spin the Big Wheel.",
+    "To score the billion, shoot two balls onto the human face to spin the Big Wheel, then shoot the heartbeat ramp within 12 seconds if it lands on 1B.",
+    "If the left ramp won't go from the right flipper, use the lower loops: the left loop leads to the extra ball, the center ramp can be worth unlimited millions, and the right loop lights the jackpot.",
+    "On 2.0 code, the left scoop starts wheel modes any time. Finishing a small wheel mode gives 30 seconds of double scoring and lights a big wheel mode, so play the big one during the double."
+  ],
+  avoid: [
+    "Wandering off the left ramp when it's working."
+  ],
+  tourney: [
+    "At the start of multiball, focus on the heartbeat ramp from the left flipper for single, double and triple jackpots."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 11, "Shoot the left ramp, always."],
+    ["general", 3, "2.0 code: finishing a small wheel mode gives 30 seconds of double scoring and lights a big wheel mode. A big wheel mode during the double can be huge."],
+    ["general", 3, "2.0 code: at the start of multiball, focus on the heartbeat ramp from the left flipper for single, double and triple jackpots."],
+    ["general", 3, "2.0 code: wheel modes start at the left scoop any time. Finishing a small one lights a big one for real points."],
+    ["general", 2, "To score the billion, shoot two balls onto the human face to spin the Big Wheel, then shoot the heartbeat ramp within 12 seconds if it lands on 1B."],
+    ["multiball", 1, "Shoot both balls up the left ramp for Metamorphosis, and again for the Big Wheel. You want the Billionaire's Club in the center."]
+  ],
+  rules: "The left ramp advances the Machine's face through stages to the Big Wheel, which can award 50M or the Billionaire's Club. The lower loops give extra balls, unlimited millions and the jackpot. 2.0 code adds wheel modes at the left scoop.",
+  sources: [["Pinball Primer: The Machine: Bride of PinBot", "https://pinballprimer.github.io/brideofpinbot_GRpee.html"], ["PinTips: Bride of Pin-Bot", "https://app.matchplay.events/opdb/entries/GRpee/pintips"]]
+},
+{
   id: "incredible-hulk", code: "HULK", name: "The Incredible Hulk", sort: "Incredible Hulk",
   mfr: "Gottlieb", year: 1979, variant: "", group: "classic", opdb: "GRQW7",
   thesis: "Almost all the points are bonus. Get to the top lanes for bonus X, build bonus at the drop targets, then collect it at 20,000.",
@@ -3857,7 +4085,7 @@ function renderGrid() {
 /* Era by display type: electromechanical, solid state (numeric or alphanumeric displays), dot-matrix, LCD.
    Remakes count as the original game's era. ERA_SET covers games the year rule gets wrong. */
 const ERA_NAME = { EM: "Electromechanical", SS: "Solid state", DMD: "Dot-matrix display", LCD: "LCD screen" };
-const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS", "revenge-from-mars": "LCD", "star-wars-episode-i": "LCD", "batman-66": "LCD" };  // Pinball 2000 games use a video monitor
+const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS", "revenge-from-mars": "LCD", "star-wars-episode-i": "LCD", "batman-66": "LCD", "bride-of-pinbot": "SS" };  // Pinball 2000 games use a video monitor
 function eraOf(m) {
   if (ERA_SET[m.id]) return ERA_SET[m.id];
   if (/remake/i.test(m.variant || "")) return "DMD";
