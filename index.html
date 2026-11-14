@@ -2916,6 +2916,7 @@ const GLOSSARY = [
   ["eb", "Extra ball", "Scoring", /\bextra balls?\b/i, "An award that gives you another ball when this one drains. Same player shoots again."],
   ["aab", "Add-a-ball", "Scoring", /\badd-a-balls?\b/i, "An award that puts another ball into a running multiball."],
   ["hurry", "Hurry-up", "Scoring", /\bhurry[- ]ups?\b/i, "A value that counts down until you hit the lit shot. Hit it fast for more."],
+  ["jail", "Jail", "Scoring", /\b(?:pinball )?jail\b/i, "The point in a game where its big features are used up and anything worth more takes a lot of work. If those features went badly, you're stuck."],
   ["wizard", "Wizard mode", "Scoring", /\bwizard modes?\b/i, "A special mode you reach by completing other goals in the game. The final one is the game's big finale."],
   ["pfx", "Playfield multiplier", "Scoring", /\bplayfield (?:multipliers?|x)\b/i, "Multiplies every score on the playfield (2x, 3x and so on) for a while. Best saved for when you're about to score big."],
   ["shotx", "Shot multiplier", "Scoring", /\bshot multipliers?\b/i, "Multiplies the value of one particular shot."],
@@ -2925,7 +2926,8 @@ const GLOSSARY = [
   ["backhand", "Backhand", "Flipper skills", /\bbackhand(?:s|ed)?\b/i, "Shooting with the flipper on the same side as the target, so the ball crosses up the near side rather than across the playfield."],
   ["nudge", "Nudging", "Flipper skills", /\bnudg(?:e|es|ed|ing)\b/i, "Moving the machine gently with your hands to change the ball's path, like keeping it out of an outlane. Too much and you tilt."],
   ["tilt", "Tilt", "Flipper skills", /\btilt(?:s|ed)?\b/i, "What happens if you shake the machine too much: after warnings, your flippers go dead and you lose the ball and its bonus."],
-  ["postpass", "Post pass", "Flipper skills", null, "Moving the ball from one flipper to the other by bouncing it off the post or inlane rubber."],
+  ["postpass", "Post pass", "Flipper skills", /\bpost[- ]pass(?:es)?\b/i, "Moving the ball from one flipper to the other by bouncing it off the post or inlane rubber."],
+  ["skipass", "Ski pass", "Flipper skills", /\bski[- ]pass(?:es)?\b/i, "Holding a flipper up just before a fast ball comes off the inlane, so the ball rides up it like a ramp and jumps over the center drain to the other flipper. Also called a ski jump."],
   ["livecatch", "Live catch", "Flipper skills", null, "Catching a moving ball on a raised flipper by dropping it just before impact, so the ball stops."],
   ["deadbounce", "Dead bounce", "Flipper skills", /\bdead bounces?\b/i, "Letting a ball fall onto a held-up flipper and bounce over to the other flipper."],
   ["drain", "Drain", "Flipper skills", /\bdrain(?:s|ed|ing)?\b/i, "Losing the ball down the middle or an outlane. A ball drained in the first seconds is a quick drain."]
@@ -2936,7 +2938,7 @@ const GL_ORDER = GLOSSARY.filter(g => g[3]).slice().sort((a, b) => b[1].length -
 /* Link the first mention of each term on a plan page. Only text inside the plan content is touched. */
 function linkGlossary(root) {
   const used = new Set();
-  const scopes = root.querySelectorAll("ol.plan, .sec ul.plain:not(.copy), ul.tips, p.rules:not(.nogl)");
+  const scopes = root.querySelectorAll("p.thesis, ol.plan, .sec ul.plain:not(.copy), ul.tips, p.rules:not(.nogl)");
   for (const scope of scopes) {
     const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
       acceptNode: n => n.parentElement.closest("a, button, .tip-meta, b") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
@@ -3005,8 +3007,8 @@ const FORMATS = [
   ["card-qualifying", "Card qualifying", "Qualifying", "PAPA-style", "Players buy a “card” with a set number of games and play them as single-player games. Every score on the card counts, not just your best.", "Each score is compared only with other players' scores on the same game in that qualifying, and your card's total decides qualifying. Later entries from others can push your score down.", "One strong card can outweigh several weak ones. Beating your own earlier score lowers its value, so spread entries across different games."],
   ["brackets", "Elimination brackets", "Finals", "Single or double elimination", "Seeded finals where you're out after one loss (single) or two (double). Head-to-head matches are often best of five or seven; four-player brackets use match play scoring with the top two advancing.", "The higher seed usually picks the game or the play order, and the lower seed picks the rest. In four-player groups, seeds choose in order.", "A high seed buys you choices: spend qualifying earning it, and know which game you'd pick before finals start."],
   ["ladder", "Ladder", "Finals", "", "After seeding, the four lowest seeds play a game and the lowest score is eliminated. The next seed up joins, and this repeats until the top seed is in and a winner is decided.", "Just don't be last in each game.", "You only need to beat one player each game. Watch the scores and stop taking risks once you're clear of last."],
-  ["split-flipper", "Split-flipper", "Just for fun", "", "Partners share one game, each controlling one flipper button. It can be added to almost any format, usually for fun.", "Whatever the main format uses.", "Call your shots out loud and agree who takes which ball when it heads down the middle."],
-  ["stall-ball", "Stall ball", "Just for fun", "", "Players line up at one machine. Whoever's playing tries to stop the ball in a scoop, saucer or lock, shouts “stall!”, and goes to the back of the line while the next player takes over. Drain and you're out. Score doesn't matter, and it isn't an IFPA-ranked format.", "Last player in wins.", "Know where the holds are on the machine before you step up."]
+  ["split-flipper", "Split-flipper", "Just for fun", "", "Partners share one game, each controlling one flipper button. It can be added to almost any format, usually for fun.", "Whatever the main format uses.", "Pinball is for lovers. Call your shots out loud and agree who takes which ball when it heads down the middle."],
+  ["stall-ball", "Stall ball", "Just for fun", "", "Players line up at one machine. Whoever's playing tries to stop the ball in a scoop, saucer or lock, shouts “stall!”, and goes to the back of the line while the next player takes over. Drain and you're out. Score doesn't matter, and it isn't an IFPA-ranked format.", "Last player in wins.", "Know where the ball stalls are on the machine before you step up."]
 ];
 const FM_CODE = { "group-match-play": "GMP", "head-to-head": "H2H", "target-match-play": "TMP", "max-match-play": "MMP", "flip-frenzy": "FF", "standard-strikes": "KO", "fair-strikes": "FAIR", "progressive-strikes": "PROG", "amazing-race": "RACE", "pingolf": "GOLF", "best-game": "HERB", "card-qualifying": "CARD", "brackets": "BRKT", "ladder": "LADR", "split-flipper": "SPLT", "stall-ball": "STAL" };
 const FM_SOURCES = [
