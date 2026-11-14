@@ -1148,6 +1148,232 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "incredible-hulk", code: "HULK", name: "The Incredible Hulk", sort: "Incredible Hulk",
+  mfr: "Gottlieb", year: 1979, variant: "", group: "classic", opdb: "GRQW7",
+  thesis: "Almost all the points are bonus. Get to the top lanes for bonus X, build bonus at the drop targets, then collect it at 20,000.",
+  plan: [
+    "Send the ball to the top of the table, through the spinner or off the drop targets, until you've earned 5x bonus. A lit top lane gives that lane's multiplier, and the game never lights one lower than you have.",
+    "Knock down the seven-bank of drop targets to build bonus, one advance per target.",
+    "Hit the 1-2-3 targets to light the extra ball at the far right rollover lane and the spinner at 1,000 a spin. After that, spinner all day.",
+    "When bonus reaches 20,000, collect it in a kicker lane (where the slingshots would normally be), whatever your bonus X."
+  ],
+  avoid: [
+    "Trusting the slingshots. They're passive here, so the ball bounces off them unpredictably."
+  ],
+  tourney: [
+    "Bonus X comes from the top lanes, which cycle between 2x and 5x. Getting there early each ball is the whole game."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 3, "Focus on the drop targets and getting the ball to the top lanes. The 1-2-3 targets light an extra ball at the far right rollover lane."],
+    ["general", 2, "At 20,000 bonus, Collect Bonus is available. Park the ball in a kicker lane to collect and reset it."],
+    ["general", 1, "The 1-2-3 standups also light the spinner for 1,000 a spin."],
+    ["general", 1, "The slings are passive, so watch out for unexpected bounces off them."],
+    ["general", 1, "The top lanes are your bonus X, cycling from 2x to 5x. Rolling through a higher one raises bonus X to that value."]
+  ],
+  rules: "Scoring is mostly bonus. The four top lanes award bonus multipliers up to 5x, the seven drop targets and other switches build bonus up to 20,000, and the kicker lanes collect it. The 1-2-3 targets light the spinner and an extra ball.",
+  sources: [["Pinball Primer: The Incredible Hulk", "https://pinballprimer.github.io/hulk_GRQW7.html"], ["PinTips: The Incredible Hulk", "https://app.matchplay.events/opdb/entries/GRQW7/pintips"]]
+},
+{
+  id: "willy-wonka", code: "WONKA", name: "Willy Wonka & the Chocolate Factory", sort: "Willy Wonka",
+  mfr: "Jersey Jack", year: 2019, variant: "", group: "other", opdb: "GYWBZ",
+  thesis: "Earn Golden Tickets: start Factory Tour modes at the saucer, and play Gobstopper and Kid multiballs. Five tickets lead to the wizard modes.",
+  plan: [
+    "Soft plunge into the computer saucer for a skill shot. If you plunge too hard, shoot the center ramp from the upper right flipper for the other skill shot.",
+    "For the super skill shot, hold the left flipper, soft plunge to the upper flipper, then shoot the center ramp and the saucer: it boosts every Factory Tour mode and adds bonus X.",
+    "Shoot the saucer to start Factory Tour modes. The right ramp, the orbits and the captive ball each light a different type. Start all 12 for a Golden Ticket.",
+    "Hit the Gobstopper target to light locks (it also adds bonus X), lock three balls for Gobstopper Multiball, shoot the ramps for jackpots, then the Gobstopper for the super.",
+    "Tasks around the game light the left target for Kid Multiball. The more kids you've qualified first, the better it pays.",
+    "Super Locks, collected at the spinner, carry over between games. Three start Wonkavator Multiball."
+  ],
+  avoid: [
+    "Plunging too far into the saucer or the side loop on a super skill shot attempt. You get nothing."
+  ],
+  tourney: [
+    "Super Locks carry over from the previous player's game, so check whether Wonkavator is close before you plan your game."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 4, "Short plunge into the computer saucer for the skill shot. If you plunge too hard, use the upper right flipper to shoot the ramp for the other one."],
+    ["secret", 3, "Super secret skill shot: short plunge, then the camera ramp, factory ramp, Gobstopper ramp and TV."],
+    ["secret", 3, "When shooting for the TV, glance off the G-U-M targets: the ball lights them, spins the Augustus spinner and drops into the TV saucer."],
+    ["general", 2, "The Gobstopper target lights locks and advances bonus X. Wonka bars are worth 500 each in bonus."],
+    ["general", 1, "For the Gobstopper lock, forehand the shot from the right flipper, then once the hole spins around, backhand it from the left."],
+    ["general", 1, "Shoot both orbits to light the super playfield multiplier, then start it at the computer shot. The spinner changes its value."]
+  ],
+  rules: "Five Golden Tickets, earned from tasks like starting all 12 Factory Tour modes, lead to the wizard modes. Factory Tour modes start at the saucer. Gobstopper Multiball comes from three locks, Kid Multiball from tasks around the game, and Wonkavator Multiball from three Super Locks that carry over between games.",
+  sources: [["Pinball Rulesheets: Willy Wonka", "https://pinballrulesheets.com/jersey-jack/wonka-rulesheet"], ["PinTips: Willy Wonka", "https://app.matchplay.events/opdb/entries/GYWBZ/pintips"]]
+},
+{
+  id: "batman-66", code: "B66", name: "Batman 66", sort: "Batman 66",
+  mfr: "Stern", year: 2016, variant: "", group: "stern", opdb: "GRoz4",
+  thesis: "Light the Bat Phone, start a villain mode, and finish Mr. Freeze and Bookworm early: together they freeze timers for the rest of your game.",
+  plan: [
+    "Each villain has its own shots (ramps for Catwoman, orbits for Riddler, center for Joker, scoop for Penguin). Hit them enough times to light the Bat Phone, then shoot the phone to start the mode.",
+    "Major villains have several phases. After each phase, cash the super jackpot at the scoop, or turn it down and play the next phase with a bigger multiplier.",
+    "Hit the three TV targets in the lower right to light the left orbit for a minor villain mode. Choose Shame for a two-ball multiball.",
+    "Hit the standups on either side of the spinning disc to light locks on the right orbit. Lock three for multiball, where all shots are lit for jackpots.",
+    "When the big siren light on the carousel is lit, shoot through the center of the carousel to start the playfield multiplier.",
+    "Hit the Commissioner Gordon target, just left of the scoop, to qualify shot multipliers: 2x for the next shot, rising to 6x for the rest of the ball."
+  ],
+  avoid: [
+    "Taking a super jackpot early when the next phase's multiplier would pay more."
+  ],
+  tourney: [
+    "Mr. Freeze freezes all timers for the rest of the ball, and pairing it with Bookworm makes the freeze last the whole game. Go for both early."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 8, "Hit the three TV targets on the right to light a minor villain mode, then hit the left orbit hard to start it. Choose Shame for a two-ball multiball."],
+    ["general", 7, "Finishing Bookworm and Mr. Freeze freezes timers for the rest of your game."],
+    ["general", 7, "Shoot the two standups beside the spinning disc to light locks on the right orbit. Lock three for multiball with all shots lit for jackpots."],
+    ["general", 6, "When the big siren light on the carousel is lit, shoot through the center of the carousel to start the playfield multiplier."],
+    ["general", 4, "Raise the Bat Phone hurry-up value with the Gordon standup, by switching villains or with a mystery shot."],
+    ["general", 4, "Villain shots: ramps for Catwoman, orbits for Riddler, center for Joker, scoop for Penguin. Hit them to light the Bat Phone, then shoot the phone."]
+  ],
+  rules: "Major villain modes start at the Bat Phone; each has phases, with a choice between cashing a super jackpot or a bigger multiplier. Minor villains start at the left orbit after the TV targets. Locks at the right orbit start multiball, the Gordon target builds shot multipliers, and gadgets let you spot shots with the action button.",
+  sources: [["Pinball Primer: Batman 66", "https://pinballprimer.github.io/batman66_GRoz4.html"], ["PinTips: Batman 66", "https://app.matchplay.events/opdb/entries/GRoz4/pintips"]]
+},
+{
+  id: "creature-from-the-black-lagoon", code: "CFTBL", name: "Creature from the Black Lagoon", sort: "Creature from the Black Lagoon",
+  mfr: "Bally", year: 1992, variant: "", group: "classic", opdb: "GrNWn",
+  thesis: "If the pops feed is easy to trap, shoot the center Move Your Car shot all day. If not, play for multiball: spell F-I-L-M, lock, find the Creature and rescue the girl.",
+  plan: [
+    "Before the plunge the KISS letters strobe, and a full plunge awards however many are lit when the ball passes. It only works fully until your first KISS.",
+    "Find out whether the feed out of the pop bumpers traps on the right flipper or dead bounces to the left. If it does, shoot the center shot all day; a perfect Move Your Car is 80M.",
+    "Otherwise, spell F-I-L-M at the left Kiss lane, the Snackbar targets, the top PAID lanes and the right Slide lane, then lock a ball at the Kiss or Slide lane.",
+    "In multiball, shoot the side lanes or Snackbar until the Creature is found, rescue the girl at the Snackbar, then shoot the Snackbar again for the jackpot.",
+    "After the jackpot, hit the pop bumpers until the super jackpot lights, collect it at the Snackbar, and repeat.",
+    "Cradle one ball on the left flipper and shoot the left ramp with the other to raise playfield scoring to 4x."
+  ],
+  avoid: [
+    "Ignoring a running mode when multiball starts. The mode's timer resets after multiball, which can be worth a lot."
+  ],
+  tourney: [
+    "Spelling F-I-L-M in order adds an 8M Sequential FILM Bonus."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 15, "Before the plunge, the KISS letters strobe, and the game awards however many are lit when the ball passes."],
+    ["multiball", 7, "In multiball, cradle one ball on the left flipper and shoot the left ramp to raise playfield scoring to 4x. Go to the pops after the first jackpot to light the super."],
+    ["secret", 6, "Starting multiball while a mode is running resets that mode's timer when multiball ends. Very lucrative during Unlimited Millions."],
+    ["general", 6, "Move Your Car is good for quick points outside multiball. Shoot the center shot over and over fast; a perfect round is 80M."],
+    ["general", 5, "Start the game by plunging for KISS letters. Let the ball drain during the ball save, then plunge to PAID for a free letter."],
+    ["multiball", 5, "Completing F-I-L-M in order adds an 8M Sequential FILM Bonus."]
+  ],
+  rules: "Spell F-I-L-M at four places around the playfield to light the lock at the Kiss or Slide lane. Multiball has a sequence: find the Creature, rescue the girl, collect the jackpot at the Snackbar, light and collect the super. Move Your Car at the center and KISS letters (which lead to extra balls) score outside multiball.",
+  sources: [["Pinball Primer: Creature from the Black Lagoon", "https://pinballprimer.github.io/cftbl_GrNWn.html"], ["PinTips: Creature from the Black Lagoon", "https://app.matchplay.events/opdb/entries/GrNWn/pintips"]]
+},
+{
+  id: "star-wars-episode-i", code: "SWE1", name: "Star Wars Episode I", sort: "Star Wars Episode I",
+  mfr: "Williams", year: 1999, variant: "", group: "classic", opdb: "GRL9r",
+  thesis: "Plunge gently for the skill shot, use the side buttons to pick your mode, and spell J-E-D-I to fight Darth Maul and climb the Jedi ranks.",
+  plan: [
+    "Plunge carefully: the ball has to fall delicately through the skill shot lane, and gentle plunges give you unlimited attempts.",
+    "When no mode is running, use the secondary side buttons to choose which mode is lit, then start it at the Holoprojector.",
+    "Complete modes (Podracing, Space Battle, Gungan Battle, Jar Jar Juggling and others) to spell J-E-D-I. A full JEDI starts the lightsaber duel with Darth Maul, a multiball; winning raises your Jedi rank toward Jedi Spirit.",
+    "Put a ball in each saucer, the Mos Espa Market and Watto's Junk Shop, to start regular multiball. The center target is a 1M jackpot.",
+    "In some modes the side buttons fire lasers or give you free shots, so watch the screen."
+  ],
+  avoid: [
+    "Starting regular multiball in the middle of a Jedi battle. It works against you there."
+  ],
+  tourney: [
+    "This is a Pinball 2000 game with video projected over the playfield. If you've never played one, spend your first ball learning where the upper shots are."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 2, "Always plunge carefully: gentle plunges give you unlimited attempts, and the ball needs to fall very delicately through the skill shot lane."],
+    ["general", 1, "When no mode is running, the secondary side buttons select which mode is lit."],
+    ["general", 1, "In certain modes, the secondary side buttons give you free shots."]
+  ],
+  rules: "Modes started at the Holoprojector award J-E-D-I letters; spelling JEDI starts a lightsaber duel with Darth Maul, and winning duels raises your Jedi rank. Regular multiball comes from a ball in each of the two saucers, with jackpots at the center target. It was the last pinball machine Williams made.",
+  sources: [["Wikipedia: Star Wars Episode I (pinball)", "https://en.wikipedia.org/wiki/Star_Wars_Episode_I_(pinball)"], ["PinTips: Star Wars Episode I", "https://app.matchplay.events/opdb/entries/GRL9r/pintips"]]
+},
+{
+  id: "world-cup-soccer", code: "WCS", name: "World Cup Soccer", sort: "World Cup Soccer",
+  mfr: "Bally", year: 1994, variant: "", group: "classic", opdb: "G42E2",
+  thesis: "Score goals. Each one starts an Ultra mode and adds 5M to bonus, and every fourth lights a TV award. Then play multiball and travel the cities.",
+  plan: [
+    "The Coin Toss skill shot drops the ball through one of three holes: the third is 30M and advances a city.",
+    "Shoot the goal when it's lit (at the start of each ball, or after rolling over the four star buttons in front of it). Each goal starts an Ultra mode, adds 5M to bonus, and every fourth lights the TV saucer.",
+    "Hit the Striker target behind the spinning ball for Striker awards, including an extra ball and Unlimited Kickback.",
+    "Shoot the ramps and lanes lit for Build Lock to light the lock, lock with a ramp, then shoot the TV saucer (Final Draw) for multiball. Score goals for jackpots, and shoot the ramps to relight them.",
+    "Shoot both ramps, or complete the top lanes from the left orbit, to light Travel at the left orbit. Visiting all nine cities qualifies the Final Match wizard mode."
+  ],
+  avoid: [
+    "Tilting. Ultra mode points are added to your end-of-ball bonus."
+  ],
+  tourney: [
+    "Once per multiball, the Extra Ball button relights the jackpot."
+  ],
+  venue: blank(),
+  tips: [
+    ["secret", 5, "Once per multiball, hit the Extra Ball button to relight the jackpot."],
+    ["general", 4, "Activate the first Striker award with the Striker target or the goal (while the goalie isn't moving). Later awards come from the Striker only."],
+    ["secret", 3, "Striker awards in tournament mode, in order: Penalty Kick, 3 Goals, Advance 3 Cities, Extra Ball (50M with extra balls off), Unlimited Kickback, Super Free Kick, 20M."],
+    ["general", 2, "A goal also starts an Ultra mode (ramp, spinner, jets or goalie). Ultra points go into your end-of-ball bonus, so don't tilt."],
+    ["multiball", 2, "Five Build Lock shots light the lock, a ramp locks, and Final Draw starts multiball. Then the goal for jackpots, and the ramps relight them."]
+  ],
+  rules: "Goals score points, start Ultra modes, add bonus and light TV awards. Build Lock shots lead to multiball, with jackpots at the goal. Travel through nine cities at the left orbit qualifies Final Match, the wizard mode. The Striker target gives a series of awards.",
+  sources: [["Pinball Primer: World Cup Soccer", "https://pinballprimer.github.io/wcs_G42E2.html"], ["PinTips: World Cup Soccer", "https://app.matchplay.events/opdb/entries/G42E2/pintips"]]
+},
+{
+  id: "phantom-of-the-opera", code: "POTO", name: "The Phantom of the Opera", sort: "Phantom of the Opera",
+  mfr: "Data East", year: 1990, variant: "", group: "classic", opdb: "Grq1D",
+  thesis: "Learn to loop the left ramp. After you spell PHANTOM, every ramp in a row is worth 1M until you miss.",
+  plan: [
+    "Plunge into the flashing top lane for the skill shot: 100,000 times the ball number, and it opens the organ for the first lock. There's no lane change.",
+    "Shoot the left ramp for PHANTOM letters. Once you have the M, keep looping it: each consecutive ramp scores 1M until you miss.",
+    "On the last ball, turn your first ramp into a two-ramp combo to double your score.",
+    "If the left ramp isn't working, play for multiball: hit the three organ targets to open it, lock one ball for two-ball play, then lock both for three-ball play.",
+    "In three-ball multiball, hit any target to open the organ again, then shoot a ball into it for the jackpot."
+  ],
+  avoid: [
+    "Breaking a million-per-shot ramp streak to shoot something else."
+  ],
+  tourney: [
+    "The last-ball double is huge in a close game. Save some nerve for that first ramp combo on your final ball."
+  ],
+  venue: blank(),
+  tips: [
+    ["skillshot", 2, "The flashing top lane is the skill shot (100,000 times the ball number). It opens the organ for multiball locks; there's no lane change."],
+    ["general", 1, "Shoot the left ramp over and over to spell PHANTOM. Once it's complete, the ramp stays lit for 1M a shot."],
+    ["multiball", 1, "In three-ball multiball, shoot the organ to open it, then shoot a ball inside for the jackpot."],
+    ["multiball", 1, "Complete ONE on the organ to light the lock, shoot the organ for two-ball multiball, then open it and lock both balls for three-ball multiball."]
+  ],
+  rules: "The left ramp spells PHANTOM, then pays 1M a shot while you keep looping it, and doubles your score on the last ball with a two-ramp combo. Multiball comes from locks in the organ, with jackpots shot into it. The top lanes give the skill shot and a Raise Jackpot mode.",
+  sources: [["Pinball Primer: The Phantom of the Opera", "https://pinballprimer.github.io/phantom_Grq1D.html"], ["PinTips: The Phantom of the Opera", "https://app.matchplay.events/opdb/entries/Grq1D/pintips"]]
+},
+{
+  id: "funhouse", code: "FH", name: "Funhouse", sort: "Funhouse",
+  mfr: "Williams", year: 1990, variant: "", group: "classic", opdb: "G5Dz7",
+  thesis: "Advance the clock to 11:30, lock two balls, and at midnight shoot Rudy's mouth for multiball. The trapdoor is worth millions in multiball.",
+  plan: [
+    "Plunge so the ball slows at the top and drops into the hidden saucer behind Rudy's head for the skill shot, up to 1M. A soft plunge instead gives a safe feed to the right flipper.",
+    "Bumpers, targets, ramps and the top scoop all advance the clock. It starts at 8:00, or 5:00 after a multiball.",
+    "At 11:30, lock two balls at the center shot just right of the top scoop. At midnight, shoot into Rudy's open mouth with the upper flipper for 1M and multiball.",
+    "In multiball, the trapdoor scores Millions-Plus, and the left ramp reopens it. Each jackpot adds 1M to the next.",
+    "Light the mirror by hitting Rudy in the jaw or rolling through the far right inlane, then collect Mirror items toward Super Frenzy."
+  ],
+  avoid: [
+    "Strong plunges if you can't hit the hidden saucer reliably. A soft plunge to the right flipper is the safer start."
+  ],
+  tourney: [
+    "If the first switch your ball hits is the right outlane, Rudy may give it back, depending on the playfield validation setting."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 6, "Shots advance the clock to 11:30. Lock two balls and shoot Rudy for multiball. The trapdoor is the jackpot and the ramp reopens it; each jackpot adds 1M."],
+    ["skillshot", 4, "Soft plunge for a safe feed to the right flipper. On your first ball, go for the mirror for Quick Multiball."],
+    ["wizard", 2, "Super Frenzy adds a million to your Frenzy base value."],
+    ["general", 2, "If the first switch hit is the right outlane, Rudy might give your ball back, depending on the playfield validation setting."],
+    ["general", 1, "The left inlane and the leftmost right inlane light the opposite orbit for Gangway awards: points or an extra ball."]
+  ],
+  rules: "Advance the clock to midnight with shots around the playfield, lock two balls at 11:30, then feed Rudy for multiball, where the trapdoor scores Millions-Plus. The mirror gives items toward Super Frenzy, and the Steps and Gangway give awards including extra balls.",
+  sources: [["Pinball Primer: Funhouse", "https://pinballprimer.github.io/funhouse_G5Dz7.html"], ["PinTips: Funhouse", "https://app.matchplay.events/opdb/entries/G5Dz7/pintips"]]
+},
+{
   id: "total-nuclear-annihilation", code: "TNA", name: "Total Nuclear Annihilation", sort: "Total Nuclear Annihilation",
   mfr: "Spooky", year: 2017, variant: "", group: "spooky", opdb: "GRD79",
   thesis: "Take the risky shots only while a ball save or multiball is running. TNA hands out ball saves often, so wait for them.",
@@ -3631,7 +3857,7 @@ function renderGrid() {
 /* Era by display type: electromechanical, solid state (numeric or alphanumeric displays), dot-matrix, LCD.
    Remakes count as the original game's era. ERA_SET covers games the year rule gets wrong. */
 const ERA_NAME = { EM: "Electromechanical", SS: "Solid state", DMD: "Dot-matrix display", LCD: "LCD screen" };
-const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS", "revenge-from-mars": "LCD", "star-wars-episode-i": "LCD" };  // Pinball 2000 games use a video monitor
+const ERA_SET = { "super-star": "EM", "pulp-fiction": "SS", "revenge-from-mars": "LCD", "star-wars-episode-i": "LCD", "batman-66": "LCD" };  // Pinball 2000 games use a video monitor
 function eraOf(m) {
   if (ERA_SET[m.id]) return ERA_SET[m.id];
   if (/remake/i.test(m.variant || "")) return "DMD";
