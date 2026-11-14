@@ -1148,6 +1148,226 @@ const blank = copy => ({ notes: [], copy: copy || [], tied: [], scores: [] });
 
 const MORE_PLANS = [
 {
+  id: "xenon", code: "XEN", name: "Xenon", sort: "Xenon",
+  mfr: "Bally", year: 1980, variant: "", group: "classic", opdb: "G42Pk",
+  thesis: "If the left flipper makes the tube ramp and the left saucer kicks out cleanly, shoot the ramp all day. If not, play for multiball and then the spinner.",
+  plan: [
+    "Test the tube ramp on ball one. Each shot is worth 5,000 more than the last, up to 90,000 a shot, so a reliable ramp is the whole game.",
+    "Otherwise, collect X's: the top saucer (from the plunge or after a left spinner shot) lights one X each time. Three X's light the lock at the tube ramp.",
+    "Lock a ball in the tube, then collect three more X's to start two-ball multiball. You can collect the first two X's of the next set before locking.",
+    "Starting multiball lights the spinner at 1,000 a spin for the rest of the ball. After that, the spinner is your best shot.",
+    "Hit the targets on the right to raise the bonus multiplier."
+  ],
+  avoid: [
+    "Forcing the ramp when the left saucer's kickout is wild. Switch to the multiball plan instead."
+  ],
+  tourney: [
+    "Ramp values may carry over between balls, depending on the settings. Watch the score on ball two to find out."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 3, "Collect X's from the top scoop, by plunge or the left spinner shot. The first set lights lock at the tube; the second set of three starts multiball."],
+    ["multiball", 2, "Shoot the left spinner up to the saucer three times to light lock, lock in the tube ramp, then three more saucers for two-ball multiball and a 1,000-a-spin spinner."],
+    ["general", 1, "Repeated ramp shots build in value, and the value may carry over between balls depending on the settings."],
+    ["general", 1, "Hit the targets on the right to raise the bonus multiplier."]
+  ],
+  rules: "The tube ramp builds 5,000 a shot up to 90,000. The top saucer lights X's: three light the lock in the tube, three more start two-ball multiball, which lights the spinner at 1,000 a spin. Collecting X's during multiball lights the outlane specials.",
+  sources: [["Pinball Primer: Xenon", "https://pinballprimer.github.io/xenon_G42Pk.html"], ["PinTips: Xenon", "https://app.matchplay.events/opdb/entries/G42Pk/pintips"]]
+},
+{
+  id: "beatles", code: "FAB", name: "The Beatles", sort: "Beatles",
+  mfr: "Stern", year: 2018, variant: "", group: "stern", opdb: "G0l8P",
+  thesis: "On your last ball, if you haven't played it yet, pick All My Loving before you plunge. It's a free two-ball multiball, every time.",
+  plan: [
+    "Before each plunge, use the flippers to choose the song mode that starts with the ball. Choose right away: the selection cycles on its own after about 15 seconds.",
+    "Pick a skill shot by plunge strength: a short plunge to the star rollover (10K), a medium plunge then the big loop from the upper flipper (25K), or a precise plunge through the gap at the top of the loop into the pops (100K).",
+    "Each song mode has one featured shot. Shooting it raises the mode's level and its scoring.",
+    "To start the next song mid-ball, complete the FAB and FOUR drop targets, then shoot the big loop in either direction.",
+    "Complete all three drop target banks (FAB, FOUR and 1964) on one ball to light an extra ball at an inlane. The bank with the lit X raises your bonus multiplier.",
+    "Wizard modes are reachable: one for playing all five songs, another for getting them all to level 5."
+  ],
+  avoid: [
+    "Letting the mode selection cycle on its own before you plunge."
+  ],
+  tourney: [
+    "All My Loving can only be picked before the plunge on the last ball. Never let that ball start without it if it's still available."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 14, "On the last ball, if you haven't played it, use the flippers to choose All My Loving before plunging for a two-ball multiball."],
+    ["general", 6, "Three skill shots: a short plunge to the star rollover (10K), a medium plunge then the loop from the upper flipper (25K), or a plunge through the gap at the top of the loop (100K)."],
+    ["general", 2, "Completing all three drop target sets (FAB, FOUR and 1964) on one ball lights an extra ball at an inlane, which the slingshots move from side to side."],
+    ["general", 1, "Pick your mode right before plunging. The choices cycle on their own after about 15 seconds."],
+    ["general", 1, "One drop target bank has a lit X in front of it. Complete that bank to raise your bonus multiplier."]
+  ],
+  rules: "Five song modes, each built around one featured shot that raises its level. Pick a song before each plunge, or start another with the FAB and FOUR drops plus the big loop. Playing all five songs, and getting all five to level 5, light the two wizard modes. All My Loving is a two-ball multiball available only on the last ball.",
+  sources: [["Pinball Primer: The Beatles", "https://pinballprimer.github.io/beatles_G0l8P.html"], ["PinTips: The Beatles", "https://app.matchplay.events/opdb/entries/G0l8P/pintips"]]
+},
+{
+  id: "alien", code: "ALN", name: "Alien", sort: "Alien",
+  mfr: "Pinball Brothers", year: 2021, variant: "", group: "other", opdb: "G4PBO",
+  thesis: "Complete missions from the Air Lock without tilting. Every finished mission goes into your end-of-ball bonus.",
+  plan: [
+    "The ball comes to the right flipper and every shot is lit for the skill shot. Make three different skill shots in one game for a 5M Super Skill Bonus.",
+    "Choose which film's missions to play, then shoot the Air Lock to start a mission and follow the flashing blue arrows. If no mission is lit, roll through the WEYLAND and YUTANI return lanes, or shoot the ramps.",
+    "Hit the Xenomorph targets for Ambush Multiball, and the spinners and Vent 1 for Sentry Guns Multiball. The orbits advance the multiballs and combos.",
+    "Spell DROP and SHIP at the ramps for 2x scoring.",
+    "Hit the standup targets to collect weapons, check the display for what each one does, and fire with the launch button."
+  ],
+  avoid: [
+    "Tilting. Your bonus is built from completed missions, so a tilt throws a lot away."
+  ],
+  tourney: [
+    "Get Ambush Multiball ready, then use the shotgun as a ball save: it counts as a Xenomorph hit."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 8, "The orbits advance the multiballs, combos and Sentry Guns Multiball."],
+    ["general", 5, "The shotgun, fired with the launch button, counts as a Xenomorph hit. Get the Xeno multiball ready and use the shotgun as a ball save."],
+    ["skillshot", 3, "Three different skill shots in one game score 5M, which can be big in competition."]
+  ],
+  rules: "Two sets of four missions, one for each film, each set leading to a wizard mode, with All-Out War as the final wizard mode. Missions start at the Air Lock and add to your bonus when completed. Ambush, Sentry Guns, Hypersleep and Save Newt are the multiballs; DROP and SHIP light 2x scoring; weapons come from the standups.",
+  sources: [["Pinball Rulesheets: Alien", "https://pinballrulesheets.com/pinball-brothers/pinball-brothers-alien-rulesheet"], ["PinTips: Alien", "https://app.matchplay.events/opdb/entries/G4PBO/pintips"]]
+},
+{
+  id: "bone-busters", code: "BBI", name: "Bone Busters Inc.", sort: "Bone Busters Inc",
+  mfr: "Gottlieb", year: 1989, variant: "", group: "classic", opdb: "G5Lk0",
+  thesis: "Play multiball as often as you can. Plunge for a free lock, then shoot the ramp.",
+  plan: [
+    "Plunge just hard enough to touch the switch at the top of the shooter lane and roll back down. That locks the ball in the lower right saucer and serves you a new one.",
+    "A slightly stronger plunge goes down the Auto-Lock lane toward the mini flipper; press the second right flipper button to send it into the left outlane lock.",
+    "With one or more balls locked, shoot the ramp to start multiball.",
+    "In multiball, every switch advances toward 1,000,000 points and 2x playfield, so keep the balls moving through the horseshoe spinners.",
+    "In single-ball play, white-lit spinners build bonus; the captive ball collects it and lights both spinners at 20,000 a spin for one shot."
+  ],
+  avoid: [
+    "Full plunges when a lock is waiting to be earned. The skill plunges are the easiest locks in the game."
+  ],
+  tourney: [
+    "The plunge locks take practice. Spend a ball learning the plunger strength before you rely on it."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 2, "Lock a ball or two, then shoot the center ramp to start multiball. Shoot the horseshoe spinners during it; the 1M award builds from switch hits."],
+    ["skillshot", 1, "Trip the switch at the top right of the shooter lane and let the ball roll back down for a free lock."]
+  ],
+  rules: "Two locks are set up from the plunger (the lower right saucer and the left outlane lock). Shoot the ramp with a ball locked to start multiball, where switch hits build toward 1M and 2x playfield. The spinners build bonus, which the captive ball collects.",
+  sources: [["Pinball Primer: Bone Busters, Inc.", "https://pinballprimer.github.io/bonebusters_G5Lk0.html"], ["PinTips: Bone Busters Inc.", "https://app.matchplay.events/opdb/entries/G5Lk0/pintips"]]
+},
+{
+  id: "no-fear", code: "NF", name: "No Fear: Dangerous Sports", sort: "No Fear Dangerous Sports",
+  mfr: "Williams", year: 1995, variant: "", group: "classic", opdb: "Gr2Y2",
+  thesis: "Loop the Jump ramp (left ramp, then side ramp, again and again), play multiball, and take Payback Time whenever it's lit.",
+  plan: [
+    "Press the launch button when the skill shot award you want is showing (flip to change it). Supercross gives 15M and a shot of credit at each ramp toward Payback Time.",
+    "Combo the left ramp into the side ramp for the Jump ramp. Every Jump adds 5M to your bonus, and consecutive Jumps score more, up to 25M a shot.",
+    "Lock balls at the Skull or the Skydive lane. Three locks start multiball; the jackpot order is Skull, then Skydive, then the Jump ramp.",
+    "Three shots to each ramp start Payback Time: every major shot is worth 25M for 20 seconds.",
+    "Start modes at the Skull when nothing else is running. Playing all five minor modes opens the major modes, and Meet Your Maker, the wizard mode, is the biggest scorer in the game."
+  ],
+  avoid: [
+    "Panicking in multiball. Shooting the left saucer holds the ball for about 10 seconds, which gives you time to set up."
+  ],
+  tourney: [
+    "For most players, the Jump ramp plus multiball and Payback Time is the plan. Chase the major modes only if the game is playing easy."
+  ],
+  venue: blank(),
+  tips: [
+    ["general", 4, "Every Jump ramp adds 5M to your bonus, which gets huge. Consecutive Jump ramps also score big, up to 25M a shot."],
+    ["wizard", 4, "No Limits, a mini-wizard mode, lights all shots; each one collects and raises the value by 1M, up to 70M a shot."],
+    ["wizard", 3, "Meet Your Maker is the most valuable mode in the game, with the Jump ramp worth 200M a shot. Time out modes to get there."],
+    ["multiball", 5, "In multiball, the left saucer holds the ball for about 10 seconds."],
+    ["general", 1, "Hit the ramps to start Payback Time, which makes all shots worth 25M, like Terminator 2."]
+  ],
+  rules: "Modes start at the Skull: five minor modes, then the major modes, then Meet Your Maker. Multiball comes from three locks at the Skull or Skydive. Three shots to each ramp start Payback Time, and the Jump ramp combo builds bonus. The skill shot is an award picked with the launch button.",
+  sources: [["Pinball Primer: No Fear", "https://pinballprimer.github.io/nofear_Gr2Y2.html"], ["PinTips: No Fear", "https://app.matchplay.events/opdb/entries/Gr2Y2/pintips"]]
+},
+{
+  id: "tales-of-the-arabian-nights", code: "TOTAN", name: "Tales of the Arabian Nights", sort: "Tales of the Arabian Nights",
+  mfr: "Williams", year: 1996, variant: "", group: "classic", opdb: "G4llj",
+  thesis: "Hit the Genie to start tales and light locks, and choose jewels every time you get a wish. Jewels are what lead to extra balls and the wizard mode.",
+  plan: [
+    "Plunge into the hole matching the pot with the snake on the display for the skill shot, then shoot the ramp the moment the ball reaches the flippers for a super skill shot.",
+    "With no mode running and the princess lit, hit the Genie to start a tale. Shoot the lit yellow shots, then the ramp to collect a jewel when Carpet is lit.",
+    "Lock two balls, then hit the Genie for multiball. In multiball, the Genie scores jackpots and the loops relight them.",
+    "Spin the lamp: every 15 spins is a bonus carryover, lights a wish at the Bazaar and starts Lightning Lamp. Take jewels from your wishes.",
+    "Four jewels light an extra ball, and so do six Tiger Loops (either inlane lights the opposite orbit). Collect it at the right orbit."
+  ],
+  avoid: [
+    "Spending wishes on anything but jewels. They're what move you toward extra balls and the wizard mode."
+  ],
+  tourney: [
+    "Harem Multiball is a strong option: hold the ball on the right flipper until the Harem insert lights, then shoot the left orbit to spell HAREM. Every target scores jackpots."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 5, "Hold the ball on the right flipper until the Harem insert lights, then shoot the left orbit to spell HAREM for multiball. Every target scores jackpots."],
+    ["general", 4, "Whenever you collect a wish, choose jewels every time."],
+    ["general", 3, "Four jewels (adjustable), from finishing tales, light an extra ball at the right orbit."],
+    ["general", 3, "Start tales at the Genie when the princess is lit. Lit yellow inserts usually advance them; finish with the ramp when Carpet is lit for a jewel."],
+    ["general", 2, "Either inlane lights the opposite orbit for a Tiger Loop. Six (adjustable) light an extra ball at the right orbit."],
+    ["wizard", 2, "Seven jewels, from tales or wishes, light the wizard mode at the Genie. Kill eight skeletons on the yellow inserts for unlimited multiball, worth 20M if you win."]
+  ],
+  rules: "Seven tales start at the Genie; finishing one and shooting the ramp earns a jewel. Seven jewels light the wizard mode. Two locks plus a Genie hit start multiball, and Harem is a second multiball. The lamp spinner builds bonus carryover, wishes and Lightning Lamp.",
+  sources: [["Pinball Primer: Tales of the Arabian Nights", "https://pinballprimer.github.io/totan_G4llj.html"], ["PinTips: Tales of the Arabian Nights", "https://app.matchplay.events/opdb/entries/G4llj/pintips"]]
+},
+{
+  id: "alice-cooper", code: "ALICE", name: "Alice Cooper's Nightmare Castle", sort: "Alice Coopers Nightmare Castle",
+  mfr: "Spooky", year: 2018, variant: "", group: "spooky", opdb: "GrlXK",
+  thesis: "Get the skill shot for the outlane magnet save, then climb the castle with the orbits to fight monsters, and stack Crypt Multiball on top.",
+  plan: [
+    "Shoot either ramp, either orbit or the crypt lock before hitting anything else for the skill shot. It lights the secret passage and the outlane magnet save. The right ramp counts even if the ball only goes halfway up.",
+    "At the castle entrance, shoot the center three targets to pick your monster, then shoot the strobing left or right orbit to lock it in and move up through the rooms.",
+    "Reach the top room to start the monster battle. The secret passage (right of the left ramp, lit after three hits on the center targets) also starts it.",
+    "Lock a ball in the crypt, left of the right ramp, by shooting it or dropping in from the rightmost upper lane, then shoot the crypt again for Crypt Multiball. It stacks with any monster battle.",
+    "Shoot the middle scoop to build a mystery award, which often moves you closer to the monster."
+  ],
+  avoid: [
+    "Hitting the slings or anything else first on the plunge. That loses the skill shot and its magnet save."
+  ],
+  tourney: [
+    "Crypt locks can be stolen by other players in a multiplayer game, so start the multiball once your lock is set."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 4, "For Crypt Multiball, let the ball drop under the upper playfield flipper or shoot the Crypt, left of the right ramp."],
+    ["multiball", 2, "Crypt locks can be stolen. Normally the victim scores 1M, but that's turned off in tournament mode."],
+    ["skillshot", 1, "Hit either ramp, either orbit or the crypt lock before anything else for the skill shot and an outlane magnet save."]
+  ],
+  rules: "Pick a monster at the castle entrance, then travel up through the rooms with the orbits to reach and battle it. The rooms get farther apart as you beat more monsters. Crypt Multiball and Frank Multiball (from the upper playfield) are the multiballs, and Crypt stacks with any battle.",
+  sources: [["Pinball Rulesheets: Alice Cooper's Nightmare Castle", "https://pinballrulesheets.com/spooky/alice-cooper-nightmare-castle-rulesheet"], ["PinTips: Alice Cooper's Nightmare Castle", "https://app.matchplay.events/opdb/entries/GrlXK/pintips"]]
+},
+{
+  id: "terminator-2", code: "T2", name: "Terminator 2: Judgment Day", sort: "Terminator 2 Judgment Day",
+  mfr: "Williams", year: 1991, variant: "", group: "classic", opdb: "GR9Bx",
+  thesis: "Multiball through the skull and the cannon, and Payback Time from the ramps. Learn the cannon timing: it's the skill shot and the super jackpot.",
+  plan: [
+    "Time the gun-trigger plunger so the ball hits the lit white target for the skill shot. It's worth 1M more each time, and it's the same timing you'll need for the super jackpot.",
+    "To start multiball, knock down the drop target in front of the skull, shoot the skull, then fire the cannon at the lit white target.",
+    "In multiball, relock balls at the skull, the left orbit and the left lane. The more you lock, the bigger the jackpot multiplier.",
+    "After a 2x or 3x jackpot, load the cannon again and fire at the strobing target for the super jackpot.",
+    "Combo the ramps back and forth toward Payback Time: every major shot is worth 5M for 20 seconds. You can start it during multiball too."
+  ],
+  avoid: [
+    "Keeping balls alive at the cost of the super jackpot. It's worth too much to skip.",
+    "Going for a 1x jackpot with one ball left before multiball times out."
+  ],
+  tourney: [
+    "The cannon and super jackpot lights strobe in a fixed pattern. Learn where they line up. If another machine blocks your view, lean over the glass and look straight down."
+  ],
+  venue: blank(),
+  tips: [
+    ["multiball", 7, "The cannon and super jackpot lights strobe in a consistent pattern. Learn where they meet for easier super jackpots."],
+    ["general", 7, "Shoot the left and right ramps to start Payback Time, where every shot is worth 5M for a while."],
+    ["multiball", 6, "To start multiball, put the ball in the skull and hit the flashing target with the gun. In multiball, lock balls at the flashing shots and fire the gun again."],
+    ["general", 4, "With one ball left in multiball, don't bother going for a 1x jackpot before it times out."],
+    ["general", 4, "If you can't see to line up the cannon, lean over the glass and look straight down."],
+    ["multiball", 2, "Don't keep balls alive at the cost of your super jackpot. It's worth too much."]
+  ],
+  rules: "Multiball starts from the skull and the cannon; relocking balls raises the jackpot multiplier, and a multiplied jackpot sets up the cannon super jackpot. Ramp combos lead to Payback Time. The left orbit and the center standups give Escape Route awards, and the skill shot uses the gun-trigger plunger.",
+  sources: [["Pinball Primer: Terminator 2", "https://pinballprimer.github.io/terminator2_GR9Bx.html"], ["PinTips: Terminator 2", "https://app.matchplay.events/opdb/entries/GR9Bx/pintips"]]
+},
+{
   id: "cirqus-voltaire", code: "CV", name: "Cirqus Voltaire", sort: "Cirqus Voltaire",
   mfr: "Bally", year: 1997, variant: "", group: "classic", opdb: "GRVjJ",
   thesis: "Beat the Ringmaster over and over. If you can control the return, it's a whole tournament plan by itself, and the later Ringmasters start multiballs.",
