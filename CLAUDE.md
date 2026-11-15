@@ -11,7 +11,7 @@ PinPlan is a free tournament strategy guide for pinball venues, starting in Albu
 - Players reach it from a QR code posted at the venue.
 - The current version covers one venue: **Sister**, 407 Central Ave NW (Pinball Map location 6422), with 16 machines.
 
-**Reframed 2026-11-11:** PinPlan is now a general pinball strategy guide with tournament notes, so venues don't need to be labelled casual or tournament. Page order: thesis, PinTips, Game plan, Avoid, In a tournament (game-specific `tourney[]` lines, if any, then a link to the Tournament formats page on every game; the old three generic basics were removed 2026-11-15), then venue panel, rules and sources. Original structure, for reference:
+**Reframed 2026-11-11:** PinPlan is now a general pinball strategy guide with tournament notes, so venues don't need to be labelled casual or tournament. Page order: thesis, Skill shot (collapsible), Rules in brief (moved up 2026-11-15), PinTips, Game plan, Avoid, In a tournament (game-specific `tourney[]` lines, if any, then a link to the Tournament formats page on every game; the old three generic basics were removed 2026-11-15), then venue panel and sources. Original structure, for reference:
 
 Each machine page leads with **tournament** strategy, not general play:
 1. A one-line thesis ("If you remember one thing")
