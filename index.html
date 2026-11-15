@@ -249,6 +249,13 @@ ul.plain { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 ul.plain li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 6px; }
 ul.plain li::before { content: "×"; font-family: var(--f-mono); color: var(--fg-dim); }
 ul.plain.skill li::before { content: "›"; }
+details.skill-sec > summary { list-style: none; cursor: pointer; color: var(--lime); }
+details.skill-sec > summary::-webkit-details-marker { display: none; }
+details.skill-sec:not([open]) > summary { border-bottom: 0; }
+details.skill-sec .t-hide, details.skill-sec[open] .t-show { display: none; }
+details.skill-sec[open] .t-hide { display: inline; color: var(--fg-dim); }
+details.skill-sec > summary:hover { background: color-mix(in srgb, var(--lime) 6%, transparent); }
+details.skill-sec > summary:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
 ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: var(--fg-dim); }
 .note { border-left: 2px solid var(--warn); background: var(--warn-soft); padding: 10px 12px; margin-bottom: 10px; }
 .note q { color: var(--fg-hi); quotes: "“" "”"; }
@@ -3938,6 +3945,11 @@ function parseGarboNotes(md) {
   });
   return out;
 }
+function skillOpen() { try { return localStorage.getItem("pp-skill-open") === "1"; } catch (e) { return false; } }
+document.addEventListener("toggle", e => {
+  if (!e.target.classList || !e.target.classList.contains("skill-sec")) return;
+  try { localStorage.setItem("pp-skill-open", e.target.open ? "1" : "0"); } catch (err) {}
+}, true);
 const garboSays = m => (GARBO_NOTES[m.id] || [])[0] ? noteHtml(GARBO_NOTES[m.id][0]) : esc(m.thesis);
 const noteHtml = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>");         // "venue-slug/machine-id" -> [{date, flippers, tilt, outlanes, note}]
 const copyKey = m => VENUE.slug + "/" + m.id;
@@ -4225,10 +4237,10 @@ function renderDetail(m) {
   const scores = v.scores.length
     ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${esc(s[0])}</td><td class="w">${esc(s[1])}${s[2] ? " · " + esc(s[2]) : ""}</td></tr>`).join("")}</tbody></table>`
     : "";
-  const skillSec = (m.skill && m.skill.length) ? `<section class="sec">
-        <div class="sec-h mono"><span>Skill shot</span><span class="dim">On the plunge</span></div>
+  const skillSec = (m.skill && m.skill.length) ? `<details class="sec skill-sec"${skillOpen() ? " open" : ""}>
+        <summary class="sec-h mono"><span>Skill shot</span><span class="tog"><span class="t-show">Show how ▸</span><span class="t-hide">Hide ▾</span></span></summary>
         <div class="sec-b"><ul class="plain skill">${m.skill.map(t => `<li><span>${esc(t)}</span></li>`).join("")}</ul></div>
-      </section>` : "";
+      </details>` : "";
   const planSec = m.plan.length
     ? `<section class="sec primary">
         <div class="sec-h mono"><span>Game plan</span><span>In priority order</span></div>
