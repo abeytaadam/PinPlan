@@ -43,6 +43,8 @@ SHIELD IS YOUR FRIEND! Check to see if the game is dialed in enough to hit shots
 
 ## fallout  (Fallout)
 
+Picking Maximus grants more time in your Power Armor (2x Playfield). Backhand Deathclaw for multiball. Try to start a mode before hitting that last shot.
+
 ## fish-tales  (Fish Tales)
 Monster Fish or Multiball? That is the question. Shoot the boat for the former, the fishing reel lock for the latter.
 
@@ -65,6 +67,8 @@ Most people like to start with Quill for the quick multiball. I prefer Yaka. Sma
 
 ## indiana-jones-the-pinball-adventure  (Indiana Jones: The Pinball Adventure)
 
+Prioritize multiball. Modes can add up but aren't scored until bonus so treat the game like it belongs in a museum.
+
 ## iron-maiden  (Iron Maiden: Legacy of the Beast)
 Stack modes with multiballs. Except Icarus. Hate that guy. Keep an eye on your power jackpot! A 2x/3x collect can be huge.
 
@@ -76,10 +80,15 @@ Stack modes with multiballs. Except Icarus. Hate that guy. Keep an eye on your p
 
 ## junk-yard  (Junk Yard)
 
+Garbo likes all the fun history in this game. It pays homage to some greats. Anyway, shoot dog with toast.
+
 ## jurassic-park  (Jurassic Park)
-On most copies, backhanding the raptor gate is safe. Some not. Check that first. Always be paddocking.
+
+On most JPs, backhanding the raptor gate is safe. Some not. Check that first. Always be paddocking.
 
 ## king-kong  (King Kong: Myth of Terror Island)
+
+King Kong MB and Pteranodon mode both score via the drops. This is a good stack to take into MB 1.
 
 ## kiss  (Kiss)
 
@@ -89,11 +98,17 @@ On most copies, backhanding the raptor gate is safe. Some not. Check that first.
 
 ## lord-of-the-rings  (Lord of the Rings)
 
+Stacking Gollum with a multiball gives you some extra points and insurance. Bring a mode with that stack and you're in good shape.
+
 ## medieval-madness  (Medieval Madness)
 
 ## metallica  (Metallica)
 
+Focus on Sparky first as it's the easiest multiball to light. He can be a little mean sometimes so be wary of that magnet.
+
 ## monster-bash  (Monster Bash)
+
+The more monster modes you can start and then start Frank MB, the better. Timers get paused in MB and finished modes lead to Monster of Rock.
 
 ## mustang  (Mustang)
 
@@ -106,6 +121,8 @@ Clean Your Car mode with a Big Kahuna playfield multiplier running will be big p
 ## rush  (Rush)
 
 ## shrek  (Shrek)
+
+Right spinner for Swamp modes, upper-left drops for Baby Multiball, and take Donkey Pinball when it’s lit. I think I like this more than Family Guy.
 
 ## spider-man  (Spider-Man)
 
@@ -151,7 +168,11 @@ Don't be afraid of the difficult modes! They aren't that bad. Really! I like to 
 
 ## walking-dead-remastered  (The Walking Dead Remastered)
 
+This game is tough. Control is key. I like to start with Barn. Try to save your shot multipliers for big collects.
+
 ## theatre-of-magic  (Theatre of Magic)
+
+Bonus is HUGE on this game. Left orbit up to the bonus x rollovers can be reliably shot on some ToMs. DO NOT TILT.
 
 ## transformers-more-than-meets-the-eye  (Transformers: More Than Meets the Eye)
 Soft plunge, Optimus, lock. Soft plunge, Optimus, lock. Soft plunge, Optimus, start your mode, lock. Easy-ish points in Golden Lagoon!
@@ -163,3 +184,6 @@ I usually pick Eddie Brock. Lock 3 balls on the right side for 2x playfield. Bas
 
 ## x-men  (X-Men)
 
+## scared-stiff
+
+Short plunge to spin the spider wheel! Stop on coffin or crate to extend those multiballs. If you undershoot the scoop and don't validate your playfield, you can let the ball drain and try again!
