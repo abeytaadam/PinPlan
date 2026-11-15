@@ -449,9 +449,9 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .sec-b > .fmt-link:first-child { margin-top: 0; }
 /* NM Pinball logo (used with permission): inline beside the arrow on wide screens, top-right corner on phones */
 .gl-ext .arr { margin-left: 0; }
-.gl-logo { order: 2; margin-left: auto; height: 46px; width: auto; }
+.gl-logo { order: 2; margin: -9px 0 -9px auto; height: 34px; width: auto; }
 .gl-ext .arr { order: 3; }
-@media (max-width:600px) { .gl-ext { position: relative; padding-right: 74px; } .gl-logo { position: absolute; top: 10px; right: 14px; width: 50px; height: auto; } .gl-ext .arr { margin-left: auto; } }
+@media (max-width:600px) { .gl-ext .mono { order: 0; } .gl-logo { order: 1; height: 36px; margin: -12px 0 -12px auto; } .gl-ext > span:not(.mono):not(.arr) { order: 2; } .gl-ext .arr { order: 3; margin-left: auto; } }
 /* Venue pages: the venue is the headline and the machines start on the first screen */
 .venue-hero { padding-block: 28px 18px; }
 .venue-hero .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 32px; }
