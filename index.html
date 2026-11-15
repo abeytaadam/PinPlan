@@ -248,6 +248,14 @@ ol.plan li::before { content: counter(p, decimal-leading-zero); font-family: var
 ul.plain { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 ul.plain li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 6px; }
 ul.plain li::before { content: "×"; font-family: var(--f-mono); color: var(--fg-dim); }
+ul.plain.skill li::before { content: "›"; }
+details.skill-sec > summary { list-style: none; cursor: pointer; color: var(--lime); }
+details.skill-sec > summary::-webkit-details-marker { display: none; }
+details.skill-sec:not([open]) > summary { border-bottom: 0; }
+details.skill-sec .t-hide, details.skill-sec[open] .t-show { display: none; }
+details.skill-sec[open] .t-hide { display: inline; color: var(--fg-dim); }
+details.skill-sec > summary:hover { background: color-mix(in srgb, var(--lime) 6%, transparent); }
+details.skill-sec > summary:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
 ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: var(--fg-dim); }
 .note { border-left: 2px solid var(--warn); background: var(--warn-soft); padding: 10px 12px; margin-bottom: 10px; }
 .note q { color: var(--fg-hi); quotes: "“" "”"; }
@@ -622,6 +630,7 @@ const MACHINES = [
   id: "attack-from-mars", code: "AFM", name: "Attack From Mars", sort: "Attack From Mars",
   mfr: "Chicago Gaming", year: 2017, variant: "Remake LE", group: "chicago", opdb: "G4do5",
   thesis: "Test the saucer on ball one. If it’s safe, play saucers. If it isn’t, play ramps and orbits for Total Annihilation.",
+  skill: ["Plunge through the lit top lane (move it with the flipper buttons) for points, +5 bonus X and stronger bumpers.", "Super skill shot: hold the left flipper as you plunge so the ball comes down the left orbit, then hit an orbit, ramp or the force field within a couple of seconds for 50M and full credit for that shot."],
   plan: [
     "Find out early how safely the saucer and its forcefield shoot on this copy. When they’re safe, saucers are the main points source: the first is worth 200M and each one after adds another 200M.",
     "Use the super skill shot (hold the left flipper as you launch) to knock out the center bank, so you never have to shoot the forcefield.",
@@ -662,6 +671,7 @@ const MACHINES = [
   id: "back-to-the-future", code: "BTTF", name: "Back to the Future", sort: "Back to the Future",
   mfr: "Data East", year: 1990, variant: "", group: "classic", opdb: "GRpbW",
   thesis: "Left ramp, over and over. Switch to DMC multiball if the right flipper can’t make it.",
+  skill: ["Full plunge so the ball drops to the right inlane, then shoot the left ramp before touching anything else. Usually it pays points; on a low score it can offer an extra ball."],
   plan: [
     "Early in the game, loop the left ramp. Ramp combos score rising values and eventually light an extra ball.",
     "Every ramp shot adds a DELOREAN letter. Spelling it opens a short window where the ramps score millions, so keep looping the left ramp through it.",
@@ -687,6 +697,7 @@ const MACHINES = [
   id: "cactus-canyon", code: "CC", name: "Cactus Canyon", sort: "Cactus Canyon",
   mfr: "Chicago Gaming", year: 2021, variant: "Remake LE", group: "chicago", opdb: "G4835",
   thesis: "Start Gold Mine Multiball, stay there, and keep collecting Mother Lodes.",
+  skill: ["The plunge drops into the Lasso cup. Each lap around the cup moves the award wheel one step, and you get whatever is lit when the ball falls out. Watch the wheel and plunge for the award you want."],
   plan: [
     "Start Gold Mine Multiball at the mine and stay with it, building and cashing Mother Lodes.",
     "Mother Lode only cashes at the mine during Gold Mine Multiball. Jackpots build its value, and every set of five jackpots raises its multiplier.",
@@ -726,6 +737,7 @@ const MACHINES = [
   id: "centaur", code: "CEN", name: "Centaur", sort: "Centaur",
   mfr: "Bally", year: 1981, variant: "", group: "classic", opdb: "GrX7q",
   thesis: "Stay in multiball. Almost everything on the table leads to more of it.",
+  skill: ["No skill shot. A plunge that drifts left out of the bumpers often heads for the left outlane, so be ready to slap-save before your ball has really started."],
   plan: [
     "Centaur’s multiball has no jackpots or multipliers. Its value is protection: more balls keep you further from draining, and multiball progress is easiest while you’re already in one.",
     "Fastest add-a-ball: hit the O-R-B-S drop targets in order for an instant 2-ball, or light all four flipper lanes.",
@@ -780,6 +792,7 @@ const MACHINES = [
   id: "evil-dead", code: "ED", name: "Evil Dead", sort: "Evil Dead",
   mfr: "Spooky", year: 2024, variant: "", group: "spooky", opdb: "GYWvw",
   thesis: "Pick your movie, stack modes with multiball, and trap off the right ramp. Check the shotgun before relying on Boomstick.",
+  skill: ["Plunge at the flashing GROOVY target; a normal plunge usually lands on one of the two O targets.", "Super skill shot: hold the left flipper so the ball is launched softly to the left flipper, then hit the flashing shot within 5 seconds for double value."],
   plan: [
     "At game start you pick one of the two movies. It decides which four modes you get, so choose the set you know.",
     "Super skill shot: hold the left flipper on the plunge for a soft feed, then hit the random flashing shot within 5 seconds for double the skill shot value.",
@@ -815,6 +828,7 @@ const MACHINES = [
   id: "game-of-thrones", code: "GOT", name: "Game of Thrones", sort: "Game of Thrones",
   mfr: "Stern", year: 2015, variant: "Premium", group: "stern", opdb: "G41d5",
   thesis: "Multiply, don’t add. Stack two modes, build the Battering Ram, and go for one or two huge collects.",
+  skill: ["Pro: plunge hard into the lit top lane for points and +1 bonus X.", "Premium/LE: there's no skill shot, but a hard plunge feeds the upper playfield once per ball. Short plunge as often as needed to get the ball to the flipper you want."],
   plan: [
     "Scores come from multipliers: playfield X from the Battering Ram plus combo multipliers, and the two stack. Billion-point competitive games usually come from one or two monster collects.",
     "House pick: Martell is the easy, strong default because of its add-a-ball in multiball. Tyrell suits combo players. Lannister buys playfield X with gold (up to 8 times a game) and skips the risky Ram. Greyjoy is high-risk, high-reward; take it only if you know the rules well.",
@@ -854,6 +868,7 @@ const MACHINES = [
   id: "godzilla", code: "GZ", name: "Godzilla", sort: "Godzilla",
   mfr: "Stern", year: 2021, variant: "Premium", group: "stern", opdb: "GweeP",
   thesis: "Take skill shots for ball save, battle Gigan first, then build Godzilla Multiball.",
+  skill: ["You control the plunge strength. Short plunges aim for the switch under the bumper, the first switch out of the lane, or the bumper itself, each with ball save time.", "A full plunge usually just hits the Magna-Grab captive ball."],
   plan: [
     "Skill shots add ball-save time. Vary them; the upper-flipper lane and the upper loop are the most reliable.",
     "Hold the ball on the left flipper and shoot over the Z for the scoop. It starts Kaiju Battles and changes cities.",
@@ -895,6 +910,7 @@ const MACHINES = [
   id: "john-wick", code: "JW", name: "John Wick", sort: "John Wick",
   mfr: "Stern", year: 2024, variant: "LE", group: "stern", opdb: "GQK1P",
   thesis: "Stack a job with Deconsecrated multiball, and save your ball save for single-ball play.",
+  skill: ["Plunge into the right VUK. Touching no switches on the way is the Baba Yaga skill shot: it starts the lit job right away.", "Or plunge into the backdoor to the Red Circle club for a VIP skill shot, which starts Excommunicado multiball if it's lit."],
   plan: [
     "The best stack is Security Detail (left ramp) or Heist (center ramp) with Deconsecrated multiball. Spell WINSTON at the captive ball to light its lock at the center ramp.",
     "At each ball start, go for the car while ball save runs. Right-flipper backhands to the car are safer than left-flipper shots.",
@@ -928,6 +944,7 @@ const MACHINES = [
   id: "lord-of-the-rings", code: "LOTR", name: "Lord of the Rings", sort: "Lord of the Rings",
   mfr: "Stern", year: 2003, variant: "", group: "stern", opdb: "GrqZX",
   thesis: "Run three things at once: a mode, Gollum multiball, then a movie multiball started last.",
+  skill: ["Plunge just hard enough to pass the first switch and roll back to the plunger; that lets you pick your skill shot.", "The Tower is the safest pick and feeds the left flipper cleanly."],
   plan: [
     "The simplest big-score plan is a triple stack: a mode, Gollum multiball, and one of the three movie multiballs, with the movie multiball started last.",
     "Two Towers is the easiest to set up. Spell KEEP at the inlanes to light locks at the right ramp; light the third lock, start a mode, start Gollum, then lock the last ball.",
@@ -957,6 +974,7 @@ const MACHINES = [
   id: "medieval-madness", code: "MM", name: "Medieval Madness", sort: "Medieval Madness",
   mfr: "Chicago Gaming", year: 2015, variant: "Remake LE", group: "chicago", opdb: "G5pe4",
   thesis: "Castles all day: drawbridge, gate, castle, repeat.",
+  skill: ["Super skill shot: hold the left flipper and plunge; the ball comes down the left orbit with every major shot lit for a few seconds. Hit any of them, then the castle, to collect a hurry-up.", "Many players skip it as not worth the risk."],
   plan: [
     "Shoot the castle: moat to lower the drawbridge, gate to open it, then the castle itself. Each castle is worth more than the last, and two castles light an extra ball.",
     "The castle front-door shot is less of a center-drain risk than AFM’s saucer. Check which flipper makes it more safely on this copy.",
@@ -988,6 +1006,7 @@ const MACHINES = [
   id: "rush", code: "RUSH", name: "Rush", sort: "Rush",
   mfr: "Stern", year: 2022, variant: "LE", group: "stern", opdb: "G2Lkd",
   thesis: "Never full plunge. Master the Time Machine ramp and bring a song mode into multiball.",
+  skill: ["Plunge to the upper flipper and shoot from there: upper scoop is 3x, side ramp 2x, side loop 1x. Comboing the side loop into the scoop or ramp doubles it.", "Two weak plunges that only touch the plunger-lane switch cancel the skill shot."],
   plan: [
     "Short plunge to the upper flipper every ball. A full plunge goes straight into the bumpers. Auto-plunging in multiball is fine.",
     "Take skill shots for the extra ball save: from the upper flipper, hit the upper scoop or left ramp, or the inner loop followed by the ramp or scoop for the super.",
@@ -1021,6 +1040,7 @@ const MACHINES = [
   id: "shrek", code: "SHRK", name: "Shrek", sort: "Shrek",
   mfr: "Stern", year: 2008, variant: "", group: "stern", opdb: "G5LW9",
   thesis: "Right spinner for Swamp modes, upper-left drops for Baby Multiball, and take Donkey Pinball when it’s lit.",
+  skill: ["Plunge with just the right strength to arc across and hit the lowest drop target in the upper-left bank; a full plunge usually hits the top one or two.", "Secret skill shot: plunge a little softer to the upper-left flipper and shoot up the Super Jackpot lane under the mini-playfield."],
   plan: [
     "Shrek runs the same playfield and rules as Family Guy under different names. Shoot the right spinner to light Swamp modes, then start them at the scoop just left of it. Most modes last 30 seconds.",
     "Complete the upper-left drop bank three times to start Baby Multiball (more completions are needed each time after). It can run alongside Villain modes.",
@@ -1049,6 +1069,7 @@ const MACHINES = [
   id: "sopranos", code: "SOP", name: "The Sopranos", sort: "Sopranos",
   mfr: "Stern", year: 2005, variant: "", group: "stern", opdb: "G5WoB",
   thesis: "Rank up on dollar signs and the safe; run Stugots and the Bing together.",
+  skill: ["Plunge through the flashing RIP top lane (move it with the flipper buttons) for points.", "Super skill shot: hold the left flipper on the plunge so the ball comes down the left orbit, then hit any major shot for three shots' worth of credit there. That can start a Truck Heist or Party at the Bing at once."],
   plan: [
     "Advance ranks. In single ball, shoot the green dollar-sign shots, then the spinner lane. In multiball, bash the safe until it opens. Each rank-up makes one area worth 2X until end of ball.",
     "Left ramp and boat ramp shots build toward multiballs. Lock one ball in the Stugots boat, repeat the left ramp to start Party at the Bing, then start Stugots multiball so both run and you can bash the safe.",
@@ -1081,6 +1102,7 @@ const MACHINES = [
   id: "stranger-things", code: "ST", name: "Stranger Things", sort: "Stranger Things",
   mfr: "Stern", year: 2019, variant: "Premium", group: "stern", opdb: "Gzy89",
   thesis: "Start a chapter, add Demodog, then start Telekinesis multiball, in that order.",
+  skill: ["Plunge at the flashing drop target.", "Super skill shot: soft plunge to the flippers, then shoot the kicker. Bouncing off the flashing drop target into the kicker on one plunge scores both, plus a bonus."],
   plan: [
     "The standard stack is a Chapter mode, then Demodog, then Telekinesis multiball. Chapters must start before the multiball, or with the shot that starts it.",
     "Chapters light from three shots to any main shot: left orbit, left ramp, right ramp or right orbit. Inserts show your progress.",
@@ -1111,6 +1133,7 @@ const MACHINES = [
   id: "uncanny-x-men", code: "XMEN", name: "The Uncanny X-Men", sort: "Uncanny X-Men",
   mfr: "Stern", year: 2024, variant: "LE", group: "stern", opdb: "G7ZEz",
   thesis: "Open with Sentinel Facility Raid, then Sentinel multiball with the Danger Room ramp multiplied.",
+  skill: ["Soft plunge into the lane by the highway ramp entrance for +1 bonus X, or hit the X-Jet shot for +3 bonus X.", "Or shoot the left ramp for a Cerebro skill shot, which spots progress toward To Me, My X-Men multiball."],
   plan: [
     "Take the uptown ramp skill shot. It feeds the left flipper safely, advances Cerebro and gets early Sentinel hits in before ball save ends.",
     "Start with Sentinel Facility Raid and loop the center ramp to finish it fast. Its reward is an add-a-ball for any multiball, best saved for Save the City or Berzerker.",
@@ -2518,6 +2541,7 @@ const MORE_PLANS = [
   id: "junk-yard", code: "JY", name: "Junk Yard", sort: "Junk Yard",
   mfr: "Williams", year: 1996, variant: "", group: "classic", opdb: "GRLlj",
   thesis: "Find out on ball one whether the Dog lane is an easy, safe shot. If it is, shoot it all day: it collects Junk, bonus multipliers and video modes.",
+  skill: ["Use the flipper buttons before you plunge to pick which Junk you're after; the spinner then picks the award, usually Collect Junk.", "Keep the selection off the hair dryer so you get the easier Spike video mode."],
   plan: [
     "Use the flippers before you plunge to choose which Junk the skill shot gives you. The plunger spinner then picks the award, and most games start with three of the five options set to Collect Junk.",
     "Shoot the Dog lane on the right to spell D-O-G and light a video mode at the same lane. Run From Spike is the easy one (tap the flippers fast); finishing it earns a piece of Junk, and each repeat is worth more.",
@@ -2549,6 +2573,7 @@ const MORE_PLANS = [
   id: "dune", code: "DUNE", name: "Dune", sort: "Dune",
   mfr: "Barrels of Fun", year: 2025, variant: "", group: "other", opdb: "Gd266",
   thesis: "Gather spice by day and spend it at night: every Prophecy jackpot is worth 1M per spice you bring, so never start one with an empty tank.",
+  skill: ["Before plunging, pick the target with the right flipper (orange arrow): front scoop, rear scoop or left spinner. No other switch can be hit first.", "Make it without flipping at all and the award is doubled. A full plunge usually goes all the way around the orbit."],
   plan: [
     "Plunge for a skill shot. The secret Tunnel shot (10M) makes your spinners drop more resources for the rest of the ball; the rear-scoop Sneak is 5M, or 10M if you don’t flip first.",
     "Hit the left inlane to light the spinners, spin them to drop resource dots, then shoot the shots with dots on them. Spice is made by day and water by night, so you’re always stocking up for the next mode.",
@@ -2576,6 +2601,7 @@ const MORE_PLANS = [
   id: "super-mario-bros", code: "SMB", name: "Super Mario Bros.", sort: "Super Mario Bros.",
   mfr: "Gottlieb", year: 1992, variant: "", group: "classic", opdb: "GRBzQ",
   thesis: "Loop the Quick Shot: right inlane, left ramp, around the upper playfield and down the green slide, again and again.",
+  skill: ["The button launches the ball to the upper playfield. Hit the Yoshi target there for 3M (normally that takes three hits in one visit)."],
   plan: [
     "Plunge to the upper playfield and hit the Yoshi target for the skill shot (three hits in one trip is 3M). Every Yoshi hit also adds 500K to Yoshi’s Bonus, which never resets during the game.",
     "After the right inlane, shoot the left ramp within about three seconds for Quick Shot: 1M, 2M, 5M, an extra ball, then 7M, 10M, 15M and 20M (the top value depends on settings). The ramp feeds the upper playfield and the green slide drops you back to the right inlane, so you can loop it.",
@@ -2611,6 +2637,7 @@ const MORE_PLANS = [
   id: "avengers-infinity-quest", code: "AIQ", name: "Avengers: Infinity Quest", sort: "Avengers: Infinity Quest",
   mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gj66P",
   thesis: "Light a Portal Lock with combos before your first Gem Quest, then bring Thor Multiball into the Quest.",
+  skill: ["Soft plunge into the top rollover by the pop bumpers, or full plunge and shoot Avengers Tower for the super skill shot (the first one lights Mystery).", "Secret skill shots: a medium plunge that rolls back down the upper loop lights a Portal Lock; a full plunge into the center drop target collects the flashing grid square."],
   plan: [
     "Make four combos to light a Portal Lock at the disc. Locked balls boost scoring for as long as they stay in play, so get one before your first Gem Quest.",
     "Spell STRANGE at the disc, then start the Gem Quest (right ramp on the Pro, the portal on Premium/LE).",
@@ -2640,6 +2667,7 @@ const MORE_PLANS = [
   id: "deadpool", code: "DP", name: "Deadpool", sort: "Deadpool",
   mfr: "Stern", year: 2018, variant: "Pro", group: "stern", opdb: "G6lnq",
   thesis: "Everything runs through the scoop. Spell DEAD for Battles and stack Ninja Multiball on top.",
+  skill: ["Plunge into the flashing BAM! lane. You can move it before launching, but it locks once the ball reaches the first switch.", "Super skill shot: hold the left flipper and shoot the right ramp. Longer versions add the right orbit or SNIKT target before the ramp."],
   plan: [
     "Go for the super secret skill shot: hit the SNIKT target, then the right ramp. It’s worth about 15M and +1 playfield X.",
     "Complete DEAD to light a Battle at the scoop. Use Team-Ups to add damage and bonus.",
@@ -2669,6 +2697,7 @@ const MORE_PLANS = [
   id: "dungeons-and-dragons", code: "DND", name: "Dungeons & Dragons: The Tyrant's Eye", sort: "Dungeons & Dragons",
   mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "GK1Ej",
   thesis: "Play dungeon crawls from the spinner and orange targets, then stack Dragon and Gelatinous Cube multiballs.",
+  skill: ["Short plunge and hit the upper loop, or the switch by the gelatinous cube (directly or via the shortcut loop).", "Super skill shot: left eject, then side ramp, then right ramp. The hidden temple shot behind the upper flipper is a bigger one.", "Skill shot value multiplies by the ball number, so later balls are worth more."],
   plan: [
     "At the start, pick Arabel or Kobold as your town. Paladin makes Dragon Multiball easier.",
     "In travel mode, skip the blue shots. Work the center spinner and orange targets to start dungeon crawls: 5M+ per battle, 10M+ when you win.",
@@ -2699,6 +2728,7 @@ const MORE_PLANS = [
   id: "fallout", code: "FO", name: "Fallout", sort: "Fallout",
   mfr: "Stern", year: 2026, variant: "Pro", group: "stern", opdb: "GELVv",
   thesis: "Build multipliers first (Power Armor, weapon upgrades), then cash them in with Deathclaw and Wasteland multiballs.",
+  skill: ["Time your plunge to the flashing Nuka Cola insert on the right inlane. That drops the Nuka Cola spinner for a few seconds; rip it right away from the right flipper for points and ball save."],
   plan: [
     "Make the skill shot, then rip the Nuka-Cola spinner for caps. Spend caps at Sundries on Fusion Cores and Nuka-Cola inlanes.",
     "Charge the fusion core at the left pop bumper and turn on Power Armor once it’s past 50%.",
@@ -2725,6 +2755,7 @@ const MORE_PLANS = [
   id: "foo-fighters", code: "FF", name: "Foo Fighters", sort: "Foo Fighters",
   mfr: "Stern", year: 2023, variant: "Pro", group: "stern", opdb: "GpeoL",
   thesis: "Finish van modes in one visit, stack the multipliers, and cash combos at the Overlord.",
+  skill: ["Super skill shot: left crossover, then the side ramp or side loop. Repeat up to six times; each shot adds ball save.", "Secret: plunge into the left inlane for points and ball save, or the left outlane to light Overdrive."],
   plan: [
     "Light the left ramp with white shots and finish each van mode in one visit. Full completions pay more and give the FooBot left leg.",
     "Clear the three drops, then level Engine, Speakers or Bomb at the MOD-ulator target.",
@@ -2754,6 +2785,7 @@ const MORE_PLANS = [
   id: "ghostbusters", code: "GB", name: "Ghostbusters", sort: "Ghostbusters",
   mfr: "Stern", year: 2016, variant: "Pro", group: "stern", opdb: "GR9Nr",
   thesis: "Everything is about 6X. A good scene at 6X can be worth more than a whole game at 1X.",
+  skill: ["There are two: the top rollovers and a playfield shot. Both pay a slice of your score plus an award.", "The left (P) rollover is the most consistent and adds bonus X. On the playfield, a skill shot to the left ramp starting a scene is the usual pick."],
   plan: [
     "Take a Start Scene skill shot, ideally on the left ramp.",
     "Build Gear Combos: left ramp, then the captive ball or yellow gear targets, to light 2X and then 3X.",
@@ -2782,6 +2814,7 @@ const MORE_PLANS = [
   id: "guardians-of-the-galaxy", code: "GOTG", name: "Guardians of the Galaxy", sort: "Guardians of the Galaxy",
   mfr: "Stern", year: 2017, variant: "Pro", group: "stern", opdb: "GRWvz",
   thesis: "Complete modes, keep a multiball running, and stack Rocket’s 2x with the Nova Corps multipliers.",
+  skill: ["Plunge into the flashing top lane. Don't touch the flippers at all (not even to change modes) and it's worth double.", "Super skill shot: hold the left flipper, full plunge around the loop, then quickly hit the flashing white shot."],
   plan: [
     "Pick a mode with the flippers before each ball. Antiquities Shop and Knowhere are good early choices.",
     "Spend Upgrades on high-value modes like Pod Chase or Sibling Rivalry.",
@@ -2811,6 +2844,7 @@ const MORE_PLANS = [
   id: "guns-n-roses", code: "GNR", name: "Guns N' Roses", sort: "Guns N' Roses",
   mfr: "Jersey Jack", year: 2020, variant: "LE", group: "other", opdb: "GqZZ1",
   thesis: "Build Song Level before starting a song, keep the Rock-It Meter full, and cash Power Chords in multiball.",
+  skill: ["Skill shots spell NOISE. Once it's lit, shoot under the upper right flipper to start Make Some Noise multiball."],
   plan: [
     "Qualify band members: Axl at the A-X-L lanes, Slash on record spins, Duff at the left ramp, Frank at the jets and right ramp.",
     "Raise Song Level before you start a song. Matching patches add +15, and each Booster super jackpot adds +50.",
@@ -2839,6 +2873,7 @@ const MORE_PLANS = [
   id: "iron-maiden", code: "IM", name: "Iron Maiden: Legacy of the Beast", sort: "Iron Maiden",
   mfr: "Stern", year: 2018, variant: "Premium", group: "stern", opdb: "G4dOQ",
   thesis: "Climb the Power Jackpot multiplier with modes and multiballs, and don’t cash it in early.",
+  skill: ["Soft plunge into the skill shot target for points, an EDDIE letter and 5 seconds of ball save.", "Super skill shot: hold the left flipper and plunge to the inner orbit; the ball rolls back to the upper flipper. Shoot the Super Jackpot target for a lit Playfield X and 10 seconds of ball save."],
   plan: [
     "Spell EDDIE with the white arrows to light a battle (center jump ramp on the Pro, the scoop on Premium).",
     "Lock three balls for Trooper Multiball. Clear the three-bank to open the cannon shot.",
@@ -2868,6 +2903,7 @@ const MORE_PLANS = [
   id: "james-bond-007", code: "007", name: "James Bond 007", sort: "James Bond 007",
   mfr: "Stern", year: 2022, variant: "Pro", group: "stern", opdb: "GQKyP",
   thesis: "Build Bond Women and playfield awards early, chain combos, and save 007 Scoring for multiball jackpots.",
+  skill: ["Easiest: plunge into the flashing MI6 lane. Leave it where it started instead of moving it for a bigger Classified award.", "Hold the left flipper and full plunge, then shoot the right ramp (Undercover) or side ramp (Double O) within 5 switches. The first of each earns a smart missile.", "Or shoot the left eject straight off the plunge for Licensed To Kill."],
   plan: [
     "Hold the left flipper and plunge for a super skill shot (Undercover, Double O or Top Secret). It pays about 2.5M plus a smart missile.",
     "Start Henchmen modes at the side ramp.",
@@ -2897,6 +2933,7 @@ const MORE_PLANS = [
   id: "jaws", code: "JAWS", name: "JAWS", sort: "JAWS",
   mfr: "Stern", year: 2024, variant: "Pro", group: "stern", opdb: "GLWll",
   thesis: "Shark encounters and bounty hunts are the big points. Use Jaws Multiball 1 as a utility multiball.",
+  skill: ["The skill shot steps up each time you make it: first the pop bumper, then the lane above the mini-flipper without touching the bumper, then any flashing left-bank target with no other switches.", "You get up to three tries per ball, and each one made adds 5 seconds of ball save."],
   plan: [
     "Plunge into the bumpers for the level 1 skill shot (5M).",
     "Make quickshots from the harpoon lane. Three in a row awards an extra ball and helps light gear.",
@@ -2928,6 +2965,7 @@ const MORE_PLANS = [
   id: "jurassic-park", code: "JP", name: "Jurassic Park", sort: "Jurassic Park",
   mfr: "Stern", year: 2019, variant: "Pro", group: "stern", opdb: "GK17D",
   thesis: "Shoot from a cradle, clear paddocks, and add 2x scoring to Raptor or T-Rex multiball.",
+  skill: ["Full plunge, then shoot in order: left ramp, right ramp, side ramp, right orbit. Each step pays more and adds ball save. Finishing all four lights escape at the left outlane.", "The skill shots won't start modes left qualified from the previous ball."],
   plan: [
     "Spell MAP and clear your first paddock quickly, focusing on the set-trap targets.",
     "Play the control room in order: System Boot, then Restore Power, then Virus Attack.",
@@ -2957,6 +2995,7 @@ const MORE_PLANS = [
   id: "king-kong", code: "KONG", name: "King Kong: Myth of Terror Island", sort: "King Kong",
   mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "GEL0V",
   thesis: "Controlled King Kong multiball with the 2x relock, plus island scenes boosted by island lock.",
+  skill: ["Plunge into the pit targets for the skill shot, or the river lane by the mini-flipper for the super.", "Secret versions: plunge into the inner or outer left inlane, or plunge to the upper left flipper and shoot the cliffs ramp straight away."],
   plan: [
     "Hit the spider pit four times for a pit multiball. Giant Spider is the one to want.",
     "Open with Stegosaurus Encounter or Cross the Chasm, in single-ball play.",
@@ -2988,6 +3027,7 @@ const MORE_PLANS = [
   id: "kiss", code: "KISS", name: "Kiss", sort: "Kiss",
   mfr: "Stern", year: 2015, variant: "Pro", group: "stern", opdb: "G4qX5",
   thesis: "Finish modes to stack playfield multipliers. One long ball usually wins.",
+  skill: ["No skill shot in the current code. A plunge that trips the right loop switch and falls back into it can still collect right loop awards."],
   plan: [
     "Whenever no mode is running, start one at the Backstage Pass scoop.",
     "Pick modes in this order: Deuce, Lick It Up, Shout It Out Loud, Rock and Roll All Nite.",
@@ -3017,6 +3057,7 @@ const MORE_PLANS = [
   id: "led-zeppelin", code: "LZ", name: "Led Zeppelin", sort: "Led Zeppelin",
   mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gweel",
   thesis: "Keep a song running, build Icarus X evenly, and use multiballs to set up big supers.",
+  skill: ["After picking your song, time the plunge to hit the LED target while it's lit. It sweeps back and forth every few seconds. Worth points and 5 seconds of ball save."],
   plan: [
     "Make the left eject early to build Tour locks. Earl’s Court (70 spins for a lock) is the easiest first tour.",
     "Go for the far-left scoop (right flipper only). It starts the first multiball series.",
@@ -3045,6 +3086,7 @@ const MORE_PLANS = [
   id: "mandalorian", code: "MANDO", name: "The Mandalorian", sort: "Mandalorian",
   mfr: "Stern", year: 2021, variant: "Pro", group: "stern", opdb: "GBLLP",
   thesis: "Get all three +1x playfield multipliers running (up to 6x), then start a Razor Crest multiball.",
+  skill: ["The ball drops into the CHILD top lanes. A strong plunge always goes through C, so time it or nudge it through one of the two lit lanes.", "Super skill shot: hold the left flipper until the ball passes C, then U-turn, right ramp and one of three finishing shots, 5 seconds per shot."],
   plan: [
     "Complete Scope (U-turn, left 2x, right ramp) for +1x for 75 seconds plus an award.",
     "Complete a Hunter mode for Beskar and another +1x for 75 seconds. It also relights the Razor Crest.",
@@ -3074,6 +3116,7 @@ const MORE_PLANS = [
   id: "metallica", code: "MET", name: "Metallica", sort: "Metallica",
   mfr: "Stern", year: 2013, variant: "Pro", group: "stern", opdb: "GRBE4",
   thesis: "Use the spider to light several items per shot, bank Coffin hurry-ups, then cash in through multiball and Crank It Up.",
+  skill: ["Plunge through the flashing rollover. The right rollover pays double.", "Super skill shot: hold the left flipper to drop the orbit post, then hit any major shot. The dead-end target qualifies 2x Playfield; the scoop gives Mystery."],
   plan: [
     "Electric Chair Multiball is worth a lot, but the chair shot is dangerous. Take it when it’s safe.",
     "Grave Marker Multiball needs fewer hits, but progress resets when you drain.",
@@ -3097,6 +3140,7 @@ const MORE_PLANS = [
   id: "monster-bash", code: "MB", name: "Monster Bash", sort: "Monster Bash",
   mfr: "Chicago Gaming", year: 2018, variant: "Remake", group: "chicago", opdb: "Gr3EW",
   thesis: "Start several monster modes before any multiball. Multiball freezes mode timers.",
+  skill: ["Plunge through the flashing D-I-G top lane (move it with the flipper buttons) for points and a random monster weapon."],
   plan: [
     "Modes run in parallel, so get two or three going at once.",
     "Creature Feature: four saucer hits start it, then make the five major shots quickly.",
@@ -3127,6 +3171,7 @@ const MORE_PLANS = [
   id: "munsters", code: "MUN", name: "The Munsters", sort: "Munsters",
   mfr: "Stern", year: 2019, variant: "Pro", group: "stern", opdb: "GbPde",
   thesis: "Finish family-member levels to light Playfield X at Kitty, then stack super jackpots and cash them at the Dragula lane.",
+  skill: ["Plunge into the right lane (it can't be moved), or short plunge to the right flipper and shoot the left ramp.", "Super skill shot: hold the left flipper and shoot the right ramp. Every skill shot adds bonus X and pays more the faster you make it."],
   plan: [
     "Shoot Herman for his hurry-up, capture the ball, then shoot the captured ball for 2x value and Herman Multiball.",
     "Spell SPOT on the red-lit ramps, then shoot Spot four times to qualify its super jackpot.",
@@ -3155,6 +3200,7 @@ const MORE_PLANS = [
   id: "mustang", code: "MUS", name: "Mustang", sort: "Mustang",
   mfr: "Stern", year: 2014, variant: "Pro", group: "stern", opdb: "GrPOR",
   thesis: "Super skill shot early, then RPM targets in Silverball Stampede, which can outscore the multiballs.",
+  skill: ["Hold the left flipper before launching. The light under the gear targets (GE, A, RS) swings back and forth: the A while it's lit advances two gears, GE or RS pays points, and the scoop pays more.", "Trap the ball first: a soft plunge to the right flipper or a hard plunge to the left flipper."],
   plan: [
     "Hold the left flipper before launching and hit the lit shot for the super skill shot. It advances two gears (up to gear 4).",
     "Light all six modes solid to set up Silverball Stampede at the scoop.",
@@ -3184,6 +3230,7 @@ const MORE_PLANS = [
   id: "pokemon", code: "PKMN", name: "Pokémon", sort: "Pokemon",
   mfr: "Stern", year: 2026, variant: "Pro", group: "stern", opdb: "GV8wB",
   thesis: "Start Pikachu’s story mode first, and treat the Pokédex captive ball as your most important shot.",
+  skill: ["Full plunge into the flashing lane for points and +2 bonus X.", "Super skill shot: hold the left flipper and full plunge for double value. The center lane completes the BATTLE targets, and starts Team Rocket multiball if it's lit there."],
   plan: [
     "Plunge for the top-lane skill shot, so you start catching Pokémon right away.",
     "Hit the bumpers to spawn Pokémon, then build CATCH! at the left ramp.",
@@ -3212,6 +3259,7 @@ const MORE_PLANS = [
   id: "pulp-fiction", code: "PULP", name: "Pulp Fiction", sort: "Pulp Fiction",
   mfr: "Chicago Gaming", year: 2023, variant: "SE", group: "chicago", opdb: "GoEkx",
   thesis: "Build the Big Kahuna playfield multiplier in single-ball play, then cash it in during multiball.",
+  skill: ["Plunge into the top saucer, ideally when as many arrows are lit as possible. All five lit pays a bonus, and it qualifies a character behind the right drop target.", "Hold the left flipper on the plunge to light the Payoff inserts, then hit one before the timer runs out for the super skill shot."],
   plan: [
     "Big Kahuna Bonus: hit the two flashing standups by the bumpers, then the target above the bullseye magnet. Each advance on the same ball adds +1x playfield, up to 6x.",
     "Lock three at the briefcase kicker for Briefcase Boogie. Payoffs gain +1x each phase; finish with the super payoffs.",
@@ -3237,6 +3285,7 @@ const MORE_PLANS = [
   id: "spider-man", code: "SPDY", name: "Spider-Man", sort: "Spider-Man",
   mfr: "Stern", year: 2007, variant: "", group: "stern", opdb: "G5D94",
   thesis: "Light the white arrows, then put the multiplied shot into timed modes. Stack Doc Ock with Black Suit Multiball.",
+  skill: ["Plunge into the flashing WEB lane for bonus X and doubled bumpers for the ball. On ball 3 it also doubles your end-of-ball bonus once.", "Super skill shot: plunge weakly to the upper right flipper and shoot the side ramp. It builds toward a Venom battle."],
   plan: [
     "Light all six white spider arrows. Finishing them makes your next shot 2x (3x after you complete a timed mode).",
     "Play the timed modes: Daily Bugle, Rescue MJ, Bonesaw, The Amazing Spider-Man, New Goblin. All five qualify Super Hero.",
@@ -3266,6 +3315,7 @@ const MORE_PLANS = [
   id: "star-trek", code: "ST", name: "Star Trek", sort: "Star Trek",
   mfr: "Stern", year: 2013, variant: "Pro", group: "stern", opdb: "Gryw4",
   thesis: "Always start a mode before Klingon Multiball, and use combos to double mode shots.",
+  skill: ["Short plunge to the upper flipper and shoot the warp ramp.", "Super skill shot: hold the left flipper, plunge, and shoot the right ramp (beta quadrant). A weak gate coil can block it."],
   plan: [
     "Start a Level I mode (Prime Directive, Space Jump, Save the Enterprise, Nero, Destroy the Drill or Klingon Battle) from Mission Start or Away Team.",
     "Shoot Away Team during a mode for Galactic mode: 20 more seconds and higher shot values.",
@@ -3295,6 +3345,7 @@ const MORE_PLANS = [
   id: "star-wars", code: "SW", name: "Star Wars", sort: "Star Wars",
   mfr: "Stern", year: 2017, variant: "Pro", group: "stern", opdb: "G5vLR",
   thesis: "Keep the center 3-bank shot multipliers alive and shoot lit shots while they’re multiplied.",
+  skill: ["Shoot the flashing target on the 3-bank for bonus X. The middle target pays most, and it speeds up each time you make it.", "You can also hit the roving FORCE target at any time to spot the next FORCE award, until you hit the wrong drop."],
   plan: [
     "Hit the center 3-bank to build shot multipliers, and hit it again before they time out.",
     "Shoot each planet’s shot three times to qualify it.",
@@ -3325,6 +3376,7 @@ const MORE_PLANS = [
   id: "star-wars-fall-of-the-empire", code: "FOTE", name: "Star Wars: Fall of the Empire", sort: "Star Wars: Fall of the Empire",
   mfr: "Stern", year: 2025, variant: "Pro", group: "stern", opdb: "Gxv81",
   thesis: "Lock up Battle of Hoth, start Lightspeed Escape before the third lock, and play the easy yellow missions first.",
+  skill: ["Plunge and hit any flashing shot. Within 3 switch hits it's a super skill shot (double); after 6 switches it's gone.", "It comes back after Death Star locks and after a JEDI save sends the ball to the plunger."],
   plan: [
     "Light lock early at the Droids target, then lock three balls at the Luke VUK for Battle of Hoth.",
     "Light the Falcon with the right ramp, then hit the center ramp for Lightspeed Escape, ideally before the third Hoth lock. That’s the only way two multiballs stack.",
@@ -3351,6 +3403,7 @@ const MORE_PLANS = [
   id: "teenage-mutant-ninja-turtles", code: "TMNT", name: "Teenage Mutant Ninja Turtles", sort: "Teenage Mutant Ninja Turtles",
   mfr: "Stern", year: 2020, variant: "Pro", group: "stern", opdb: "Gd2Xb",
   thesis: "Get to Ninja Pizza Multiball early. It’s the biggest scorer.",
+  skill: ["Pro: plunge into the flashing (right) top lane for +1 bonus X; hold the left flipper to send the ball through the orbit to the upper flipper.", "Then you have 15 seconds to hit the shot for your chosen turtle. That lights the Weapon hurry-up at an inlane."],
   plan: [
     "Pick Michelangelo (lights Battle Again and adds pizza slices) or Raphael (lights Start Episode).",
     "Lock three at the Pizza Parlor for Ninja Pizza Multiball. Defeat six Foot Soldiers to light the mondo jackpot on the upper loop, then the super at LAIR.",
@@ -3380,6 +3433,7 @@ const MORE_PLANS = [
   id: "theatre-of-magic", code: "TOM", name: "Theatre of Magic", sort: "Theatre of Magic",
   mfr: "Bally", year: 1995, variant: "", group: "classic", opdb: "G5BLE",
   thesis: "Bonus is huge. Build bonus X early with THEATRE on the safe left orbit.",
+  skill: ["Pick your Illusion with the flippers, then plunge into the trunk to start it right away. Levitating Woman is a strong first pick.", "If Start Illusion isn't offered, take Advance Clock, then Bonus X."],
   plan: [
     "At the start of each ball, take the Start Illusion Trunk skill shot if it’s offered; otherwise Advance Clock, then Bonus X.",
     "Spell THEATRE on the left orbit and light both top lanes to reach 8x bonus.",
@@ -3409,6 +3463,7 @@ const MORE_PLANS = [
   id: "transformers-more-than-meets-the-eye", code: "TF", name: "Transformers: More Than Meets the Eye", sort: "Transformers",
   mfr: "Stern", year: 2026, variant: "Pro", group: "stern", opdb: "GBLzz",
   thesis: "Stack missions, Dinobot missions and Transformers Multiball. Two missions light One Shall Fall.",
+  skill: ["Short plunge to the upper flipper and hit the Optimus target, side ramp or space bridge for points and extra ball save. The space bridge pays most.", "Secret: short plunge to the lower right flipper, hit the left orbit (Grimlock), then one of those three shots from the upper flipper."],
   plan: [
     "Soft-plunge to the upper flipper and hit the space bridge for the skill shot (8M plus 10 seconds of ball save).",
     "Start and finish Autobot Run or Prime Target first, then hit Megatron for the final-blow multiplier.",
@@ -3437,6 +3492,7 @@ const MORE_PLANS = [
   id: "twilight-zone", code: "TZ", name: "Twilight Zone", sort: "Twilight Zone",
   mfr: "Bally", year: 1993, variant: "", group: "classic", opdb: "GrXzD",
   thesis: "Multiball over modes. Lock two before starting so the Piano jackpot is 40M instead of 10M.",
+  skill: ["Plunge as softly and precisely as you can: get close to the scoop at the end of the lane without falling in. Red, orange and yellow pay more the farther you go, and advance the bumpers."],
   plan: [
     "Hit both ramps to spell GUM-BALL and light the lock.",
     "Lock two balls before you start multiball.",
@@ -3465,6 +3521,7 @@ const MORE_PLANS = [
   id: "venom", code: "VEN", name: "Venom", sort: "Venom",
   mfr: "Stern", year: 2023, variant: "Pro", group: "stern", opdb: "G3EBl",
   thesis: "Build combos and playfield X early, keep mini-modes flowing, and never ignore a lit battle.",
+  skill: ["The skill shot position depends on your character. As Eddie, set it left of the scoop and hit it on the plunge for a combo."],
   plan: [
     "Pick a host to fit your plan: Eddie Brock (stronger Mayhem), Gwen Stacy (Doppelganger value) or Peter Parker (easier Carnage).",
     "Finish a full mini-mode column (yellow, blue or white) to light Mayhem locks and a host change.",
@@ -3493,6 +3550,7 @@ const MORE_PLANS = [
   id: "walking-dead-remastered", code: "TWD", name: "The Walking Dead Remastered", sort: "Walking Dead Remastered",
   mfr: "Stern", year: 2025, variant: "Premium", group: "stern", opdb: "Gj6DE",
   thesis: "Control first. Play CDC as your single-ball mode and save shot X and 2X playfield for big cash-outs.",
+  skill: ["Plunge into the lit lane. Each lit rollover the ball crosses on the way adds a little more, but only the lane completes it."],
   plan: [
     "Survive the bumper feed, then get the ball to the left flipper.",
     "Clear the left drops to light Dead Features (one bank for the first mode, two after).",
@@ -3522,6 +3580,7 @@ const MORE_PLANS = [
   id: "x-men", code: "XMEN", name: "X-Men", sort: "X-Men",
   mfr: "Stern", year: 2012, variant: "Pro", group: "stern", opdb: "Grj6X",
   thesis: "Chain combos, finish heroes for bonus X, and keep a villain running with Deadpool’s help.",
+  skill: ["Plunge without touching the Phoenix switch, then shoot from the upper flipper: Storm or Rogue is a skill shot, Xavier is the super."],
   plan: [
     "Complete the rollover lanes to light Villain at the Blackbird scoop. Villain modes pay roughly 5–12M.",
     "Ten combos hire Deadpool. Use him on a villain you’ve already damaged, not on its final shot.",
@@ -3550,6 +3609,7 @@ const MORE_PLANS = [
   id: "addams-family", code: "TAF", name: "The Addams Family", sort: "Addams Family",
   mfr: "Bally", year: 1992, variant: "", group: "classic", opdb: "G4ODR",
   thesis: "Pick a lane: keep multiball going, or build Mansion rooms with center-ramp-to-Electric-Chair combos.",
+  skill: ["Plunge with just the right power into Thing's saucer at the top right. It's available any time the ball is in the shooter lane, including after locks."],
   plan: [
     "Power-plunge into Thing’s saucer for the skill shot (2M, rising to 5M).",
     "Hit the bookcase to spell GREED and light locks, then lock at the Vault behind it. On the first multiball, the Swamp and Thing’s Hideout lock too.",
@@ -3579,6 +3639,7 @@ const MORE_PLANS = [
   id: "fish-tales", code: "FT", name: "Fish Tales", sort: "Fish Tales",
   mfr: "Williams", year: 1992, variant: "", group: "classic", opdb: "G5Wxd",
   thesis: "Multiball is the game. Lock three in Caster’s Club and climb the jackpot ladder.",
+  skill: ["No lane to hit, but shooting the Caster's Club straight after the plunge scores a Fast Cast, worth more each time."],
   plan: [
     "Lock three balls in Caster’s Club to start multiball.",
     "Relock a ball, then shoot the left orbit within 15 seconds for each jackpot: Tropical (20M), Fresh Water (30M), Deep Sea (40M). Progress carries to the next multiball.",
@@ -3607,6 +3668,7 @@ const MORE_PLANS = [
   id: "last-action-hero", code: "LAH", name: "Last Action Hero", sort: "Last Action Hero",
   mfr: "Data East", year: 1993, variant: "", group: "classic", opdb: "GRwyq",
   thesis: "Work the Dynamite Features toward LAH 6-Ball, and get two Crane locks before M-Ball.",
+  skill: ["Pure timing: one of the five Crane targets is lit and the light moves back and forth. Press the launch button so the ball hits the lit one. It's worth more on later balls."],
   plan: [
     "Time the launch to hit the lit Crane target for the skill shot (2M on ball 1, 3M on ball 2, 4M on ball 3).",
     "Shoot the left ramp to light the center scoop, then complete the Last, Action and Hero Dynamite Features to start LAH 6-Ball.",
@@ -3664,6 +3726,7 @@ const MORE_PLANS = [
   id: "star-trek-the-next-generation", code: "TNG", name: "Star Trek: The Next Generation", sort: "Star Trek: The Next Generation",
   mfr: "Williams", year: 1993, variant: "", group: "classic", opdb: "GR6d8",
   thesis: "Left orbit into side ramp (the Picard maneuver) builds Warp and sets up Borg Multiball triple jackpots.",
+  skill: ["Move the cursor with the flippers and shoot the gun launcher to take the highlighted option.", "Take Warp 4 or Light Lock. Start Mission only if you're playing for modes."],
   plan: [
     "For the skill shot, take Warp 4 or Light Lock. Only take Start Mission if you’re playing for modes.",
     "Make the right inlane, then the left orbit/spinner to advance Warp. The side ramp also advances Warp up to Warp 9.",
@@ -3693,6 +3756,7 @@ const MORE_PLANS = [
   id: "star-wars-trilogy", code: "SWT", name: "Star Wars Trilogy", sort: "Star Wars Trilogy",
   mfr: "Sega", year: 1997, variant: "", group: "classic", opdb: "GrybN",
   thesis: "Build to Star Wars Multiball and its super jackpot, and bank Heroic modes on the way to Darth Vader Redemption.",
+  skill: ["Pressing launch scores 400K. Vader's look on the display suggests timing matters, but it doesn't."],
   plan: [
     "Load the X-Wing: hit the drop target in the lit row at the start, or clear all 16 inserts.",
     "Start Star Wars Multiball: left ramp, fire the X-Wing, then shoot through the drop-target gap. Jackpots start at 500K and grow with drop-target hits; six jackpots lead to the super.",
@@ -3720,6 +3784,7 @@ const MORE_PLANS = [
   id: "indiana-jones-the-pinball-adventure", code: "IJ", name: "Indiana Jones: The Pinball Adventure", sort: "Indiana Jones: The Pinball Adventure",
   mfr: "Williams", year: 1993, variant: "", group: "classic", opdb: "G4xZy",
   thesis: "For points, it’s multiball: lock three behind E-N-T, then raise and multiply jackpots before cashing at the right ramp.",
+  skill: ["No skill shot. Instead, light the INDY top lanes (rotate them with either flipper) for bonus X, one of Indy's Friends, and Light Hand of Fate at the inlanes."],
   plan: [
     "Knock down the E-N-T drop targets to reveal the lock saucer, and lock three balls for multiball.",
     "In multiball, the left ramp (or the lock saucer) lights the jackpot and the right ramp collects it. Before collecting, raise it: the captive ball adds 5M (10M on a full hit), the captive-ball drop target 3M, and the Raise Jackpot target 2M.",
@@ -3749,6 +3814,7 @@ const MORE_PLANS = [
   id: "super-star", code: "STAR", name: "Super Star", sort: "Super Star",
   mfr: "Williams", year: 1972, variant: "", group: "classic", opdb: "GRV2y",
   thesis: "Build the center saucer to 20,000 with the 1-2-3-4-5 buttons, and raise the drain posts before you take risks.",
+  skill: ["No skill shot on this EM. Just plunge."],
   plan: [
     "Roll the 1-2-3-4-5 buttons in order. Each completed run adds 5,000 to the center saucer (it starts at 5,000 and caps at 20,000). A well-aimed flipper shot can sweep all five in one pass.",
     "Use the blue Advance standups halfway up each side. They spot several buttons at once.",
@@ -3771,6 +3837,7 @@ const MORE_PLANS = [
   id: "avengers", code: "AVEN", name: "The Avengers", sort: "Avengers",
   mfr: "Stern", year: 2012, variant: "Pro", group: "stern", opdb: "GRzNR",
   thesis: "Soft-plunge into Captain America, get several Avengers running, then start multiball and finish them there.",
+  skill: ["Soft plunge for the super skill shot at Captain America, the inner-left shot just right of the left orbit.", "Once Captain America is running, stop soft-plunging and feed the bumpers until he's done."],
   plan: [
     "Soft-plunge for the super skill shot and hit Captain America, the inner-left shot just right of the left orbit. Four Cap shots get him going.",
     "Make at least one left-orbit (Hawkeye) shot before you light the Loki locks. That way Hawkeye is already running if Loki Multiball starts.",
@@ -3878,6 +3945,11 @@ function parseGarboNotes(md) {
   });
   return out;
 }
+function skillOpen() { try { return localStorage.getItem("pp-skill-open") === "1"; } catch (e) { return false; } }
+document.addEventListener("toggle", e => {
+  if (!e.target.classList || !e.target.classList.contains("skill-sec")) return;
+  try { localStorage.setItem("pp-skill-open", e.target.open ? "1" : "0"); } catch (err) {}
+}, true);
 const garboSays = m => (GARBO_NOTES[m.id] || [])[0] ? noteHtml(GARBO_NOTES[m.id][0]) : esc(m.thesis);
 const noteHtml = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*(.+?)\*/g, "<i>$1</i>");         // "venue-slug/machine-id" -> [{date, flippers, tilt, outlanes, note}]
 const copyKey = m => VENUE.slug + "/" + m.id;
@@ -4165,6 +4237,10 @@ function renderDetail(m) {
   const scores = v.scores.length
     ? `<div class="sub mono">High scores on this machine</div><table class="scores"><tbody>${v.scores.map((s, k) => `<tr><td>#${k + 1}</td><td class="s">${esc(s[0])}</td><td class="w">${esc(s[1])}${s[2] ? " · " + esc(s[2]) : ""}</td></tr>`).join("")}</tbody></table>`
     : "";
+  const skillSec = (m.skill && m.skill.length) ? `<details class="sec skill-sec"${skillOpen() ? " open" : ""}>
+        <summary class="sec-h mono"><span>Skill shot</span><span class="tog"><span class="t-show">Show how ▸</span><span class="t-hide">Hide ▾</span></span></summary>
+        <div class="sec-b"><ul class="plain skill">${m.skill.map(t => `<li><span>${esc(t)}</span></li>`).join("")}</ul></div>
+      </details>` : "";
   const planSec = m.plan.length
     ? `<section class="sec primary">
         <div class="sec-h mono"><span>Game plan</span><span>In priority order</span></div>
@@ -4224,13 +4300,13 @@ function renderDetail(m) {
     ${m.uncurated ? `<p class="thesis"><span class="tag">Damaged in the crash · No plan yet</span>${esc(m.thesis)}</p>`
       : `<div class="says"><span class="garbo-art" role="img" aria-label="Garbo"></span><p class="thesis bubble"><svg class="bub bub-left" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"><path class="bub-a" d="M13.6 57.0 Q12.3 48.2 13.3 44.1 Q14.3 40.1 16.8 35.0 Q19.4 29.9 20.1 28.3 Q20.8 26.6 25.2 22.8 Q29.5 18.9 35.9 17.8 Q42.4 16.7 46.3 16.1 Q50.2 15.6 81.8 14.0 Q113.5 12.5 145.7 14.0 Q178.0 15.6 209.9 15.3 Q241.9 15.1 274.6 13.6 Q307.4 12.1 339.9 13.2 Q372.5 14.4 403.3 13.2 Q434.2 11.9 468.2 12.9 Q502.3 13.9 534.2 14.8 Q566.0 15.7 598.2 15.8 Q630.5 15.9 661.8 15.6 Q693.0 15.3 725.5 15.6 Q757.9 15.9 791.6 14.1 Q825.3 12.2 855.2 12.5 Q885.1 12.8 920.0 14.1 Q955.0 15.4 958.3 15.7 Q961.6 15.9 965.3 17.7 Q969.0 19.5 972.1 22.5 Q975.1 25.5 978.5 29.6 Q982.0 33.6 984.0 37.6 Q986.0 41.5 987.1 45.8 Q988.3 50.2 987.7 65.7 Q987.1 81.2 987.7 100.3 Q988.3 119.4 988.4 135.8 Q988.6 152.3 987.4 155.7 Q986.2 159.1 984.9 163.8 Q983.6 168.5 979.1 170.7 Q974.7 172.9 973.0 177.5 Q971.3 182.1 964.7 183.3 Q958.2 184.5 954.8 183.6 Q951.4 182.8 918.8 185.0 Q886.1 187.2 855.7 185.6 Q825.2 184.0 792.1 184.0 Q759.0 184.0 727.1 184.6 Q695.1 185.3 663.3 186.7 Q631.6 188.1 598.1 188.2 Q564.6 188.2 531.7 186.2 Q498.8 184.1 467.4 184.0 Q436.1 183.9 402.5 184.8 Q368.9 185.6 338.0 185.0 Q307.0 184.5 272.9 186.1 Q238.8 187.6 207.4 187.8 Q176.0 188.0 145.5 186.7 Q115.1 185.5 81.4 184.9 Q47.7 184.4 43.9 184.0 Q40.1 183.6 35.8 182.1 Q31.4 180.5 29.1 177.7 Q26.8 174.9 22.4 172.0 Q18.1 169.1 15.8 164.3 Q13.5 159.5 15.3 155.8 Q17.1 152.1 15.7 145.5 Q14.3 138.9 13.9 134.6 Q13.5 130.4 -13.8 122.4 Q-41.1 114.5 -13.1 97.3 Q14.8 80.1 14.8 73.0 Q14.8 65.9 13.6 57.0 Z"/><path class="bub-b" d="M12.4 58.1 Q13.7 48.3 15.8 43.9 Q17.9 39.5 18.2 35.9 Q18.6 32.2 20.3 28.7 Q21.9 25.2 26.9 23.3 Q31.8 21.3 34.2 18.6 Q36.6 15.9 41.0 16.5 Q45.4 17.1 79.6 14.5 Q113.8 12.0 147.0 14.0 Q180.2 16.0 211.5 15.3 Q242.7 14.5 273.4 13.2 Q304.1 11.9 337.6 12.0 Q371.0 12.1 402.2 12.5 Q433.4 12.9 465.2 13.4 Q497.0 13.8 530.6 14.7 Q564.2 15.5 596.7 15.1 Q629.3 14.6 661.5 14.7 Q693.7 14.7 725.9 13.9 Q758.0 13.0 792.0 14.6 Q826.0 16.2 857.8 15.5 Q889.6 14.9 920.2 14.7 Q950.8 14.5 955.1 14.7 Q959.4 14.9 965.1 17.2 Q970.7 19.6 974.5 22.1 Q978.3 24.7 981.3 29.0 Q984.4 33.4 983.0 35.9 Q981.6 38.4 985.1 43.1 Q988.6 47.9 988.9 65.0 Q989.1 82.2 986.2 100.1 Q983.3 117.9 985.5 134.4 Q987.8 151.0 985.0 155.3 Q982.2 159.6 983.3 164.5 Q984.4 169.3 979.0 171.5 Q973.6 173.7 970.0 175.9 Q966.4 178.0 964.6 179.9 Q962.7 181.8 957.5 182.9 Q952.4 184.1 918.9 185.5 Q885.4 187.0 853.0 186.8 Q820.5 186.6 788.2 186.1 Q755.8 185.7 723.9 185.3 Q691.9 185.0 662.0 186.2 Q632.2 187.3 597.7 187.5 Q563.3 187.7 530.7 186.6 Q498.1 185.5 467.9 186.1 Q437.7 186.6 403.0 187.4 Q368.3 188.2 336.4 186.5 Q304.5 184.9 274.0 185.1 Q243.5 185.2 209.6 184.7 Q175.8 184.1 142.9 185.2 Q109.9 186.4 78.2 185.6 Q46.4 184.7 42.4 183.9 Q38.4 183.0 36.2 181.4 Q33.9 179.9 29.2 178.2 Q24.4 176.5 20.5 171.5 Q16.5 166.6 17.1 164.2 Q17.8 161.8 15.1 156.2 Q12.4 150.6 14.0 146.8 Q15.5 142.9 13.8 137.5 Q12.1 132.0 -11.7 123.2 Q-35.6 114.5 -11.0 97.4 Q13.5 80.3 12.3 74.1 Q11.0 68.0 12.4 58.1 Z"/></svg><svg class="bub bub-bottom" viewBox="0 0 1000 200" preserveAspectRatio="none" aria-hidden="true"><path class="bub-a" d="M13.6 65.4 Q12.3 48.2 13.3 44.1 Q14.3 40.1 16.8 35.0 Q19.4 29.9 20.1 28.3 Q20.8 26.6 25.2 22.8 Q29.5 18.9 35.9 17.8 Q42.4 16.7 46.3 16.1 Q50.2 15.6 81.8 14.0 Q113.5 12.5 145.7 14.0 Q178.0 15.6 209.9 15.3 Q241.9 15.1 274.6 13.6 Q307.4 12.1 339.9 13.2 Q372.5 14.4 403.3 13.2 Q434.2 11.9 468.2 12.9 Q502.3 13.9 534.2 14.8 Q566.0 15.7 598.2 15.8 Q630.5 15.9 661.8 15.6 Q693.0 15.3 725.5 15.6 Q757.9 15.9 791.6 14.1 Q825.3 12.2 855.2 12.5 Q885.1 12.8 920.0 14.1 Q955.0 15.4 958.3 15.7 Q961.6 15.9 965.3 17.7 Q969.0 19.5 972.1 22.5 Q975.1 25.5 978.5 29.6 Q982.0 33.6 984.0 37.6 Q986.0 41.5 987.1 45.8 Q988.3 50.2 987.7 65.7 Q987.1 81.2 987.7 100.3 Q988.3 119.4 988.4 135.8 Q988.6 152.3 987.4 155.7 Q986.2 159.1 984.9 163.8 Q983.6 168.5 979.1 170.7 Q974.7 172.9 973.0 177.5 Q971.3 182.1 964.7 183.3 Q958.2 184.5 954.8 183.6 Q951.4 182.8 917.4 185.0 Q883.4 187.2 851.6 185.6 Q819.8 184.0 785.4 184.0 Q750.9 184.0 717.6 184.6 Q684.3 185.3 651.2 186.7 Q618.1 188.1 583.2 188.2 Q548.4 188.2 514.1 186.2 Q479.9 184.1 447.2 184.0 Q414.5 183.9 379.5 184.8 Q344.6 185.6 312.3 185.0 Q280.0 184.5 244.5 186.1 Q209.1 187.6 192.9 205.8 Q176.8 224.0 171.7 204.7 Q166.5 185.5 150.6 185.8 Q134.7 186.1 120.8 186.3 Q106.9 186.4 92.2 186.5 Q77.4 186.5 64.1 185.4 Q50.8 184.3 44.8 184.2 Q38.8 184.2 34.0 181.6 Q29.3 179.1 28.2 177.0 Q27.0 174.9 22.9 170.5 Q18.9 166.0 16.7 163.4 Q14.6 160.7 12.8 156.6 Q10.9 152.5 12.9 134.0 Q14.8 115.4 14.8 99.0 Q14.8 82.5 13.6 65.4 Z"/><path class="bub-b" d="M12.4 66.5 Q13.7 48.3 15.8 43.9 Q17.9 39.5 18.2 35.9 Q18.6 32.2 20.3 28.7 Q21.9 25.2 26.9 23.3 Q31.8 21.3 34.2 18.6 Q36.6 15.9 41.0 16.5 Q45.4 17.1 79.6 14.5 Q113.8 12.0 147.0 14.0 Q180.2 16.0 211.5 15.3 Q242.7 14.5 273.4 13.2 Q304.1 11.9 337.6 12.0 Q371.0 12.1 402.2 12.5 Q433.4 12.9 465.2 13.4 Q497.0 13.8 530.6 14.7 Q564.2 15.5 596.7 15.1 Q629.3 14.6 661.5 14.7 Q693.7 14.7 725.9 13.9 Q758.0 13.0 792.0 14.6 Q826.0 16.2 857.8 15.5 Q889.6 14.9 920.2 14.7 Q950.8 14.5 955.1 14.7 Q959.4 14.9 965.1 17.2 Q970.7 19.6 974.5 22.1 Q978.3 24.7 981.3 29.0 Q984.4 33.4 983.0 35.9 Q981.6 38.4 985.1 43.1 Q988.6 47.9 988.9 65.0 Q989.1 82.2 986.2 100.1 Q983.3 117.9 985.5 134.4 Q987.8 151.0 985.0 155.3 Q982.2 159.6 983.3 164.5 Q984.4 169.3 979.0 171.5 Q973.6 173.7 970.0 175.9 Q966.4 178.0 964.6 179.9 Q962.7 181.8 957.5 182.9 Q952.4 184.1 917.6 185.5 Q882.7 187.0 848.9 186.8 Q815.1 186.6 781.4 186.1 Q747.7 185.7 714.4 185.3 Q681.1 185.0 649.9 186.2 Q618.7 187.3 582.9 187.5 Q547.1 187.7 513.2 186.6 Q479.2 185.5 447.7 186.1 Q416.1 186.6 380.0 187.4 Q344.0 188.2 310.7 186.5 Q277.4 184.9 245.6 185.1 Q213.7 185.2 195.2 202.7 Q176.7 220.1 169.0 203.2 Q161.4 186.4 147.4 186.4 Q133.4 186.4 119.3 186.1 Q105.2 185.8 92.6 185.9 Q79.9 185.9 64.2 185.9 Q48.5 185.9 42.8 183.8 Q37.2 181.7 35.4 181.5 Q33.6 181.4 28.0 177.4 Q22.4 173.5 21.2 171.8 Q20.1 170.1 16.7 166.2 Q13.2 162.3 14.8 157.4 Q16.4 152.5 15.0 134.0 Q13.5 115.6 12.3 100.1 Q11.0 84.7 12.4 66.5 Z"/></svg><span class="tag">Garbo says</span>${garboSays(m)}</p></div>`}
     <div class="d-grid">
-      <div class="col">${m.tips.length ? tipsSec + rulesSec : ""}${planSec}${avoidSec}${tourneySec}</div>
+      <div class="col">${skillSec}${rulesSec}${m.tips.length ? tipsSec : ""}${planSec}${avoidSec}${tourneySec}</div>
       <div class="col">
         <section class="sec">
           <div class="sec-h mono"><span>At ${esc(VENUE.name)}</span><span class="dim">How this copy plays</span></div>
           <div class="sec-b">${notes}${copy}${scores}</div>
         </section>
-        ${m.tips.length ? "" : tipsSec + rulesSec}
+        ${m.tips.length ? "" : tipsSec}
         <section class="sec">
           <div class="sec-h mono"><span>Sources</span></div>
           <div class="sec-b"><ul class="srcs">${srcs}</ul></div>
