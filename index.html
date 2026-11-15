@@ -443,6 +443,10 @@ h1 .fx > .fx-t { color: var(--lime); -webkit-text-stroke: 0; }
 .gl-cta .arr { margin-left: auto; color: var(--lime); }
 .gl-cta:hover { border-color: var(--lime); }
 .gl-cta + .gl-cta { margin-top: -12px; }
+.fmt-link { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 10px 14px; border: 1px solid var(--line-2); color: var(--fg); text-decoration: none; font-size: 14.5px; }
+.fmt-link .arr { margin-left: auto; color: var(--lime); }
+.fmt-link:hover { border-color: var(--lime); }
+.sec-b > .fmt-link:first-child { margin-top: 0; }
 /* NM Pinball logo (used with permission): inline beside the arrow on wide screens, top-right corner on phones */
 .gl-ext .arr { margin-left: 0; }
 .gl-logo { order: 2; margin-left: auto; height: 46px; width: auto; }
@@ -4207,14 +4211,11 @@ function renderDetail(m) {
         <div class="sec-h mono"><span>PinTips</span></div>
         <div class="sec-b"><p class="rules"><a href="${PT(m.opdb)}" target="_blank" rel="noopener">Open the community tips for this machine on Match Play ↗</a></p></div>
       </section>` : "");
-  const tourneyLines = (m.tourney && m.tourney.length) ? m.tourney : null;
+  const tourneyLines = (m.tourney && m.tourney.length) ? m.tourney : [];
   const tourneySec = m.uncurated ? "" : `<section class="sec">
-        <div class="sec-h mono"><span>In a tournament</span><span class="dim">${tourneyLines ? "This game" : "The basics"}</span></div>
-        <div class="sec-b"><ul class="plain copy">${(tourneyLines || [
-          "You only need to beat the other players in your group. On your last ball, know the number you need and take the lowest-risk route to it.",
-          "Use ball one to learn the copy: flipper strength, outlane posts, which shots come back safely.",
-          "Call the tournament director for a stuck ball, a flipper that won’t hold or a shot that doesn’t register, before you play through it."
-        ]).map(t => `<li>${esc(t)}</li>`).join("")}</ul></div>
+        <div class="sec-h mono"><span>In a tournament</span></div>
+        <div class="sec-b">${tourneyLines.length ? `<ul class="plain copy">${tourneyLines.map(t => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+          <a class="fmt-link" href="#formats"><span>New to tournaments? See how each format works</span><span class="arr" aria-hidden="true">→</span></a></div>
       </section>`;
   const extra = m.uncurated
     ? [["Pinball Rulesheets: master list", "https://pinballrulesheets.com/rulesheet-master-list"], ["Pinball Primer: game list", "https://pinballprimer.github.io/gamelist.html"]]
