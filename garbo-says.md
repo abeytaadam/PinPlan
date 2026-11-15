@@ -41,6 +41,8 @@ SHIELD IS YOUR FRIEND! Check to see if the game is dialed in enough to hit shots
 
 ## evil-dead  (Evil Dead)
 
+Boomstick multiball can be big with a mode stack. Holding up the right sling flipper as the ball comes down the wireform makes for easy right flipper traps.
+
 ## fallout  (Fallout)
 
 Picking Maximus grants more time in your Power Armor (2x Playfield). Backhand Deathclaw for multiball. Try to start a mode before hitting that last shot.
@@ -73,6 +75,8 @@ Prioritize multiball. Modes can add up but aren't scored until bonus so treat th
 Stack modes with multiballs. Except Icarus. Hate that guy. Keep an eye on your power jackpot! A 2x/3x collect can be huge.
 
 ## james-bond-007  (James Bond 007)
+
+Garbo finds lighting Bond Women easier than collecting them. Maybe you can hit that upper loop reliably?
 
 ## jaws  (JAWS)
 
