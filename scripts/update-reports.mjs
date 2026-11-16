@@ -51,7 +51,7 @@ function parseCSV(s) {
 const [header = [], ...rows] = parseCSV(text);
 const col = word => header.findIndex(h => h.toLowerCase().includes(word));
 const okCol = header.findIndex(h => ["ok", "approved", "approve"].includes(h.trim().toLowerCase()));
-const C = { time: col("timestamp"), copy: col("copy"), flippers: col("flipper"), tilt: col("tilt"), outlanes: col("outlane"), note: col("note") >= 0 ? col("note") : col("anything else") };
+const C = { time: col("timestamp"), overall: col("overall"), copy: col("copy"), flippers: col("flipper"), tilt: col("tilt"), outlanes: col("outlane"), note: col("note") >= 0 ? col("note") : col("anything else") };
 if (C.copy < 0) throw new Error(`The report sheet has no "Copy" column. Found: ${header.join(" | ")}`);
 
 if (okCol < 0) console.log('No "OK" column in the report sheet yet, so no written notes are shown.');
@@ -89,12 +89,13 @@ for (const r of rows) {
   if (!date || date < cutoff) continue;
   const rep = {
     date,
+    overall: C.overall >= 0 ? clean(r[C.overall]) : "",
     flippers: C.flippers >= 0 ? clean(r[C.flippers]) : "",
     tilt: C.tilt >= 0 ? clean(r[C.tilt]) : "",
     outlanes: C.outlanes >= 0 ? clean(r[C.outlanes]) : "",
     note: C.note >= 0 ? allowNote(r, clean(r[C.note], NOTE_MAX)) : ""
   };
-  if (!rep.flippers && !rep.tilt && !rep.outlanes && !rep.note) continue;
+  if (!rep.overall && !rep.flippers && !rep.tilt && !rep.outlanes && !rep.note) continue;
   (copies[key] = copies[key] || []).push(rep);
 }
 for (const k of Object.keys(copies)) {
