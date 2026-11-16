@@ -1,0 +1,30 @@
+# Words that hold back a player's note, even if it's ticked "OK" in the responses sheet.
+# One word or phrase per line. Matching ignores case, spots simple swaps like 0 for o or $ for s,
+# and also catches plurals and -ed/-ing endings. Lines starting with # are ignored.
+# Notes with links, email addresses or phone numbers are always held back too.
+nigger
+nigga
+faggot
+fag
+dyke
+tranny
+retard
+retarded
+spic
+chink
+gook
+kike
+wetback
+beaner
+raghead
+towelhead
+coon
+cunt
+whore
+slut
+rape
+rapist
+pedo
+pedophile
+kys
+kill yourself
