@@ -22,6 +22,7 @@ Use your super skill shot to hit the targets in front of the saucer to drop the 
 1. Bring a portal lock into reality gem quest. 2. Bash Thor for multiball. 3. Profit.
 
 ## back-to-the-future  (Back to the Future)
+Repeated ramp shots start unlimited millions mode. Loop the left ramp unless you can't find it. Then try for DMC multiball.
 
 ## cactus-canyon  (Cactus Canyon)
 Gold Mine Multiball supers are juicy. If you're feeling froggy, try for Showdown Multiball. (4 Quickdraw Targets)
@@ -81,6 +82,7 @@ Garbo finds lighting Bond Women easier than collecting them. Maybe you can hit t
 ## jaws  (JAWS)
 
 ## john-wick  (John Wick)
+Stack a job with a car multiball, and make sure not to forget to pick the right outlane for ball save.
 
 ## junk-yard  (Junk Yard)
 
@@ -191,3 +193,24 @@ I usually pick Eddie Brock. Lock 3 balls on the right side for 2x playfield. Bas
 ## scared-stiff
 
 Short plunge to spin the spider wheel! Stop on coffin or crate to extend those multiballs. If you undershoot the scoop and don't validate your playfield, you can let the ball drain and try again!
+
+## black-knight-sword-of-rage  (Black Knight: Sword of Rage)
+Backhands are safest here. Lock two balls behind the shield and light a third. Get a mode ready and start it and MB in one shot.
+
+## bram-stokers-dracula  (Bram Stoker's Dracula)
+Bats 'n' Rats! Get 'em early. They add to your bonus and carry over ball-to-ball.
+
+## cirqus-voltaire  (Cirqus Voltaire)
+Bash that creep ringmaster as hard and as many times as you can. Multiball after the 2nd defeat.
+
+## dr-dude  (Dr. Dude and His Excellent Ray)
+Shooting the Mixmaster ramp will sometimes spot shots towards multiball. If you can repeat it, this can be the safer route.
+
+## harlem-globetrotters  (Harlem Globetrotters On Tour)
+Like a lot of classic games, knock down inlane drop targets for 5x bonus and then rip the lit spinner. Super bonus carries over so try to lock it in ball one.
+
+## no-fear  (No Fear: Dangerous Sports)
+Take ball locks or start modes with your skillshot. Jackpots and super jackpots are big points.
+
+## revenge-from-mars  (Revenge From Mars)
+Finishing three modes starts a mini-wizard mode that can be huge. Some modes are safer to time out. ;)
