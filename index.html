@@ -257,7 +257,7 @@ details.skill-sec[open] .t-hide { display: inline; color: var(--fg-dim); }
 details.skill-sec > summary:hover { background: color-mix(in srgb, var(--lime) 6%, transparent); }
 details.skill-sec > summary:focus-visible { outline: 1px solid var(--lime); outline-offset: -3px; }
 ul.copy li::before { content: "■"; font-size: 9px; padding-top: 5px; color: var(--fg-dim); }
-.note { border-left: 2px solid var(--warn); background: var(--warn-soft); padding: 10px 12px; margin-bottom: 10px; }
+.note { border-left: 2px solid var(--line-2); background: color-mix(in srgb, var(--fg) 4%, transparent); padding: 10px 12px; margin-bottom: 10px; }
 .note q { color: var(--fg-hi); quotes: "“" "”"; }
 .note .by { display: block; margin-top: 4px; color: var(--fg-dim); }
 .scores { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-top: 4px; }
@@ -617,7 +617,7 @@ ol.plan li::before { color: var(--fg-dim); }
     <a class="gl-cta" href="#formats"><span class="mono">Tournament formats</span><span>Strikes, target match play, Amazing Race, pingolf and more, broken down.</span><span class="arr" aria-hidden="true">→</span></a>
     <a class="gl-cta gl-ext" href="https://www.newmexicopinball.com/" target="_blank" rel="noopener"><img class="gl-logo" src="art/nm-pinball.png" alt="New Mexico Pinball logo" width="240" height="199" loading="lazy"><span class="mono">New Mexico Pinball</span><span>Visit newmexicopinball.com for tournament schedules and other event information!</span><span class="arr" aria-hidden="true">↗</span></a>
     <p>Venue lineups come from <a href="https://pinballmap.com" target="_blank" rel="noopener">Pinball Map</a>, licensed CC BY-SA 4.0. Each venue page links to that venue’s own Pinball Map listing, which is the place to check hours and location. Community tips are summarized from <a href="https://app.matchplay.events/opdb/entries/G4do5/pintips" target="_blank" rel="noopener">PinTips on Match Play</a>. Strategy draws on Kineticist tutorials, The Pinball Primer, Pinball Rulesheets and the Tilt Forums archive; each machine page links its sources.</p>
-    <p>Machine reports come from players using the guide, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
+    <p>Field notes come from players using the guide, are anonymous, and may already be out of date. Not affiliated with any venue or operator.</p>
     <p class="garbo-sig"><span class="garbo-art" role="img" aria-label="Garbo"></span><span>Field notes of <b>Garbo</b>, a visitor who fell for pinball. Translated by <b>SAPO Studios</b>.</span></p>
   </div>
 </footer>
@@ -3922,12 +3922,13 @@ const LIVE = new Map();   // venue id -> { machines, date } from lineup.json
    Fill in REPORT_FORM from the form's "Get pre-filled link" (see CLAUDE.md) to switch reporting on. */
 const REPORT_FORM = {
   action: "https://docs.google.com/forms/d/e/1FAIpQLScVmh4MJ1RnS_Jy2OrNb-a3LjbeoBPeqBF6YmPRhAUHehrDPA/formResponse",
-  entries: { copy: "entry.1163997423", venue: "entry.1389641399", machine: "entry.647720431", flippers: "entry.445510707", tilt: "entry.1490836599", outlanes: "entry.751837775", note: "entry.1923933769" }
+  entries: { copy: "entry.1163997423", overall: "entry.241720490", venue: "entry.1389641399", machine: "entry.647720431", flippers: "entry.445510707", tilt: "entry.1490836599", outlanes: "entry.751837775", note: "entry.1923933769" }
 };
 const REPORT_FIELDS = [
-  ["flippers", "Flippers", ["Strong", "Normal", "Left weak", "Right weak", "Both weak"]],
+  ["overall", "Overall", ["Easy", "Fair", "Tough"]],
+  ["flippers", "Flippers", ["Strong", "Normal", "Soft"]],
   ["tilt", "Tilt", ["Loose", "Normal", "Tight"]],
-  ["outlanes", "Outlanes", ["Forgiving", "Normal", "Drain a lot"]]
+  ["outlanes", "Outlanes", ["Forgiving", "Normal", "Hungry"]]
 ];
 const RECENT_DAYS = 60;
 let REPORTS = {};
@@ -4081,7 +4082,7 @@ const GROUPS = [
   ["classic", "Classics", m => m.group === "classic"],
   ["spooky", "Spooky", m => m.group === "spooky"],
   ["other", "Other", m => m.group === "other"],
-  ["notes", "Player reports", m => recentReports(m).length > 0]
+  ["notes", "Field notes", m => recentReports(m).length > 0]
 ];
 const CAT = { multiball: "Multiball", skillshot: "Skill shot", secret: "Secret", general: "General", wizard: "Wizard" };
 
@@ -4135,7 +4136,7 @@ function renderGrid() {
     const flags = [];
     if (m.uncurated) flags.push(`<span class="flag new"><span class="sq"></span>No plan yet</span>`);
     const nRep = recentReports(m).length;
-    if (nRep) flags.push(`<span class="flag warn"><span class="sq"></span>${nRep} ${nRep === 1 ? "report" : "reports"}</span>`);
+    if (nRep) flags.push(`<span class="flag">${nRep} field ${nRep === 1 ? "note" : "notes"}</span>`);
     if (m.venue.scores.length) flags.push(`<span class="flag">Top score ${shortScore(m.venue.scores[0][0])}</span>`);
     if (m.tips.length) flags.push(`<span class="flag">${m.tips.length} PinTips</span>`);
     return `<a class="card" href="#${VENUE.slug}/${m.id}">
@@ -4161,7 +4162,7 @@ function eraOf(m) {
 }
 
 function reportSummary(reps) {
-  if (!reps.length) return `<p class="dim" style="margin:0 0 10px">No reports on this copy in the last ${RECENT_DAYS} days. Played it lately? Add one below.</p>`;
+  if (!reps.length) return `<p class="dim" style="margin:0 0 10px">No field notes on this copy in the last ${RECENT_DAYS} days. Played it lately? Add one below.</p>`;
   const rows = REPORT_FIELDS.map(([key, label]) => {
     const counts = {};
     reps.forEach(r => { if (r[key]) counts[r[key]] = (counts[r[key]] || 0) + 1; });
@@ -4171,8 +4172,8 @@ function reportSummary(reps) {
     return `<div class="rep-row"><span class="mono dim">${label}</span><span><b>${esc(top)}</b> <span class="dim">${n} of ${total}</span></span></div>`;
   }).join("");
   const said = reps.filter(r => r.note).slice(0, 3)
-    .map(r => `<div class="note"><q>${esc(r.note)}</q><span class="by mono">Player report · ${esc(fmtDate(r.date))}</span></div>`).join("");
-  return `<div class="rep-sum"><div class="sub mono">Last ${RECENT_DAYS} days · ${reps.length} ${reps.length === 1 ? "report" : "reports"}</div>${rows}</div>`
+    .map(r => `<div class="note"><q>${esc(r.note)}</q><span class="by mono">Field note · ${esc(fmtDate(r.date))}</span></div>`).join("");
+  return `<div class="rep-sum"><div class="sub mono">Last ${RECENT_DAYS} days · ${reps.length} field ${reps.length === 1 ? "note" : "notes"}</div>${rows}</div>`
     + said;
 }
 
@@ -4180,13 +4181,13 @@ function reportForm(m) {
   const on = !!REPORT_FORM.action;
   const groups = REPORT_FIELDS.map(([key, label, opts]) => `<fieldset class="rep-q"><legend class="mono">${label}</legend>${
     opts.map(o => `<label class="rchip"><input type="radio" name="${key}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("")}</fieldset>`).join("");
-  return `<details class="rep-form"${on ? "" : " data-off"}><summary class="mono">How’s it playing? Add a report</summary>
+  return `<details class="rep-form"${on ? "" : " data-off"}><summary class="mono">How does this one play? Add a field note</summary>
     <form data-copy="${esc(copyKey(m))}" data-venue="${esc(VENUE.name)}" data-machine="${esc(m.name + (m.variant ? " (" + m.variant + ")" : ""))}">
       <p class="dim rep-hint">Quick and anonymous. Pick what you noticed; skip anything you didn’t.</p>
       ${groups}
-      <label class="rep-text"><span class="mono">Anything else</span><textarea name="note" maxlength="280" rows="3" placeholder="e.g. right ramp needs a perfect shot, left orbit is dead"></textarea></label>
+      <label class="rep-text"><span class="mono">Anything else</span><textarea name="note" maxlength="280" rows="3" placeholder="e.g. left ramp feeds the right flipper nicely; backhand the scoop"></textarea></label>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="rep-send mono" type="submit"${on ? "" : " disabled"}>${on ? "Send report" : "Reporting opens soon"}</button>
+      <button class="rep-send mono" type="submit"${on ? "" : " disabled"}>${on ? "Send field note" : "Field notes open soon"}</button>
       <p class="rep-done mono" hidden></p>
     </form></details>`;
 }
@@ -4199,20 +4200,20 @@ async function sendReport(form) {
     done.hidden = false; done.textContent = "Pick at least one thing first."; return;
   }
   const lockKey = "pinplan-report-" + form.dataset.copy;
-  try { if (Date.now() - Number(localStorage.getItem(lockKey) || 0) < 30 * 60e3) { done.hidden = false; done.textContent = "Thanks, you already reported this machine recently."; return; } } catch (e) {}
+  try { if (Date.now() - Number(localStorage.getItem(lockKey) || 0) < 30 * 60e3) { done.hidden = false; done.textContent = "Thanks, you already added a field note for this machine recently."; return; } } catch (e) {}
   btn.disabled = true;
   if (!val("website")) {   // bots fill the hidden field; skip sending for them
     const E = REPORT_FORM.entries, body = new URLSearchParams();
     const put = (k, v) => { if (E[k] && v) body.append(E[k], v); };
     put("copy", form.dataset.copy); put("venue", form.dataset.venue); put("machine", form.dataset.machine);
-    ["flippers", "tilt", "outlanes", "note"].forEach(k => put(k, val(k)));
+    ["overall", "flippers", "tilt", "outlanes", "note"].forEach(k => put(k, val(k)));
     try { await fetch(REPORT_FORM.action, { method: "POST", mode: "no-cors", body }); }
     catch (e) { btn.disabled = false; done.hidden = false; done.textContent = "Couldn’t send. Check your connection and try again."; return; }
   }
   try { localStorage.setItem(lockKey, String(Date.now())); } catch (e) {}
   form.querySelectorAll("fieldset, .rep-text, .rep-hint, .rep-send").forEach(el => el.hidden = true);
   done.hidden = false;
-  done.textContent = "Thanks! Your report will show here within a couple of hours.";
+  done.textContent = "Thanks! Your field note will show here within a couple of hours.";
 }
 document.addEventListener("submit", e => {
   const f = e.target.closest(".rep-form form");
