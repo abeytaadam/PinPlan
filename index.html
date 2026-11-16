@@ -74,7 +74,19 @@ a { color: inherit; }
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
 }
-.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; position: relative; }
+.nav-btn { flex: none; display: inline-flex; align-items: center; gap: 8px; background: none; border: 1px solid transparent; color: var(--lime); font: inherit; letter-spacing: .08em; text-transform: uppercase; padding: 8px 12px; cursor: pointer; }
+.nav-btn:hover, .nav-btn[aria-expanded="true"] { border-color: var(--lime); }
+.nav-ic { display: inline-grid; gap: 3px; width: 14px; }
+.nav-ic i { display: block; height: 2px; background: var(--lime); }
+.nav-menu { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); top: calc(100% - 4px); min-width: 320px; background: var(--bg); border: 1px solid var(--line-2); box-shadow: 0 10px 30px rgba(0,0,0,.5); padding: 8px 0; z-index: 6; }
+.nav-menu[hidden] { display: none; }
+.nav-menu a { display: block; position: relative; padding: 12px 18px 12px 58px; color: var(--fg-hi); text-decoration: none; font-family: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif; font-weight: 400; font-size: 28px; line-height: 1.05; letter-spacing: 0; text-transform: none; }
+.nav-menu a::before { content: attr(data-n); position: absolute; left: 18px; top: 18px; font-family: var(--f-mono, ui-monospace, monospace); font-size: 11px; letter-spacing: .1em; color: var(--fg-dim); }
+.nav-menu a small { display: block; margin-top: 5px; font-family: var(--f-mono, ui-monospace, monospace); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--fg-dim); }
+.nav-menu a:hover, .nav-menu a:focus-visible { background: color-mix(in srgb, var(--lime) 8%, transparent); color: var(--lime); outline: none; }
+.nav-menu a + a { border-top: 1px solid var(--line); }
+@media (max-width:600px) { .nav-btn { padding: 8px 10px; } .nav-menu { left: 12px; right: 12px; min-width: 0; } }
 .brand { white-space: nowrap; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg-hi); }
 .brand-dot { width: 10px; height: 10px; background: var(--dmd); box-shadow: 0 0 10px var(--dmd); }
 .bar-right { display: flex; gap: 16px; align-items: center; justify-content: flex-end; flex: 1 1 auto; min-width: 0; }
@@ -542,7 +554,15 @@ ol.plan li::before { color: var(--fg-dim); }
     <div class="bar-right mono dim">
       <label class="venue-pick"><span class="sr">Venue</span><select id="venue-select" aria-label="Choose a venue"></select></label>
       <span id="bar-count" class="hide-sm"></span>
+      <button class="nav-btn" id="nav-btn" type="button" aria-expanded="false" aria-controls="nav-menu"><span class="nav-ic" aria-hidden="true"><i></i><i></i><i></i></span><span class="hide-sm">Index</span></button>
     </div>
+    <nav class="nav-menu mono" id="nav-menu" hidden>
+      <a href="#" data-n="01">All venues<small>Every venue listed</small></a>
+      <a href="#glossary" data-n="02">Pinball glossary<small>Pinball terms in plain language</small></a>
+      <a href="#formats" data-n="03">Tournament formats<small>How each format works</small></a>
+      <a href="https://www.newmexicopinball.com/" target="_blank" rel="noopener" data-n="04">New Mexico Pinball <span aria-hidden="true">↗</span><small>Schedules &amp; events</small></a>
+      <a class="gl-mail" href="#" data-u="garbo" data-d="garbosguide.lol" data-n="05">Contact Garbo <span aria-hidden="true">✉</span><small>Questions &amp; corrections</small></a>
+    </nav>
   </div>
 </header>
 
@@ -3949,6 +3969,16 @@ function parseGarboNotes(md) {
   return out;
 }
 /* Contact card: the address is put together here, so it isn't sitting in the HTML for scrapers. */
+(() => {
+  const btn = document.getElementById("nav-btn"), menu = document.getElementById("nav-menu");
+  if (!btn || !menu) return;
+  const set = open => { menu.hidden = !open; btn.setAttribute("aria-expanded", String(open)); };
+  btn.addEventListener("click", e => { e.stopPropagation(); set(menu.hidden); });
+  menu.addEventListener("click", () => set(false));
+  document.addEventListener("click", e => { if (!menu.hidden && !menu.contains(e.target)) set(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !menu.hidden) { set(false); btn.focus(); } });
+  window.addEventListener("hashchange", () => set(false));
+})();
 document.querySelectorAll(".gl-mail").forEach(a => {
   const addr = a.dataset.u + "@" + a.dataset.d;
   const b = a.querySelector(".mail-addr"); if (b) b.textContent = addr;
