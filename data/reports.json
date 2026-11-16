@@ -1,5 +1,15 @@
 {
   "source": "PinPlan player reports",
-  "copies": {},
-  "updated": "2026-11-13T01:28:30.007Z"
+  "copies": {
+    "sister/back-to-the-future": [
+      {
+        "date": "2026-11-16",
+        "flippers": "Strong",
+        "tilt": "Normal",
+        "outlanes": "Normal",
+        "note": "Left ramp is pretty late on the flipper."
+      }
+    ]
+  },
+  "updated": "2026-11-16T15:20:20.244Z"
 }
