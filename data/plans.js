@@ -7014,7 +7014,7 @@ window.PLANS = {
         "Plunge into the lit lane. Each lit rollover the ball crosses on the way adds a little more, but only the lane completes it."
       ],
       "plan": [
-        "Survive the bumper feed, then get the ball to the left flipper.",
+        "Survive the bumper feed, then get the ball to the right flipper.",
         "Clear the left drops to light Dead Features (one bank for the first mode, two after).",
         "In CDC, loop the left ramp to build value, then cash out, ideally with X (about 30–40M).",
         "Use Riot for multiball stacking. Its value rises with switch hits.",
