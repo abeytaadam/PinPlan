@@ -30,7 +30,27 @@
         "outlanes": "Normal",
         "note": "Basement shot rejects almost half the time."
       }
+    ],
+    "la-cumbre-brewing-co/transformers-more-than-meets-the-eye": [
+      {
+        "date": "2026-11-16",
+        "overall": "Tough",
+        "flippers": "Normal",
+        "tilt": "Normal",
+        "outlanes": "Normal",
+        "note": "Rubber are particularly bouncy."
+      }
+    ],
+    "la-cumbre-brewing-co/fallout": [
+      {
+        "date": "2026-11-16",
+        "overall": "Fair",
+        "flippers": "Normal",
+        "tilt": "Normal",
+        "outlanes": "Normal",
+        "note": "Left return from the the top of the playfield can sometimes bounce out the outlane."
+      }
     ]
   },
-  "updated": "2026-11-16T18:54:28.291Z"
+  "updated": "2026-11-17T03:09:49.507Z"
 }
