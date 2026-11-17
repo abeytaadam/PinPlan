@@ -660,6 +660,11 @@ ol.plan li::before { color: var(--fg-dim); }
 
 <script src="data/plans.js"></script>
 <script>
+/* Owner's editor: open any page with ?edit to turn it on in this browser (see editor.js). Visitors never load it. */
+try { if (/[?&]edit\b/.test(location.search)) localStorage.setItem("pp-edit", "1"); } catch (e) {}
+try { if (localStorage.getItem("pp-edit") === "1") document.write('<script src="editor.js"><\/script>'); } catch (e) {}
+</script>
+<script>
 const PT = g => "https://app.matchplay.events/opdb/entries/" + g + "/pintips";
 /* The game library lives in data/plans.js (window.PLANS), so the in-page editor can change it. */
 const MACHINES = window.PLANS.machines;
@@ -1125,6 +1130,7 @@ function renderDetail(m) {
     io.observe(says);
   } else if (says) says.classList.add("boil");
   linkGlossary(body);
+  if (window.PPEdit) PPEdit.decorate(m, body);
 }
 
 /* ---------- Glossary ---------- */
