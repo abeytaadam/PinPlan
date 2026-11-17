@@ -27,9 +27,7 @@ window.PLANS = {
         "The center ramp is the best single shot on the game: it lights locks and feeds the left flipper."
       ],
       "avoid": [
-        "Shooting the forcefield when the super skill shot or Stroke of Luck can open it for you.",
-        "Spending Martian Bombs early, when each one only kills a single Martian.",
-        "Completing in/outlanes when Stroke of Luck is already lit and extra balls are off."
+        "Spending Martian Bombs early, when each one only kills a single Martian."
       ],
       "tourney": [],
       "venue": {
@@ -77,7 +75,7 @@ window.PLANS = {
           "In Total Annihilation, the orbits and the cow/lobster ramps grow the jackpot; the lock ramp collects it."
         ]
       ],
-      "rules": "Ramps and orbits build toward Total Annihilation. The center ramp lights locks for multiball. Drop the forcefield and hit the saucer to destroy it; Martians at the targets build Martian Attack. Conquering every nation leads to Rule the Universe.",
+      "rules": "Ramps and orbits build toward Total Annihilation. The center ramp lights locks for multiball. Drop the forcefield and hit the saucer to destroy it. Spell MARTIAN by hitting the green standup targets located around the playfield to light Martian Attack. Conquering every nation leads to Rule the Universe.",
       "sources": [
         [
           "Kineticist: Attack From Mars tutorial",
@@ -167,10 +165,10 @@ window.PLANS = {
       ],
       "plan": [
         "Start Gold Mine Multiball at the mine and stay with it, building and cashing Mother Lodes.",
-        "Mother Lode only cashes at the mine during Gold Mine Multiball. Jackpots build its value, and every set of five jackpots raises its multiplier.",
+        "Jackpots in GMMB build Mother Lode cash out and every set of five jackpots raises its multiplier.",
         "End-of-ball bonus counts switch hits and is a big share of the score. Take every top-lane completion for bonus X, and never tilt away a long ball.",
         "Four Quick Draws start Showdown. To stack it with another multiball, light the last Quick Draw, start the other multiball, then knock the Quick Draw down.",
-        "Watch the current skill shot award; a soft plunge that doesn’t reach the switch collects it."
+        "Watch the current skill shot award; a deliberate soft plunge that doesn’t reach the switch collects it."
       ],
       "avoid": [
         "Tilting late in a long ball, which throws away the bonus."
@@ -565,12 +563,14 @@ window.PLANS = {
         "A full plunge usually just hits the Magna-Grab captive ball."
       ],
       "plan": [
-        "Skill shots add ball-save time. Vary them; the upper-flipper lane and the upper loop are the most reliable.",
-        "Hold the ball on the left flipper and shoot over the Z for the scoop. It starts Kaiju Battles and changes cities.",
+        "Skill shots add ball-save time. The upper-flipper return lane and the upper loop are the most reliable.",
+        "Light Kaiju Battles by hitting left or right ramps.",
+        "Hold the ball on the left flipper and shoot the scoop. It starts Kaiju Battles and changes cities.",
         "Battle Gigan first: its ramp shots also build Godzilla Multiball. Then move to London for +6M on Destruction Jackpots.",
+        "If GZMB is ready to go, start battle w/Titanosaurus first then start MB. It makes this battle much easier.",
         "Godzilla Multiball: shoot the ramps and building to light it, flashing shots for jackpots, and the building for the super. On the Premium the add-a-ball needs the three targets, then the right spinner.",
-        "Charge the Heat Ray with the center spinner and hold the action button about 5 seconds to collect everything lit. Use it often.",
-        "Pick allies with the right flipper: Rodan for 2X during a big mode, Mothra for the left outlane save, Anguirus for an add-a-ball."
+        "Charge the Heat Ray with the center spinner and HOLD the action button about 5 seconds to collect everything lit. Use it when many shots are lit or to finish off modes.",
+        "Pick allies with the right flipper then shoot the scoop to collect: Rodan for 2X during a big mode, Mothra for the left outlane save, Anguirus for an add-a-ball."
       ],
       "avoid": [
         "Chasing jets and saucer attacks on purpose. Play them out when they come up.",
@@ -1057,14 +1057,14 @@ window.PLANS = {
         "Super skill shot: hold the left flipper on the plunge so the ball comes down the left orbit, then hit any major shot for three shots' worth of credit there. That can start a Truck Heist or Party at the Bing at once."
       ],
       "plan": [
+        "Short plunge to collect boat locks without starting the ball saver.",
         "Advance ranks. In single ball, shoot the green dollar-sign shots, then the spinner lane. In multiball, bash the safe until it opens. Each rank-up makes one area worth 2X until end of ball.",
         "Left ramp and boat ramp shots build toward multiballs. Lock one ball in the Stugots boat, repeat the left ramp to start Party at the Bing, then start Stugots multiball so both run and you can bash the safe.",
         "Underboss multiball stacks with Stugots and the Bing if you start it during either one.",
-        "The FISH bottom lanes light the left saucer mystery. The first one in any multiball is always an add-a-ball.",
-        "Short plunge to collect boat locks without starting the ball saver."
+        "The FISH bottom lanes light the left saucer mystery. The first one in any multiball is always an add-a-ball."
       ],
       "avoid": [
-        "Building your plan around the safe on this copy; see the note below."
+        "Building your plan around the safe. The shot can be dangerous and brick drain."
       ],
       "tourney": [],
       "venue": {
