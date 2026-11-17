@@ -52,7 +52,7 @@ Picking Maximus grants more time in your Power Armor (2x Playfield). Backhand De
 Monster Fish or Multiball? That is the question. Shoot the boat for the former, the fishing reel lock for the latter.
 
 ## foo-fighters  (Foo Fighters)
-I like to start with New Orleans, then L.A., then Portland. Finish 3 van modes to qualify mini wizard mode.
+Garbo likes to start with New Orleans, then L.A., then Portland. Finish 3 van modes to qualify mini wizard mode.
 
 ## game-of-thrones  (Game of Thrones)
 Soft plunge, catch right flipper. Post pass, shoot green lock targets. Up the middle for a lock. Repeat. If you mess it up when you plunge, check if your playfield is validated, if not, drain and try again!
@@ -64,7 +64,7 @@ Big scores happen in 6x playfield. Modes on the left scoop only require 2 comple
 Skillshot for ballsave then hit ramps twice to light battle. Go for Gigan if the right ramp is doable. Ski-pass and repeat it to take him down quickly!
 
 ## guardians-of-the-galaxy  (Guardians of the Galaxy)
-Most people like to start with Quill for the quick multiball. I prefer Yaka. Smash Groot for locks and get multiball prepped for the next mode! BOBALEEBO.
+Most people like to start with Quill for the quick multiball. Garbo prefers Yaka. Smash Groot for locks and get multiball prepped for the next mode! BOBALEEBO.
 
 ## guns-n-roses  (Guns N' Roses)
 
@@ -128,7 +128,7 @@ Clean Your Car mode with a Big Kahuna playfield multiplier running will be big p
 
 ## shrek  (Shrek)
 
-Right spinner for Swamp modes, upper-left drops for Baby Multiball, and take Donkey Pinball when it’s lit. I think I like this more than Family Guy.
+Right spinner for Swamp modes, upper-left drops for Baby Multiball, and take Donkey Pinball when it’s lit. Garbo thinks he likes this more than Family Guy.
 
 ## spider-man  (Spider-Man)
 
@@ -137,7 +137,7 @@ Right spinner for Swamp modes, upper-left drops for Baby Multiball, and take Don
 ## star-trek-the-next-generation  (Star Trek: The Next Generation)
 
 ## star-wars  (Star Wars)
-Begrudgingly, I start with Han since he is the easiest path to mode multiballs. He shot my cousin. It's a whole thing.
+Begrudgingly, Garbo starts with Han since he is the easiest path to mode multiballs. Han shot Garbo’s cousin. It's a whole thing.
 
 ## star-wars-trilogy  (Star Wars Trilogy)
 
@@ -162,7 +162,7 @@ Pick Donatello to qualify Turtle Power Multiball on the right ramp. Play it then
 Getting all three +1x playfield multipliers running (up to 6x) before a Razor Crest multiball is hard. Feels good, though!
 
 ## munsters  (The Munsters)
-This is a "If my opponent does the thing, I have to do the thing," type game. Play modes, qualify super jackpots and only collect during 6x playfield.
+This is an "if Garbo’s opponent does the thing, Garbo has to do the thing" type game. Play modes, qualify super jackpots and only collect during 6x playfield.
 
 ## simpsons-pinball-party  (The Simpsons Pinball Party)
 
@@ -170,11 +170,11 @@ This is a "If my opponent does the thing, I have to do the thing," type game. Pl
 Soft plunge for a safer shot to the STUGOTS. Stack it with Party at the Bing and fuhgeddaboudit.
 
 ## uncanny-x-men  (The Uncanny X-Men)
-Don't be afraid of the difficult modes! They aren't that bad. Really! I like to start with the Storm one. What's it called?
+Don't be afraid of the difficult modes! They aren't that bad. Really! Garbo likes to start with the Storm one. What's it called?
 
 ## walking-dead-remastered  (The Walking Dead Remastered)
 
-This game is tough. Control is key. I like to start with Barn. Try to save your shot multipliers for big collects.
+This game is tough. Control is key. Garbo likes to start with Barn. Try to save your shot multipliers for big collects.
 
 ## theatre-of-magic  (Theatre of Magic)
 
@@ -186,7 +186,7 @@ Soft plunge, Optimus, lock. Soft plunge, Optimus, lock. Soft plunge, Optimus, st
 ## twilight-zone  (Twilight Zone)
 
 ## venom  (Venom)
-I usually pick Eddie Brock. Lock 3 balls on the right side for 2x playfield. Bash Carnage and stack multiballs.
+Garbo usually picks Eddie Brock. Lock 3 balls on the right side for 2x playfield. Bash Carnage and stack multiballs.
 
 ## x-men  (X-Men)
 
