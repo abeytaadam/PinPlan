@@ -381,7 +381,7 @@
       "id": 30149,
       "name": "Putts N Pints",
       "url": "https://pinballmap.com/map/?by_location_id=30149",
-      "date_last_updated": "2026-09-27",
+      "date_last_updated": "2026-11-17",
       "machines": [
         {
           "name": "Game of Thrones (Pro)",
@@ -914,5 +914,5 @@
       ]
     }
   ],
-  "synced_at": "2026-11-14T06:25:09.836Z"
+  "synced_at": "2026-11-18T07:29:51.896Z"
 }
