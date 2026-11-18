@@ -1218,13 +1218,13 @@ window.PLANS = {
         "Or shoot the left ramp for a Cerebro skill shot, which spots progress toward To Me, My X-Men multiball."
       ],
       "plan": [
-        "Take the uptown ramp skill shot. It feeds the left flipper safely, advances Cerebro and gets early Sentinel hits in before ball save ends.",
-        "Start with Sentinel Facility Raid and loop the center ramp to finish it fast. Its reward is an add-a-ball for any multiball, best saved for Save the City or Berzerker.",
+        "Take the uptown ramp skill shot. It feeds the left flipper safely, advances Cerebro and sets up early Sentinel hits in before ball save ends.",
+        "Start with Sentinel Facility Raid and loop the center ramp to finish it fast. Its reward is an add-a-ball for any multiball.",
         "Don’t fear the challenging missions. Genosha Under Siege and Fiery Assault score more consistently than the easy ones.",
         "Soften the Sentinel head so the last hit starts multiball, then start a mission. Backhand the head from the right flipper, especially when its mouth is down.",
         "In Sentinel multiball, pick the four easiest jackpot shots and hit the Danger Room exit ramp early to raise jackpots to 2X, then 3X.",
         "Save Bishop charges for the future. There, clear the flashing shots and escape at the center ramp instead of chasing the giant head.",
-        "Prioritize Save the City when you can: three shots to every ramp and orbit (multiball shots count), then the center ramp when nothing else is running."
+        "Keep an eye on Save the City progress; after a solid set of combos you might be just a couple shots from a mini-wizard mode."
       ],
       "avoid": [
         "The X-Jet standup that sends balls to the center drain. Shoot it late from the right flipper.",
@@ -4981,12 +4981,12 @@ window.PLANS = {
         "Skill shot value multiplies by the ball number, so later balls are worth more."
       ],
       "plan": [
-        "At the start, pick Arabel or Kobold as your town. Paladin makes Dragon Multiball easier.",
-        "In travel mode, skip the blue shots. Work the center spinner and orange targets to start dungeon crawls: 5M+ per battle, 10M+ when you win.",
-        "Finish the town’s location mode: Retrieve a Potion for Nighdaar in Arabel, or Spy on Puck / Rescue Missing Miners in Kobold.",
+        "At the start, pick Arabel as your town. Paladin makes Dragon Multiball easier, wizard gives you more shield time.",
+        "In travel mode, skip the blue shots. Work the center spinner and orange targets to start dungeon crawls: they can be huge with the right route.",
+        "Finish Retrieve a Potion for Nighdaar in Arabel.",
         "Spell DRAGON for Dragon Multiball. The first dragon needs 9 hits before you lose too many balls.",
-        "Lock for Gelatinous Cube Multiball (jackpots up to about 25M). It only runs once until a map mode requalifies it, so stack it with one.",
-        "After crawl, Dragon and Cube, qualify Tavern Brawl, a 2-ball multiball with 6M+ jackpots."
+        "Left ramp, with some luck, lights lock for Gelatinous Cube Multiball. It only runs once until a map mode requalifies it, so stack it with one.",
+        "After crawl, Dragon and Cube, Tavern Brawl is qualified at the center shot, start it and loop the left ramp after lighting it."
       ],
       "avoid": [
         "Starting town dungeons early. They lock out other modes and multiballs.",
@@ -6260,16 +6260,16 @@ window.PLANS = {
       ],
       "plan": [
         "Plunge for the top-lane skill shot, so you start catching Pokémon right away.",
-        "Hit the bumpers to spawn Pokémon, then build CATCH! at the left ramp.",
-        "Start Pikachu’s story mode first (three Pikachu ramp or orbit shots in single-ball play). It’s the easiest to finish and plays as a 2-ball multiball.",
-        "Lower the Meowth balloon with the BATTLE targets, then shoot it to start Team Rocket Multiball (four balloon shots on code 0.87). Stack Squirtle’s mode with it.",
-        "Hit the Pokédex captive ball hard and often. 25 hits light an extra ball at the town scoop.",
-        "During the early ball save, hit BATTLE targets to light add-a-ball."
+        "Shoot left ramp to build and start Squirtle 1.",
+        "Finish Squirtle and decide whether to place the multiplier shot on Charmander or Squirtle itself.",
+        "Hit switches to identify Pokémon then captive ball to begin CATCH phase. Catch Pokémon at left ramp.",
+        "Lower the Meowth balloon with the BATTLE targets, then shoot it to start Team Rocket Multiball. Stack Bulbasaur mode with it.",
+        "During the early MB ball save, hit BATTLE targets to light add-a-ball.",
+        "Hit the Pokédex captive ball hard and often. 25 hits light an extra ball at the town scoop."
       ],
       "avoid": [
-        "Dead bounces off the left flipper. They leave the bottom of the playfield wide open.",
         "Letting the captive ball send the ball toward an outlane. Nudge if needed.",
-        "Getting surprised by the fast town-scoop eject. Be ready for a reflex flip."
+        "Getting surprised by the fast town-scoop eject. Be ready for a reflex flip or to drop catch."
       ],
       "tourney": [],
       "venue": {
@@ -6598,17 +6598,15 @@ window.PLANS = {
         "It comes back after Death Star locks and after a JEDI save sends the ball to the plunger."
       ],
       "plan": [
-        "Light lock early at the Droids target, then lock three balls at the Luke VUK for Battle of Hoth.",
-        "Light the Falcon with the right ramp, then hit the center ramp for Lightspeed Escape, ideally before the third Hoth lock. That’s the only way two multiballs stack.",
-        "Play the yellow (easy) Rebel missions first. Yoda, Luke, Droids and Han are good picks. Spell FORCE to light missions.",
-        "Play Rancor, the best Jabba event, by following its fixed shot order.",
-        "After 15 Death Star jackpots, shoot the Death Star for the super jackpot.",
-        "Use bumper-earned shot multipliers during multiball."
+        "Light lock early at the Droids target with skillshot, then lock two balls at the Luke VUK for Battle of Hoth.",
+        "Light last lock and then spell FORCE to light missions. Start a green (easy) Rebel missions first then lock last ball to bring in Hoth MB.",
+        "Light the Falcon with the right ramp, then hit the center ramp for Lightspeed Escape, (or push your luck and start another mode first.)",
+        "Play Rancor, a lucrative Jabba event, by following its fixed shot order.",
+        "Play 4 modes to light Not A Jedi Yet at the scoop."
       ],
       "avoid": [
         "Death Star shots after a short plunge. They’re high drain risk.",
-        "Vader scoop feeds that start modes you don’t want.",
-        "Luke’s Gift. It’s the weakest award."
+        "Starting a multiball outside of a mode if you can help it."
       ],
       "tourney": [],
       "venue": {
