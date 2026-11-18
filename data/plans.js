@@ -1141,15 +1141,14 @@ window.PLANS = {
         "Super skill shot: soft plunge to the flippers, then shoot the kicker. Bouncing off the flashing drop target into the kicker on one plunge scores both, plus a bonus."
       ],
       "plan": [
-        "The standard stack is a Chapter mode, then Demodog, then Telekinesis multiball. Chapters must start before the multiball, or with the shot that starts it.",
-        "Chapters light from three shots to any main shot: left orbit, left ramp, right ramp or right orbit. Inserts show your progress.",
-        "The standups on each side of the left ramp light locks there; three locks start Telekinesis.",
-        "Don’t neglect Burn It Back, the lane right of the center drops. It pays out Spell of Protection (an outlane save that works like an extra ball), extra balls and 2X scoring.",
-        "Bonus can be huge. Once you’ve built bonus-boosting progress, loop your favorite ramp for inlane completions to max out Bonus X.",
-        "Premium: the action button destroys the Demogorgon once per game. Use it before the drain registers."
+        "Find a reliable shot to hit multiple times - usually left orbit or left ramp.",
+        "Hit standups on each side of the left ramp to light locks.",
+        "Stack Telekinesis with a Chapter mode. Chapters must start before the multiball, or with the shot that starts it.",
+        "Bonus can be HUGE. Do not neglect your inlane lights. Move them with the flippers to light all 4 and alternate building bonus/lighting mystery.",
+        "Don’t neglect Burn It Back, the lane right of the center drops. It pays out Spell of Protection, extra balls and 2X scoring."
       ],
       "avoid": [
-        "Stacking Telekinesis onto a single-ball Demogorgon mode unless you can hit the mouth reliably; the big ramp flap blocks Mystery and Burn It Back."
+        "Dangerous Upside Down shots unless hitting them will put your score above your opponents."
       ],
       "tourney": [
         "The Upside Down starts randomly in normal play but not in tournament mode, so don’t wait on it."
@@ -1193,7 +1192,7 @@ window.PLANS = {
           "The Upside Down starts randomly in normal play, but not in tournament mode."
         ]
       ],
-      "rules": "Main shots three times each light Chapters; left-ramp standups light Telekinesis locks; Demodog and Demogorgon modes add stacks. Burn It Back and the Upside Down are side scoring. Total Isolation, Send It Back and Light the Fire are the season-two mini-wizards.",
+      "rules": "Main shots three times each light Chapters and left-ramp standups light Telekinesis locks. Burn It Back lights 2x playfield and the Upside Down modes are side scoring. Total Isolation, Send It Back and Light the Fire are the mini-wizards. Complete chapters at all shots to light them.",
       "sources": [
         [
           "Pinball Rulesheets: Stranger Things",
@@ -6804,15 +6803,12 @@ window.PLANS = {
         "Secret: short plunge to the lower right flipper, hit the left orbit (Grimlock), then one of those three shots from the upper flipper."
       ],
       "plan": [
-        "Soft-plunge to the upper flipper and hit the space bridge for the skill shot (8M plus 10 seconds of ball save).",
-        "Start and finish Autobot Run or Prime Target first, then hit Megatron for the final-blow multiplier.",
-        "Qualify Transformers Multiball with six lock VUK shots.",
-        "Play Solar Needle during multiball, using an Energon cube to make it easier.",
-        "After two missions, hit the right ramp to light One Shall Fall, a 4-ball wizard mode.",
-        "Play the rusted version of your remaining missions. They’re harder but worth more."
+        "Soft-plunge to the upper flipper and hit Optimus to light lock. Lock ball at VUK. Repeat.",
+        "Stack multiball with Solar Needle and finish mode.",
+        "Take rust into Golden Lagoon, hit a couple shots to build spinner value, hit spinner from right orbit for best points.",
+        "After two missions, hit the right ramp to light One Shall Fall, a 4-ball wizard mode."
       ],
       "avoid": [
-        "Hitting standups by accident. They can knock the ball out of control.",
         "Missed side-ramp shots bouncing between bumper and slings. Nudge the ball up.",
         "Trying to add Playfield X after multiball starts. Start it first."
       ],
@@ -6847,7 +6843,7 @@ window.PLANS = {
           "Backhand the three standups in front of the mission-start hole with the right flipper, then start a mission at the same shot."
         ]
       ],
-      "rules": "Five missions, Dinobot and Tech Spec modes, and multiballs. Beating a mission without energizing it rusts the next one. You get one add-a-ball per game.",
+      "rules": "Hit Optimus to light lock and lock balls at VUK to his right. Completing all five missions lights Save Optimus mini-wizard mode. Scoring 3 jackpots in a Dinobot mode lights Dinobot mini-wizard mode. Collecting Tech Specs lights Tech Spec Mania. Collecting all combiner parts of a transformer starts super feature. Collecting all combiner parts of 3 transformers lights mini-wizard mode. Beating a mission without energizing it rusts the next one for harder difficulty but bigger points.",
       "sources": [
         [
           "Kineticist: Transformers tutorial",
