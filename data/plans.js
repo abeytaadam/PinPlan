@@ -1214,22 +1214,22 @@ window.PLANS = {
       "thesis": "Open with Sentinel Facility Raid, then Sentinel multiball with the Danger Room ramp multiplied.",
       "garbo": "Don't be afraid of the difficult modes! They aren't that bad. Really! Garbo likes to start with the Storm one. What's it called?",
       "skill": [
-        "Soft plunge into the lane by the highway ramp entrance for +1 bonus X, or hit the X-Jet shot for +3 bonus X.",
-        "Or shoot the left ramp for a Cerebro skill shot, which spots progress toward To Me, My X-Men multiball."
+        "Shoot the left Uptown ramp to spot a lock toward To Me, My X-Men multiball.",
+        "Shoot the Downtown Loop (left of Uptown ramp) repeatedly to build time loop combos.",
+        "Shoot the X-Jet for bonus X.",
+        "Soft plunge into the lane by the highway ramp entrance for +1 bonus X, or hit the X-Jet shot for +3 bonus X."
       ],
       "plan": [
         "Take the uptown ramp skill shot. It feeds the left flipper safely, advances Cerebro and sets up early Sentinel hits in before ball save ends.",
         "Start with Sentinel Facility Raid and loop the center ramp to finish it fast. Its reward is an add-a-ball for any multiball.",
         "Don’t fear the challenging missions. Genosha Under Siege and Fiery Assault score more consistently than the easy ones.",
         "Soften the Sentinel head so the last hit starts multiball, then start a mission. Backhand the head from the right flipper, especially when its mouth is down.",
-        "In Sentinel multiball, pick the four easiest jackpot shots and hit the Danger Room exit ramp early to raise jackpots to 2X, then 3X.",
-        "Save Bishop charges for the future. There, clear the flashing shots and escape at the center ramp instead of chasing the giant head.",
         "Keep an eye on Save the City progress; after a solid set of combos you might be just a couple shots from a mini-wizard mode."
       ],
       "avoid": [
+        "Holding the left flipper for a Danger Room entry from the X-Jet exit; your ball will drain.",
         "The X-Jet standup that sends balls to the center drain. Shoot it late from the right flipper.",
-        "Letting a short midtown feed reach the bumpers or right outlane; nudge right. On the subway loop rubber, nudge left.",
-        "Holding the left flipper for a Danger Room entry from the X-Jet exit; that one drains."
+        "Letting a short midtown feed reach the bumpers or right outlane; nudge right. On the subway loop rubber, nudge left."
       ],
       "tourney": [],
       "venue": {
@@ -1269,7 +1269,7 @@ window.PLANS = {
           "Easier missions send you to a future with more Sentinels to destroy, building toward the 35 needed for Berzerker."
         ]
       ],
-      "rules": "White shots light missions at the center ramp or right loop; finishing one sends you to the future (destroy 6 Sentinels, escape at the center ramp) for a perk. The Sentinel head starts Sentinel multiball. Three shots to every ramp and orbit light Save the City; Cerebro leads to To Me, My X-Men; 35 Sentinels light Berzerker.",
+      "rules": "White shots light missions at the center ramp or right loop; finishing and easy mode sends you to the future to destroy 6 Sentinels, escape at the center ramp for a perk, finishing a hard mode pits you against Nimrod for big point hurry-ups. The Sentinel head starts Sentinel multiball. Three shots to every ramp and orbit light Save the City; Cerebro leads to To Me, My X-Men; 35 Sentinels light Berzerker.",
       "sources": [
         [
           "Kineticist: The Uncanny X-Men tutorial",
@@ -5541,20 +5541,19 @@ window.PLANS = {
       "thesis": "Shark encounters and bounty hunts are the big points. Use Jaws Multiball 1 as a utility multiball.",
       "skill": [
         "The skill shot steps up each time you make it: first the pop bumper, then the lane above the mini-flipper without touching the bumper, then any flashing left-bank target with no other switches.",
-        "You get up to three tries per ball, and each one made adds 5 seconds of ball save."
+        "Short plunge and hit boat/shark to collect gear and 10m."
       ],
       "plan": [
-        "Plunge into the bumpers for the level 1 skill shot (5M).",
-        "Make quickshots from the harpoon lane. Three in a row awards an extra ball and helps light gear.",
-        "In single-ball play, start with the Scars encounter, then Raft Attack.",
+        "Short plunge and catch ball to shoot shark to light mode, light gear, and 10m points.",
+        "Stack Jaws Multiball 1 with Night Swim or Beach Panic if possible.",
+        "Hit standups to light beach closure shots. Hit three at each shot and close the beaches. Close all beaches for mini-wizard mode.",
         "Start bounty hunts with Mako, the easiest shark. Bounty progress pauses during multiball.",
-        "Collect gear: shark cage, binoculars and barrel hook.",
-        "Stack Jaws Multiball 1 with Night Swim or Beach Panic. Cage Dive (Multiball 3) can’t stack with modes."
+        "Collect gear: binoculars, shark cage, and barrel hook.",
+        "Make quickshots from the harpoon lane if shot is reliable to light gear and other rewards."
       ],
       "avoid": [
         "Tilting. You lose your banked Feeding Frenzy points.",
-        "Missing quickshots. A miss resets their multiplier.",
-        "Pond Attack, if you can’t hit the fishing reel reliably."
+        "Missing quickshots. A miss resets their multiplier."
       ],
       "tourney": [
         "200–300M is a solid tournament score."
@@ -5594,7 +5593,7 @@ window.PLANS = {
           "Premium/LE: the upper-playfield Orca Wheel stops on any switch hit or the action button, so you can time which award you get."
         ]
       ],
-      "rules": "Catch Bruce while scouting beaches and evacuating swimmers. All five encounters light the 4th of July mini-wizard, and all three Jaws Multiballs light the final wizard.",
+      "rules": "Bash the shark to light encounters! All five encounters light the 4th of July mini-wizard. Close beaches to light Search or Rescue mini-wizard modes. All three Jaws Multiballs light the final wizard mode.",
       "sources": [
         [
           "Kineticist: JAWS tutorial",
