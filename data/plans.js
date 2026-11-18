@@ -5051,11 +5051,12 @@ window.PLANS = {
       ],
       "plan": [
         "Make the skill shot, then rip the Nuka-Cola spinner for caps. Spend caps at Sundries on Fusion Cores and Nuka-Cola inlanes.",
-        "Charge the fusion core at the left pop bumper and turn on Power Armor once it’s past 50%.",
-        "Upgrade your weapon at the scoop. Level 2 takes five junk and adds playfield X and bonus X.",
-        "Play Deathclaw Multiball 1 (jackpots from about 2M), then 2 and 3 as weapons unlock.",
-        "Complete Wasteland Multiball (jackpots from about 3M, rising each shot).",
-        "Keep HP above 50 so you can start quests. NOVAC and Radscorpion Attack have the best ramp values."
+        "Light Deathclaw Multiball, start a single ball mode, then hit Deathclaw to start mulitball stack.",
+        "Fusion core will naturally charge at the pop bumper/standups but it's easier and safer to buy fusion cores from the shop.",
+        "Save Power Armor for juicy modes/multiballs.",
+        "Collect junk to upgrade your weapon at the scoop. Level 2 takes five junk and adds playfield X%.",
+        "Light all white circle, then yellow circle, then blue circle shots to collect companion and light sidequests - they must be done by color to advance.",
+        "Collect HP at yellow lightning bolt shots (loop to the right of Pipboy or right ramp) to light modes - Wedding Day and The King's are multiballs."
       ],
       "avoid": [
         "Ending a ball with unspent caps.",
