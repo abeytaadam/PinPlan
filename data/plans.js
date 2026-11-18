@@ -6259,17 +6259,17 @@ window.PLANS = {
         "Super skill shot: hold the left flipper and full plunge for double value. The center lane completes the BATTLE targets, and starts Team Rocket multiball if it's lit there."
       ],
       "plan": [
-        "Plunge for the top-lane skill shot, so you start catching Pokémon right away.",
-        "Hit the bumpers to spawn Pokémon, then build CATCH! at the left ramp.",
-        "Start Pikachu’s story mode first (three Pikachu ramp or orbit shots in single-ball play). It’s the easiest to finish and plays as a 2-ball multiball.",
-        "Lower the Meowth balloon with the BATTLE targets, then shoot it to start Team Rocket Multiball (four balloon shots on code 0.87). Stack Squirtle’s mode with it.",
-        "Hit the Pokédex captive ball hard and often. 25 hits light an extra ball at the town scoop.",
-        "During the early ball save, hit BATTLE targets to light add-a-ball."
+        "Plunge for the top-lane skill shot or hold left flipper for super to try to hit the center shot and lower Meowth's Balloon in one shot.",
+        "Start Squirtle's Story first and finish. Place shot multiplier on Charmander or Squirtle.",
+        "Hit switches to spawn Pokémon, then build CATCH! at the left ramp.",
+        "Lower the Meowth balloon with the BATTLE targets, start Bulbasaur's story mode, then shoot it to start Team Rocket Multiball for a good stack.",
+        "During the early MB ball save, hit BATTLE targets to light add-a-ball.",
+        "Hit the Pokédex captive ball hard and often.",
+        "Finish your last two modes and play a miniwizard mode."
       ],
       "avoid": [
-        "Dead bounces off the left flipper. They leave the bottom of the playfield wide open.",
         "Letting the captive ball send the ball toward an outlane. Nudge if needed.",
-        "Getting surprised by the fast town-scoop eject. Be ready for a reflex flip."
+        "Getting surprised by the fast town-scoop eject. Be ready for a reflex flip or a drop catch."
       ],
       "tourney": [],
       "venue": {
@@ -6302,7 +6302,7 @@ window.PLANS = {
           "Skip the hold-left-flipper skill shot unless that outlane has been rebuilt."
         ]
       ],
-      "rules": "Catch Pokémon, battle rivals, and play the four starter story modes. All four at the same level light Pikachu vs. Charizard, a 4-ball mini-wizard on the right ramp.",
+      "rules": "Catch Pokémon, battle rivals, and play the four starter story modes. All four at the same level light a mini wizard mode.",
       "sources": [
         [
           "Kineticist: Pokémon tutorial",
