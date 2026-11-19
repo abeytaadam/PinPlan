@@ -5049,7 +5049,7 @@ window.PLANS = {
         "Time your plunge to the flashing Nuka Cola insert on the right inlane. That drops the Nuka Cola spinner for a few seconds; rip it right away from the right flipper for points and ball save."
       ],
       "plan": [
-        "Make the skill shot, then rip the Nuka-Cola spinner for caps. Spend caps at Sundries on Fusion Cores and Nuka-Cola inlanes.",
+        "Make the skill shot, then rip the Nuka-Cola spinner for caps. Spend caps at Sundries on Fusion Cores (2x playfield time) and Buffout (multiball extender).",
         "Light Deathclaw Multiball, start a single ball mode, then hit Deathclaw to start mulitball stack.",
         "Fusion core will naturally charge at the pop bumper/standups but it's easier and safer to buy fusion cores from the shop.",
         "Save Power Armor for juicy modes/multiballs.",
