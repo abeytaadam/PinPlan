@@ -452,7 +452,7 @@
       "id": 28857,
       "name": "Revel",
       "url": "https://pinballmap.com/map/?by_location_id=28857",
-      "date_last_updated": "2026-08-21",
+      "date_last_updated": "2026-11-22",
       "machines": [
         {
           "name": "Led Zeppelin (Pro)",
@@ -914,5 +914,5 @@
       ]
     }
   ],
-  "synced_at": "2026-11-18T07:29:51.896Z"
+  "synced_at": "2026-11-23T07:40:17.229Z"
 }
