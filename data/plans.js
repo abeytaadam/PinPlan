@@ -5529,6 +5529,78 @@ window.PLANS = {
       ]
     },
     {
+      "id": "james-bond-007-60th",
+      "code": "B60",
+      "name": "James Bond 007 60th Anniversary",
+      "sort": "James Bond 007 60th Anniversary",
+      "mfr": "Stern",
+      "year": 2022,
+      "variant": "60th Anniversary",
+      "group": "stern",
+      "opdb": "Ge1Dy",
+      "thesis": "Modes and bonus win this game, not multiball jackpots: start villain modes with MI6, double them by dropping MI6 again, and cash a big bonus.",
+      "skill": [
+        "Easiest: plunge into the flashing 007 top lane. The flippers don’t move it, so it’s all in the plunge.",
+        "Super: hold the left flipper on the plunge and make an inline drop target your first switch. All three drop and the Mission Multiball lock lights at the right scoop.",
+        "Other options: a short plunge to the Q target, or hold the left flipper, full plunge and shoot the M target."
+      ],
+      "plan": [
+        "Take the super skill shot to the inline drops when you can. With the lock lit, Mission Multiball is one right-scoop shot away.",
+        "Complete MI6 to light the Oddjob disc and pick a villain, then complete MI6 again to start the mode. Completing MI6 during the mode adds time and doubles its scoring.",
+        "Pick villains you can finish: Jaws (75 spins on any spinner) and Zorin (12 pop hits) need no exact shot; Blofeld (one flashing drop target at a time) is the fussiest.",
+        "Complete BOND to light the disc for the gadget meter. Gadgets come in order: Jetpack (holds bonus), Spy Camera (action button lights the lock), Gondola Hovercraft (outlane ball save), then X-Ray Glasses, which starts Gadget Multiball.",
+        "In Mission Multiball, shoot one scoop, then the other within 15 seconds to relock both balls for 3-ball. Its jackpots are modest, so use the time to push modes and gadgets too.",
+        "Bonus is a big share of the score: finish A-B-C for up to 3X, and shoot the M target when Collect Bonus is lit (second inline drop or the second 007 lane award lights it).",
+        "Long game: starting Villain, Gadget and Bond Multiball lights 007 Mode at the left scoop. Defuse the bomb with the three inline drops, then the right scoop, to start 007 Multiball."
+      ],
+      "avoid": [
+        "Chasing Mission Multiball jackpots while modes and gadgets sit unstarted.",
+        "Walking away when Mission Multiball ends without both relocks. The right scoop stays lit for 15 seconds to restart it.",
+        "Draining with Collect Bonus lit at the M target."
+      ],
+      "tourney": [],
+      "venue": {
+        "notes": [],
+        "copy": [
+          "This is a separate Keith Elwin design (only 500 made), not a model of the Pro/Premium/LE Bond: different playfield, different rules. It has real score reels, so scores run in the thousands, not millions."
+        ],
+        "tied": [],
+        "scores": []
+      },
+      "tips": [
+        [
+          "general",
+          5,
+          "Completing MI6 starts a mode, and the playfield screen shows what to shoot."
+        ],
+        [
+          "skillshot",
+          3,
+          "Hold the left flipper on the plunge and make an inline drop your first switch: the super skill shot sets up multiball right away."
+        ],
+        [
+          "general",
+          2,
+          "Modes can pay more than Mission Multiball: finishing one on the first try earns a 1K bonus, and dropping MI6 again doubles mode scoring."
+        ]
+      ],
+      "rules": "Oddjob’s spinning hat disc runs the game. MI6 drops light and start six villain modes; finishing all six lights Villain Multiball. BOND drops advance the gadget meter (four gadgets start Gadget Multiball) and light Collect Bond at the left scoop (six Bonds start Bond Multiball). The inline drops light the right-scoop lock for Mission Multiball. Starting all three of Villain, Gadget and Bond Multiball lights 007 Mode, a bomb defusal that leads to 007 Multiball. The community rulesheet lists no code revision and has a few gaps.",
+      "sources": [
+        [
+          "Pinball Rulesheets: 007 60th Anniversary",
+          "https://pinballrulesheets.com/stern/007-60th-anniversary-rulesheet.html"
+        ],
+        [
+          "San Diego Pinball Club cheatsheet",
+          "https://pinball.miraheze.org/wiki/James_Bond_007_60th_Anniversary"
+        ],
+        [
+          "Kineticist: 60th Anniversary features and rules",
+          "https://www.kineticist.com/news/stern-pinball-announces-james-bond-007-60th-anniversary-pinball"
+        ]
+      ]
+    },
+    {
       "id": "jaws",
       "code": "JAWS",
       "name": "JAWS",
